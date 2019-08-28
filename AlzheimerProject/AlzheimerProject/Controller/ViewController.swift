@@ -19,8 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserNotification.requestNotificationAuthorization()
-        
-        CoreDataBase.shared.createSala()
+        print("öi")
         
     }
 
