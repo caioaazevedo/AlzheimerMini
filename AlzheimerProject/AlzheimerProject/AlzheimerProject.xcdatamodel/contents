@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Calendario" representedClassName="Calendario" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="idEventos" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="evento" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Evento" inverseName="ofCalendar" inverseEntity="Evento" syncable="YES"/>
+        <relationship name="ofUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sala" inverseName="calendario" inverseEntity="Sala" syncable="YES"/>
+    </entity>
+    <entity name="Evento" representedClassName="Evento" syncable="YES">
+        <attribute name="categoria" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dia" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="horario" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="idCalendario" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="idUsuarios" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ofCalendar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Calendario" inverseName="evento" inverseEntity="Calendario" syncable="YES"/>
+    </entity>
+    <entity name="Ids" representedClassName="Ids" syncable="YES">
+        <attribute name="calendarIDS" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="eventIDS" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="profileIDS" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="tableIDS" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="PerfilUsuario" representedClassName="PerfilUsuario" syncable="YES">
+        <attribute name="alergias" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dataDeNascimento" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endereco" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fotoDePerfil" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="planoDeSaude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remedios" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telefone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipoSanguineo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ofSala" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sala" inverseName="perfilUsuario" inverseEntity="Sala" syncable="YES"/>
+    </entity>
+    <entity name="Sala" representedClassName="Sala" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="idCalendario" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="idHost" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="idPerfil" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="idUsuarios" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="telefoneUsuarios" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="calendario" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Calendario" inverseName="ofUser" inverseEntity="Calendario" syncable="YES"/>
+        <relationship name="perfilUsuario" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PerfilUsuario" inverseName="ofSala" inverseEntity="PerfilUsuario" syncable="YES"/>
+        <relationship name="usuario" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Usuario" inverseName="ofUser" inverseEntity="Usuario" syncable="YES"/>
+    </entity>
+    <entity name="Usuario" representedClassName="Usuario" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fotoPerfil" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="idSala" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ofUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sala" inverseName="usuario" inverseEntity="Sala" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Calendario" positionX="9" positionY="99" width="128" height="105"/>
+        <element name="Evento" positionX="27" positionY="117" width="128" height="180"/>
+        <element name="PerfilUsuario" positionX="45" positionY="189" width="128" height="225"/>
+        <element name="Sala" positionX="-45" positionY="0" width="128" height="180"/>
+        <element name="Usuario" positionX="-18" positionY="27" width="128" height="135"/>
+        <element name="Ids" positionX="9" positionY="162" width="128" height="105"/>
+    </elements>
+</model>
