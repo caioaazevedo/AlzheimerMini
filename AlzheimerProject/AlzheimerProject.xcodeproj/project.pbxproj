@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
 		3AD49DDC231621EC00904457 /* Ids+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD49DD0231621EC00904457 /* Ids+CoreDataClass.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.release.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.release.xcconfig"; sourceTree = "<group>"; };
+		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3AD49DD0231621EC00904457 /* Ids+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ids+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				AC9EE929230F175D004FA292 /* Events.swift */,
 				AC9EE92B230F1A88004FA292 /* Days.swift */,
 				3A86469F2315C0490091BD0C /* CoreData.swift */,
+				3A5F8F77231746BC00A8B05C /* Cloud.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
 				AC9EE91523072645004FA292 /* Notification.swift in Sources */,
+				3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */,
 				3AD49DE4231621EC00904457 /* Calendario+CoreDataClass.swift in Sources */,
 				3AD49DE2231621EC00904457 /* Usuario+CoreDataClass.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
