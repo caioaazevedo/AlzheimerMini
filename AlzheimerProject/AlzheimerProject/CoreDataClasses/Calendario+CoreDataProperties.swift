@@ -2,7 +2,7 @@
 //  Calendario+CoreDataProperties.swift
 //  AlzheimerProject
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 27/08/19.
+//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 29/08/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -17,7 +17,7 @@ extension Calendario {
         return NSFetchRequest<Calendario>(entityName: "Calendario")
     }
 
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: String?
     @NSManaged public var idEventos: NSObject?
     @NSManaged public var evento: NSSet?
     @NSManaged public var ofUser: Sala?

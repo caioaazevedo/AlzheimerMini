@@ -32,26 +32,27 @@ class CoreDataBase {
         let user = Usuario(context: managedObjectContext)
         
         user.email = email
-        user.fotoPerfil = fotoDoPerfil as! NSData
+        //arruma
+//        user.fotoPerfil = fotoDoPerfil as! NSData
         //user.id = xxx
         user.idSala = nil
         user.nome = Nome
     }
     
 
-    func createSala(hostID: NSObject){
+    func createSala(){
         let sala = Sala(context: managedObjectContext)
         let profile = PerfilUsuario(context: managedObjectContext)
         let calendar = Calendario(context: managedObjectContext)
-        
+        var hostId = UUID().uuidString
         // gerando id
-        sala.id = codeGenType.eTable.generateID()
-        profile.id = codeGenType.eProfile.generateID()
-        calendar.id = codeGenType.eCalendar.generateID()
+        sala.id = UUID().uuidString
+        profile.id = UUID().uuidString
+        calendar.id = UUID().uuidString
         
         // Recuperar o id do host e atribuir o id dele aos campos "Usuarios" e "hostID"
         
-        sala.idHost = hostID // ARRUMAR
+        sala.idHost = hostId // ARRUMAR
         
         // atribuir nil para os campos que serão prenchidos depois aka "telefone"
         sala.telefoneUsuarios = nil
@@ -59,24 +60,46 @@ class CoreDataBase {
         // atribuir a Sala seu calendario e perfil
         sala.calendario = calendar
         sala.perfilUsuario = profile
+        sala.idHost = hostId
+        
+        sala.idCalendario = calendar.id
+        sala.idPerfil = profile.id
+        
+        print(profile)
+        print(calendar)
+        
+        do {
+            try managedObjectContext.save()
+            print(sala)
+        } catch {
+            print("error")
+        }
+        
         
     }
     
-    func createEvent(descricao: String?, categoria: category, dia: Int64, horario: Int64, nome: String, participantes: [UUID]){
+    func createEvent(descricao: String?, categoria: Category, dia: Int64, horario: Int64, nome: String, participantes: [UUID]){
         
         let event = Evento(context: managedObjectContext)
-        
+        let sala = Sala(context: managedObjectContext)
         
         let fetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        let calendarioFetchRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
         
         //Gerando um ID para o evento
-        event.id = codeGenType.eEvent.generateID()
+        event.id = UUID().uuidString
         event.descricao = descricao
-        event.categoria = categoria as? String // arrumar isso aqui
+//        event.categoria = categoria as? String // arrumar isso aqui
         event.dia = dia
         event.horario = horario
         event.nome = nome
-        event.idUsuarios = participantes as NSObject // arrumar isso aqui
+//        event.idUsuarios = participantes as NSObject // arrumar isso aqui
+        
+
+        var idSala : String!
+        var idCalendario : String!
+//        var eventoAdd : [String] = []
         
         /*Recuperando o ID do calendario
          -> Olhar o ID da sala do usuário do core data.
@@ -87,17 +110,66 @@ class CoreDataBase {
          */
         
         
+        // Salvando o ID da sala ✅
+        do {
+            let tasks = try managedObjectContext.fetch(fetchRequest)
+            for task in tasks {
+                idSala = task.id
+            }
+        } catch{
+            print("ERROR")
+        }
+        // Salvando o ID do calendario da sala ✅
+        do {
+            
+            let tasks = try managedObjectContext.fetch(salaFetchRequest)
+            for task in tasks{
+                if task.id == idSala{
+                    idCalendario = task.idCalendario
+                }
+            }
+        } catch {
+            print("error")
+        }
+        // Salvando o ID do evento criado dentro do calendario
+        do {
+          let tasks = try managedObjectContext.fetch(calendarioFetchRequest)
+            for task in tasks{
+                if task.id == idCalendario{
+                    var eventoAdd : [String] = []
+                    if task.idEventos == nil{
+                        eventoAdd = [event.id!]
+                    } else {
+                        eventoAdd = ((task.idEventos)?.mutableCopy() as? [String])!
+                        eventoAdd.append(event.id!)
+                    }
+                    task.idEventos = eventoAdd as NSObject
+                }
+            }
+        } catch{
+            print("Error")
+        }
+        
+        print(event)
         
         
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
+        }
         
     }
+    //SALVAR
+    
 
 }
 
 
 extension CoreDataBase : Any {
 
-    private enum codeGenType{
+    enum codeGenType{
         case eTable
         case eCalendar
         case eEvent
@@ -107,32 +179,32 @@ extension CoreDataBase : Any {
             var idCode = UUID()
             switch self {
             case .eTable:
-                let arrayTable = arrayCheck.tableIDS as! [UUID]
-                while arrayTable.contains(idCode){
+//                let arrayTable = arrayCheck.tableIDS as! [UUID]
+//                while arrayTable.contains(idCode){
                     idCode = UUID()
-                }
+//                }
             case .eCalendar:
-                let arrayCalendar = arrayCheck.calendarIDS as! [UUID]
-                while arrayCalendar.contains(idCode){
+//                let arrayCalendar = arrayCheck.calendarIDS as! [UUID]
+//                while arrayCalendar.contains(idCode){
                     idCode = UUID()
-                }
+//                }
             case .eEvent:
-                let arrayEvent = arrayCheck.eventIDS as! [UUID]
-                while arrayEvent.contains(idCode){
+//                let arrayEvent = arrayCheck.eventIDS as! [UUID]
+//                while arrayEvent.contains(idCode){
                     idCode = UUID()
-                }
+//                }
             case .eProfile:
-                let arrayProfile = arrayCheck.profileIDS as! [UUID]
-                while arrayProfile.contains(idCode){
+//                let arrayProfile = arrayCheck.profileIDS as! [UUID]
+//                while arrayProfile.contains(idCode){
                     idCode = UUID()
-                }
+//                }
             }
             return idCode
         }
 
     }
     
-    enum category{
+    enum Category{
         case doctor
         case fun
         case dinner

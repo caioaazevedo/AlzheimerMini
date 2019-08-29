@@ -145,6 +145,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     
                     print(event.time)
                     
+//                    CoreDataBase.shared.createSala(hostID: <#T##NSObject#>)
                     
                 }
             }

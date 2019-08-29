@@ -2,7 +2,7 @@
 //  Sala+CoreDataProperties.swift
 //  AlzheimerProject
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 27/08/19.
+//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 29/08/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -17,10 +17,10 @@ extension Sala {
         return NSFetchRequest<Sala>(entityName: "Sala")
     }
 
-    @NSManaged public var id: UUID?
-    @NSManaged public var idCalendario: UUID?
-    @NSManaged public var idHost: NSObject?
-    @NSManaged public var idPerfil: UUID?
+    @NSManaged public var id: String?
+    @NSManaged public var idCalendario: String?
+    @NSManaged public var idHost: String?
+    @NSManaged public var idPerfil: String?
     @NSManaged public var idUsuarios: NSObject?
     @NSManaged public var telefoneUsuarios: NSObject?
     @NSManaged public var calendario: Calendario?
