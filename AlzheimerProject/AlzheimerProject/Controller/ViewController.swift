@@ -25,20 +25,15 @@ class ViewController: UIViewController {
         
     }
 
-    
+    override func viewDidAppear(_ animated: Bool) {
+        <#code#>
+    }
     
     
     
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
-        switch (segmented.selectedSegmentIndex){
-        case 0:
-            print("first")
-        case 1:
-            print("second")
-        default:
-            print("default")
-        }
+       
     }
     
     

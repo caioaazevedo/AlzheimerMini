@@ -12,6 +12,7 @@ import FSCalendar
 let screenSize = UIScreen.main.bounds
 
 
+
 class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     
@@ -21,14 +22,12 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     @IBOutlet weak var horarioPopover: UILabel!
     
     
-    fileprivate lazy var dateFormatter : DateFormatter =  {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
     
     fileprivate weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    
     
     
     var titulos = [""]
@@ -43,6 +42,14 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     var events = [Events]()
     
     var canPass = true
+    
+    
+    
+    fileprivate lazy var dateFormatter : DateFormatter =  {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
     
     var auxDate = Date()
     
@@ -80,20 +87,21 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 createTaskOutlet.isHidden = false
                 titulos.removeAll()
                 horarios.removeAll()
-            for day in days{
-                if selectedDay == day.day{
-                    titulos.removeAll()
-                    horarios.removeAll()
-                    for i in 0..<day.event.count{
-                        titulos.append(day.event[i].title)
-                        descricao.append(day.event[i].desc)
-                        horarios.append(day.event[i].time)
-                        categorias.append(day.event[i].categ)
-                        
+                for day in days{
+                    if selectedDay == day.day{
+                        titulos.removeAll()
+                        horarios.removeAll()
+                        for i in 0..<day.event.count{
+                            
+                            titulos.append(day.event[i].title)
+                            descricao.append(day.event[i].desc)
+                            horarios.append(day.event[i].time)
+                            categorias.append(day.event[i].categ)
+                            
+                        }
                     }
                 }
-            }
-            reloadAll()
+                reloadAll()
             }
         }
     }
@@ -130,7 +138,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     func createEventDay(){
         
-       
+        
         if let date = calendar!.selectedDate{
             let stringDate = toString(date)
             dates.append(stringDate)
@@ -147,7 +155,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     horarios.append(event.time)
                     categorias.append(event.categ)
                     
-                    print(event.time)
+                   
                     
                     
                 }
@@ -156,23 +164,42 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             
             if canPass {
                 let day = Days(dayParameter: date)
-                  let event = Events(titleParameter: auxText,timeParameter: auxTime,descParameter: auxDesc ,categParameter: auxCateg)
+                let event = Events(titleParameter: auxText,timeParameter: auxTime,descParameter: auxDesc ,categParameter: auxCateg)
                 days.append(day)
                 day.event.append(event)
                 
                 
                 events.append(event)
-                
+    
                 titulos.append(event.title)
                 horarios.append(event.time)
                 descricao.append(event.desc)
-                
+              
                 
                 canPass = true
             }
+            
             reloadAll()
         }
+        
+        
+        
+        
     }
+    
+    func createEventData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        
+        
+        
+        
+        
+        
+    }
+
+    
     
     
     func marcarTask(){
@@ -203,6 +230,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         auxDesc = desc
         createEventDay()
     }
+    
     
     
 }
@@ -271,6 +299,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
+        
         cell.titulo.text = titulos[indexPath.row]
         cell.horario.text = horarios[indexPath.row]
         cell.descricao.text = descricao[indexPath.row]
@@ -283,7 +312,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
         popover.center = view.center
         labelPopover.text = auxText
         horarioPopover.text = auxTime
@@ -293,3 +322,4 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     
 }
+

@@ -67,7 +67,7 @@ class PerfilViewController: UIViewController {
     }
     
     @objc func moreInfo(_ sender: UITapGestureRecognizer? = nil){
-        print("clicou")
+        
         performSegue(withIdentifier: "moreInfoSegue", sender: self)
         
     }

@@ -48,7 +48,7 @@ class TaskViewController: UIViewController {
         let descricaoNotificacao = "\(nameField.text) foi marcado para \(time) do dia \(data)"
         
         delegate?.sendMesage(self, text: nameField.text ?? "Empty",time: time,desc: descField.text ?? "Empty")
-        userNotification.notificationTask(nameField.text ?? "Notification", time, descField.text)
+        userNotification.notificationTask(nameField.text ?? "Notification", time, descricaoNotificacao)
         self.dismiss(animated: true, completion: nil)
         
         
