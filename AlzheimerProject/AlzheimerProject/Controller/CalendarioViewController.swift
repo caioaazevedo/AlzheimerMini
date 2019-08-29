@@ -8,6 +8,7 @@
 
 import UIKit
 import FSCalendar
+import CoreData
 
 let screenSize = UIScreen.main.bounds
 
@@ -185,20 +186,15 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
         
         
+        
     }
     
-    func createEventData(){
+    func SaveCoreData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
-        
-        
-        
-        
-        
-        
+        let userEntity = NSEntityDescription.entity(forEntityName: "Feed", in: managedContext)
         
     }
-
     
     
     
