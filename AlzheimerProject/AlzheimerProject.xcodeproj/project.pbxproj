@@ -163,8 +163,8 @@
 				AC9EE927230F0D8D004FA292 /* CellCalendar.swift */,
 				AC9EE929230F175D004FA292 /* Events.swift */,
 				AC9EE92B230F1A88004FA292 /* Days.swift */,
-				3A86469F2315C0490091BD0C /* CoreData.swift */,
 				3A5F8F77231746BC00A8B05C /* Cloud.swift */,
+				3A86469F2315C0490091BD0C /* CoreData.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

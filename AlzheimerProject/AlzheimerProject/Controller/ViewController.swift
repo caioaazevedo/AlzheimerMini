@@ -20,7 +20,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         UserNotification.requestNotificationAuthorization()
         print("öi")
-        
     }
 
     
