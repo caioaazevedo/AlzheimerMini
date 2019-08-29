@@ -14,21 +14,17 @@ let publicDataBase = cloudContainer.publicCloudDatabase
 
 class Cloud {
     
-    private init(){
-    }
-    
-    
-    
+    private init(){}
     
     static var cloud = Cloud()
     
-    static func saveSala(idSala: Int64, idUsuario: [String], idCalendario: Int64, idPerfil: Int64, idHost: Int64) {
+    static func saveSala(idSala: String, idUsuario: [String], idCalendario: String, idPerfil: String, idHost: String) {
         
         let record = CKRecord(recordType: "Sala")
         
         
         record.setValue(idSala, forKeyPath: "idSala")
-        record.setValue(idUsuario, forKeyPath: "idUsuario")
+        record.setValue(idUsuario, forKeyPath: "idUsuarios")
         record.setValue(idCalendario, forKeyPath: "idCalendario")
         record.setValue(idPerfil, forKeyPath: "idPerfil")
         record.setValue(idHost, forKeyPath: "idHost")
@@ -36,7 +32,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, email: String?, idSala: Int64) {
+    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, email: String?, idSala: String) {
         let record = CKRecord(recordType: "Usuario")
         
         
@@ -49,7 +45,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveCalendario(idCalendario: Int64, idEventos: [Int64]) {
+    static func saveCalendario(idCalendario: String, idEventos: [String]) {
         
         let record = CKRecord(recordType: "Calendario")
         
@@ -60,7 +56,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: Int64, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String, idCalendario: Int64) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String, idCalendario: String) {
         
         let record = CKRecord(recordType: "Evento")
         
@@ -77,7 +73,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func savePerfil(idPerfil: Int64, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: CKAsset?, endereco: String?, remedios: String?, alergias: String?, tipoSanguineo: String?, planoSaude: String?) {
+    static func savePerfil(idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: CKAsset?, endereco: String?, remedios: String?, alergias: String?, tipoSanguineo: String?, planoSaude: String?) {
         
         let record = CKRecord(recordType: "Perfil")
         
@@ -97,22 +93,36 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func querySala(){
+    static func querySala(searchRecord: String){
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Sala", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["idSala", "idUsuario", "idCalendario", "idPerfil", "idHost"]
+        queryOp.desiredKeys = ["idSala", "idUsuarios", "idCalendario", "idPerfil", "idHost"]
         queryOp.queuePriority = .veryHigh
         queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
-            print("DADOS: ", record["idSala"]!, record["idUsuario"]!, record["idCalendario"]!,
-                  record["idPerfil"]!, record["idHost"]!)
+             if record["idSala"] == searchRecord {
             
-            publicDataBase.add(queryOp)
+                var array: [String] = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
+                
+                DadosSala.sala.idSala = record["idSala"]!
+                DadosSala.sala.idUsuarios = array
+                DadosSala.sala.idCalendario = record["idCalendario"]!
+                DadosSala.sala.idPerfil = record["idPerfil"]!
+                DadosSala.sala.idHost = record["idHost"]!
+                
+//                print("DADOS: ", record["idSala"]!, record["idCalendario"]!, record["idPerfil"]!, record["idHost"]!)
+//
+//                print(array)
+            }
+            
+            
+            
         }
+        publicDataBase.add(queryOp)
     }
     
     static func queryUsuario(){
@@ -126,11 +136,109 @@ class Cloud {
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
-            print("DADOS: ", record["nome"]!, record["email"]!, record["sala"]!)
+            print("DADOS: ", record["nome"], record["email"], record["sala"])
             
-            publicDataBase.add(queryOp)
         }
+        publicDataBase.add(queryOp)
     }
+    
+    static func queryCalendario(){
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Calendario", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.desiredKeys = ["idCalendario", "idEventos"]
+        queryOp.queuePriority = .veryHigh
+        queryOp.resultsLimit = 10
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
+            
+        }
+        publicDataBase.add(queryOp)
+    }
+    
+    static func queryEvento(){
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Evento", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.desiredKeys = ["idEvento", "nome", "categoria", "descricao", "dia", "hora", "idUsuario", "idCalendario"]
+        queryOp.queuePriority = .veryHigh
+        queryOp.resultsLimit = 10
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            print("DADOS: ", record["idEvento"]!, record["nome"]!, record["categoria"]!,
+                  record["descricao"]!, record["hora"]!, record["idUsuario"]!, record["idCalendario"]!)
+            
+        }
+        publicDataBase.add(queryOp)
+    }
+    
+    static func queryPerfil(){
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Perfil", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.desiredKeys = ["idPerfil", "nome", "dataNascimento", "telefone", "descricao", "fotoPerfil", "endereco", "remedios", "remedios", "tipoSanguineo", "planoSaude"]
+        queryOp.queuePriority = .veryHigh
+        queryOp.resultsLimit = 10
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            print("DADOS: ", record["idPerfil"]!, record["nome"]!, record["dataNascimento"]!,
+                  record["telefone"]!, record["descricao"]!, record["fotoPerfil"]!, record["endereco"]!, record["remedios"]!, record["remedios"]!, record["tipoSanguineo"]!, record["planoSaude"]!)
+            
+        }
+        publicDataBase.add(queryOp)
+    }
+    
+    static func updateSala(searchRecord: String, idSala: String, idUsuario: [String], idCalendario: String, idPerfil: String, idHost: String) {
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Perfil", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.desiredKeys = ["idPerfil", "nome", "dataNascimento", "telefone", "descricao", "fotoPerfil", "endereco", "remedios", "remedios", "tipoSanguineo", "planoSaude"]
+        queryOp.queuePriority = .veryHigh
+        queryOp.resultsLimit = 10
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            if record["idSala"] == searchRecord {
+                
+                record.setValue(idSala, forKeyPath: "idSala")
+                record.setValue(idUsuario, forKeyPath: "idUsuario")
+                record.setValue(idCalendario, forKeyPath: "idCalendario")
+                record.setValue(idPerfil, forKeyPath: "idPerfil")
+                record.setValue(idHost, forKeyPath: "idHost")
+                
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+                
+            }
+            
+        }
+        publicDataBase.add(queryOp)
+    }
+    
+    //    private static func updateSala(record: CKRecord, searchRecord: Int64){
+    //        if record["idSala"] == searchRecord {
+    //
+    //            record.setValue("Novo valor", forKey: "nome")
+    //
+    //        publicDataBase.save(record, completionHandler: { (record, error) in
+    //            if error != nil{
+    //                print(error!)
+    //            }
+    //        })
+    //
+    //        }
+    //    }
     
     static func geraAleatorio() -> Int64{
         let ran:Int64 = Int64(arc4random_uniform(1000000))

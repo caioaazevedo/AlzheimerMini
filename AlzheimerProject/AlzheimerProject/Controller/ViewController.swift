@@ -11,10 +11,17 @@ import CloudKit
 
 class ViewController: UIViewController {
     
-    let UserNotification = Notification()
+    @IBOutlet weak var textSearch: UITextField!
+    @IBOutlet weak var textSala: UITextField!
+    @IBOutlet weak var textUsuario: UITextField!
+    @IBOutlet weak var idCalendario: UITextField!
+    @IBOutlet weak var textPerfil: UITextField!
+    @IBOutlet weak var textHost: UITextField!
     
-    @IBOutlet weak var feedView: UITableView!
-    @IBOutlet weak var segmented: UISegmentedControl!
+    @IBOutlet weak var labelDados: UILabel!
+    
+    
+    let UserNotification = Notification()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,37 +33,15 @@ class ViewController: UIViewController {
     
     
     
-    
-    
-    @IBAction func segmentedAction(_ sender: UISegmentedControl) {
-        switch (segmented.selectedSegmentIndex){
-        case 0:
-            print("first")
-        case 1:
-            print("second")
-        default:
-            print("default")
-        }
+    @IBAction func acaoDoBotao(_ sender: Any) {
+        Cloud.updateSala(searchRecord: self.textSearch.text!, idSala: self.textSala.text!, idUsuario: [self.textUsuario.text!], idCalendario: self.idCalendario.text!, idPerfil: self.textPerfil.text!, idHost: self.textHost.text!)
+        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func button(_ sender: UIButton) {
-        UserNotification.notification()
-    }
-    
-   
-    
-    
-    
-    
-    
 
+    @IBAction func getButton(_ sender: Any) {
+        Cloud.querySala(searchRecord: self.textSearch.text!)
+        
+        self.labelDados.text = "\(DadosSala.sala.idSala), \(DadosSala.sala.idUsuarios), \(DadosSala.sala.idCalendario), \(DadosSala.sala.idPerfil), \(DadosSala.sala.idHost)"
+    }
 }
 
