@@ -14,8 +14,12 @@ protocol TaskViewControllerDelegate {
 
 class TaskViewController: UIViewController {
     
+    let userNotification = Notification()
+    
     var delegate: TaskViewControllerDelegate?
     var time : String = ""
+    var data = Date()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +45,10 @@ class TaskViewController: UIViewController {
     
     @IBAction func confirmarBttn(_ sender: UIButton) {
         
+        let descricaoNotificacao = "\(nameField.text) foi marcado para \(time) do dia \(data)"
+        
         delegate?.sendMesage(self, text: nameField.text ?? "Empty",time: time,desc: descField.text ?? "Empty")
+        userNotification.notificationTask(nameField.text ?? "Notification", time, descField.text)
         self.dismiss(animated: true, completion: nil)
         
         

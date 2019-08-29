@@ -44,6 +44,8 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     var canPass = true
     
+    var auxDate = Date()
+    
     var auxText : String = "" {
         didSet{
             reloadAll()
@@ -70,6 +72,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     var selectedDay : Date? {
         didSet{
+            auxDate = selectedDay!
             if let today = calendar.today, selectedDay! < today {
                 createTaskOutlet.isHidden = true
             }
@@ -105,6 +108,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         if segue.identifier == "segueTask"{
             if let vc = segue.destination as? TaskViewController{
                 vc.delegate = self
+                vc.data = auxDate;
             }
         }
     }

@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserNotification.requestNotificationAuthorization()
-        print("öi")
+        
+        
+        
         
     }
 
