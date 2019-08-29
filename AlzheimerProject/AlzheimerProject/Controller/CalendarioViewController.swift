@@ -29,13 +29,16 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     
     
+    struct eventStruct{
+        var titulos = [""]
+        var horarios = [""]
+        var descricao = [""]
+        var categorias = [""]
+    }
     
+    var eventAux = eventStruct()
     
-    var titulos = [""]
-    var horarios = [""]
-    var descricao = [""]
-    var categorias = [""]
-    
+
     
     var dates = [String]()
     
@@ -86,18 +89,18 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             }
             else{
                 createTaskOutlet.isHidden = false
-                titulos.removeAll()
-                horarios.removeAll()
+                eventAux.titulos.removeAll()
+                eventAux.horarios.removeAll()
                 for day in days{
                     if selectedDay == day.day{
-                        titulos.removeAll()
-                        horarios.removeAll()
+                        eventAux.titulos.removeAll()
+                        eventAux.horarios.removeAll()
                         for i in 0..<day.event.count{
                             
-                            titulos.append(day.event[i].title)
-                            descricao.append(day.event[i].desc)
-                            horarios.append(day.event[i].time)
-                            categorias.append(day.event[i].categ)
+                            eventAux.titulos.append(day.event[i].title)
+                            eventAux.descricao.append(day.event[i].desc)
+                            eventAux.horarios.append(day.event[i].time)
+                            eventAux.categorias.append(day.event[i].categ)
                             
                         }
                     }
@@ -151,10 +154,10 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     let event = Events(titleParameter: auxText,timeParameter: auxTime,descParameter: auxDesc ,categParameter: auxCateg)
                     dia.event.append(event)
                     events.append(event)
-                    titulos.append(event.title)
-                    descricao.append(event.desc)
-                    horarios.append(event.time)
-                    categorias.append(event.categ)
+                    eventAux.titulos.append(event.title)
+                    eventAux.descricao.append(event.desc)
+                    eventAux.horarios.append(event.time)
+                    eventAux.categorias.append(event.categ)
                     
                       SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
                     
@@ -172,9 +175,9 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 
                 events.append(event)
     
-                titulos.append(event.title)
-                horarios.append(event.time)
-                descricao.append(event.desc)
+                eventAux.titulos.append(event.title)
+                eventAux.horarios.append(event.time)
+                eventAux.descricao.append(event.desc)
                 SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
               
                 
@@ -295,16 +298,16 @@ extension CalendarioViewController{
 extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titulos.count;
+        return eventAux.titulos.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
         
-        cell.titulo.text = titulos[indexPath.row]
-        cell.horario.text = horarios[indexPath.row]
-        cell.descricao.text = descricao[indexPath.row]
+        cell.titulo.text = eventAux.titulos[indexPath.row]
+        cell.horario.text = eventAux.horarios[indexPath.row]
+        cell.descricao.text = eventAux.descricao[indexPath.row]
         
         return cell;
     }

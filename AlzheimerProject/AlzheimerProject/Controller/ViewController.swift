@@ -12,12 +12,13 @@ import CoreData
 class ViewController: UIViewController {
     
     let UserNotification = Notification()
+    var flag = 0
     
     @IBOutlet weak var feedView: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
     
     
-    struct eventoStruct {
+    struct eventoStruct: Hashable {
         var titulo = ""
         var horario = ""
         var dia = ""
@@ -26,23 +27,20 @@ class ViewController: UIViewController {
     
     var eventoAux = [eventoStruct]()
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         UserNotification.requestNotificationAuthorization()
         
         
         
-        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         feedView.delegate = self
         feedView.dataSource = self
         getData()
         feedView.reloadData()
+        
     }
     
     
@@ -57,11 +55,19 @@ class ViewController: UIViewController {
             for data in result as! [NSManagedObject]{
                 
                 let titulo = (data.value(forKey: "titulo") as! String)
-                let horario = (data.value(forKey: "horario") as! String)
-                let dia = (data.value(forKey: "dia") as! String)
-                let descricao = (data.value(forKey: "descricao") as! String)
-                 eventoAux.append(eventoStruct(titulo: titulo, horario: horario , dia: dia , descricao: descricao))
-                feedView.reloadData()
+                
+                for a in eventoAux{
+                    if a.titulo == titulo{
+                        flag = 1
+                    }
+                }
+                if flag == 0{
+                    let horario = (data.value(forKey: "horario") as! String)
+                    let dia = (data.value(forKey: "dia") as! String)
+                    let descricao = (data.value(forKey: "descricao") as! String)
+                    eventoAux.append(eventoStruct(titulo: titulo, horario: horario , dia: dia , descricao: descricao))
+                    feedView.reloadData()
+                }
             }
         } catch {
             print("failed")
@@ -75,33 +81,14 @@ class ViewController: UIViewController {
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         feedView.reloadData()
-        print("segmented")
+        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func button(_ sender: UIButton) {
-        UserNotification.notification()
-       
-    }
-    
-   
-    
-    
-    
-    
     
 }
 
 extension ViewController : UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return eventoAux.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
