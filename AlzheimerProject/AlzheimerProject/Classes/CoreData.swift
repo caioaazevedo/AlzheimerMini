@@ -29,11 +29,7 @@ class CoreDataBase {
     
     func createUsuario(email: String, fotoDoPerfil: UIImage, id: UUID, idSala: UUID?, Nome: String){
         
-        let table = Sala(context: managedObjectContext)
-        let profile = PerfilUsuario(context: managedObjectContext)
-        let event = Evento(context: managedObjectContext)
         let user = Usuario(context: managedObjectContext)
-        let calendar = Calendario(context: managedObjectContext)
         
         user.email = email
         user.fotoPerfil = fotoDoPerfil as! NSData
@@ -44,37 +40,31 @@ class CoreDataBase {
     
 
     func createSala(hostID: NSObject){
-        let table = Sala(context: managedObjectContext)
+        let sala = Sala(context: managedObjectContext)
         let profile = PerfilUsuario(context: managedObjectContext)
-        let event = Evento(context: managedObjectContext)
-        let user = Usuario(context: managedObjectContext)
         let calendar = Calendario(context: managedObjectContext)
         
         // gerando id
-        table.id = codeGenType.eTable.generateID()
+        sala.id = codeGenType.eTable.generateID()
         profile.id = codeGenType.eProfile.generateID()
         calendar.id = codeGenType.eCalendar.generateID()
         
         // Recuperar o id do host e atribuir o id dele aos campos "Usuarios" e "hostID"
         
-        table.idHost = hostID // ARRUMAR
+        sala.idHost = hostID // ARRUMAR
         
         // atribuir nil para os campos que serão prenchidos depois aka "telefone"
-        table.telefoneUsuarios = nil
+        sala.telefoneUsuarios = nil
         
         // atribuir a Sala seu calendario e perfil
-        table.calendario = calendar
-        table.perfilUsuario = profile
+        sala.calendario = calendar
+        sala.perfilUsuario = profile
         
     }
     
     func createEvent(descricao: String?, categoria: category, dia: Int64, horario: Int64, nome: String, participantes: [UUID]){
         
-        let table = Sala(context: managedObjectContext)
-        let profile = PerfilUsuario(context: managedObjectContext)
         let event = Evento(context: managedObjectContext)
-        let user = Usuario(context: managedObjectContext)
-        let calendar = Calendario(context: managedObjectContext)
         
         
         let fetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
