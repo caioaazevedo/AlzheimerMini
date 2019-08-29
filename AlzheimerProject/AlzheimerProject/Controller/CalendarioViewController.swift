@@ -156,7 +156,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     horarios.append(event.time)
                     categorias.append(event.categ)
                     
-                   
+                      SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
                     
                     
                 }
@@ -175,6 +175,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 titulos.append(event.title)
                 horarios.append(event.time)
                 descricao.append(event.desc)
+                SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
               
                 
                 canPass = true
@@ -189,10 +190,15 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
     }
     
-    func SaveCoreData(){
+    func SaveCoreData(titulo: String,horario: String,dia: String,descricao: String){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
-        let userEntity = NSEntityDescription.entity(forEntityName: "Feed", in: managedContext)
+        guard let userEntity = NSEntityDescription.entity(forEntityName: "Feed", in: managedContext) else { return}
+        let user = NSManagedObject(entity: userEntity, insertInto: managedContext)
+        user.setValue(titulo, forKey: "titulo")
+        user.setValue(horario, forKey: "horario")
+        user.setValue(dia, forKey: "dia")
+        user.setValue(descricao, forKey: "descricao")
         
     }
     

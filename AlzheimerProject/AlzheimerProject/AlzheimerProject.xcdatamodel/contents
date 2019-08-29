@@ -7,10 +7,6 @@
         <relationship name="ofUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sala" inverseName="calendario" inverseEntity="Sala" syncable="YES"/>
     </entity>
     <entity name="Evento" representedClassName="Evento" syncable="YES">
-        <attribute name="attribute" optional="YES" syncable="YES"/>
-        <attribute name="attribute1" optional="YES" syncable="YES"/>
-        <attribute name="attribute2" optional="YES" syncable="YES"/>
-        <attribute name="attribute3" optional="YES" syncable="YES"/>
         <attribute name="categoria" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dia" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -21,7 +17,12 @@
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofCalendar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Calendario" inverseName="evento" inverseEntity="Calendario" syncable="YES"/>
     </entity>
-    <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class"/>
+    <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dia" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="horario" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Ids" representedClassName="Ids" syncable="YES">
         <attribute name="calendarIDS" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="eventIDS" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -63,11 +64,11 @@
     </entity>
     <elements>
         <element name="Calendario" positionX="9" positionY="99" width="128" height="105"/>
-        <element name="Evento" positionX="27" positionY="117" width="128" height="240"/>
+        <element name="Evento" positionX="27" positionY="117" width="128" height="180"/>
+        <element name="Feed" positionX="9" positionY="162" width="128" height="105"/>
         <element name="Ids" positionX="9" positionY="162" width="128" height="105"/>
         <element name="PerfilUsuario" positionX="45" positionY="189" width="128" height="225"/>
         <element name="Sala" positionX="-45" positionY="0" width="128" height="180"/>
         <element name="Usuario" positionX="-18" positionY="27" width="128" height="135"/>
-        <element name="Feed" positionX="9" positionY="162" width="128" height="45"/>
     </elements>
 </model>
