@@ -35,7 +35,6 @@ class ViewController: UIViewController {
     
     @IBAction func acaoDoBotao(_ sender: Any) {
         Cloud.updateSala(searchRecord: self.textSearch.text!, idSala: self.textSala.text!, idUsuario: [self.textUsuario.text!], idCalendario: self.idCalendario.text!, idPerfil: self.textPerfil.text!, idHost: self.textHost.text!)
-        
     }
 
     @IBAction func getButton(_ sender: Any) {
