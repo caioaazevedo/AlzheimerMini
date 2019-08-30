@@ -16,24 +16,28 @@ let managedObjectContext = appDelegate.persistentContainer.viewContext
 var arrayCheck = Ids(context: managedObjectContext)
 
 class CoreDataBase {
-    
     var userID = ""
+    
     
     private init(){
     }
     
     static var shared = CoreDataBase()
     
-    func createUsuario(email: String, fotoDoPerfil: UIImage, id: UUID, idSala: UUID?, Nome: String){
+    func createUsuario(email: String, fotoDoPerfil: UIImage?, id: UUID, idSala: UUID?, Nome: String){
         
         let user = Usuario(context: managedObjectContext)
+        recuperarId()
+        sleep(2)
         
+        user.id = userID
         user.email = email
         //arruma
 //        user.fotoPerfil = fotoDoPerfil as! NSData
-        //user.id = xxx
         user.idSala = nil
         user.nome = Nome
+        
+        print(user)
     }
 
     func createSala(){
@@ -56,7 +60,7 @@ class CoreDataBase {
         // atribuir a Sala seu calendario e perfil
         sala.calendario = calendar
         sala.perfilUsuario = profile
-        sala.idHost = hostId
+        sala.idHost = userID
         
         sala.idCalendario = calendar.id
         sala.idPerfil = profile.id
@@ -189,6 +193,7 @@ class CoreDataBase {
                 }
             }
             
+            
             let alert = UIAlertController(title: "Login no icloud",
                                           message: "We identify that you are not log in to icloud. Please log in to save your data , ",
                                           preferredStyle: .alert)
@@ -202,7 +207,9 @@ class CoreDataBase {
             
             
             //Passar a viewController que deve ser apresentada
-            //self.present(alert, animated: true, completion: nil)
+            let z = CalendarioViewController()
+//
+//            z.present(alert, animated: true, completion: nil)
         }
     }
     

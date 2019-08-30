@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A42EA6023199612001AF9D4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A42EA5F23199612001AF9D4 /* CloudKit.framework */; };
 		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
@@ -40,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.release.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.release.xcconfig"; sourceTree = "<group>"; };
+		3A42EA5C231995AA001AF9D4 /* AlzheimerProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlzheimerProject.entitlements; sourceTree = "<group>"; };
+		3A42EA5F23199612001AF9D4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF95BC60618A0AD0F91A87A7 /* Pods_AlzheimerProject.framework in Frameworks */,
+				3A42EA6023199612001AF9D4 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +112,7 @@
 		4FCEDA274749CCA6A89D5DA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A42EA5F23199612001AF9D4 /* CloudKit.framework */,
 				64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */,
 			);
 			name = Frameworks;
@@ -143,6 +148,7 @@
 		AC9EE90123071D01004FA292 /* AlzheimerProject */ = {
 			isa = PBXGroup;
 			children = (
+				3A42EA5C231995AA001AF9D4 /* AlzheimerProject.entitlements */,
 				3A8646A12315E6A90091BD0C /* CoreDataClasses */,
 				AC9EE919230728F4004FA292 /* Controller */,
 				AC9EE918230728E9004FA292 /* View */,
@@ -231,6 +237,14 @@
 				TargetAttributes = {
 					AC9EE8FE23071D01004FA292 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -483,6 +497,7 @@
 			baseConfigurationReference = 3FAA1ACF3D0FB7238CA892E8 /* Pods-AlzheimerProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AlzheimerProject/AlzheimerProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PA96H36BQZ;
 				INFOPLIST_FILE = AlzheimerProject/Info.plist;
@@ -502,6 +517,7 @@
 			baseConfigurationReference = 2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AlzheimerProject/AlzheimerProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PA96H36BQZ;
 				INFOPLIST_FILE = AlzheimerProject/Info.plist;

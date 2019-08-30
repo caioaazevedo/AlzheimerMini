@@ -21,8 +21,12 @@ class ViewController: UIViewController {
         UserNotification.requestNotificationAuthorization()
         print("öi")
         
-//        CoreDataBase.shared.createSala()
-        CoreDataBase.shared.createEvent(descricao: "CASA", categoria: .doctor, dia: 24, horario: 24, nome: "Pedro", participantes: [UUID()])
+        CoreDataBase.shared.createUsuario(email: "dudu@gmail.com", fotoDoPerfil: nil, id: UUID(), idSala: nil, Nome: "dudu")
+        CoreDataBase.shared.createSala()
+//        CoreDataBase.shared.createEvent(descricao: "CASA", categoria: .doctor, dia: 24, horario: 24, nome: "Pedro", participantes: [UUID()])
+//            CoreDataBase.shared.recuperarId()
+        
+        
     }
 
     
