@@ -106,7 +106,7 @@ class Cloud {
             
              if record["idSala"] == searchRecord {
             
-                var array: [String] = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
+                let array: [String] = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
                 
                 DadosSala.sala.idSala = record["idSala"]!
                 DadosSala.sala.idUsuarios = array
@@ -359,6 +359,42 @@ class Cloud {
         }
         publicDataBase.add(queryOp)
     }
+    
+    static func deleteTable(searchRecord: String, searchKey: String, searchTable: String){
+        
+        print("\(searchTable) - \(searchRecord) - \(searchKey)")
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "\(searchTable)", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.desiredKeys = ["\(searchKey)"]
+        queryOp.queuePriority = .veryHigh
+        queryOp.resultsLimit = 10
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            if record["\(searchKey)"] == searchRecord {
+                
+                let delete = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [record.recordID])
+                
+                publicDataBase.add(delete)
+                
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    } else {
+                        print("Record was deleted!")
+                    }
+                })
+                
+            }
+            
+        }
+        publicDataBase.add(queryOp)
+        
+    }
+    
     
     static func geraAleatorio() -> Int64{
         let ran:Int64 = Int64(arc4random_uniform(1000000))
