@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Tabelas {
+    var name : String?
+    var imageName: String?
+}
+
 class PerfilViewController: UIViewController {
     
     
@@ -15,9 +20,13 @@ class PerfilViewController: UIViewController {
     fileprivate var currentVC: UIViewController!
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var gestureView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     
     static let shared = PerfilViewController()
     
+    var tabelasArray = [Tabelas]()
     
     
     
@@ -25,7 +34,10 @@ class PerfilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         setPhoto()
+        setTabela()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.moreInfo(_:)))
         gestureView.addGestureRecognizer(tap)
@@ -34,6 +46,24 @@ class PerfilViewController: UIViewController {
         
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    func setTabela(){
+        
+        let tabela = Tabelas(name: "Perfil", imageName: "0")
+        tabelasArray.append(tabela)
+        
+        
+        
+        
+        
+        
+    }
+    
+    
     
     func setPhoto(){
         profilePhoto.image = UIImage(named: "sample")
@@ -123,13 +153,27 @@ extension PerfilViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
 }
 
-
-
-
-
-class CollectionViewCell: UICollectionViewCell{
+extension PerfilViewController : UITableViewDelegate , UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tabelasArray.count
+    }
     
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellPerfil", for: indexPath) as! CellPerfil
+        cell.titulo.text = tabelasArray[indexPath.row].name
+        cell.icone.image = UIImage(named: tabelasArray[indexPath.row].imageName!)
+        return cell
+        
+        
+        
+        
+        
+    }
+  
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
     
 }
+

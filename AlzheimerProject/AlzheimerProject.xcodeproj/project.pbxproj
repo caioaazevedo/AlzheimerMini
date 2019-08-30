@@ -35,6 +35,7 @@
 		AC9EE92A230F175D004FA292 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE929230F175D004FA292 /* Events.swift */; };
 		AC9EE92C230F1A88004FA292 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE92B230F1A88004FA292 /* Days.swift */; };
 		AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE92F23144937004FA292 /* TaskViewController.swift */; };
+		ACC5F51223199FCE003B7562 /* CellPerfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC5F51123199FCE003B7562 /* CellPerfil.swift */; };
 		BF95BC60618A0AD0F91A87A7 /* Pods_AlzheimerProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		AC9EE929230F175D004FA292 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		AC9EE92B230F1A88004FA292 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
 		AC9EE92F23144937004FA292 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		ACC5F51123199FCE003B7562 /* CellPerfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPerfil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				AC9EE91423072645004FA292 /* Notification.swift */,
 				AC9EE927230F0D8D004FA292 /* CellCalendar.swift */,
 				AC39EE182318638B00DC590C /* CellFeed.swift */,
+				ACC5F51123199FCE003B7562 /* CellPerfil.swift */,
 				AC9EE929230F175D004FA292 /* Events.swift */,
 				AC9EE92B230F1A88004FA292 /* Days.swift */,
 				3A86469F2315C0490091BD0C /* CoreData.swift */,
@@ -321,6 +324,7 @@
 				3AD49DE1231621EC00904457 /* Sala+CoreDataProperties.swift in Sources */,
 				3AD49DDE231621EC00904457 /* Evento+CoreDataClass.swift in Sources */,
 				AC9EE924230C6901004FA292 /* CalendarioViewController.swift in Sources */,
+				ACC5F51223199FCE003B7562 /* CellPerfil.swift in Sources */,
 				AC9EE90523071D01004FA292 /* ViewController.swift in Sources */,
 				AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */,
 				3AD49DDF231621EC00904457 /* Evento+CoreDataProperties.swift in Sources */,

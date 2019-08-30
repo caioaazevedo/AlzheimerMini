@@ -23,17 +23,8 @@ struct eventStruct{
 class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     
-    
-    @IBOutlet weak var imagePopover: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var popover: UIView!
-    @IBOutlet weak var labelPopover: UILabel!
-    @IBOutlet weak var horarioPopover: UILabel!
-    
-    
-    
-    fileprivate weak var calendar: FSCalendar!
-    
+    @IBOutlet weak var calendar: FSCalendar!
     
     
     fileprivate lazy var dateFormatter : DateFormatter =  {
@@ -76,10 +67,12 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         didSet{
             auxDate = selectedDay!
             if let today = calendar.today, selectedDay! < today {
-                createTaskOutlet.isHidden = true
+                let alert = UIAlertController(title: "Error", message: "Nao e possivel adicionar tarefas a dias passados", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
+                self.present(alert,animated: true,completion: nil)
             }
             else{
-                createTaskOutlet.isHidden = false
+                
                 eventAux.titulos.removeAll()
                 eventAux.horarios.removeAll()
                 for day in days{
@@ -119,17 +112,16 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(false)
-        popover.removeFromSuperview()
     }
     
     
     
-    
-    @IBAction func createTask(_ sender: UIButton) {
-        marcarTask()
+
+    @IBAction func createTask(_ sender: Any) {
+         marcarTask()
     }
     
-    @IBOutlet weak var createTaskOutlet: UIButton!
+    @IBOutlet weak var createTaskOutlet: UIBarButtonItem!
     
     func createEventDay(){
         
@@ -246,7 +238,7 @@ extension CalendarioViewController{
     
     
     func createCalendar(){
-        let calendar = FSCalendar(frame: CGRect(x: screenSize.width/8, y: screenSize.height/4, width: 320, height: 300))
+        
         
         calendar.dataSource = self
         calendar.delegate = self
@@ -258,7 +250,6 @@ extension CalendarioViewController{
         calendar.appearance.eventDefaultColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         
         view.addSubview(calendar)
-        self.calendar = calendar
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -311,10 +302,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        popover.center = view.center
-        labelPopover.text = auxText
-        horarioPopover.text = auxTime
-        view.addSubview(popover)
+        
     }
     
     
