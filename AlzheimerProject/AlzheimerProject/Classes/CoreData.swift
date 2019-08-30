@@ -16,15 +16,9 @@ var arrayCheck = Ids(context: managedObjectContext)
 
 class CoreDataBase {
     
-//    let table = Sala(context: managedObjectContext)
-//    let profile = PerfilUsuario(context: managedObjectContext)
-//    let event = Evento(context: managedObjectContext)
-//    let user = Usuario(context: managedObjectContext)
-//    let calendar = Calendario(context: managedObjectContext)
-    
     private init(){
-        
     }
+    
     static var shared = CoreDataBase()
     
     func createUsuario(email: String, fotoDoPerfil: UIImage, id: UUID, idSala: UUID?, Nome: String){
@@ -38,7 +32,6 @@ class CoreDataBase {
         user.idSala = nil
         user.nome = Nome
     }
-    
 
     func createSala(){
         let sala = Sala(context: managedObjectContext)
@@ -64,9 +57,6 @@ class CoreDataBase {
         
         sala.idCalendario = calendar.id
         sala.idPerfil = profile.id
-        
-        print(profile)
-        print(calendar)
         
         do {
             try managedObjectContext.save()
@@ -99,7 +89,6 @@ class CoreDataBase {
 
         var idSala : String!
         var idCalendario : String!
-//        var eventoAdd : [String] = []
         
         /*Recuperando o ID do calendario
          -> Olhar o ID da sala do usuário do core data.
@@ -150,10 +139,9 @@ class CoreDataBase {
             print("Error")
         }
         
-        print(event)
         
         
-        
+        //SALVAR
         do {
             try managedObjectContext.save()
         } catch {
@@ -161,7 +149,6 @@ class CoreDataBase {
         }
         
     }
-    //SALVAR
     
 
 }
