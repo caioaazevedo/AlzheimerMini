@@ -221,7 +221,8 @@ class CoreDataBase {
             
             
             //Passar a viewController que deve ser apresentada
-            //            z.present(alert, animated: true, completion: nil)
+            let calendar = CalendarioViewController()
+            calendar.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -278,6 +279,50 @@ class CoreDataBase {
         
         let predicate = NSPredicate(format: "nome contains %@", filter)
         fetchRequest.predicate = predicate
+    }
+    
+    //Update perfil e do calendario
+    func updatePerfilIdoso(perfil: PerfilUsuario, alergia: String, dataNasc: NSDate, descricao: String, endereco: String, nome: String, planoSaude: String, remedeios: String, telefone: String, tipoSanguinie: String) {
+        
+        perfil.alergias = alergia
+        perfil.dataDeNascimento = dataNasc
+        perfil.descricao = descricao
+        perfil.endereco = endereco
+        perfil.nome = nome
+        perfil.planoDeSaude = planoSaude
+        perfil.remedios = remedeios
+        perfil.telefone = telefone
+        
+        saveCoreData()
+    }
+    
+    func deletaEvento(calendario: Calendario, evento: Evento) {
+        
+        var idEventos = [String]()
+        var cont = 0
+
+        let fetch = NSFetchRequest<Calendario>.init(entityName: "Calendario")
+
+        do {
+
+            let calen = try managedObjectContext.fetch(fetch)
+
+            for _ in calen{
+                idEventos = (calen as! NSArray).mutableCopy() as! [String]
+            }
+        } catch{
+            print(error)
+        }
+        
+        
+        for x in idEventos{
+            if evento.id == x{
+                idEventos.remove(at: cont)
+            }
+            cont += 1
+        }
+        
+        saveCoreData()
     }
     
     
