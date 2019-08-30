@@ -19,14 +19,70 @@ class DadosSala {
     
     static var sala = DadosSala()
     
+}
+
+class DadosUsuario {
+    var idUsuario = String()
+    var nome = String()
+//    var foto =
+    var email = String()
+    var idSala = String()
     
+    private init(){
+        
+    }
     
-//    init(idSala: String, idUsuarios: [String], idCalendario: String, idPerfil: String, idHost: String) {
-//        self.idSala = idSala
-//        self.idUsuarios = idUsuarios
-//        self.idCalendario = idCalendario
-//        self.idPerfil = idPerfil
-//        self.idHost = idHost
-//    }
+    static var usuario = DadosUsuario()
+    
+}
+
+class DadosClendario {
+    var idCalendario = String()
+    var idEventos = [String]()
+    
+    private init(){
+        
+    }
+    
+    static var calendario = DadosClendario()
+    
+}
+
+class DadosPerfil {
+    var idPerfil = String()
+    var nome = String()
+    var dataNascimento = String()
+    var telefone = String()
+    var descricao = String()
+//    var fotoPerfil =
+    var endereco = String()
+    var remedios = [String]()
+    var alergias = [String]()
+    var tipoSanguineo = String()
+    var planoSaude = String()
+    
+    private init(){
+        
+    }
+    
+    static var perfil = DadosPerfil()
+    
+}
+
+class DadosEvento {
+    var idEvento = String()
+    var nome = String()
+    var categoria = String()
+    var descricao = String()
+//    var dia = Data()
+//    var hora = Timer()
+    var idUsuario = String()
+    var idClendario = String()
+    
+    private init(){
+        
+    }
+    
+    static var evento = DadosEvento()
     
 }

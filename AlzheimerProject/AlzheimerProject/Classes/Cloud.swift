@@ -40,7 +40,7 @@ class Cloud {
         record.setValue(nome, forKeyPath: "nome")
         record.setValue(foto, forKeyPath: "foto")
         record.setValue(email, forKeyPath: "email")
-        record.setValue(idSala, forKeyPath: "sala")
+        record.setValue(idSala, forKeyPath: "idSala")
         
         saveRequest(record: record)
     }
@@ -125,7 +125,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func queryUsuario(){
+    static func queryUsuario(searchRecord: String){
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
@@ -136,13 +136,25 @@ class Cloud {
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
-            print("DADOS: ", record["nome"], record["email"], record["idSala"])
+            if record["idUsuario"] == searchRecord {
+                
+                DadosUsuario.usuario.idUsuario = record["idUsuario"]!
+                DadosUsuario.usuario.nome = record["nome"]!
+//                DadosUsuario.usuario.foto = record["foto"]!
+                DadosUsuario.usuario.email = record["email"]!
+                DadosUsuario.usuario.idSala = record["idSala"]!
+                
+                
+                print("DADOS: ", record["nome"], record["email"], record["idSala"])
+                
+            }
+            
             
         }
         publicDataBase.add(queryOp)
     }
     
-    static func queryCalendario(){
+    static func queryCalendario(searchRecord: String){
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Calendario", predicate: predicate)
         
@@ -153,13 +165,21 @@ class Cloud {
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
-            print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
+            if record["idCalendario"] == searchRecord {
+                
+                DadosClendario.calendario.idCalendario = record["idCalendario"]!
+                DadosClendario.calendario.idEventos = [record["idEventos"]!]
+                
+                
+                print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
+                
+            }
             
         }
         publicDataBase.add(queryOp)
     }
     
-    static func queryEvento(){
+    static func queryEventos(){
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
         
@@ -169,7 +189,7 @@ class Cloud {
         queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
-            
+                
             print("DADOS: ", record["idEvento"]!, record["nome"]!, record["categoria"]!,
                   record["descricao"]!, record["hora"]!, record["idUsuario"]!, record["idCalendario"]!)
             
@@ -177,7 +197,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func queryPerfil(){
+    static func queryPerfil(searchRecord: String){
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Perfil", predicate: predicate)
         
@@ -188,8 +208,23 @@ class Cloud {
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
+            if record["idPerfil"] == searchRecord {
+                
+                DadosPerfil.perfil.idPerfil = record["idPerfil"]!
+                DadosPerfil.perfil.nome = record["nome"]!
+                DadosPerfil.perfil.dataNascimento = record["dataNascimento"]!
+                DadosPerfil.perfil.telefone = record["fotoPerfil"]!
+                DadosPerfil.perfil.descricao = record["descricao"]!
+//                DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"]!
+                DadosPerfil.perfil.endereco = record["endereco"]!
+                DadosPerfil.perfil.remedios = [record["remedios"]!]
+                DadosPerfil.perfil.alergias = record["alergias"]!
+                DadosPerfil.perfil.tipoSanguineo = record["alergias"]!
+                DadosPerfil.perfil.planoSaude = record["planoSaude"]!
+                
             print("DADOS: ", record["idPerfil"]!, record["nome"]!, record["dataNascimento"]!,
-                  record["telefone"]!, record["descricao"]!, record["fotoPerfil"]!, record["endereco"]!, record["remedios"]!, record["remedios"]!, record["tipoSanguineo"]!, record["planoSaude"]!)
+                  record["telefone"]!, record["descricao"]!, record["fotoPerfil"]!, record["endereco"]!, record["remedios"]!, record["alergias"]!, record["tipoSanguineo"]!, record["planoSaude"]!)
+            }
             
         }
         publicDataBase.add(queryOp)
