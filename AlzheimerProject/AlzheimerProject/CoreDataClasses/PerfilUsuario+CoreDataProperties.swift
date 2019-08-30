@@ -2,7 +2,7 @@
 //  PerfilUsuario+CoreDataProperties.swift
 //  AlzheimerProject
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 27/08/19.
+//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 30/08/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -22,7 +22,7 @@ extension PerfilUsuario {
     @NSManaged public var descricao: String?
     @NSManaged public var endereco: String?
     @NSManaged public var fotoDePerfil: NSData?
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: String?
     @NSManaged public var nome: String?
     @NSManaged public var planoDeSaude: String?
     @NSManaged public var remedios: String?
