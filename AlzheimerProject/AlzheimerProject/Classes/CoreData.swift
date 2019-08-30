@@ -15,11 +15,13 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let managedObjectContext = appDelegate.persistentContainer.viewContext
 var arrayCheck = Ids(context: managedObjectContext)
 
+
 class CoreDataBase {
     var userID = ""
     
+     var persistenceManager: PersistenceManager!
     
-    private init(){
+    init(){
     }
     
     static var shared = CoreDataBase()
@@ -44,6 +46,9 @@ class CoreDataBase {
         let sala = Sala(context: managedObjectContext)
         let profile = PerfilUsuario(context: managedObjectContext)
         let calendar = Calendario(context: managedObjectContext)
+        let usuario = Usuario(context: managedObjectContext)
+        let usuarioFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        
         var hostId = UUID().uuidString
         // gerando id
         sala.id = UUID().uuidString
@@ -61,17 +66,40 @@ class CoreDataBase {
         sala.calendario = calendar
         sala.perfilUsuario = profile
         sala.idHost = userID
+        sala.idUsuarios = [userID] as! NSObject
         
         sala.idCalendario = calendar.id
         sala.idPerfil = profile.id
         
+        
+        
         do {
-            try managedObjectContext.save()
-            print(sala)
-        } catch {
+            
+            let tasks = try managedObjectContext.fetch(usuarioFetchRequest)
+            
+            for task in tasks{
+                if task.id == sala.idHost{
+                    print(sala.id)
+                    userIdSalaUpdate(idSala: sala.id, user: task)
+                    print(task)
+                }
+            }
+            
+            
+        } catch{
             print("error")
         }
         
+        
+        
+//        do {
+//            try managedObjectContext.save()
+//            print(sala)
+//        } catch {
+//            print("error")
+//        }
+        print(sala)
+            saveCoreData()
         
     }
     
@@ -213,6 +241,63 @@ class CoreDataBase {
         }
     }
     
+   
+    
+    func updateEvent(event: Evento, descricao: String?, dia: Int64, horario: Int64, nome: String, participantes: [UUID]) {
+        
+        event.descricao = descricao
+//        event.categoria = categoria as? String // arrumar isso aqui
+        event.dia = dia
+        event.horario = horario
+        event.nome = nome
+        event.idUsuarios = participantes as NSObject // arrumar isso aqui
+        
+        saveCoreData()
+    }
+    
+    func deleteEvent(event: Evento) {
+        managedObjectContext.delete(event)
+        saveCoreData()
+    }
+    
+    func updateUser(user: Usuario,email: String?, fotoDoPerfil: UIImage?, Nome: String?) {
+        
+        user.email = email
+        user.fotoPerfil = fotoDoPerfil as! NSData
+        user.nome = Nome
+        
+        saveCoreData()
+    }
+    
+    func userIdSalaUpdate(idSala: String?, user: Usuario){
+        user.idSala = idSala
+    }
+    
+    func saveCoreData() {
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+                print("Dados salvos no coreData")
+            } catch {
+                let nserror = error as NSError
+                fatalError("Error \(nserror), \(nserror.userInfo)")
+            }
+            
+        }
+    }
+    
+    func deleteObjectInCoreData(_ object: NSManagedObject) {
+        managedObjectContext.delete(object)
+        saveCoreData()
+    }
+    
+    func filtrar(_ filter: String){
+        let fetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        
+        let predicate = NSPredicate(format: "nome contains %@", filter)
+        fetchRequest.predicate = predicate
+    }
+    
     
     
 }
@@ -261,4 +346,13 @@ extension CoreDataBase : Any {
         case dinner
         case lunch
     }
+}
+
+
+class PersistenceManager {
+    private init(){}
+    
+
+    
+    
 }
