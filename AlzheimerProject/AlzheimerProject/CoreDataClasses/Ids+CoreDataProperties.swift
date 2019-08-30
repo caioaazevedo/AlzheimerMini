@@ -2,7 +2,7 @@
 //  Ids+CoreDataProperties.swift
 //  AlzheimerProject
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 27/08/19.
+//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 30/08/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -17,9 +17,9 @@ extension Ids {
         return NSFetchRequest<Ids>(entityName: "Ids")
     }
 
-    @NSManaged public var tableIDS: NSObject?
+    @NSManaged public var calendarIDS: NSObject?
     @NSManaged public var eventIDS: NSObject?
     @NSManaged public var profileIDS: NSObject?
-    @NSManaged public var calendarIDS: NSObject?
+    @NSManaged public var tableIDS: NSObject?
 
 }
