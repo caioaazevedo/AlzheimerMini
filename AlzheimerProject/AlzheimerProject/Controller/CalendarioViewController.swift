@@ -13,32 +13,42 @@ import CoreData
 let screenSize = UIScreen.main.bounds
 
 
+struct eventStruct{
+    var titulos = [""]
+    var horarios = [""]
+    var descricao = [""]
+    var categorias = [""]
+}
 
 class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     
-    @IBOutlet var popover: UIView!
+    
     @IBOutlet weak var imagePopover: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var popover: UIView!
     @IBOutlet weak var labelPopover: UILabel!
     @IBOutlet weak var horarioPopover: UILabel!
     
     
     
     fileprivate weak var calendar: FSCalendar!
-    @IBOutlet weak var tableView: UITableView!
     
     
     
-    struct eventStruct{
-        var titulos = [""]
-        var horarios = [""]
-        var descricao = [""]
-        var categorias = [""]
-    }
+    fileprivate lazy var dateFormatter : DateFormatter =  {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    
+    
+    
     
     var eventAux = eventStruct()
+    var auxDate = Date()
     
-
     
     var dates = [String]()
     
@@ -49,13 +59,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     
     
-    fileprivate lazy var dateFormatter : DateFormatter =  {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
     
-    var auxDate = Date()
     
     var auxText : String = "" {
         didSet{
@@ -63,23 +67,10 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         }
     }
     
-    var auxTime: String = ""{
-        didSet{
-            reloadAll()
-        }
-    }
+    var auxTime : String?
     
-    var auxCateg: String = ""{
-        didSet{
-            reloadAll()
-        }
-    }
-    
-    var auxDesc: String = ""{
-        didSet{
-            reloadAll()
-        }
-    }
+    var auxCateg : String?
+    var auxDesc : String?
     
     var selectedDay : Date? {
         didSet{
@@ -151,15 +142,15 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             for dia in days{
                 if dia.day == date{
                     canPass = false
-                    let event = Events(titleParameter: auxText,timeParameter: auxTime,descParameter: auxDesc ,categParameter: auxCateg)
+                    let event = Events(titleParameter: auxText,timeParameter: auxTime!,descParameter: auxDesc! ,categParameter: auxCateg!)
                     dia.event.append(event)
                     events.append(event)
                     eventAux.titulos.append(event.title)
                     eventAux.descricao.append(event.desc)
                     eventAux.horarios.append(event.time)
                     eventAux.categorias.append(event.categ)
-                    
-                      SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
+                    eventAux.categorias.append(event.categ)
+                    SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
                     
                     
                 }
@@ -168,18 +159,19 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             
             if canPass {
                 let day = Days(dayParameter: date)
-                let event = Events(titleParameter: auxText,timeParameter: auxTime,descParameter: auxDesc ,categParameter: auxCateg)
+                let event = Events(titleParameter: auxText,timeParameter: auxTime!,descParameter: auxDesc! ,categParameter: auxCateg!)
                 days.append(day)
                 day.event.append(event)
                 
                 
                 events.append(event)
-    
+                
                 eventAux.titulos.append(event.title)
                 eventAux.horarios.append(event.time)
                 eventAux.descricao.append(event.desc)
+                eventAux.categorias.append(event.categ)
                 SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
-              
+                
                 
                 canPass = true
             }
@@ -229,10 +221,11 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         return dateFormatter.string(from: date)
     }
     
-    func sendMesage(_ controller: TaskViewController, text: String,time: String,desc: String) {
+    func sendMesage(_ controller: TaskViewController, text: String,time: String,desc: String,categ: String) {
         auxText = text
         auxTime = time
         auxDesc = desc
+        auxCateg = categ
         createEventDay()
     }
     
@@ -304,11 +297,11 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
-        
+        let imagem = eventAux.categorias[indexPath.row]
         cell.titulo.text = eventAux.titulos[indexPath.row]
         cell.horario.text = eventAux.horarios[indexPath.row]
         cell.descricao.text = eventAux.descricao[indexPath.row]
-        
+        cell.imagem.image = UIImage(named: imagem)
         return cell;
     }
     

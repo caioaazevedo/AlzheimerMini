@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TaskViewControllerDelegate {
-    func sendMesage(_ controller: TaskViewController, text: String,time : String,desc : String)
+    func sendMesage(_ controller: TaskViewController, text: String,time : String,desc : String,categ : String)
 }
 
 class TaskViewController: UIViewController {
@@ -19,7 +19,7 @@ class TaskViewController: UIViewController {
     var delegate: TaskViewControllerDelegate?
     var time : String = ""
     var data = Date()
-    
+    var auxCateg = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,22 @@ class TaskViewController: UIViewController {
     }
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var descField: UITextView!
-   
+    
+    
+    @IBAction func categField(_ sender: UISegmentedControl) {
+        switch (sender.selectedSegmentIndex){
+        case 0:
+            auxCateg = "1"
+        case 1:
+            auxCateg = "2"
+        case 2:
+            auxCateg = "3"
+        default:
+            auxCateg = "4"
+        }
+        
+    }
+    
     
     @IBAction func timeField(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
@@ -47,7 +62,7 @@ class TaskViewController: UIViewController {
         
         let descricaoNotificacao = "\(nameField.text) foi marcado para \(time) do dia \(data)"
         
-        delegate?.sendMesage(self, text: nameField.text ?? "Empty",time: time,desc: descField.text ?? "Empty")
+        delegate?.sendMesage(self, text: nameField.text ?? "Empty",time: time,desc: descField.text ?? "Empty",categ: auxCateg)
         userNotification.notificationTask(nameField.text ?? "Notification", time, descricaoNotificacao)
         self.dismiss(animated: true, completion: nil)
         

@@ -11,51 +11,29 @@ import UIKit
 class PerfilViewController: UIViewController {
     
     
+    var imagePickedBlock: ((UIImage) -> Void)?
+    fileprivate var currentVC: UIViewController!
     @IBOutlet weak var profilePhoto: UIImageView!
-    @IBOutlet weak var collectionScreens: UICollectionView!
-    
-    
-    var tarefas = [String]()
-    
     @IBOutlet weak var gestureView: UIView!
+    
+    static let shared = PerfilViewController()
+    
+    
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setPhoto()
-        setScrollView()
-        setLayout()
-
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.moreInfo(_:)))
         gestureView.addGestureRecognizer(tap)
         self.view.addSubview(gestureView)
         
-        tarefas.append("Sangue")
-        tarefas.append("Remedio")
         
-       
-
+        
     }
-    
-    func setLayout(){
-        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height/2)
-        layout.scrollDirection = .horizontal
-        
-        
-        
-        collectionScreens.collectionViewLayout = layout
-    }
-    
-    func setScrollView(){
-        var invisibleScrolLView = UIScrollView(frame: self.view.bounds)
-        invisibleScrolLView.translatesAutoresizingMaskIntoConstraints = false
-        invisibleScrolLView.isPagingEnabled = true
-        invisibleScrolLView.showsVerticalScrollIndicator = false
-    }
-    
-    
     
     func setPhoto(){
         profilePhoto.image = UIImage(named: "sample")
@@ -66,51 +44,88 @@ class PerfilViewController: UIViewController {
         
     }
     
+    func camera(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .camera
+            currentVC.present(picker, animated: true, completion: nil)
+        }
+    }
+    
+    func galeria(){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            currentVC.present(picker, animated: true, completion: nil)
+        }
+    }
+    
+    
+    
+    
+    func presentOption(vc: UIViewController) {
+        currentVC = vc
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.camera()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.galeria()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        vc.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @objc func moreInfo(_ sender: UITapGestureRecognizer? = nil){
         
-        performSegue(withIdentifier: "moreInfoSegue", sender: self)
-        
+        PerfilViewController.shared.presentOption(vc: self)
+        PerfilViewController.shared.imagePickedBlock = { (image) in
+            self.profilePhoto.image = image
+        }
+    }
+    
+    
+    
+    
+    
+}
+
+
+
+extension PerfilViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            self.imagePickedBlock?(image)
+            
+        }else{
+            print("Something went wrong")
+        }
+        currentVC.dismiss(animated: true, completion: nil)
     }
 }
 
-extension PerfilViewController : UITableViewDataSource, UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tarefas.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let tarefa = tarefas[indexPath.row]
-        cell.textLabel?.text = tarefa
-        return cell
-    }
-    
-    
-}
 
-extension PerfilViewController : UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath)
-        
-        return cell
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-}
+
+
 
 class CollectionViewCell: UICollectionViewCell{
     
