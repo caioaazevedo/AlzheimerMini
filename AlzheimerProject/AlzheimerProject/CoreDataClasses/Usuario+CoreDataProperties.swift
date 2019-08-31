@@ -2,7 +2,7 @@
 //  Usuario+CoreDataProperties.swift
 //  AlzheimerProject
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 30/08/19.
+//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 31/08/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -22,6 +22,23 @@ extension Usuario {
     @NSManaged public var id: String?
     @NSManaged public var idSala: String?
     @NSManaged public var nome: String?
-    @NSManaged public var ofUser: Sala?
+    @NSManaged public var ofUser: NSSet?
+
+}
+
+// MARK: Generated accessors for ofUser
+extension Usuario {
+
+    @objc(addOfUserObject:)
+    @NSManaged public func addToOfUser(_ value: Sala)
+
+    @objc(removeOfUserObject:)
+    @NSManaged public func removeFromOfUser(_ value: Sala)
+
+    @objc(addOfUser:)
+    @NSManaged public func addToOfUser(_ values: NSSet)
+
+    @objc(removeOfUser:)
+    @NSManaged public func removeFromOfUser(_ values: NSSet)
 
 }

@@ -54,7 +54,7 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idSala" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ofUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sala" inverseName="usuario" inverseEntity="Sala" syncable="YES"/>
+        <relationship name="ofUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sala" inverseName="usuario" inverseEntity="Sala" syncable="YES"/>
     </entity>
     <elements>
         <element name="Calendario" positionX="9" positionY="99" width="128" height="105"/>

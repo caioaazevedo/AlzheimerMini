@@ -25,17 +25,27 @@ class CoreDataBase {
     
     func createUsuario(email: String, fotoDoPerfil: UIImage?, id: UUID, idSala: UUID?, Nome: String){
         
-        let user = Usuario(context: managedObjectContext)
-        recuperarId()
-        sleep(2)
+            let user = Usuario(context: managedObjectContext)
+            
+            user.id = self.userID
+            user.email = email
+            //        user.fotoPerfil = fotoDoPerfil as! NSData
+            user.idSala = nil
+            user.nome = Nome
+            
+            self.saveCoreData()
+            
+            let ur = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+            do{
+                let task = try managedObjectContext.fetch(ur)
+                for t in task{
+                    print(t)
+                }
+            } catch{
+                
+            }
         
-        user.id = userID
-        user.email = email
-        //        user.fotoPerfil = fotoDoPerfil as! NSData
-        user.idSala = nil
-        user.nome = Nome
-        
-        print(user)
+
     }
     
     func createSala(){
@@ -79,97 +89,95 @@ class CoreDataBase {
                     print(task)
                 }
             }
-            
-            
         } catch{
             print("error")
         }
         
         saveCoreData()
         
+        print(sala)
+        
     }
     
-    func createEvent(descricao: String?, categoria: Category, dia: Int64, horario: Int64, nome: String, participantes: [UUID]){
+    func createEventRepaired(categorioa: String, descricao: String, dia: Int64, horario: Int64){
         
-        let event = Evento(context: managedObjectContext)
-        let sala = Sala(context: managedObjectContext)
-        
-        let fetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
-        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
-        let calendarioFetchRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
-        
-        //Gerando um ID para o evento
-        event.id = UUID().uuidString
-        event.descricao = descricao
-        //        event.categoria = categoria as? String // arrumar isso aqui
-        event.dia = dia
-        event.horario = horario
-        event.nome = nome
-        //        event.idUsuarios = participantes as NSObject // arrumar isso aqui
-        
-        
-        var idSala : String!
-        var idCalendario : String!
-        
-        /*Recuperando o ID do calendario
-         -> Olhar o ID da sala do usuário do core data.
-         -> Procuro na lista de salas do core data se algum ID é igual ao do usuário.
-         -> Olho o ID do calendario da sala.
-         -> Procuro dentro do calendário o calendário específico do ID
-         -> Adiciono ao calendário encontrado o evento criado.
+        /*
+         1 - Olhar o ID da sala do USUARIO
+         2 - Olhar o ID do calendario da SALA
+         3 - criar evento
+         4 - Adicionar ao idEventos o id do evento criado
          */
         
         
-        // Salvando o ID da sala ✅
-        do {
-            let tasks = try managedObjectContext.fetch(fetchRequest)
-            for task in tasks {
-                idSala = task.id
+        // ---> 1
+        var idSala = String()
+        let userRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        do{
+            let listaUser = try managedObjectContext.fetch(userRequest)
+            for user in listaUser{
+                if user.idSala != nil{
+                    idSala = user.idSala!
+                }
             }
-        } catch{
-            print("ERROR")
+        } catch {
+            print("error")
         }
-        // Salvando o ID do calendario da sala ✅
+        // ---> 2
+        var idCalendario = String()
+        let salaRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        do{
+            let salas = try managedObjectContext.fetch(salaRequest)
+            for sala in salas{
+                if idSala == sala.id && sala.id != nil{
+                    idCalendario = sala.idCalendario!
+                }
+            }
+        } catch {
+            print("error")
+        }
+        // ---> 3
+        let event = Evento(context: managedObjectContext)
+        event.categoria = categorioa
+        event.descricao = descricao
+        event.id = UUID().uuidString
+        event.dia = dia
+        event.horario = horario
+        // ---> 4
+        var eventArray = [String]()
+        let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
+        do{
+            let calendarios = try managedObjectContext.fetch(calendarioRequest)
+            for calendario in calendarios{
+                if idCalendario == calendario.id && calendario.id != nil{
+                    
+                    if calendario.idEventos == nil{
+                        calendario.idEventos = [event.id] as NSObject
+                    } else {
+                        eventArray = (calendario.idEventos)!.mutableCopy() as! [String]
+                        eventArray.append(event.id!)
+                        calendario.idEventos = eventArray as NSObject
+                    }
+                }
+            }
+        }catch{
+            print("error")
+        }
+        saveCoreData()
+        
         do {
             
-            let tasks = try managedObjectContext.fetch(salaFetchRequest)
-            for task in tasks{
-                if task.id == idSala{
-                    idCalendario = task.idCalendario
-                }
+            let tasks = try managedObjectContext.fetch(calendarioRequest)
+            
+            for t in tasks{
+                print(t)
             }
-        } catch {
-            print("error")
-        }
-        // Salvando o ID do evento criado dentro do calendario
-        do {
-            let tasks = try managedObjectContext.fetch(calendarioFetchRequest)
-            for task in tasks{
-                if task.id == idCalendario{
-                    var eventoAdd : [String] = []
-                    if task.idEventos == nil{
-                        eventoAdd = [event.id!]
-                    } else {
-                        eventoAdd = ((task.idEventos)?.mutableCopy() as? [String])!
-                        eventoAdd.append(event.id!)
-                    }
-                    task.idEventos = eventoAdd as NSObject
-                }
-            }
+            
         } catch{
-            print("Error")
-        }
-        
-        
-        
-        //SALVAR
-        do {
-            try managedObjectContext.save()
-        } catch {
-            print("error")
+            
         }
         
     }
+    
     
     //Busca o ID Único do ICLOUD e faz o tratamento de error
     func iCloudUserIDAsync(complete: @escaping (_ instance: CKRecord.ID?, _ error: NSError?) -> ()) {

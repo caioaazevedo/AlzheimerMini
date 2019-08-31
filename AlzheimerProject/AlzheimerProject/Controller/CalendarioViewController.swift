@@ -21,6 +21,11 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     @IBOutlet weak var horarioPopover: UILabel!
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        CoreDataBase.shared.recuperarId()
+    }
+    
+    
     fileprivate lazy var dateFormatter : DateFormatter =  {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -77,20 +82,20 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 createTaskOutlet.isHidden = false
                 titulos.removeAll()
                 horarios.removeAll()
-            for day in days{
-                if selectedDay == day.day{
-                    titulos.removeAll()
-                    horarios.removeAll()
-                    for i in 0..<day.event.count{
-                        titulos.append(day.event[i].title)
-                        descricao.append(day.event[i].desc)
-                        horarios.append(day.event[i].time)
-                        categorias.append(day.event[i].categ)
-                        
+                for day in days{
+                    if selectedDay == day.day{
+                        titulos.removeAll()
+                        horarios.removeAll()
+                        for i in 0..<day.event.count{
+                            titulos.append(day.event[i].title)
+                            descricao.append(day.event[i].desc)
+                            horarios.append(day.event[i].time)
+                            categorias.append(day.event[i].categ)
+                            
+                        }
                     }
                 }
-            }
-            reloadAll()
+                reloadAll()
             }
         }
     }
@@ -126,7 +131,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     func createEventDay(){
         
-       
+        
         if let date = calendar!.selectedDate{
             let stringDate = toString(date)
             dates.append(stringDate)
@@ -152,7 +157,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             
             if canPass {
                 let day = Days(dayParameter: date)
-                  let event = Events(titleParameter: auxText,timeParameter: auxTime,descParameter: auxDesc ,categParameter: auxCateg)
+                let event = Events(titleParameter: auxText,timeParameter: auxTime,descParameter: auxDesc ,categParameter: auxCateg)
                 days.append(day)
                 day.event.append(event)
                 
