@@ -308,7 +308,7 @@ class CoreDataBase {
             let calen = try managedObjectContext.fetch(fetch)
 
             for _ in calen{
-                idEventos = (calen as! NSArray).mutableCopy() as! [String]
+                idEventos = (calen as NSArray).mutableCopy() as! [String]
             }
         } catch{
             print(error)
@@ -322,6 +322,18 @@ class CoreDataBase {
             cont += 1
         }
         
+        saveCoreData()
+    }
+    
+    
+    func updateEvento(Calendario: Calendario, evento: Evento, categoria: String, descricao: String, dia: Int64, horario: Int64, nome: String, idUsuarios: [String] ){
+        
+        evento.categoria = categoria
+        evento.descricao = descricao
+        evento.dia = dia
+        evento.horario = horario
+        evento.nome = nome
+        evento.idUsuarios = idUsuarios as NSObject
         saveCoreData()
     }
     
