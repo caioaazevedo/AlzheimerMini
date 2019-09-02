@@ -9,8 +9,10 @@
 import Foundation
 
 class Events {
+    var ID = Int()
     var title = "title of event"
     var time = "time of event"
+    var day = "day of event"
     var desc = "description of event"
     var categ = "category of event"
     
