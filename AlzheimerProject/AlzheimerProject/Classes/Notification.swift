@@ -36,7 +36,7 @@ class Notification {
         
     }
     
-    func notificationTask(_ titulo : String,_ subtitulo : String, _ corpo : String){
+    func notificationTask(_ titulo : String,_ subtitulo : String, _ corpo : String,tempo: Double){
         
         let content = UNMutableNotificationContent()
         
@@ -45,7 +45,7 @@ class Notification {
         content.body = corpo
         content.badge = 1
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: tempo, repeats: false)
         let request =  UNNotificationRequest(identifier: "Task", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
