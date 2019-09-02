@@ -11,11 +11,6 @@ import CoreData
 import UIKit
 import CloudKit
 
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-let managedObjectContext = appDelegate.persistentContainer.viewContext
-var arrayCheck = Ids(context: managedObjectContext)
-
-
 class CoreDataBase {
     var userID = ""
     init(){

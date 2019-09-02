@@ -10,6 +10,8 @@
 		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
+		3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF5962231D8D210073D65D /* UserLoaded.swift */; };
+		3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */; };
 		3ABF2BA72318761700486A68 /* ClasseTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2BA52318761700486A68 /* ClasseTemp.swift */; };
 		3ABF2BA82318761700486A68 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2BA62318761700486A68 /* PersistenceManager.swift */; };
 		3ACD8437231AE0A30006B38F /* Calendario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD842B231AE0A30006B38F /* Calendario+CoreDataClass.swift */; };
@@ -47,6 +49,8 @@
 		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		3AAF5962231D8D210073D65D /* UserLoaded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoaded.swift; sourceTree = "<group>"; };
+		3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOptmized.swift; sourceTree = "<group>"; };
 		3ABF2BA52318761700486A68 /* ClasseTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClasseTemp.swift; sourceTree = "<group>"; };
 		3ABF2BA62318761700486A68 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		3ACD842B231AE0A30006B38F /* Calendario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendario+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		AC9EE916230728C4004FA292 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */,
+				3AAF5962231D8D210073D65D /* UserLoaded.swift */,
 				3ABF2BA52318761700486A68 /* ClasseTemp.swift */,
 				3ABF2BA62318761700486A68 /* PersistenceManager.swift */,
 				AC9EE91423072645004FA292 /* Notification.swift */,
@@ -351,9 +357,11 @@
 				AC9EE9322315AA8F004FA292 /* TaskView.swift in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
+				3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */,
 				3ABF2BA82318761700486A68 /* PersistenceManager.swift in Sources */,
 				AC9EE91523072645004FA292 /* Notification.swift in Sources */,
 				3ACD843A231AE0A30006B38F /* Evento+CoreDataProperties.swift in Sources */,
+				3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */,
 				3ACD843B231AE0A30006B38F /* Ids+CoreDataClass.swift in Sources */,
 				3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
