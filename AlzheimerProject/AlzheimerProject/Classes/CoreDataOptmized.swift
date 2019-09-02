@@ -112,24 +112,69 @@ class CoreDataRebased{
         }
         
         saveCoreData()
-
+        /*
+         1. Fetch do usuario
+         Dados de Sala e Usuario prontos para uso
+         */
         
+        let usuario = fetchUsuario()
+    
+        
+        
+        Cloud.saveSala(idSala: sala.id!, idUsuario: [userLoad.idUser], idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
+        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, email: usuario.email, idSala: usuario.idSala!)
+        Cloud.saveCalendario(idCalendario: calendar.id!, idEventos: nil)
+        Cloud.savePerfil(idPerfil: profile.id!, nome: nil, dataNascimento: nil, telefone: nil, descricao: nil, fotoPerfil: nil, endereco: nil, remedios: nil, alergias: nil, tipoSanguineo: nil, planoSaude: nil)
     }
+    
+    // ✅ - Fetch do usuario do core data
+    func fetchUsuario() -> Usuario{
+        
+        let userLoad = UserLoaded()
+        
+        let usuario = Usuario(context: managedObjectContext)
+        
+        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        do {
+            
+            let usuarios = try managedObjectContext.fetch(userFetchRequest)
+            
+            for user in usuarios{
+                if userLoad.idUser == user.id! && user.id != nil {
+                    usuario.id = user.id
+                    usuario.email = user.email
+                    usuario.nome = user.nome
+                    usuario.idSala = user.idSala
+                }
+            }
+        } catch  {
+            print("Error")
+        }
+        
+        return usuario
+    }
+    
+    
     //✅ - Criar Usuario
     func createUsuario(email: String, fotoDoPerfil: UIImage?, Nome: String){
-
+        
+        let userLoad = UserLoaded()
+        
         let user = Usuario(context: managedObjectContext)
-        user.id = userID
+        user.id = userLoad.idUser
         user.email = email
         user.nome = Nome
         user.idSala = nil
         saveCoreData()
         
+        
+        
     }
-    //✅ - Carregar dados Usuario
+    // MARK: ✅ - Carregar dados Usuario
     func loadUserData() -> userData{
         let userLoad = UserLoaded()
         var user = userData()
+        
         let usuarioFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
         do {
             let usuarios = try managedObjectContext.fetch(usuarioFetchRequest)
@@ -194,6 +239,11 @@ class CoreDataRebased{
             print("error")
         }
         saveCoreData()
+        
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao!, dia: Date(), hora: Timer(), idUsuario: nil, idCalendario: userLoad.idSalaCalendar!)
+        Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
+        
+        
     }
     //✅ - Alterar Evento (Atualizaçao no usuarios participantes)
     func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Int64, horario: Int64){

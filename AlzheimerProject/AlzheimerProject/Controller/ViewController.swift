@@ -27,6 +27,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         UserNotification.requestNotificationAuthorization()
         print("öi")
+        
+        
+//        CoreDataRebased.shared.createUsuario(email: "pedro@gmail.com", fotoDoPerfil: nil, Nome: "Pedro")
+//        CoreDataRebased.shared.createSala()
+        
+        let x = Date()
+        
+//            Cloud.updatePerfil(searchRecord: "F3D95174-F479-47B5-BEA7-321F942B483B", idPerfil: "F3D95174-F479-47B5-BEA7-321F942B483B", nome: "velho", dataNascimento: x, telefone: "3323", descricao: "KKK", fotoPerfil: nil, endereco: "casa", remedios: ["alprazolam"], alergias: ["todas"], tipoSanguineo: "o melhor", planoSaude: "Deus")
+//        Cloud.updatePerfil(searchRecord: "F3D95174-F479-47B5-BEA7-321F942B483B", nome: "PEDERO")
+        CoreDataRebased.shared.createEvent(categoria: "CASA", descricao: "SAL", dia: 12, horario: 12)
     }
 
     

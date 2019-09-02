@@ -45,7 +45,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveCalendario(idCalendario: String, idEventos: [String]) {
+    static func saveCalendario(idCalendario: String, idEventos: [String]?) {
         
         let record = CKRecord(recordType: "Calendario")
         
@@ -73,7 +73,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func savePerfil(idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: CKAsset?, endereco: String?, remedios: String?, alergias: String?, tipoSanguineo: String?, planoSaude: String?) {
+    static func savePerfil(idPerfil: String, nome: String?, dataNascimento: Date?, telefone: String?, descricao: String?, fotoPerfil: CKAsset?, endereco: String?, remedios: String?, alergias: String?, tipoSanguineo: String?, planoSaude: String?) {
         
         let record = CKRecord(recordType: "Perfil")
         
@@ -299,9 +299,7 @@ class Cloud {
         let query = CKQuery(recordType: "Calendario", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["idEventos"]
         queryOp.queuePriority = .veryHigh
-        queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
@@ -357,14 +355,12 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updatePerfil(searchRecord: String, idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: CKAsset?, endereco: String?, remedios: String?, alergias: String?, tipoSanguineo: String?, planoSaude: String?) {
+    static func updatePerfil(searchRecord: String, idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: CKAsset?, endereco: String?, remedios: [String]?, alergias: [String]?, tipoSanguineo: String?, planoSaude: String?) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Perfil", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["nome", "dataNascimento", "telefone", "descricao", "fotoPerfil", "endereco", "remedios", "alergias", "tipoSanguineo", "planoSaude"]
         queryOp.queuePriority = .veryHigh
-        queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
@@ -377,9 +373,9 @@ class Cloud {
                 record.setValue(fotoPerfil, forKeyPath: "fotoPerfil")
                 record.setValue(endereco, forKeyPath: "endereco")
                 record.setValue(remedios, forKeyPath: "remedios")
-                record.setValue(remedios, forKeyPath: "alergias")
-                record.setValue(remedios, forKeyPath: "tipoSanguineo")
-                record.setValue(remedios, forKeyPath: "planoSaude")
+                record.setValue(alergias, forKeyPath: "alergias")
+                record.setValue(tipoSanguineo, forKeyPath: "tipoSanguineo")
+                record.setValue(planoSaude, forKeyPath: "planoSaude")
                 
                 publicDataBase.save(record, completionHandler: { (record, error) in
                     if error != nil{
