@@ -21,7 +21,7 @@ struct eventStruct{
 }
 
 class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
-    
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
@@ -57,11 +57,14 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             reloadAll()
         }
     }
-    
-    var auxTime : String?
-    
+    var auxLocal : String?
     var auxCateg : String?
-    var auxDesc : String?
+    var auxTime : String?
+    var auxRepetir : String?
+    var auxResponsavel : String?
+    var auxLembrete : String?
+    var auxDescricao : String?
+    
     
     var selectedDay : Date? {
         didSet{
@@ -104,7 +107,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         if segue.identifier == "segueTask"{
             if let vc = segue.destination as? TaskViewController{
                 vc.delegate = self
-                vc.data = auxDate;
+                vc.dia = auxDate;
             }
         }
     }
@@ -134,7 +137,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             for dia in days{
                 if dia.day == date{
                     canPass = false
-                    let event = Events(titleParameter: auxText,timeParameter: auxTime!,descParameter: auxDesc! ,categParameter: auxCateg!)
+                    let event = Events(titleParameter: auxText,timeParameter: auxTime!,descParameter: auxDescricao! ,categParameter: auxCateg!)
                     dia.event.append(event)
                     events.append(event)
                     eventAux.titulos.append(event.title)
@@ -151,7 +154,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             
             if canPass {
                 let day = Days(dayParameter: date)
-                let event = Events(titleParameter: auxText,timeParameter: auxTime!,descParameter: auxDesc! ,categParameter: auxCateg!)
+                let event = Events(titleParameter: auxText,timeParameter: auxTime!,descParameter: auxDescricao! ,categParameter: auxCateg!)
                 days.append(day)
                 day.event.append(event)
                 
@@ -213,14 +216,19 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         return dateFormatter.string(from: date)
     }
     
-    func sendMesage(_ controller: TaskViewController, text: String,time: String,desc: String,categ: String) {
-        auxText = text
-        auxTime = time
-        auxDesc = desc
-        auxCateg = categ
+   
+    
+    func sendMesage(_ controller: TaskViewController, titulo: String, local: String, categoria: String, hora: String, repetir: String, responsavel: String, descricao: String) {
+        auxText = titulo
+        auxLocal = local
+        auxCateg = categoria
+        auxTime = hora
+        auxRepetir = repetir
+        auxResponsavel = responsavel
+        auxDescricao = descricao
         createEventDay()
     }
-    
+
     
     
 }

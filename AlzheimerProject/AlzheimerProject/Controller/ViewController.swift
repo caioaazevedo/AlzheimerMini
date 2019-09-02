@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         static func < (lhs: Evento, rhs: Evento) -> Bool {
             return lhs.horario < rhs.horario
         }
+        
     }
     
     var eventos = Set<Evento>()
@@ -42,6 +43,9 @@ class ViewController: UIViewController {
         feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
     }
+    
+    
+    
 
     override func viewWillAppear(_ animated: Bool) {
         eventos.removeAll()
