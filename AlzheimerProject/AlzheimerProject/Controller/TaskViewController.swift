@@ -12,7 +12,7 @@ protocol TaskViewControllerDelegate {
     func sendMesage(_ controller: TaskViewController, titulo: String,local : String,categoria : String,hora : String,repetir: String,responsavel: String,descricao: String)
 }
 
-class TaskViewController: UIViewController,ViewPopupDelegate  {
+class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     
     var tableController : TableViewTaskViewController {
@@ -20,7 +20,7 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
     }
     
     var delegate: TaskViewControllerDelegate?
-    var delegate2: ViewPopupDelegate?
+
     let userNotification = Notification()
     
     var titulo = ""
@@ -48,7 +48,7 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
         let hour = String(Calendar.current.component(.hour, from: Date()))
         let minute = String(Calendar.current.component(.minute, from: Date()))
         tableController.hora.text = "\(hour):\(minute)"
-        viewPresent.delegateSend  = self.delegate2
+        viewPresent.delegateSend = self
     }
     
     @objc func done(){
@@ -93,8 +93,10 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
     
     func createParentPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        view.addSubview(viewPresent)
         viewPresent.array = ["Amanda","Caio","DuDu","Gui","Pedro Paulo"]
+        viewPresent.which = "Responsaveis"
+        view.addSubview(viewPresent)
+
         
         UIView.animate(withDuration: 1) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -104,8 +106,10 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
     
     func createRepeatPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        view.addSubview(viewPresent)
         viewPresent.array = ["Nunca","Anual","Mensal","Semanal","Diário"]
+        viewPresent.which = "Repeat"
+        view.addSubview(viewPresent)
+        
         
         UIView.animate(withDuration: 1) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -117,11 +121,39 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
         
     }
     
+    func createCategoryPicker(){
+        viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
+        viewPresent.array = ["Medico","Dentista","Passeio","Farmacia","Alimentacao"]
+        viewPresent.which = "Categoria"
+        view.addSubview(viewPresent)
+        
+        
+        UIView.animate(withDuration: 1) {
+            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
+            self.view.layoutIfNeeded()
+        }
+        
+        
+        
+        
+        
+        
+    }
     
     
-    func sendInfo(_ view: ViewPopup, texto: String) {
-        tableController.responsavel.text = texto
-        print(texto)
+    
+    func sendInfo(_ view: ViewPopup, texto: String,which: String) {
+        if which == "Responsaveis" {
+            tableController.responsavel.text = texto
+        }
+        if which == "Repeat" {
+            tableController.repetir.text = texto
+        }
+        if which == "Categoria" {
+            tableController.categoriaLabel.text = texto
+        }
+
+      
     }
     
     
@@ -130,10 +162,7 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
         self.view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -142,7 +171,6 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
 
         titulo = tableController.titulo.text ?? ""
         local = tableController.local.text ?? ""
-        //categoria = tableController?.categoria.image
         hora = tableController.hora.text ?? ""
         repetir = tableController.repetir.text ?? ""
         responsavel = tableController.responsavel.text ?? ""
@@ -156,7 +184,7 @@ class TaskViewController: UIViewController,ViewPopupDelegate  {
         if lembrete{
             var tempo = dia.timeIntervalSinceNow
             if tempo == 0 {
-                tempo += 1
+                tempo += 3601
             }
             print(tempo)
             
@@ -186,6 +214,7 @@ extension TaskViewController : UITableViewDelegate{
             
             print("Categoria")
             //flexible button
+            createCategoryPicker()
             
         case 3:
             print("Hora")
@@ -214,15 +243,17 @@ extension TaskViewController : UITableViewDelegate{
 
 
 protocol  ViewPopupDelegate {
-    func sendInfo(_ view: ViewPopup, texto: String)
+    func sendInfo(_ view: ViewPopup, texto: String,which: String)
     
 }
+
 class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     
-    var array = ["Amanda","Caio","Dudu","Gui","Pedro"]
+    var array = [""]
     
     var delegateSend: ViewPopupDelegate?
     var aux = 0
+    var which = ""
     @IBOutlet weak var tableViewPopup: UITableView!
     
     override func willMove(toWindow newWindow: UIWindow?) {
@@ -233,7 +264,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     
     
     @IBAction func Dismiss(_ sender: UIButton) {
-        delegateSend?.sendInfo(self, texto: array[aux])
+        delegateSend?.sendInfo(self, texto: array[aux],which: which)
         
         UIView.animate(withDuration: 0.5) {
             self.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -258,7 +289,8 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegateSend?.sendInfo(self, texto: array[indexPath.row])
+        self.endEditing(true)
+        delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
     }
     

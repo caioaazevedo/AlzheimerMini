@@ -25,7 +25,8 @@ class TableViewTaskViewController: UITableViewController {
     @IBOutlet weak var responsavel: UILabel!
     @IBOutlet weak var lembrete: UISwitch!
     
-
+    @IBOutlet weak var categoriaLabel: UILabel!
+    
     
     
     

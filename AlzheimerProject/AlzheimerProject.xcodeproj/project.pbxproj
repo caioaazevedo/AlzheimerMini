@@ -24,6 +24,7 @@
 		3AD49DE7231621EC00904457 /* PerfilUsuario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD49DDB231621EC00904457 /* PerfilUsuario+CoreDataProperties.swift */; };
 		AC39EE192318638B00DC590C /* CellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39EE182318638B00DC590C /* CellFeed.swift */; };
 		AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */; };
+		AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965C231EED1300EACF44 /* DetailViewController.swift */; };
 		AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90223071D01004FA292 /* AppDelegate.swift */; };
 		AC9EE90523071D01004FA292 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90423071D01004FA292 /* ViewController.swift */; };
 		AC9EE90823071D01004FA292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9EE90623071D01004FA292 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlzheimerProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC39EE182318638B00DC590C /* CellFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFeed.swift; sourceTree = "<group>"; };
 		AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTaskViewController.swift; sourceTree = "<group>"; };
+		AC52965C231EED1300EACF44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AC9EE8FF23071D01004FA292 /* AlzheimerProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzheimerProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9EE90223071D01004FA292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9EE90423071D01004FA292 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				AC9EE923230C6901004FA292 /* CalendarioViewController.swift */,
 				AC9EE92F23144937004FA292 /* TaskViewController.swift */,
 				AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */,
+				AC52965C231EED1300EACF44 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */,
 				3AD49DE7231621EC00904457 /* PerfilUsuario+CoreDataProperties.swift in Sources */,
 				3AD49DE0231621EC00904457 /* Sala+CoreDataClass.swift in Sources */,
+				AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

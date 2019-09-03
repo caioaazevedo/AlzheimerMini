@@ -15,12 +15,19 @@ class Events {
     var day = "day of event"
     var desc = "description of event"
     var categ = "category of event"
+    var repeatt = "repeat"
+    var responsavel = "responsable of event"
+    var localization = "locatization of event"
     
-    init(titleParameter: String,timeParameter: String,descParameter: String,categParameter: String) {
+    init(titleParameter: String,timeParameter: String,descParameter: String,categParameter: String,repeattParameter: String, responsavelParameter: String,localizationParameter: String) {
         self.title = titleParameter
         self.time = timeParameter
         self.desc = descParameter
         self.categ = categParameter
+        self.repeatt = repeattParameter
+        self.responsavel = responsavelParameter
+        self.localization = localizationParameter
+    
     }
     
     
