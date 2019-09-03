@@ -73,7 +73,7 @@ class CoreDataRebased{
         }
     }
     
-    //✅ - Criar sala
+    //✅ - Criar sala 😎
     func createSala(){
         
         let userLoad = UserLoaded()
@@ -127,7 +127,7 @@ class CoreDataRebased{
         Cloud.savePerfil(idPerfil: profile.id!, nome: nil, dataNascimento: nil, telefone: nil, descricao: nil, fotoPerfil: nil, endereco: nil, remedios: nil, alergias: nil, tipoSanguineo: nil, planoSaude: nil)
     }
     
-    // ✅ - Fetch do usuario do core data
+    // ✅ - Fetch do usuario do core data 😎
     func fetchUsuario() -> Usuario{
         
         let userLoad = UserLoaded()
@@ -154,7 +154,7 @@ class CoreDataRebased{
         return usuario
     }
     
-    // ✅ - Fetch do sala do core data
+    // ✅ - Fetch do sala do core data 🍁
     func fetchSala() -> Sala{
         
         let userLoad = UserLoaded()
@@ -182,8 +182,7 @@ class CoreDataRebased{
         return salaCore
     }
     
-    
-    //✅ - Criar Usuario
+    //✅ - Criar Usuario 😎
     func createUsuario(email: String, fotoDoPerfil: UIImage?, Nome: String){
         
         let userLoad = UserLoaded()
@@ -199,7 +198,7 @@ class CoreDataRebased{
         
     }
     
-    //✅ - Criar Sala Guest
+    //✅ - Criar Sala Guest 😎
     func createSalaGuest(){
         let sala = Sala(context: managedObjectContext)
         let calendario = Calendario(context: managedObjectContext)
@@ -232,7 +231,7 @@ class CoreDataRebased{
         CoreDataRebased.shared.saveCoreData()
     }
     
-    //✅ - Criar Usuario - GUEST
+    //✅ - Criar Usuario - GUEST 😎
     func createUsuarioGuest(email: String, fotoDoPerfil: UIImage?, Nome: String, searchSala: String){
         
         let userLoad = UserLoaded()
@@ -272,7 +271,8 @@ class CoreDataRebased{
         
         
     }
-    // MARK: ✅ - Carregar dados Usuario
+    
+    // MARK: ✅ - Carregar dados Usuario 😎
     func loadUserData() -> userData{
         let userLoad = UserLoaded()
         var user = userData()
@@ -293,7 +293,8 @@ class CoreDataRebased{
         }
         return user
     }
-    //✅ - Alterar dados usuário
+    
+    //✅ - Alterar dados usuário 😎
     func updateUser(email: String, nome: String, fotoPerfil: UIImage){
         let userLoad = UserLoaded()
         let usuarioFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
@@ -312,7 +313,8 @@ class CoreDataRebased{
         }
         saveCoreData()
     }
-    //✅ - Criar Evento
+    
+    //✅ - Criar Evento 🍁
     func createEvent(categoria: String, descricao: String, dia: Int64, horario: Int64){
         let userLoad = UserLoaded()
         let event = Evento(context: managedObjectContext)
@@ -347,7 +349,8 @@ class CoreDataRebased{
         
         
     }
-    //✅ - Alterar Evento (Atualizaçao no usuarios participantes)
+    
+    //✅ - Alterar Evento (Atualizaçao no usuarios participantes) 😎
     func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Int64, horario: Int64){
         evento.categoria = categoria
         evento.descricao = descricao
@@ -355,7 +358,8 @@ class CoreDataRebased{
         evento.horario = horario
         saveCoreData()
     }
-    //✅ - Carregar Dados Evento
+    
+    //✅ - Carregar Dados Evento 😎
     func loadEvent(evento: Evento) -> eventData{
         var event = eventData()
         event.categoria = evento.categoria
@@ -366,7 +370,8 @@ class CoreDataRebased{
         
         return event
     }
-    //✅ - Deletar Evento
+    
+    //✅ - Deletar Evento 🍁
     func deleteEvento(evento: Evento){
        /*
         1. Transformar o array de idEventos em [String]
@@ -397,7 +402,8 @@ class CoreDataRebased{
         }
         saveCoreData()
     }
-    //✅ - Carregar Dados Profile
+    
+    //✅ - Carregar Dados Profile 🍁
     func loadProfileData() -> profileData{
         
         var prof = profileData()
@@ -423,7 +429,8 @@ class CoreDataRebased{
         }
         return prof
     }
-    //✅ - Alterar Dados Profile
+    
+    //✅ - Alterar Dados Profile 🍁
     func updateProfile(alergias: String?, dataDeNascimento: Date?, descricao: String?, endereco: String?, fotoDePerfil: UIImage?, nome: String?, planoDeSaude: String?, remedios: String?, telefone: String?, tipoSanguineo: String?){
         let userLoad = UserLoaded()
         let profileFetchRequest = NSFetchRequest<PerfilUsuario>.init(entityName: "PerfilUsuario")

@@ -20,14 +20,14 @@ class UserLoaded {
     init() {
         
         idUser = recuperarId()
-//        idSala = getSalaID()
-//        idSalaCalendar = getCalendarID()
-//        idSalaProfile = getProfileID()
+        idSala = getSalaID()
+        idSalaCalendar = getCalendarID()
+        idSalaProfile = getProfileID()
         
         print("ID USUARIO -> \(idUser)")
-//        print("ID SALA -> \(idSala ?? "")")
-//        print("ID CALENDARIO -> \(idSalaCalendar ?? "")")
-//        print("ID PROFILE -> \(idSalaProfile ?? "")")
+        print("ID SALA -> \(idSala)")
+        print("ID CALENDARIO -> \(idSalaCalendar)")
+        print("ID PROFILE -> \(idSalaProfile)")
         
     }
     
@@ -46,7 +46,7 @@ class UserLoaded {
     }
     func recuperarId() -> String{
         
-        var id = String()
+        var id = ""
         //Verifica se está logado no icloud
         if FileManager.default.ubiquityIdentityToken != nil {
             
@@ -64,7 +64,7 @@ class UserLoaded {
     }
     func getSalaID() -> String{
         
-        var id = String()
+        var id = ""
         let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
         
         do {
@@ -83,7 +83,7 @@ class UserLoaded {
     }
     func getProfileID() -> String{
         
-        var id = String()
+        var id = ""
         let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
         var array = [String]()
         do {
@@ -102,7 +102,7 @@ class UserLoaded {
     }
     func getCalendarID() -> String{
         
-        var id = String()
+        var id = ""
         let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
         var array = [String]()
         do {

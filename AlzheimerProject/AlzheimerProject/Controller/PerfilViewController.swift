@@ -34,6 +34,7 @@ class PerfilViewController: UIViewController {
         tarefas.append("Sangue")
         tarefas.append("Remedio")
         
+        UserLoaded()
        
 
     }
