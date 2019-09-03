@@ -140,7 +140,7 @@ class CoreDataRebased{
             let usuarios = try managedObjectContext.fetch(userFetchRequest)
             
             for user in usuarios{
-                if userLoad.idUser == user.id! && user.id != nil {
+                if userLoad.idUser == user.id && user.id != nil {
                     usuario.id = user.id
                     usuario.email = user.email
                     usuario.nome = user.nome
@@ -152,6 +152,34 @@ class CoreDataRebased{
         }
         
         return usuario
+    }
+    
+    // ✅ - Fetch do sala do core data
+    func fetchSala() -> Sala{
+        
+        let userLoad = UserLoaded()
+        
+        let salaCore = Sala(context: managedObjectContext)
+        
+        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        do {
+            
+            let salas = try managedObjectContext.fetch(salaFetchRequest)
+            
+            for sala in salas{
+                if userLoad.idSala == sala.id && sala.id != nil {
+                    salaCore.id = sala.id
+                    salaCore.idCalendario = sala.idCalendario
+                    salaCore.idHost = sala.idHost
+                    salaCore.idPerfil = sala.idPerfil
+                    salaCore.idUsuarios = sala.idUsuarios
+                }
+            }
+        } catch  {
+            print("Error")
+        }
+        
+        return salaCore
     }
     
     
@@ -167,6 +195,80 @@ class CoreDataRebased{
         user.idSala = nil
         saveCoreData()
         
+        
+        
+    }
+    
+    //✅ - Criar Sala Guest
+    func createSalaGuest(){
+        let sala = Sala(context: managedObjectContext)
+        let calendario = Calendario(context: managedObjectContext)
+        let perfil = PerfilUsuario(context: managedObjectContext)
+        
+        sala.id = DadosSala.sala.idSala
+        sala.idHost = DadosSala.sala.idHost
+        sala.idUsuarios = DadosSala.sala.idUsuarios as NSObject
+        sala.idCalendario = DadosSala.sala.idCalendario
+        sala.idPerfil = DadosSala.sala.idPerfil
+        
+        sala.calendario = calendario
+        sala.perfilUsuario = perfil
+        
+        calendario.id = DadosSala.sala.idCalendario
+        
+        perfil.id = DadosSala.sala.idPerfil
+        
+        perfil.nome = DadosPerfil.perfil.nome
+//        perfil.alergias = DadosPerfil.perfil.alergias
+//        perfil.dataDeNascimento = DadosPerfil.perfil.dataNascimento
+        perfil.descricao = DadosPerfil.perfil.descricao
+        perfil.endereco = DadosPerfil.perfil.endereco
+//        perfil.fotoDePerfil
+        perfil.planoDeSaude = DadosPerfil.perfil.planoSaude
+//        perfil.remedios = DadosPerfil.perfil.remedios
+        perfil.tipoSanguineo = DadosPerfil.perfil.tipoSanguineo
+        perfil.telefone = DadosPerfil.perfil.telefone
+        
+        CoreDataRebased.shared.saveCoreData()
+    }
+    
+    //✅ - Criar Usuario - GUEST
+    func createUsuarioGuest(email: String, fotoDoPerfil: UIImage?, Nome: String, searchSala: String){
+        
+        let userLoad = UserLoaded()
+        
+        let user = Usuario(context: managedObjectContext)
+        user.id = userLoad.idUser
+        print(userLoad.idUser)
+        user.email = email
+        user.nome = Nome
+        
+        
+        Cloud.querySala(searchRecord: searchSala) { (_) in
+            print(DadosSala.sala.idCalendario)
+            Cloud.queryCalendario(searchRecord: DadosSala.sala.idCalendario, completion: { (_) in
+                Cloud.queryPerfil(searchRecord: DadosSala.sala.idPerfil, completion: { (_) in
+                    self.createSalaGuest()
+                    user.idSala = searchSala
+                    print("ACABOU")
+                    
+                    var sala = self.fetchSala()
+                    
+                    var userArray = (DadosSala.sala.idUsuarios)
+                    userArray.append(user.id!)
+                    sala.idUsuarios = userArray as NSObject
+                    //
+                    
+                    CoreDataRebased.shared.saveCoreData()
+                    print(user.id!)
+                    let userIdent = user.id
+                    Cloud.saveUsuario(idUsuario: userIdent ?? "", nome: user.nome, foto: nil, email: user.email, idSala: user.idSala!)
+                    
+                    Cloud.updateSala(searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
+                })
+            })
+            
+        }
         
         
     }
@@ -240,8 +342,8 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao!, dia: Date(), hora: Timer(), idUsuario: nil, idCalendario: userLoad.idSalaCalendar!)
-        Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
+//        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao!, dia: Date(), hora: Timer(), idUsuario: nil, idCalendario: userLoad.idSalaCalendar!)
+//        Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         
     }
@@ -352,11 +454,13 @@ class CoreDataRebased{
     //***TESTES***
     
     func showData(){
-        let profRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
+        let profRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
         do {
             let perfis = try managedObjectContext.fetch(profRequest)
             for i in perfis{
-                print(i.idEventos)
+                print(i.id)
+                print(i.idCalendario)
+                print(i.idPerfil)
             }
         } catch {
         }

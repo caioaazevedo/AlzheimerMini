@@ -20,14 +20,14 @@ class UserLoaded {
     init() {
         
         idUser = recuperarId()
-        idSala = getSalaID()
-        idSalaCalendar = getCalendarID()
-        idSalaProfile = getProfileID()
+//        idSala = getSalaID()
+//        idSalaCalendar = getCalendarID()
+//        idSalaProfile = getProfileID()
         
         print("ID USUARIO -> \(idUser)")
-        print("ID SALA -> \(idSala ?? "")")
-        print("ID CALENDARIO -> \(idSalaCalendar ?? "")")
-        print("ID PROFILE -> \(idSalaProfile ?? "")")
+//        print("ID SALA -> \(idSala ?? "")")
+//        print("ID CALENDARIO -> \(idSalaCalendar ?? "")")
+//        print("ID PROFILE -> \(idSalaProfile ?? "")")
         
     }
     

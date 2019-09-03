@@ -34,9 +34,15 @@ class ViewController: UIViewController {
         
         let x = Date()
         
+//        CoreDataRebased.shared.createUsuario(email: "afonso@gmail.com", fotoDoPerfil: nil, Nome: "Afonso")
+//        CoreDataRebased.shared.createSala()
+        
+        createGuest(cod: "D3644C8F-4E0F-4F4A-8FE2-BD23FD4A5D49")
+//        CoreDataRebased.shared.showData()
+        
 //            Cloud.updatePerfil(searchRecord: "F3D95174-F479-47B5-BEA7-321F942B483B", idPerfil: "F3D95174-F479-47B5-BEA7-321F942B483B", nome: "velho", dataNascimento: x, telefone: "3323", descricao: "KKK", fotoPerfil: nil, endereco: "casa", remedios: ["alprazolam"], alergias: ["todas"], tipoSanguineo: "o melhor", planoSaude: "Deus")
 //        Cloud.updatePerfil(searchRecord: "F3D95174-F479-47B5-BEA7-321F942B483B", nome: "PEDERO")
-        CoreDataRebased.shared.createEvent(categoria: "CASA", descricao: "SAL", dia: 12, horario: 12)
+//        CoreDataRebased.shared.createEvent(categoria: "CASA", descricao: "SAL", dia: 12, horario: 12)
     }
 
     
@@ -51,9 +57,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction func getButton(_ sender: Any) {
-        Cloud.querySala(searchRecord: self.textSearch.text!)
+//        Cloud.querySala(searchRecord: self.textSearch.text!, completion: nil)
         
         self.labelDados.text = "\(DadosSala.sala.idSala), \(DadosSala.sala.idUsuarios), \(DadosSala.sala.idCalendario), \(DadosSala.sala.idPerfil), \(DadosSala.sala.idHost)"
+    }
+    
+    func createGuest(cod: String){
+        
+//        var sala = CoreDataRebased.shared.fetchSala()
+        
+//        Cloud.querySala(searchRecord: cod, completion: nil)
+        CoreDataRebased.shared.createUsuarioGuest(email: "caio.pagodeiro@apple.com", fotoDoPerfil: nil, Nome: "Caio no pagode", searchSala: cod)
+        
     }
 }
 
