@@ -29,15 +29,15 @@ class ViewController: UIViewController {
         print("öi")
         
         
-//        CoreDataRebased.shared.createUsuario(email: "pedro@gmail.com", fotoDoPerfil: nil, Nome: "Pedro")
-//        CoreDataRebased.shared.createSala()
+        CoreDataRebased.shared.createUsuario(email: "caioba19@gmail.com", fotoDoPerfil: nil, Nome: "Caio Azevedo")
+        CoreDataRebased.shared.createSala()
         
         let x = Date()
         
 //        CoreDataRebased.shared.createUsuario(email: "afonso@gmail.com", fotoDoPerfil: nil, Nome: "Afonso")
 //        CoreDataRebased.shared.createSala()
         
-        createGuest(cod: "D3644C8F-4E0F-4F4A-8FE2-BD23FD4A5D49")
+//        createGuest(cod: "D3644C8F-4E0F-4F4A-8FE2-BD23FD4A5D49")
 //        CoreDataRebased.shared.showData()
         
 //            Cloud.updatePerfil(searchRecord: "F3D95174-F479-47B5-BEA7-321F942B483B", idPerfil: "F3D95174-F479-47B5-BEA7-321F942B483B", nome: "velho", dataNascimento: x, telefone: "3323", descricao: "KKK", fotoPerfil: nil, endereco: "casa", remedios: ["alprazolam"], alergias: ["todas"], tipoSanguineo: "o melhor", planoSaude: "Deus")
@@ -69,6 +69,25 @@ class ViewController: UIViewController {
 //        Cloud.querySala(searchRecord: cod, completion: nil)
         CoreDataRebased.shared.createUsuarioGuest(email: "caio.pagodeiro@apple.com", fotoDoPerfil: nil, Nome: "Caio no pagode", searchSala: cod)
         
+    }
+    @IBAction func share(_ sender: Any) {
+        // text to share
+        var userload = UserLoaded()
+        
+        var user = CoreDataRebased.shared.loadUserData()
+        
+        let text = "\(user.nome!) would like your participation in the family group. Access key: \(userload.idSala!)."
+        
+        // set up activity view controller
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }
 

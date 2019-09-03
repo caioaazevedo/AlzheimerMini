@@ -439,6 +439,14 @@
                                     <action selector="getButton:" destination="ryx-Fo-Xa2" eventType="touchUpInside" id="Ekd-hU-XwE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiT-8H-i7c">
+                                <rect key="frame" x="187" y="741" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="share:" destination="ryx-Fo-Xa2" eventType="touchUpInside" id="05z-Hd-jVO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.64146685599999997" green="0.92530101539999998" blue="0.9294165969" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="41m-A3-QbE"/>
