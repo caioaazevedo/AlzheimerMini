@@ -45,9 +45,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         super.viewDidLoad()
         
         tableController.tableView.delegate = self
-        let hour = String(Calendar.current.component(.hour, from: Date()))
-        let minute = String(Calendar.current.component(.minute, from: Date()))
-        tableController.hora.text = "\(hour):\(minute)"
         viewPresent.delegateSend = self
     }
     
@@ -86,7 +83,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     @objc func datePickerChanged(picker: UIDatePicker){
         let df = DateFormatter()
         df.dateFormat = "hh:mm"
-
+        
         tableController.hora.text = df.string(from: DatePicker.date)
     }
     
@@ -163,6 +160,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        self.DatePicker.removeFromSuperview()
     }
     
     
@@ -184,12 +182,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         if lembrete{
             var tempo = dia.timeIntervalSinceNow
             if tempo == 0 {
-                tempo += 3601
+                tempo += 3600
             }
             print(tempo)
             
             let notification = "\(titulo) foi marcado para \(hora) do dia \(dia)"
-            userNotification.notificationTask(titulo, hora, notification,tempo: tempo - 3600)
+            userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
             
         }
         
@@ -209,6 +207,9 @@ extension TaskViewController : UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
+        self.DatePicker.removeFromSuperview()
+        self.ParentPicker.removeFromSuperview()
         switch indexPath.row {
         case 2:
             

@@ -9,10 +9,23 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    var diaAux : String?
+    var diaSemanaAux : String?
+    var tituloAux : String?
+    var horaAux : String?
+    var responsavelAux : String?
+    var localAux : String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dia.text = diaAux
+        diaSemana.text = diaSemanaAux
+        titulo.text = tituloAux
+        hora.text = horaAux
+        responsavel.text = responsavelAux
+        local.text = localAux
         // Do any additional setup after loading the view.
     }
     

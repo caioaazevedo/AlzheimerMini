@@ -69,13 +69,70 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     var auxResponsavel : String?
     var auxLembrete : String?
     var auxDescricao : String?
-    var auxDia : String?
-    var auxDiaSemana : String?
     
+    var auxDiaSemanaNum : Int? {
+        didSet{
+            switch (auxDiaSemanaNum){
+            case 1:
+                auxDiaSemana = "Domingo"
+            case 2:
+                auxDiaSemana = "Segunda"
+            case 3:
+                auxDiaSemana = "Terca"
+            case 4:
+                auxDiaSemana = "Quarta"
+            case 5:
+                auxDiaSemana = "Quinta"
+            case 6:
+                auxDiaSemana = "Sexta"
+            default:
+                auxDiaSemana = "Sabado"
+            }
+        }
+    }
+    
+    var auxDiaSemana : String?
+    var auxDia : Int?
+    
+    var auxMesNum : Int?{
+        didSet{
+            switch(auxMesNum){
+            case 1:
+                auxMes = "Janeiro"
+            case 2:
+                auxMes = "Fevereiro"
+            case 3:
+                auxMes = "Marco"
+            case 4:
+                auxMes = "Abril"
+            case 5:
+                auxMes = "Maio"
+            case 6:
+                auxMes = "Junho"
+            case 7:
+                auxMes = "Julho"
+            case 8:
+                auxMes = "Agosto"
+            case 9:
+                auxMes = "Setembro"
+            case 10:
+                auxMes = "Outubro"
+            case 11:
+                auxMes = "Novembro"
+            default:
+                auxMes = "Dezembro"
+            }
+        }
+    }
+    
+    var auxMes : String?
     
     var selectedDay : Date? {
         didSet{
             auxDate = selectedDay!
+            auxDiaSemanaNum = Calendar.current.component(.weekday, from: auxDate)
+            auxDia = Calendar.current.component(.day, from: auxDate)
+            auxMesNum = Calendar.current.component(.month, from: auxDate)
             if let today = calendar.today, selectedDay! < today {
                 let alert = UIAlertController(title: "Error", message: "Nao e possivel adicionar tarefas a dias passados", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
@@ -93,7 +150,6 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                         eventAux.titulos.removeAll()
                         eventAux.horarios.removeAll()
                         for i in 0..<day.event.count{
-                            
                             eventAux.titulos.append(day.event[i].title)
                             eventAux.descricao.append(day.event[i].desc)
                             eventAux.horarios.append(day.event[i].time)
@@ -101,6 +157,9 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                             eventAux.repeatt.append(day.event[i].repeatt)
                             eventAux.responsavel.append(day.event[i].responsavel)
                             eventAux.localization.append(day.event[i].localization)
+                            
+                            
+                            
                             
                         }
                     }
@@ -132,14 +191,14 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             }
         }
         
-        if segue.identifier == "segueDetails"{
+        if segue.identifier == "segueDetail"{
             if let vc = segue.destination as? DetailViewController{
-                vc.dia.text =
-                vc.diaSemana.text
-                vc.hora.text = auxTime
-                vc.local.text = auxLocal
-                vc.responsavel.text = auxResponsavel
-                vc.titulo.text = auxText
+                vc.diaAux = "\(auxDia!) de \(auxMes!)"
+                vc.diaSemanaAux = auxDiaSemana ?? ""
+                vc.horaAux = auxTime ?? ""
+                vc.localAux = auxLocal ?? ""
+                vc.responsavelAux = auxResponsavel ?? ""
+                vc.tituloAux = auxText ?? ""
             }
         }
     }
@@ -199,7 +258,6 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 
                 
                 events.append(event)
-                
                 eventAux.titulos.append(event.title)
                 eventAux.horarios.append(event.time)
                 eventAux.descricao.append(event.desc)
