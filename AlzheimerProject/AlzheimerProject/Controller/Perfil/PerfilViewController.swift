@@ -20,11 +20,6 @@ class PerfilViewController: UIViewController {
     }
     
     
-    @IBOutlet var dadosPaciente: UIView!
-    @IBOutlet var meuPerfil: UIView!
-    @IBOutlet var suporte: UIView!
-    
-    
     var imagePickedBlock: ((UIImage) -> Void)?
     fileprivate var currentVC: UIViewController!
     @IBOutlet weak var profilePhoto: UIImageView!
@@ -152,15 +147,7 @@ extension PerfilViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch(indexPath.row){
-        case 1:
-            view.addSubview(dadosPaciente)
-        case 2:
-            view.addSubview(meuPerfil)
-        default:
-            view.addSubview(suporte)
-            
-        }
+      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
