@@ -260,7 +260,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updateUsuario(searchRecord: String, nome: String?, foto: CKAsset?, email: String?, idSala: String) {
+    static func updateUsuario(searchRecord: String, nome: String?, foto: Data?, email: String?, idSala: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
@@ -352,7 +352,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updatePerfil(searchRecord: String, idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: CKAsset?, endereco: String?, remedios: [String]?, alergias: [String]?, tipoSanguineo: String?, planoSaude: String?) {
+    static func updatePerfil(searchRecord: String, idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: Data?, endereco: String?, remedios: [String]?, alergias: [String]?, tipoSanguineo: String?, planoSaude: String?) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Perfil", predicate: predicate)
         
