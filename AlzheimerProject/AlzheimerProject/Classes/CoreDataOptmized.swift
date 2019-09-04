@@ -290,7 +290,7 @@ class CoreDataRebased{
                     user.id = usuario.id
                     user.idSala = usuario.idSala
                     user.nome = usuario.nome ?? ""
-                    user.fotoPerfil = UIImage(data: usuario.fotoPerfil! as Data)
+//                    user.fotoPerfil = UIImage(data: usuario.fotoPerfil! as Data)
                 }
             }
         } catch {
