@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         var titulo = ""
         var horario = ""
         var dia = ""
-        var descricao = ""
+        var localizacao = ""
+        var responsavel = ""
         
         // Operator Overloading (Sobrecarga de Operadores)
         static func < (lhs: Evento, rhs: Evento) -> Bool {
@@ -64,9 +65,11 @@ class ViewController: UIViewController {
                 let titulo = data.value(forKey: "titulo") as! String
                 let horario = data.value(forKey: "horario") as! String
                 let dia = data.value(forKey: "dia") as! String
-                let descricao = data.value(forKey: "descricao") as! String
+                let localizacao = data.value(forKey: "localizacao" ) as! String
+                let responsavel = data.value(forKey: "responsavel" ) as! String
                 
-                let evento = Evento(titulo: titulo, horario: horario, dia: dia, descricao: descricao)
+                
+                let evento = Evento(titulo: titulo, horario: horario, dia: dia, localizacao: localizacao,responsavel: responsavel)
                 eventos.insert(evento)
                 
                 feedView.reloadData()
@@ -89,15 +92,14 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellFeed", for: indexPath) as! CellFeed
-        cell.date.text = eventosOrdenados[indexPath.row].dia
-        cell.desc.text = eventosOrdenados[indexPath.row].descricao
-        cell.time.text = eventosOrdenados[indexPath.row].horario
-        cell.title.text = eventosOrdenados[indexPath.row].titulo
+        let indexRow = eventosOrdenados[indexPath.row]
+        cell.descricao.text = "\(indexRow.responsavel) marcou  \(indexRow.titulo) para Pedro Paulo em \(indexRow.localizacao) as \(indexRow.horario) no dia \(indexRow.dia) "
+        
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 100
     }
 }

@@ -210,6 +210,7 @@ extension TaskViewController : UITableViewDelegate{
         view.endEditing(true)
         self.DatePicker.removeFromSuperview()
         self.ParentPicker.removeFromSuperview()
+        self.viewPresent.removeFromSuperview()
         switch indexPath.row {
         case 2:
             

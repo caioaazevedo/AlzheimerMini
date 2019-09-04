@@ -15,18 +15,26 @@ struct Tabelas {
 
 class PerfilViewController: UIViewController {
     
+    var PerfilTableView : PerfilTableViewController {
+        return self.children.first as! PerfilTableViewController
+    }
+    
+    
+    @IBOutlet var dadosPaciente: UIView!
+    @IBOutlet var meuPerfil: UIView!
+    @IBOutlet var suporte: UIView!
+    
     
     var imagePickedBlock: ((UIImage) -> Void)?
     fileprivate var currentVC: UIViewController!
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var gestureView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    
     
     
     
     static let shared = PerfilViewController()
     
-    var tabelasArray = [Tabelas]()
     
     
     
@@ -34,11 +42,9 @@ class PerfilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        PerfilTableView.tableView.delegate = self
         setPhoto()
-        setTabela()
-        
+        fixView()
         let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.moreInfo(_:)))
         gestureView.addGestureRecognizer(tap)
         self.view.addSubview(gestureView)
@@ -47,23 +53,12 @@ class PerfilViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    func setTabela(){
-        
-        let tabela = Tabelas(name: "Perfil", imageName: "0")
-        tabelasArray.append(tabela)
-        
-        
-        
-        
-        
+    func fixView(){
+        dadosPaciente.frame = self.view.frame
+        meuPerfil.frame = self.view.frame
+        suporte.frame = self.view.frame
         
     }
-    
-    
     
     func setPhoto(){
         profilePhoto.image = UIImage(named: "sample")
@@ -153,27 +148,22 @@ extension PerfilViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
 }
 
-extension PerfilViewController : UITableViewDelegate , UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tabelasArray.count
+extension PerfilViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch(indexPath.row){
+        case 1:
+            view.addSubview(dadosPaciente)
+        case 2:
+            view.addSubview(meuPerfil)
+        default:
+            view.addSubview(suporte)
+            
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellPerfil", for: indexPath) as! CellPerfil
-        cell.titulo.text = tabelasArray[indexPath.row].name
-        cell.icone.image = UIImage(named: tabelasArray[indexPath.row].imageName!)
-        return cell
-        
-        
-        
-        
-        
-    }
-  
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 106.75
     }
-    
-    
 }
-

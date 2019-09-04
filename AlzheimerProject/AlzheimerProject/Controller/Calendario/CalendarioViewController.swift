@@ -243,7 +243,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     eventAux.repeatt.append(event.repeatt)
                     eventAux.localization.append(event.localization)
                     eventAux.responsavel.append(event.responsavel)
-                    SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
+                    SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, localizacao: event.localization,responsavel: event.responsavel)
                     
                     
                 }
@@ -265,7 +265,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 eventAux.repeatt.append(event.repeatt)
                 eventAux.localization.append(event.localization)
                 eventAux.responsavel.append(event.responsavel)
-                SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, descricao: event.desc)
+                     SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, localizacao: event.localization,responsavel: event.responsavel)
                 
                 
                 canPass = true
@@ -280,7 +280,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
     }
     
-    func SaveCoreData(titulo: String,horario: String,dia: String,descricao: String){
+    func SaveCoreData(titulo: String,horario: String,dia: String,localizacao: String,responsavel: String){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         guard let userEntity = NSEntityDescription.entity(forEntityName: "Feed", in: managedContext) else { return}
@@ -288,8 +288,9 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         user.setValue(titulo, forKey: "titulo")
         user.setValue(horario, forKey: "horario")
         user.setValue(dia, forKey: "dia")
-        user.setValue(descricao, forKey: "descricao")
-        
+        user.setValue(localizacao, forKey: "localizacao")
+        user.setValue(responsavel, forKey: "responsavel")
+       
     }
     
     

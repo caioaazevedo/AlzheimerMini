@@ -25,6 +25,7 @@
 		AC39EE192318638B00DC590C /* CellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39EE182318638B00DC590C /* CellFeed.swift */; };
 		AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */; };
 		AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965C231EED1300EACF44 /* DetailViewController.swift */; };
+		AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */; };
 		AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90223071D01004FA292 /* AppDelegate.swift */; };
 		AC9EE90523071D01004FA292 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90423071D01004FA292 /* ViewController.swift */; };
 		AC9EE90823071D01004FA292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9EE90623071D01004FA292 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		AC39EE182318638B00DC590C /* CellFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFeed.swift; sourceTree = "<group>"; };
 		AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTaskViewController.swift; sourceTree = "<group>"; };
 		AC52965C231EED1300EACF44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilTableViewController.swift; sourceTree = "<group>"; };
 		AC9EE8FF23071D01004FA292 /* AlzheimerProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzheimerProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9EE90223071D01004FA292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9EE90423071D01004FA292 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,34 @@
 				2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC529662231F100F00EACF44 /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */,
+				AC9EE921230C64BC004FA292 /* PerfilViewController.swift */,
+			);
+			path = Perfil;
+			sourceTree = "<group>";
+		};
+		AC529663231F101E00EACF44 /* Calendario */ = {
+			isa = PBXGroup;
+			children = (
+				AC52965C231EED1300EACF44 /* DetailViewController.swift */,
+				AC9EE92F23144937004FA292 /* TaskViewController.swift */,
+				AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */,
+				AC9EE923230C6901004FA292 /* CalendarioViewController.swift */,
+			);
+			path = Calendario;
+			sourceTree = "<group>";
+		};
+		AC529664231F104B00EACF44 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				AC9EE90423071D01004FA292 /* ViewController.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		AC9EE8F623071D01004FA292 = {
@@ -196,12 +226,9 @@
 		AC9EE919230728F4004FA292 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AC9EE90423071D01004FA292 /* ViewController.swift */,
-				AC9EE921230C64BC004FA292 /* PerfilViewController.swift */,
-				AC9EE923230C6901004FA292 /* CalendarioViewController.swift */,
-				AC9EE92F23144937004FA292 /* TaskViewController.swift */,
-				AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */,
-				AC52965C231EED1300EACF44 /* DetailViewController.swift */,
+				AC529664231F104B00EACF44 /* Feed */,
+				AC529663231F101E00EACF44 /* Calendario */,
+				AC529662231F100F00EACF44 /* Perfil */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -342,6 +369,7 @@
 				3AD49DE4231621EC00904457 /* Calendario+CoreDataClass.swift in Sources */,
 				3AD49DE2231621EC00904457 /* Usuario+CoreDataClass.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
+				AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */,
 				AC9EE928230F0D8D004FA292 /* CellCalendar.swift in Sources */,
 				3AD49DDC231621EC00904457 /* Ids+CoreDataClass.swift in Sources */,
 				3AD49DDD231621EC00904457 /* Ids+CoreDataProperties.swift in Sources */,
