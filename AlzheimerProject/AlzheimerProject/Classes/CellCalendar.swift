@@ -14,10 +14,8 @@ class CellCalendar :  UITableViewCell {
     @IBOutlet weak var imagem: UIImageView!
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var horario: UILabel!
-    @IBOutlet weak var descricao: UITextView!
-    
-    
-    
-    
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var repeatt: UILabel!
+    @IBOutlet weak var responsavel: UILabel!
     
 }
