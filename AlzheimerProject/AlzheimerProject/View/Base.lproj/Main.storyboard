@@ -593,7 +593,7 @@
         <!--Circle Bar Controller-->
         <scene sceneID="vp5-ox-sj7">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Lwv-GR-Mm1" customClass="SHCircleBarController" customModule="CircleBar" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="inicialStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="Lwv-GR-Mm1" customClass="SHCircleBarController" customModule="CircleBar" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qr1-2R-rrI" customClass="SHCircleBar" customModule="CircleBar">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
