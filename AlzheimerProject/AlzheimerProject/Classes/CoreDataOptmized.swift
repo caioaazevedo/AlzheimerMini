@@ -215,17 +215,18 @@ class CoreDataRebased{
         sala.perfilUsuario = perfil
         
         calendario.id = DadosSala.sala.idCalendario
+        calendario.idEventos = DadosClendario.calendario.idEventos as NSObject
         
         perfil.id = DadosSala.sala.idPerfil
         
         perfil.nome = DadosPerfil.perfil.nome
-        //        perfil.alergias = DadosPerfil.perfil.alergias
-        //        perfil.dataDeNascimento = DadosPerfil.perfil.dataNascimento
+        perfil.alergias = DadosPerfil.perfil.alergias as NSObject
+        perfil.dataDeNascimento = DadosPerfil.perfil.dataNascimento as NSDate
         perfil.descricao = DadosPerfil.perfil.descricao
         perfil.endereco = DadosPerfil.perfil.endereco
-        //        perfil.fotoDePerfil
+        perfil.fotoDePerfil = DadosPerfil.perfil.fotoPerfil as NSData
         perfil.planoDeSaude = DadosPerfil.perfil.planoSaude
-        //        perfil.remedios = DadosPerfil.perfil.remedios
+        perfil.remedios = DadosPerfil.perfil.remedios as NSObject
         perfil.tipoSanguineo = DadosPerfil.perfil.tipoSanguineo
         perfil.telefone = DadosPerfil.perfil.telefone
         
@@ -250,24 +251,21 @@ class CoreDataRebased{
             Cloud.queryCalendario(searchRecord: DadosSala.sala.idCalendario, completion: { (_) in
                 
                 Cloud.queryPerfil(searchRecord: DadosSala.sala.idPerfil, completion: { (_) in
-                    
                     self.createSalaGuest()
                     user.idSala = searchSala
                     print("ACABOU")
-                    
                     let sala = self.fetchSala()
-                    
                     var userArray = (DadosSala.sala.idUsuarios)
                     userArray.append(user.id!)
                     sala.idUsuarios = userArray as NSObject
-                    //
-                    
                     CoreDataRebased.shared.saveCoreData()
                     print(user.id!)
                     let userIdent = user.id
                     
+                    
                     Cloud.saveUsuario(idUsuario: userIdent ?? "", nome: user.nome, foto: nil, email: user.email, idSala: user.idSala!)
                     Cloud.updateSala(searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
+                    
                 })
             })
             
@@ -290,7 +288,7 @@ class CoreDataRebased{
                     user.id = usuario.id
                     user.idSala = usuario.idSala
                     user.nome = usuario.nome ?? ""
-//                    user.fotoPerfil = UIImage(data: usuario.fotoPerfil! as Data)
+                    user.fotoPerfil = UIImage(data: usuario.fotoPerfil! as Data)
                 }
             }
         } catch {
@@ -330,14 +328,14 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Evento 🍁
-    func createEvent(categoria: String, descricao: String, dia: Int64, horario: Int64){
+    func createEvent(categoria: String, descricao: String, dia: Date, horario: Date){
         let userLoad = UserLoaded()
         let event = Evento(context: managedObjectContext)
         event.categoria = categoria
         event.descricao = descricao
         event.id = UUID().uuidString
-        event.dia = dia
-        event.horario = horario
+        event.dia = dia as NSDate
+        event.horario = horario as NSDate
         var eventArray = [String]()
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
         do{
@@ -367,12 +365,12 @@ class CoreDataRebased{
     }
     
     //✅ - Alterar Evento (Atualizaçao no usuarios participantes) 😎 ****
-    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Int64, horario: Int64, nome: String){
+    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String){
         let userLoad = UserLoaded()
         evento.categoria = categoria
         evento.descricao = descricao
-        evento.dia = dia
-        evento.horario = horario
+        evento.dia = dia as NSDate
+        evento.horario = horario as NSDate
         saveCoreData()
         
         let a = Date(timeInterval: 20, since: Date())
@@ -388,8 +386,8 @@ class CoreDataRebased{
         var event = eventData()
         event.categoria = evento.categoria ?? ""
         event.descricao = evento.descricao ?? ""
-        event.dia = evento.dia ?? 0
-        event.horario = evento.horario ?? 0
+        event.dia = evento.dia as Date?
+        event.horario = evento.horario as Date?
         event.nome = evento.nome ?? ""
         
         return event
@@ -437,14 +435,14 @@ class CoreDataRebased{
             let profiles = try managedObjectContext.fetch(profileFetchRequest)
             for profile in profiles {
                 if userLoad.idSalaProfile == profile.id && profile.id != nil {
-                    prof.alergias = profile.alergias ?? ""
+                    prof.alergias = profile.alergias as? String
                     prof.Descricao = profile.descricao  ?? ""
                     prof.nome = profile.nome ?? ""
                     prof.endereco = profile.endereco ?? ""
                     prof.telefone = profile.telefone ?? ""
                     prof.fotoDePerfil = UIImage(data: profile.fotoDePerfil! as Data)
                     prof.planoDeSaude = profile.planoDeSaude ?? ""
-                    prof.remedios = profile.remedios ?? ""
+                    prof.remedios = profile.remedios as? String
                     prof.tipoSanguineo = profile.tipoSanguineo ?? ""
                     
                 }
@@ -464,7 +462,7 @@ class CoreDataRebased{
             let profiles = try managedObjectContext.fetch(profileFetchRequest)
             for prof in profiles{
                 if userLoad.idSalaProfile == prof.id && prof.id != nil{
-                    prof.alergias = alergias ?? ""
+                    prof.alergias = alergias as! NSObject
                     prof.dataDeNascimento = dataDeNascimento as NSDate?
                     prof.descricao = descricao ?? ""
                     prof.endereco = endereco ?? ""
@@ -472,7 +470,7 @@ class CoreDataRebased{
                     prof.nome = nome ?? ""
                     prof.telefone = telefone ?? ""
                     prof.tipoSanguineo = tipoSanguineo ?? ""
-                    prof.remedios = remedios ?? ""
+                    prof.remedios = remedios as! NSObject
                     
                     
                     Cloud.updatePerfil(searchRecord: userLoad.idSalaProfile!, idPerfil: userLoad.idSalaProfile!, nome: nome ?? "", dataNascimento: dataDeNascimento ?? Date(), telefone: telefone ?? "", descricao: descricao ?? "", fotoPerfil: fotoDePerfil?.pngData()!, endereco: endereco ?? "", remedios: [remedios ?? ""], alergias: [alergias ?? ""], tipoSanguineo: tipoSanguineo ?? "", planoSaude: planoDeSaude! ?? "")
@@ -513,13 +511,13 @@ struct userData {
 struct eventData {
     var categoria : String?
     var descricao : String?
-    var dia : Int64?
-    var horario : Int64?
+    var dia : Date?
+    var horario : Date?
     var nome : String?
 }
 struct profileData {
     var alergias : String?
-    //    var dataDeNascimento : Date?
+    var dataDeNascimento : Date?
     var Descricao : String?
     var endereco : String?
     var fotoDePerfil : UIImage?
@@ -529,4 +527,5 @@ struct profileData {
     var telefone : String?
     var tipoSanguineo : String?
 }
+
 

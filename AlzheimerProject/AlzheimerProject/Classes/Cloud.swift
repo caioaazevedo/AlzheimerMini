@@ -102,8 +102,8 @@ class Cloud {
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
-             if record["idSala"] == searchRecord {
-            
+            if record["idSala"] == searchRecord {
+                
                 let array: [String] = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
                 
                 DadosSala.sala.idSala = record["idSala"]!
@@ -115,8 +115,8 @@ class Cloud {
                 print("DADOS: ", record["idSala"]!, array, record["idCalendario"]!, record["idPerfil"]!, record["idHost"]!)
                 
                 completion(true)
-//                print(array)
-             }
+                //                print(array)
+            }
             
         }
         publicDataBase.add(queryOp)
@@ -127,9 +127,7 @@ class Cloud {
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["nome", "foto", "email", "idSala"]
         queryOp.queuePriority = .veryHigh
-        queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
@@ -137,7 +135,7 @@ class Cloud {
                 
                 DadosUsuario.usuario.idUsuario = record["idUsuario"]!
                 DadosUsuario.usuario.nome = record["nome"]!
-//                DadosUsuario.usuario.foto = record["foto"]!
+                DadosUsuario.usuario.foto = record["foto"]!
                 DadosUsuario.usuario.email = record["email"]!
                 DadosUsuario.usuario.idSala = record["idSala"]!
                 
@@ -163,10 +161,15 @@ class Cloud {
             if record["idCalendario"] == searchRecord {
                 
                 DadosClendario.calendario.idCalendario = record["idCalendario"]!
-//                DadosClendario.calendario.idEventos = [record["idEventos"]!]
+                let eventos = (record["idEventos"] as! NSArray).mutableCopy() as! [String]
+                if  eventos != nil {
+                    DadosClendario.calendario.idEventos = eventos
+                }
                 
                 
-//                print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
+                
+                
+                //                print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
                 
                 completion(true)
                 
@@ -184,7 +187,7 @@ class Cloud {
         queryOp.queuePriority = .veryHigh
         
         queryOp.recordFetchedBlock = { (record) -> Void in
-                
+            
             print("DADOS: ", record["idEvento"]!, record["nome"]!, record["categoria"]!,
                   record["descricao"]!, record["hora"]!, record["idUsuario"]!, record["idCalendario"]!)
             
@@ -205,25 +208,24 @@ class Cloud {
                 
                 DadosPerfil.perfil.idPerfil = record["idPerfil"]!
                 DadosPerfil.perfil.nome = record["nome"] ?? ""
-                DadosPerfil.perfil.dataNascimento = record["dataNascimento"] ?? ""
+                DadosPerfil.perfil.dataNascimento = record["dataNascimento"]!
                 DadosPerfil.perfil.telefone = record["telefone"] ?? ""
                 DadosPerfil.perfil.descricao = record["descricao"] ?? ""
-//                DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"]
+                DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"]!
                 DadosPerfil.perfil.endereco = record["endereco"] ?? ""
                 if record["remedios"] != nil {
                     DadosPerfil.perfil.remedios = (record["remedios"] as! NSArray).mutableCopy() as! [String]
                 }
-                
                 if record["alergias"] != nil {
                     DadosPerfil.perfil.remedios = (record["alergias"] as! NSArray).mutableCopy() as! [String]
                 }
                 DadosPerfil.perfil.tipoSanguineo = record["tipoSanguineo"] ?? ""
                 DadosPerfil.perfil.planoSaude = record["planoSaude"] ?? ""
                 
-//            print("DADOS: ", record["idPerfil"]!, record["nome"]!, record["dataNascimento"]!,
-//                  record["telefone"]!, record["descricao"]!, record["fotoPerfil"]!, record["endereco"]!, record["remedios"]!, record["alergias"]!, record["tipoSanguineo"]!, record["planoSaude"]!)
-            
-            completion(true)
+                //            print("DADOS: ", record["idPerfil"]!, record["nome"]!, record["dataNascimento"]!,
+                //                  record["telefone"]!, record["descricao"]!, record["fotoPerfil"]!, record["endereco"]!, record["remedios"]!, record["alergias"]!, record["tipoSanguineo"]!, record["planoSaude"]!)
+                
+                completion(true)
             }
         }
         publicDataBase.add(queryOp)
@@ -323,9 +325,7 @@ class Cloud {
         let query = CKQuery(recordType: "Evento", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["nome", "categoria", "descricao", "dia", "hora", "idUsuario"]
         queryOp.queuePriority = .veryHigh
-        queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
@@ -443,3 +443,4 @@ class Cloud {
     }
     
 }
+

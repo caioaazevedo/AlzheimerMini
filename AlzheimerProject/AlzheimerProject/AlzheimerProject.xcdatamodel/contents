@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Calendario" representedClassName="Calendario" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idEventos" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -9,15 +9,15 @@
     <entity name="Evento" representedClassName="Evento" syncable="YES">
         <attribute name="categoria" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dia" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="horario" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dia" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="horario" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idCalendario" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="idUsuarios" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofCalendar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Calendario" inverseName="evento" inverseEntity="Calendario" syncable="YES"/>
     </entity>
-    <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
+    <entity name="Feed" representedClassName="Feed" syncable="YES">
         <attribute name="dia" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="horario" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="localizacao" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,7 +32,7 @@
         <attribute name="tableIDS" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <entity name="PerfilUsuario" representedClassName="PerfilUsuario" syncable="YES">
-        <attribute name="alergias" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alergias" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="dataDeNascimento" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endereco" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,7 +40,7 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planoDeSaude" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="remedios" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remedios" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="telefone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tipoSanguineo" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofSala" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sala" inverseName="perfilUsuario" inverseEntity="Sala" syncable="YES"/>

@@ -6,6 +6,8 @@
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 
+import UIKit
+
 class DadosSala {
     var idSala = String()
     var idUsuarios = [String]()
@@ -24,7 +26,7 @@ class DadosSala {
 class DadosUsuario {
     var idUsuario = String()
     var nome = String()
-//    var foto =
+    var foto = Data()
     var email = String()
     var idSala = String()
     
@@ -51,10 +53,10 @@ class DadosClendario {
 class DadosPerfil {
     var idPerfil = String()
     var nome = String()
-    var dataNascimento = String()
+    var dataNascimento = Date()
     var telefone = String()
     var descricao = String()
-//    var fotoPerfil =
+    var fotoPerfil = Data()
     var endereco = String()
     var remedios = [String]()
     var alergias = [String]()
@@ -74,8 +76,8 @@ class DadosEvento {
     var nome = String()
     var categoria = String()
     var descricao = String()
-//    var dia = Data()
-//    var hora = Timer()
+    var dia = Date()
+    var hora = Date()
     var idUsuario = String()
     var idClendario = String()
     
