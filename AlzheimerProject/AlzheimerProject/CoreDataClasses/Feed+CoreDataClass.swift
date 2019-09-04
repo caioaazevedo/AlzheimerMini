@@ -1,8 +1,8 @@
 //
-//  Ids+CoreDataClass.swift
+//  Feed+CoreDataClass.swift
 //  AlzheimerProject
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 31/08/19.
+//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 04/09/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Ids)
-public class Ids: NSManagedObject {
+@objc(Feed)
+public class Feed: NSManagedObject {
 
 }
