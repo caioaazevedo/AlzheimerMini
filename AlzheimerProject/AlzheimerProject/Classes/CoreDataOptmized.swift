@@ -328,14 +328,17 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Evento 🍁
-    func createEvent(categoria: String, descricao: String, dia: Date, horario: Date){
+    func createEvent(categoria: String, descricao: String, dia: Date, horario: Date, responsaveis: [String], nome: String){
         let userLoad = UserLoaded()
         let event = Evento(context: managedObjectContext)
         event.categoria = categoria
         event.descricao = descricao
+        event.nome = nome
         event.id = UUID().uuidString
         event.dia = dia as NSDate
         event.horario = horario as NSDate
+        event.idResponsavel = userLoad.idUser
+        event.idUsuarios = responsaveis as NSObject
         var eventArray = [String]()
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
         do{

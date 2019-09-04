@@ -22,9 +22,10 @@ extension Evento {
     @NSManaged public var dia: NSDate?
     @NSManaged public var horario: NSDate?
     @NSManaged public var id: String?
-    @NSManaged public var idCalendario: Int64
+    @NSManaged public var idCalendario: String?
     @NSManaged public var idUsuarios: NSObject?
     @NSManaged public var nome: String?
+    @NSManaged public var idResponsavel: String?
     @NSManaged public var ofCalendar: Calendario?
 
 }

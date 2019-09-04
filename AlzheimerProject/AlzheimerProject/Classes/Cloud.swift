@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import CoreData
 
 let cloudContainer = CKContainer(identifier: "iCloud.Academy.AlzheimerProject")
 let publicDataBase = cloudContainer.publicCloudDatabase
@@ -423,6 +424,58 @@ class Cloud {
         
     }
     
+    static func updateAllEvents(){
+        
+        /*
+         1. Deletar todos os eventos do coreData
+         2. Carregar cada evento do coreData
+         3. Salvar os eventos em novas instancias no coreData
+         */
+        
+        let userLoad = UserLoaded()
+        let eventCreate = Evento(context: managedObjectContext)
+        let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        
+
+        //  1 -> ✅
+        do{
+            
+            let eventosExistentes = try managedObjectContext.fetch(eventFetchRequest)
+            
+            for even in eventosExistentes{
+                managedObjectContext.delete(even)
+            }
+        } catch {
+            print("Error")
+        }
+        CoreDataRebased.shared.saveCoreData()
+        // 2 -> ✅
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Evento", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.queuePriority = .veryHigh
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            if record["idCalendario"] == userLoad.idSalaCalendar{
+                // 3 -> ✅
+                eventCreate.id = record["idEvento"]
+                eventCreate.categoria = record["categoria"]
+                eventCreate.descricao = record["descricao"]
+                eventCreate.dia = record["dia"]
+                eventCreate.horario = record["hora"]
+                eventCreate.idUsuarios = record["idUsuarios"] as? NSObject
+                eventCreate.idCalendario = record["idCalendario"]
+                eventCreate.idResponsavel = record["idCriador"]
+                eventCreate.nome = record["nome"]
+                
+                CoreDataRebased.shared.saveCoreData()
+            }
+        }
+        
+        
+        
+    }
     
     static func geraAleatorio() -> Int64{
         let ran:Int64 = Int64(arc4random_uniform(1000000))
