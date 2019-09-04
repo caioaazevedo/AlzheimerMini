@@ -83,6 +83,25 @@ class ViewController: UIViewController {
         feedView.reloadData()
     }
     
+    @IBAction func shareAction(_ sender: Any) {
+        // text to share
+        var userload = UserLoaded()
+        
+        var user = CoreDataRebased.shared.loadUserData()
+        
+        let text = "\(user.nome!) would like your participation in the family group. Access key: \(userload.idSala!)."
+        
+        // set up activity view controller
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
 
 extension ViewController : UITableViewDataSource , UITableViewDelegate{

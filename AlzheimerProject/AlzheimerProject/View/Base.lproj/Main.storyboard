@@ -662,7 +662,13 @@
                         <color key="backgroundColor" red="0.36467796559999999" green="0.73699390890000005" blue="0.74510383609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="41m-A3-QbE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Família Dalosto" id="CSO-Kd-zqS"/>
+                    <navigationItem key="navigationItem" title="Família Dalosto" id="CSO-Kd-zqS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dRM-Tz-9vf">
+                            <connections>
+                                <action selector="shareAction:" destination="ryx-Fo-Xa2" id="bRF-ne-gzp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="feedView" destination="YKv-4x-SMG" id="r63-vY-GlE"/>
                         <outlet property="segmented" destination="Ltd-Fz-i4W" id="ZYg-lf-PJd"/>
