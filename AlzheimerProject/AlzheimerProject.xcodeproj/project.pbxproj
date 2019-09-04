@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1144AF172320464000718CC6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1144AF162320464000718CC6 /* Login.storyboard */; };
+		1144AF192320467C00718CC6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF182320467C00718CC6 /* CustomButton.swift */; };
+		1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1B232046CF00718CC6 /* GuestViewController.swift */; };
+		1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1C232046D000718CC6 /* LoginViewController.swift */; };
 		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
@@ -54,6 +58,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1144AF162320464000718CC6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		1144AF182320467C00718CC6 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1144AF1B232046CF00718CC6 /* GuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
+		1144AF1C232046D000718CC6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.release.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.release.xcconfig"; sourceTree = "<group>"; };
 		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
@@ -113,6 +121,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1144AF1A232046BD00718CC6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1144AF1B232046CF00718CC6 /* GuestViewController.swift */,
+				1144AF1C232046D000718CC6 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		3A8646A12315E6A90091BD0C /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +244,7 @@
 				AC9EE929230F175D004FA292 /* Events.swift */,
 				AC9EE92B230F1A88004FA292 /* Days.swift */,
 				3A86469F2315C0490091BD0C /* CoreData.swift */,
+				1144AF182320467C00718CC6 /* CustomButton.swift */,
 				3A5F8F77231746BC00A8B05C /* Cloud.swift */,
 			);
 			path = Classes;
@@ -245,6 +263,7 @@
 			children = (
 				AC9EE90623071D01004FA292 /* Main.storyboard */,
 				AC9EE90B23071D02004FA292 /* LaunchScreen.storyboard */,
+				1144AF162320464000718CC6 /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,6 +271,7 @@
 		AC9EE919230728F4004FA292 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1144AF1A232046BD00718CC6 /* Login */,
 				AC529664231F104B00EACF44 /* Feed */,
 				AC529663231F101E00EACF44 /* Calendario */,
 				AC529662231F100F00EACF44 /* Perfil */,
@@ -327,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1144AF172320464000718CC6 /* Login.storyboard in Resources */,
 				AC9EE90D23071D02004FA292 /* LaunchScreen.storyboard in Resources */,
 				AC9EE90A23071D02004FA292 /* Assets.xcassets in Resources */,
 				AC9EE90823071D01004FA292 /* Main.storyboard in Resources */,
@@ -401,6 +422,7 @@
 				AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
+				1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */,
 				3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */,
 				3ABF2BA82318761700486A68 /* PersistenceManager.swift in Sources */,
 				3AD49DDF231621EC00904457 /* (null) in Sources */,
@@ -413,7 +435,9 @@
 				3ACD843B231AE0A30006B38F /* Ids+CoreDataClass.swift in Sources */,
 				3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
+				1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */,
 				3ACD843E231AE0A30006B38F /* Usuario+CoreDataProperties.swift in Sources */,
+				1144AF192320467C00718CC6 /* CustomButton.swift in Sources */,
 				E2CEB480231850A200C90EFD /* Dados.swift in Sources */,
 				3ACD8440231AE0A30006B38F /* Sala+CoreDataProperties.swift in Sources */,
 				AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */,
