@@ -11,6 +11,18 @@
 		1144AF192320467C00718CC6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF182320467C00718CC6 /* CustomButton.swift */; };
 		1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1B232046CF00718CC6 /* GuestViewController.swift */; };
 		1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1C232046D000718CC6 /* LoginViewController.swift */; };
+		3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */; };
+		3A54EC9A2320573D004BB09C /* Feed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */; };
+		3A54EC9B2320573D004BB09C /* Calendario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8F2320573D004BB09C /* Calendario+CoreDataClass.swift */; };
+		3A54EC9C2320573D004BB09C /* Calendario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC902320573D004BB09C /* Calendario+CoreDataProperties.swift */; };
+		3A54EC9D2320573D004BB09C /* PerfilUsuario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC912320573D004BB09C /* PerfilUsuario+CoreDataClass.swift */; };
+		3A54EC9E2320573D004BB09C /* PerfilUsuario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC922320573D004BB09C /* PerfilUsuario+CoreDataProperties.swift */; };
+		3A54EC9F2320573D004BB09C /* Sala+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC932320573D004BB09C /* Sala+CoreDataClass.swift */; };
+		3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC942320573D004BB09C /* Sala+CoreDataProperties.swift */; };
+		3A54ECA12320573D004BB09C /* Usuario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC952320573D004BB09C /* Usuario+CoreDataClass.swift */; };
+		3A54ECA22320573D004BB09C /* Usuario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC962320573D004BB09C /* Usuario+CoreDataProperties.swift */; };
+		3A54ECA32320573D004BB09C /* Evento+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC972320573D004BB09C /* Evento+CoreDataClass.swift */; };
+		3A54ECA42320573D004BB09C /* Evento+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC982320573D004BB09C /* Evento+CoreDataProperties.swift */; };
 		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
@@ -18,18 +30,6 @@
 		3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */; };
 		3ABF2BA72318761700486A68 /* ClasseTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2BA52318761700486A68 /* ClasseTemp.swift */; };
 		3ABF2BA82318761700486A68 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2BA62318761700486A68 /* PersistenceManager.swift */; };
-		3ACD8437231AE0A30006B38F /* Calendario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD842B231AE0A30006B38F /* Calendario+CoreDataClass.swift */; };
-		3ACD8438231AE0A30006B38F /* Calendario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD842C231AE0A30006B38F /* Calendario+CoreDataProperties.swift */; };
-		3ACD8439231AE0A30006B38F /* Evento+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD842D231AE0A30006B38F /* Evento+CoreDataClass.swift */; };
-		3ACD843A231AE0A30006B38F /* Evento+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD842E231AE0A30006B38F /* Evento+CoreDataProperties.swift */; };
-		3ACD843B231AE0A30006B38F /* Ids+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD842F231AE0A30006B38F /* Ids+CoreDataClass.swift */; };
-		3ACD843C231AE0A30006B38F /* Ids+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD8430231AE0A30006B38F /* Ids+CoreDataProperties.swift */; };
-		3ACD843D231AE0A30006B38F /* Usuario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD8431231AE0A30006B38F /* Usuario+CoreDataClass.swift */; };
-		3ACD843E231AE0A30006B38F /* Usuario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD8432231AE0A30006B38F /* Usuario+CoreDataProperties.swift */; };
-		3ACD843F231AE0A30006B38F /* Sala+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD8433231AE0A30006B38F /* Sala+CoreDataClass.swift */; };
-		3ACD8440231AE0A30006B38F /* Sala+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD8434231AE0A30006B38F /* Sala+CoreDataProperties.swift */; };
-		3ACD8441231AE0A30006B38F /* PerfilUsuario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD8435231AE0A30006B38F /* PerfilUsuario+CoreDataClass.swift */; };
-		3ACD8442231AE0A30006B38F /* PerfilUsuario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD8436231AE0A30006B38F /* PerfilUsuario+CoreDataProperties.swift */; };
 		3AD49DDF231621EC00904457 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3AD49DE0231621EC00904457 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3AD49DE3231621EC00904457 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -63,6 +63,18 @@
 		1144AF1B232046CF00718CC6 /* GuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
 		1144AF1C232046D000718CC6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.release.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.release.xcconfig"; sourceTree = "<group>"; };
+		3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A54EC8F2320573D004BB09C /* Calendario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendario+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A54EC902320573D004BB09C /* Calendario+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendario+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A54EC912320573D004BB09C /* PerfilUsuario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PerfilUsuario+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A54EC922320573D004BB09C /* PerfilUsuario+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PerfilUsuario+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A54EC932320573D004BB09C /* Sala+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sala+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A54EC942320573D004BB09C /* Sala+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sala+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A54EC952320573D004BB09C /* Usuario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Usuario+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A54EC962320573D004BB09C /* Usuario+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Usuario+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A54EC972320573D004BB09C /* Evento+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Evento+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A54EC982320573D004BB09C /* Evento+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Evento+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -70,18 +82,6 @@
 		3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOptmized.swift; sourceTree = "<group>"; };
 		3ABF2BA52318761700486A68 /* ClasseTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClasseTemp.swift; sourceTree = "<group>"; };
 		3ABF2BA62318761700486A68 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		3ACD842B231AE0A30006B38F /* Calendario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendario+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3ACD842C231AE0A30006B38F /* Calendario+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendario+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3ACD842D231AE0A30006B38F /* Evento+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Evento+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3ACD842E231AE0A30006B38F /* Evento+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Evento+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3ACD842F231AE0A30006B38F /* Ids+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ids+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3ACD8430231AE0A30006B38F /* Ids+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ids+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3ACD8431231AE0A30006B38F /* Usuario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Usuario+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3ACD8432231AE0A30006B38F /* Usuario+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Usuario+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3ACD8433231AE0A30006B38F /* Sala+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sala+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3ACD8434231AE0A30006B38F /* Sala+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sala+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3ACD8435231AE0A30006B38F /* PerfilUsuario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PerfilUsuario+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3ACD8436231AE0A30006B38F /* PerfilUsuario+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PerfilUsuario+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3FAA1ACF3D0FB7238CA892E8 /* Pods-AlzheimerProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.debug.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.debug.xcconfig"; sourceTree = "<group>"; };
 		64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlzheimerProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC39EE182318638B00DC590C /* CellFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFeed.swift; sourceTree = "<group>"; };
@@ -133,18 +133,18 @@
 		3A8646A12315E6A90091BD0C /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
-				3ACD842B231AE0A30006B38F /* Calendario+CoreDataClass.swift */,
-				3ACD842C231AE0A30006B38F /* Calendario+CoreDataProperties.swift */,
-				3ACD842D231AE0A30006B38F /* Evento+CoreDataClass.swift */,
-				3ACD842E231AE0A30006B38F /* Evento+CoreDataProperties.swift */,
-				3ACD842F231AE0A30006B38F /* Ids+CoreDataClass.swift */,
-				3ACD8430231AE0A30006B38F /* Ids+CoreDataProperties.swift */,
-				3ACD8431231AE0A30006B38F /* Usuario+CoreDataClass.swift */,
-				3ACD8432231AE0A30006B38F /* Usuario+CoreDataProperties.swift */,
-				3ACD8433231AE0A30006B38F /* Sala+CoreDataClass.swift */,
-				3ACD8434231AE0A30006B38F /* Sala+CoreDataProperties.swift */,
-				3ACD8435231AE0A30006B38F /* PerfilUsuario+CoreDataClass.swift */,
-				3ACD8436231AE0A30006B38F /* PerfilUsuario+CoreDataProperties.swift */,
+				3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */,
+				3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */,
+				3A54EC8F2320573D004BB09C /* Calendario+CoreDataClass.swift */,
+				3A54EC902320573D004BB09C /* Calendario+CoreDataProperties.swift */,
+				3A54EC912320573D004BB09C /* PerfilUsuario+CoreDataClass.swift */,
+				3A54EC922320573D004BB09C /* PerfilUsuario+CoreDataProperties.swift */,
+				3A54EC932320573D004BB09C /* Sala+CoreDataClass.swift */,
+				3A54EC942320573D004BB09C /* Sala+CoreDataProperties.swift */,
+				3A54EC952320573D004BB09C /* Usuario+CoreDataClass.swift */,
+				3A54EC962320573D004BB09C /* Usuario+CoreDataProperties.swift */,
+				3A54EC972320573D004BB09C /* Evento+CoreDataClass.swift */,
+				3A54EC982320573D004BB09C /* Evento+CoreDataProperties.swift */,
 			);
 			path = CoreDataClasses;
 			sourceTree = "<group>";
@@ -403,24 +403,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ACD843C231AE0A30006B38F /* Ids+CoreDataProperties.swift in Sources */,
 				3ABF2BA72318761700486A68 /* ClasseTemp.swift in Sources */,
 				3AD49DE3231621EC00904457 /* (null) in Sources */,
 				AC39EE192318638B00DC590C /* CellFeed.swift in Sources */,
+				3A54ECA12320573D004BB09C /* Usuario+CoreDataClass.swift in Sources */,
 				3AD49DE5231621EC00904457 /* (null) in Sources */,
 				3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */,
-				3ACD8439231AE0A30006B38F /* Evento+CoreDataClass.swift in Sources */,
 				3A8646A02315C0490091BD0C /* CoreData.swift in Sources */,
+				3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */,
+				3A54ECA22320573D004BB09C /* Usuario+CoreDataProperties.swift in Sources */,
 				AC9EE924230C6901004FA292 /* CalendarioViewController.swift in Sources */,
-				3ACD8442231AE0A30006B38F /* PerfilUsuario+CoreDataProperties.swift in Sources */,
-				3ACD8437231AE0A30006B38F /* Calendario+CoreDataClass.swift in Sources */,
-				3ACD8438231AE0A30006B38F /* Calendario+CoreDataProperties.swift in Sources */,
-				3ACD8441231AE0A30006B38F /* PerfilUsuario+CoreDataClass.swift in Sources */,
 				ACC5F51223199FCE003B7562 /* CellPerfil.swift in Sources */,
 				AC9EE90523071D01004FA292 /* ViewController.swift in Sources */,
-				3ACD843D231AE0A30006B38F /* Usuario+CoreDataClass.swift in Sources */,
 				AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
+				3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
 				1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */,
 				3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */,
@@ -428,22 +425,25 @@
 				3AD49DDF231621EC00904457 /* (null) in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
+				3A54ECA42320573D004BB09C /* Evento+CoreDataProperties.swift in Sources */,
 				AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */,
+				3A54EC9B2320573D004BB09C /* Calendario+CoreDataClass.swift in Sources */,
 				AC9EE91523072645004FA292 /* Notification.swift in Sources */,
-				3ACD843A231AE0A30006B38F /* Evento+CoreDataProperties.swift in Sources */,
 				3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */,
-				3ACD843B231AE0A30006B38F /* Ids+CoreDataClass.swift in Sources */,
+				3A54ECA32320573D004BB09C /* Evento+CoreDataClass.swift in Sources */,
+				3A54EC9C2320573D004BB09C /* Calendario+CoreDataProperties.swift in Sources */,
 				3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
 				1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */,
-				3ACD843E231AE0A30006B38F /* Usuario+CoreDataProperties.swift in Sources */,
+				3A54EC9A2320573D004BB09C /* Feed+CoreDataProperties.swift in Sources */,
+				3A54EC9E2320573D004BB09C /* PerfilUsuario+CoreDataProperties.swift in Sources */,
+				3A54EC9D2320573D004BB09C /* PerfilUsuario+CoreDataClass.swift in Sources */,
 				1144AF192320467C00718CC6 /* CustomButton.swift in Sources */,
 				E2CEB480231850A200C90EFD /* Dados.swift in Sources */,
-				3ACD8440231AE0A30006B38F /* Sala+CoreDataProperties.swift in Sources */,
 				AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */,
 				AC9EE928230F0D8D004FA292 /* CellCalendar.swift in Sources */,
-				3ACD843F231AE0A30006B38F /* Sala+CoreDataClass.swift in Sources */,
 				AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */,
+				3A54EC9F2320573D004BB09C /* Sala+CoreDataClass.swift in Sources */,
 				3AD49DE7231621EC00904457 /* (null) in Sources */,
 				3AD49DE0231621EC00904457 /* (null) in Sources */,
 				AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */,
