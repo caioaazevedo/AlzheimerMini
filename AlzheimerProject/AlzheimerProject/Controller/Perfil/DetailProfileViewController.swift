@@ -14,15 +14,24 @@ class DetailProfileViewController: UIViewController {
         super.viewDidLoad()
         // if (profile == host){
         idosoNome.isUserInteractionEnabled = true
+        dataNascimento.isUserInteractionEnabled = true
+        tipoSanguineo.isUserInteractionEnabled = true
+        telefone.isUserInteractionEnabled = true
+        rg.isU
+        
+        
     //}
         // Do any additional setup after loading the view.
     }
     
-    @IBOutlet weak var idosoNome: UILabel!
-    @IBOutlet weak var dataNascimento: UILabel!
-    @IBOutlet weak var tipoSanguineo: UILabel!
-    @IBOutlet weak var telefone: UILabel!
-    @IBOutlet weak var RG: UILabel!
+    @IBOutlet weak var idosoNome: UITextField!
+    @IBOutlet weak var dataNascimento: UITextField!
+    @IBOutlet weak var tipoSanguineo: UITextField!
+    @IBOutlet weak var telefone: UITextField!
+    @IBOutlet weak var rg: UITextField!
+    
+    
+    
     @IBOutlet weak var endereco: UILabel!
     @IBOutlet weak var fotoIdoso: UIImageView!
     
