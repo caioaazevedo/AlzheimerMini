@@ -563,7 +563,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9if-0l-rYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2715.9420289855075" y="1229.7991071428571"/>
+            <point key="canvasLocation" x="2851" y="959"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Pii-lv-9XS">
@@ -588,7 +588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wks-PX-iKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3820" y="1856"/>
+            <point key="canvasLocation" x="3888" y="2194"/>
         </scene>
         <!--Circle Bar Controller-->
         <scene sceneID="vp5-ox-sj7">
@@ -686,6 +686,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AOJ-sP-N2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3789.8550724637685" y="830.35714285714278"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="azz-cl-GZu">
+            <objects>
+                <viewController id="Ye6-Ph-ymU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dac-oU-BuD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rtC-4o-WzW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbo-6S-pwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4516" y="1547"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QBX-kV-Ase">
