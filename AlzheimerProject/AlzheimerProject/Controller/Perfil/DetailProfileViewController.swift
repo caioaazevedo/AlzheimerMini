@@ -12,7 +12,9 @@ class DetailProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // if (profile == host){
+        idosoNome.isUserInteractionEnabled = true
+    //}
         // Do any additional setup after loading the view.
     }
     
