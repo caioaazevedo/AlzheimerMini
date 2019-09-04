@@ -467,8 +467,8 @@
                         <outlet property="gestureView" destination="U3k-An-nDv" id="Jn9-yU-zrM"/>
                         <outlet property="profilePhoto" destination="M9g-Cj-icK" id="n5i-TW-ama"/>
                         <segue destination="MdR-FW-x6J" kind="show" identifier="segueDados" id="1zU-Xz-GL5"/>
-                        <segue destination="UcU-HX-d1L" kind="show" id="pVQ-Ex-nAF"/>
-                        <segue destination="LGb-eO-06y" kind="show" id="adP-5D-YTt"/>
+                        <segue destination="UcU-HX-d1L" kind="show" identifier="segueProfile" id="pVQ-Ex-nAF"/>
+                        <segue destination="LGb-eO-06y" kind="show" identifier="segueContact" id="adP-5D-YTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

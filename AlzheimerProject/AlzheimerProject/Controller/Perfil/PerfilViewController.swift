@@ -139,7 +139,14 @@ extension PerfilViewController: UIImagePickerControllerDelegate, UINavigationCon
 extension PerfilViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        switch(indexPath.row){
+        case 0:
+            performSegue(withIdentifier: "segueDados", sender: self)
+        case 1:
+            performSegue(withIdentifier: "segueProfile", sender: self)
+        default:
+            performSegue(withIdentifier: "segueContact", sender: self)
+        }
       
     }
     
