@@ -161,29 +161,31 @@ class CoreDataRebased{
     // ✅ - Fetch do sala do core data 🍁
     func fetchSala() -> Sala{
         
-        let userLoad = UserLoaded()
-        
-        let salaCore = Sala(context: managedObjectContext)
-        
         let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
-        do {
-            
-            let salas = try managedObjectContext.fetch(salaFetchRequest)
-            
-            for sala in salas{
-                if userLoad.idSala == sala.id && sala.id != nil {
-                    salaCore.id = sala.id
-                    salaCore.idCalendario = sala.idCalendario
-                    salaCore.idHost = sala.idHost
-                    salaCore.idPerfil = sala.idPerfil
-                    salaCore.idUsuarios = sala.idUsuarios
-                }
-            }
-        } catch  {
-            print("Error")
-        }
-        
-        return salaCore
+        return try! managedObjectContext.fetch(salaFetchRequest)[0]
+//
+//        let userLoad = UserLoaded()
+//
+//        let salaCore = Sala(context: managedObjectContext)
+//
+//        do {
+//
+//            let salas = try managedObjectContext.fetch(salaFetchRequest)
+//
+//            for sala in salas{
+//                if userLoad.idSala == sala.id && sala.id != nil {
+//                    salaCore.id = sala.id
+//                    salaCore.idCalendario = sala.idCalendario
+//                    salaCore.idHost = sala.idHost
+//                    salaCore.idPerfil = sala.idPerfil
+//                    salaCore.idUsuarios = sala.idUsuarios
+//                }
+//            }
+//        } catch  {
+//            print("Error")
+//        }
+//
+//        return salaCore
     }
     
     //✅ - Criar Usuario 😎
@@ -202,7 +204,6 @@ class CoreDataRebased{
         
         
     }
-    
     //✅ - Criar Sala Guest 😎
     func createSalaGuest(){
         let sala = Sala(context: managedObjectContext)
@@ -324,11 +325,6 @@ class CoreDataRebased{
         } catch {
             print("Error")
         }
-        
-        
-        
-        
-        
         
         saveCoreData()
     }
