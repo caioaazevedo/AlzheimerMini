@@ -43,6 +43,9 @@ class ViewController: UIViewController {
         feedView.delegate = self
         feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
+        
+        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: nil, Nome: "Pagode")
+        CoreDataRebased.shared.createSala()
     }
     
     
@@ -85,9 +88,9 @@ class ViewController: UIViewController {
     
     @IBAction func shareAction(_ sender: Any) {
         // text to share
-        var userload = UserLoaded()
+        let userload = UserLoaded()
         
-        var user = CoreDataRebased.shared.loadUserData()
+        let user = CoreDataRebased.shared.loadUserData()
         
         let text = "\(user.nome!) would like your participation in the family group. Access key: \(userload.idSala!)."
         

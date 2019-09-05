@@ -94,7 +94,7 @@ class CoreDataBase {
         
     }
     
-    func createEventRepaired(categorioa: String, descricao: String, dia: Int64, horario: Int64){
+    func createEventRepaired(categorioa: String, descricao: String, dia: Date, horario: Date){
         
         /*
          1 - Olhar o ID da sala do USUARIO
@@ -135,8 +135,8 @@ class CoreDataBase {
         event.categoria = categorioa
         event.descricao = descricao
         event.id = UUID().uuidString
-        event.dia = dia
-        event.horario = horario
+        event.dia = dia as NSDate
+        event.horario = horario as NSDate
         // ---> 4
         var eventArray = [String]()
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -229,12 +229,12 @@ class CoreDataBase {
         }
     }
     
-    func updateEvent(event: Evento, descricao: String?, dia: Int64, horario: Int64, nome: String, participantes: [UUID]) {
+    func updateEvent(event: Evento, descricao: String?, dia: Date, horario: Date, nome: String, participantes: [UUID]) {
         
         event.descricao = descricao
         //        event.categoria = categoria as? String // arrumar isso aqui
-        event.dia = dia
-        event.horario = horario
+        event.dia = dia as NSDate
+        event.horario = horario as NSDate
         event.nome = nome
         event.idUsuarios = participantes as NSObject // arrumar isso aqui
         
@@ -287,13 +287,13 @@ class CoreDataBase {
     //Update perfil e do calendario
     func updatePerfilIdoso(perfil: PerfilUsuario, alergia: String, dataNasc: NSDate, descricao: String, endereco: String, nome: String, planoSaude: String, remedeios: String, telefone: String, tipoSanguinie: String) {
         
-        perfil.alergias = alergia
+        perfil.alergias = alergia as NSObject
         perfil.dataDeNascimento = dataNasc
         perfil.descricao = descricao
         perfil.endereco = endereco
         perfil.nome = nome
         perfil.planoDeSaude = planoSaude
-        perfil.remedios = remedeios
+        perfil.remedios = remedeios as NSObject
         perfil.telefone = telefone
         
         saveCoreData()
@@ -329,12 +329,12 @@ class CoreDataBase {
     }
     
     
-    func updateEvento(Calendario: Calendario, evento: Evento, categoria: String, descricao: String, dia: Int64, horario: Int64, nome: String, idUsuarios: [String] ){
+    func updateEvento(Calendario: Calendario, evento: Evento, categoria: String, descricao: String, dia: Date, horario: Date, nome: String, idUsuarios: [String] ){
         
         evento.categoria = categoria
         evento.descricao = descricao
-        evento.dia = dia
-        evento.horario = horario
+        evento.dia = dia as NSDate
+        evento.horario = horario as NSDate
         evento.nome = nome
         evento.idUsuarios = idUsuarios as NSObject
         saveCoreData()
