@@ -26,6 +26,16 @@ class DetailViewController: UIViewController {
         hora.text = horaAux
         responsavel.text = responsavelAux
         local.text = localAux
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     

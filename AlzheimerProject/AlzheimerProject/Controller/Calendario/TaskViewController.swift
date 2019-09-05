@@ -172,6 +172,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         hora = tableController.hora.text ?? ""
         repetir = tableController.repetir.text ?? ""
         responsavel = tableController.responsavel.text ?? ""
+        responsaveis.append(responsavel)
         lembrete = tableController.lembrete.isOn
     }
     
@@ -192,8 +193,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         }
         
         fetchData()
-        delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,repetir: repetir,responsavel: responsavel,descricao: descricao)
         
+        delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,repetir: repetir,responsavel: responsavel,descricao: descricao)
+        CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo)
         _ = navigationController?.popViewController(animated: true)
     }
     

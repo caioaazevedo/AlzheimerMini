@@ -44,8 +44,7 @@ class ViewController: UIViewController {
         feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
         
-        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: nil, Nome: "Pagode")
-        CoreDataRebased.shared.createSala()
+       
     }
     
     
@@ -55,6 +54,7 @@ class ViewController: UIViewController {
         eventos.removeAll()
         getData()
         feedView.reloadData()
+        
     }
     
     func getData(){
