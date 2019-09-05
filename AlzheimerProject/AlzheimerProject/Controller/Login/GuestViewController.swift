@@ -12,6 +12,7 @@ class GuestViewController: UIViewController{
     
     @IBOutlet weak var homeButton: CustomButton!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var textNome: UITextField!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -31,6 +32,10 @@ class GuestViewController: UIViewController{
     
     @IBAction func imageButtonAction(_ sender: UIButton) {
         
+    }
+    
+    func insertCode(code: String){
+        self.textNome.text = code
     }
     
 }

@@ -128,11 +128,12 @@
                     <connections>
                         <outlet property="homeButton" destination="2Fm-br-BBE" id="27d-G5-Cua"/>
                         <outlet property="imageButton" destination="gN1-ya-tKw" id="ChV-RQ-DFS"/>
+                        <outlet property="textNome" destination="Bea-tg-5ko" id="yDY-rx-Eo8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfq-l6-kXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998.55072463768124" y="129.91071428571428"/>
+            <point key="canvasLocation" x="1003" y="130"/>
         </scene>
         <!--Home-->
         <scene sceneID="9Wx-Q0-JTo">

@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import UIKit
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -86,7 +88,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        print("url \(url)")
+        
+        let loginStoryboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let initialViewController : GuestViewController = loginStoryboard.instantiateViewController(withIdentifier: "Login") as! GuestViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
+        return true
+    }
+    
+    
+    
 
 }
 

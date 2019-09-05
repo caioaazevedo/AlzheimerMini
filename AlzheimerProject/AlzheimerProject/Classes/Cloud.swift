@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 
 let cloudContainer = CKContainer(identifier: "iCloud.Academy.AlzheimerProject")
 let publicDataBase = cloudContainer.publicCloudDatabase
