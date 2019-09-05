@@ -19,27 +19,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eca-gI-jsF">
-                                <rect key="frame" x="69" y="156" width="276" height="202"/>
+                                <rect key="frame" x="75" y="100" width="264" height="264"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="202" id="9Gv-H0-eMk"/>
+                                    <constraint firstAttribute="height" constant="264" id="BCW-DW-2oG"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="nxP-Ie-RyA">
-                                <rect key="frame" x="20" y="538" width="374" height="124"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OLÁ!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2q-6p-z0p">
+                                <rect key="frame" x="36" y="419" width="342" height="41"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entrar como" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heI-7J-xaV">
+                                <rect key="frame" x="36" y="566" width="93.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="nxP-Ie-RyA">
+                                <rect key="frame" x="36" y="609.5" width="342" height="132.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dar-1b-mDn" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="55"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.04830961332" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Host"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="ADMINISTRADOR">
+                                            <color key="titleColor" red="0.98838694680000005" green="1" blue="0.95191832860000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
                                         <connections>
                                             <action selector="hostButtonAction:" destination="08K-uJ-Hp9" eventType="touchUpInside" id="9Qd-Xs-c9L"/>
                                             <segue destination="Fg7-5o-6fC" kind="show" identifier="host" id="ycR-Qk-smF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7u-zy-Vp9" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="74.5" width="374" height="49.5"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.04830961332" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Guest"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7u-zy-Vp9" customClass="RoundButton" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="78" width="342" height="54.5"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="CONVIDADO">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="guestButtonAction:" destination="08K-uJ-Hp9" eventType="touchUpInside" id="eX2-E5-W45"/>
                                             <segue destination="6RI-kf-fto" kind="show" identifier="guest" id="Xbc-t6-Cwj"/>
@@ -50,14 +80,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nxP-Ie-RyA" firstAttribute="top" secondItem="eca-gI-jsF" secondAttribute="bottom" constant="180" id="P8f-B4-Gmg"/>
-                            <constraint firstItem="eca-gI-jsF" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="69" id="RQJ-rG-Fot"/>
-                            <constraint firstItem="nxP-Ie-RyA" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="20" id="Zz1-gf-gYg"/>
-                            <constraint firstItem="3hs-O2-144" firstAttribute="bottom" secondItem="nxP-Ie-RyA" secondAttribute="bottom" constant="200" id="b21-pr-DfZ"/>
-                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="eca-gI-jsF" secondAttribute="trailing" constant="69" id="g4H-iZ-eCQ"/>
-                            <constraint firstItem="eca-gI-jsF" firstAttribute="top" secondItem="3hs-O2-144" secondAttribute="top" constant="112" id="hDN-8M-G0C"/>
-                            <constraint firstItem="eca-gI-jsF" firstAttribute="centerX" secondItem="ZmB-yY-IMG" secondAttribute="centerX" id="pGI-qH-2zr"/>
-                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="nxP-Ie-RyA" secondAttribute="trailing" constant="20" id="zVz-wI-uZp"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="bottom" secondItem="nxP-Ie-RyA" secondAttribute="bottom" constant="120" id="0ei-BR-Dr3"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="eca-gI-jsF" secondAttribute="trailing" constant="75" id="6Yr-Os-fV7"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="Q2q-6p-z0p" secondAttribute="trailing" constant="36" id="AOC-tJ-l9X"/>
+                            <constraint firstItem="heI-7J-xaV" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="36" id="Gip-nw-jmy"/>
+                            <constraint firstItem="Q2q-6p-z0p" firstAttribute="centerX" secondItem="ZmB-yY-IMG" secondAttribute="centerX" id="HRH-Ky-Shf"/>
+                            <constraint firstItem="Q2q-6p-z0p" firstAttribute="top" secondItem="eca-gI-jsF" secondAttribute="bottom" constant="55" id="NwH-Y6-TqP"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="nxP-Ie-RyA" secondAttribute="trailing" constant="36" id="Te1-c0-6d8"/>
+                            <constraint firstItem="nxP-Ie-RyA" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="36" id="fMt-Ea-4SK"/>
+                            <constraint firstItem="Q2q-6p-z0p" firstAttribute="top" secondItem="eca-gI-jsF" secondAttribute="bottom" constant="55" id="g0q-4n-BMg"/>
+                            <constraint firstItem="nxP-Ie-RyA" firstAttribute="top" secondItem="heI-7J-xaV" secondAttribute="bottom" constant="23" id="gOC-Fh-CDy"/>
+                            <constraint firstItem="eca-gI-jsF" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="75" id="gmU-Ec-tEe"/>
+                            <constraint firstItem="Q2q-6p-z0p" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="36" id="l0t-F7-kt1"/>
+                            <constraint firstItem="eca-gI-jsF" firstAttribute="top" secondItem="3hs-O2-144" secondAttribute="top" constant="56" id="sdk-dk-eXy"/>
+                            <constraint firstItem="heI-7J-xaV" firstAttribute="top" secondItem="Q2q-6p-z0p" secondAttribute="bottom" constant="106" id="toQ-KC-Q20"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3hs-O2-144"/>
                     </view>
@@ -68,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fn-EM-AJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-843" y="188"/>
+            <point key="canvasLocation" x="-1194" y="188"/>
         </scene>
         <!--Guest View Controller-->
         <scene sceneID="g8b-63-Cjn">
@@ -78,45 +114,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome Completo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
-                                <rect key="frame" x="43" y="499" width="328" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
+                                <rect key="frame" x="36" y="490" width="328" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQr-3q-NNG">
-                                <rect key="frame" x="43" y="470" width="84" height="21"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
+                                <rect key="frame" x="36" y="562" width="328" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@rememberMe.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
-                                <rect key="frame" x="43" y="586" width="328" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-9z-ZGy">
-                                <rect key="frame" x="43" y="557" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                <rect key="frame" x="32" y="792" width="351" height="56"/>
+                                <rect key="frame" x="36" y="690" width="342" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.04830961332" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Entrar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="G24-z5-puF"/>
                                     <segue destination="TQi-Lw-Dua" kind="show" id="Qd5-fh-e5L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN1-ya-tKw">
-                                <rect key="frame" x="89" y="154" width="236" height="207"/>
+                                <rect key="frame" x="75" y="100" width="264" height="264"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="sample"/>
                                 <userDefinedRuntimeAttributes>
@@ -134,19 +162,17 @@
                                     <action selector="imageButtonAction:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="Okn-ks-4aA"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7K-Yo-vA7">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="Lnc-Vz-StZ">
-                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="KqW-aR-iAF">
-                                            <connections>
-                                                <segue destination="08K-uJ-Hp9" kind="show" id="9Mn-in-7B5"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
+                                <rect key="frame" x="159" y="789" width="95" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Voltar">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="08K-uJ-Hp9" kind="show" id="YAN-b0-el0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nhj-PJ-lsX"/>
@@ -179,46 +205,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-wY-kXm" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                <rect key="frame" x="23" y="802" width="351" height="56"/>
+                                <rect key="frame" x="36" y="682" width="342" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.04830961332" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Entrar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="VerifyFamilyCode:" destination="6RI-kf-fto" eventType="touchUpInside" id="nyh-4e-ePn"/>
                                     <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="4ds-Nu-58j"/>
                                     <segue destination="Fg7-5o-6fC" kind="show" identifier="host2" id="1a8-Ni-kb8"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuI-DB-gzU">
-                                <rect key="frame" x="3" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="fJn-nN-sbJ">
-                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="vav-Cv-QuT">
-                                            <connections>
-                                                <segue destination="08K-uJ-Hp9" kind="show" id="IQ5-KT-ffc"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Codigo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-eI-ErX">
-                                <rect key="frame" x="38" y="572" width="344" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Código" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-eI-ErX">
+                                <rect key="frame" x="36" y="541" width="342" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Digite o código da família" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-fX-XiC">
-                                <rect key="frame" x="38" y="543" width="193" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvc-N4-Xzk">
-                                <rect key="frame" x="69" y="154" width="276" height="202"/>
+                                <rect key="frame" x="75" y="100" width="264" height="264"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Informe o código dado pelo host do seu grupo:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-fX-XiC">
+                                <rect key="frame" x="35" y="479" width="230" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfi-M6-z9L">
+                                <rect key="frame" x="160" y="783" width="95" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Voltar">
+                                    <color key="titleColor" red="0.93725490196078431" green="0.6588235294117647" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="08K-uJ-Hp9" kind="show" id="AZV-of-5Wc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JOg-Bq-nob"/>
@@ -229,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cY-QM-WhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="109" y="188"/>
+            <point key="canvasLocation" x="108.69565217391305" y="187.5"/>
         </scene>
     </scenes>
     <resources>
@@ -237,6 +266,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1a8-Ni-kb8"/>
-        <segue reference="9Mn-in-7B5"/>
+        <segue reference="AZV-of-5Wc"/>
     </inferredMetricsTieBreakers>
 </document>
