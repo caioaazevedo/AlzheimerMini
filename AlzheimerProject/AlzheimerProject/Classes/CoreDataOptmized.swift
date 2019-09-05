@@ -128,30 +128,34 @@ class CoreDataRebased{
     }
     
     // ✅ - Fetch do usuario do core data 😎
-    func fetchUsuario() -> Usuario{
-        
-        let userLoad = UserLoaded()
-        
-        let usuario = Usuario(context: managedObjectContext)
-        
+    func fetchUsuario() -> Usuario {
         let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
-        do {
-            
-            let usuarios = try managedObjectContext.fetch(userFetchRequest)
-            
-            for user in usuarios{
-                if userLoad.idUser == user.id && user.id != nil {
-                    usuario.id = user.id
-                    usuario.email = user.email
-                    usuario.nome = user.nome
-                    usuario.idSala = user.idSala
-                }
-            }
-        } catch  {
-            print("Error")
-        }
+        return try! managedObjectContext.fetch(userFetchRequest)[0]
         
-        return usuario
+//        let userLoad = UserLoaded()
+//
+//        //let usuario = Usuario(context: managedObjectContext)
+//        let usuario: Usuario
+//
+//        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+//        do {
+//
+//            let usuarios = try managedObjectContext.fetch(userFetchRequest)
+//            usuario = usuarios[0]
+//
+//            for user in usuarios{
+//                if userLoad.idUser == user.id && user.id != nil {
+//                    usuario.id = user.id
+//                    usuario.email = user.email
+//                    usuario.nome = user.nome
+//                    usuario.idSala = user.idSala
+//                }
+//            }
+//        } catch  {
+//            print("Error")
+//        }
+//
+//        return usuario
     }
     
     // ✅ - Fetch do sala do core data 🍁
@@ -288,8 +292,9 @@ class CoreDataRebased{
                     user.id = usuario.id
                     user.idSala = usuario.idSala
                     user.nome = usuario.nome ?? ""
+                    
+                    user.fotoPerfil = UIImage(data: usuario.fotoPerfil! as Data)
                     print(usuario.fotoPerfil)
-//                    user.fotoPerfil = UIImage(data: usuario.fotoPerfil! as Data)
                 }
             }
         } catch {
