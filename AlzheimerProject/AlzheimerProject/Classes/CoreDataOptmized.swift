@@ -438,14 +438,14 @@ class CoreDataRebased{
             let profiles = try managedObjectContext.fetch(profileFetchRequest)
             for profile in profiles {
                 if userLoad.idSalaProfile == profile.id && profile.id != nil {
-                    prof.alergias = profile.alergias as? String
+                    prof.alergias = profile.alergias as? [String]
                     prof.Descricao = profile.descricao  ?? ""
                     prof.nome = profile.nome ?? ""
                     prof.endereco = profile.endereco ?? ""
                     prof.telefone = profile.telefone ?? ""
                     prof.fotoDePerfil = UIImage(data: profile.fotoDePerfil! as Data)
                     prof.planoDeSaude = profile.planoDeSaude ?? ""
-                    prof.remedios = profile.remedios as? String
+                    prof.remedios = profile.remedios as? [String]
                     prof.tipoSanguineo = profile.tipoSanguineo ?? ""
                     
                 }
@@ -454,10 +454,11 @@ class CoreDataRebased{
             print("error")
         }
         return prof
+        
     }
     
     //✅ - Alterar Dados Profile 🍁
-    func updateProfile(alergias: String?, dataDeNascimento: Date?, descricao: String?, endereco: String?, fotoDePerfil: UIImage?, nome: String?, planoDeSaude: String?, remedios: String?, telefone: String?, tipoSanguineo: String?){
+    func updateProfile(alergias: [String]?, dataDeNascimento: Date?, descricao: String?, endereco: String?, fotoDePerfil: UIImage?, nome: String?, planoDeSaude: String?, remedios: [String]?, telefone: String?, tipoSanguineo: String?){
         let userLoad = UserLoaded()
         let profileFetchRequest = NSFetchRequest<PerfilUsuario>.init(entityName: "PerfilUsuario")
         
@@ -465,7 +466,7 @@ class CoreDataRebased{
             let profiles = try managedObjectContext.fetch(profileFetchRequest)
             for prof in profiles{
                 if userLoad.idSalaProfile == prof.id && prof.id != nil{
-                    prof.alergias = alergias as! NSObject
+                    prof.alergias = alergias as NSObject?
                     prof.dataDeNascimento = dataDeNascimento as NSDate?
                     prof.descricao = descricao ?? ""
                     prof.endereco = endereco ?? ""
@@ -473,10 +474,10 @@ class CoreDataRebased{
                     prof.nome = nome ?? ""
                     prof.telefone = telefone ?? ""
                     prof.tipoSanguineo = tipoSanguineo ?? ""
-                    prof.remedios = remedios as! NSObject
+                    prof.remedios = remedios as NSObject?
                     
                     
-                    Cloud.updatePerfil(searchRecord: userLoad.idSalaProfile!, idPerfil: userLoad.idSalaProfile!, nome: nome ?? "", dataNascimento: dataDeNascimento ?? Date(), telefone: telefone ?? "", descricao: descricao ?? "", fotoPerfil: fotoDePerfil?.pngData()!, endereco: endereco ?? "", remedios: [remedios ?? ""], alergias: [alergias ?? ""], tipoSanguineo: tipoSanguineo ?? "", planoSaude: planoDeSaude! ?? "")
+                    Cloud.updatePerfil(searchRecord: userLoad.idSalaProfile!, idPerfil: userLoad.idSalaProfile!, nome: nome ?? "", dataNascimento: dataDeNascimento ?? Date(), telefone: telefone ?? "", descricao: descricao ?? "", fotoPerfil: fotoDePerfil?.pngData()!, endereco: endereco ?? "", remedios: remedios, alergias: alergias, tipoSanguineo: tipoSanguineo ?? "", planoSaude: planoDeSaude ?? "")
                     
                 }
             }
@@ -519,16 +520,60 @@ struct eventData {
     var nome : String?
 }
 struct profileData {
-    var alergias : String?
+    var alergias : [String]?
     var dataDeNascimento : Date?
     var Descricao : String?
     var endereco : String?
     var fotoDePerfil : UIImage?
     var nome : String?
     var planoDeSaude : String?
-    var remedios : String?
+    var remedios : [String]?
     var telefone : String?
     var tipoSanguineo : String?
 }
 
 
+/*
+ 1 -> ORDEM PARA CRIAR A SALA DO HOST
+ 
+ A. CoreDataRebased.shared.createUsuario(email: <#T##String#>, fotoDoPerfil: <#T##UIImage?#>, Nome: <#T##String#>)
+ B. CoreDataRebased.shared.createSala()
+ 
+ 2 -> ORDEM PARA CRIAR SALA DO GUEST
+ 
+ A. CoreDataRebased.shared.createUsuarioGuest(email: <#T##String#>, fotoDoPerfil: <#T##UIImage?#>, Nome: <#T##String#>, searchSala: <#T##String#>)
+ B. CoreDataRebased.shared.createSalaGuest()
+ 
+ 3 -> ORDEM PARA CRIAR EVENTO
+ 
+ A. CoreDataRebased.shared.createEvent(categoria: <#T##String#>, descricao: <#T##String#>, dia: <#T##Date#>, horario: <#T##Date#>, responsaveis: <#T##[String]#>, nome: <#T##String#>)
+ 
+ 4 -> ORDEM PARA ATUALIZAR OS DADOS DO PROFILE DO IDOSO
+ 
+ A. var usuarioLoad = CoreDataRebased.shared.loadProfileData() "RETORNA UMA STRUCT"
+ B. CoreDataRebased.shared.updateProfile(alergias: <#T##[String]?#>, dataDeNascimento: <#T##Date?#>, descricao: <#T##String?#>, endereco: <#T##String?#>, fotoDePerfil: <#T##UIImage?#>, nome: <#T##String?#>, planoDeSaude: <#T##String?#>, remedios: <#T##[String]?#>, telefone: <#T##String?#>, tipoSanguineo: <#T##String?#>)
+ 
+ 5 -> ORDEM PARA ATUALIZAR OS DADOS USUARIO
+ 
+ A. var usuarioLoad = CoreDataRebased.shared.loadUserData() "RETORNA UMA STRUCT"
+ B. CoreDataRebased.shared.updateUser(email: <#T##String#>, nome: <#T##String#>, fotoPerfil: <#T##UIImage#>)
+ 
+ 6 -> ORDEM PARA ATUALIZAR OS DADOS EVENTO
+ 
+ A. var eventoLoad = CoreDataRebased.shared.loadEvent(evento: <#T##Evento#>) "RETORNA UMA STRUCT"
+ B. CoreDataRebased.shared.updateEvent(evento: <#T##Evento#>, categoria: <#T##String#>, descricao: <#T##String#>, dia: <#T##Date#>, horario: <#T##Date#>, nome: <#T##String#>)
+ 
+ 7 -> MISC DE METODOS QUE SERÃ0 CHAMADOS DEPOIS QUE O USUARIO JA TIVER ENTRADO EM UMA SALA COMO HOST OU GUEST
+ 
+ A.Cloud.updateAllEvents()
+ B.Cloud.updateCalendario()
+ C.Cloud.updateUsuarioProfile()
+ D.Cloud.updateSala()
+ 
+ 8 -> METODOS PARA CHAMAR NAS RELOADS
+ 
+ A.Cloud.updateAllEvents()
+ B.Cloud.updateCalendario()
+ C.Cloud.updateUsuarioProfile()
+ D.Cloud.updateSala()
+ */
