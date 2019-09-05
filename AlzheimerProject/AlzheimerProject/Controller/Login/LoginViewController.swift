@@ -14,14 +14,22 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var hostButton: CustomButton!
     @IBOutlet weak var guestButton: CustomButton!
     
-    
     @IBAction func hostButtonAction(_ sender: Any) {
         hostButton.pulsate()
+        
     }
     
     @IBAction func guestButtonAction(_ sender: Any) {
         guestButton.pulsate()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "host" {
+            let destination = segue.destination as! GuestViewController
+            destination.isHost = true
+        }
+    }
+
     
 }
