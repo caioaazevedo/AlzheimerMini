@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calendário-->
+        <!--Grupo dos Dalosto-->
         <scene sceneID="tpc-qf-N84">
             <objects>
                 <viewController id="5uS-xS-Xhq" customClass="CalendarioViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,8 +18,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u3L-DL-KFu" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="88" width="414" height="368"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.99998801946640015" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" red="0.94902592897415161" green="0.9490082859992981" blue="0.94902020692825317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderDefaultColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderSelectionColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" red="0.707262218" green="0.85410135980000002" blue="0.90196949240000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dia de hoje" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXI-Rj-3hP">
+                                <rect key="frame" x="29" y="487" width="212" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cDx-bj-IP3">
-                                <rect key="frame" x="0.0" y="524" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="538" width="414" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -71,6 +106,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.70726221799850464" green="0.85410135984420776" blue="0.90196949243545532" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="horario" destination="BHa-Qb-yE8" id="EJb-wt-0pX"/>
                                             <outlet property="imagem" destination="Ybp-cU-te4" id="0hc-Ng-o8o"/>
@@ -86,17 +122,14 @@
                                     <outlet property="delegate" destination="5uS-xS-Xhq" id="Xa7-0x-wrA"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u3L-DL-KFu" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="428"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.94902592897415161" green="0.9490082859992981" blue="0.94902020692825317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="7w8-7h-JcV"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendário" id="cR5-GN-q0H">
+                    <navigationItem key="navigationItem" title="Grupo dos Dalosto" id="cR5-GN-q0H">
+                        <barButtonItem key="backBarButtonItem" title="Calendário" id="8xJ-ta-bzw"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="M6u-1Q-Ttg">
+                            <color key="tintColor" red="0.93562841415405273" green="0.65739154815673828" blue="0.34542721509933472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="createTask:" destination="5uS-xS-Xhq" id="0K4-2f-dv4"/>
                             </connections>
@@ -105,6 +138,7 @@
                     <connections>
                         <outlet property="calendar" destination="u3L-DL-KFu" id="FGj-N0-qEr"/>
                         <outlet property="createTaskOutlet" destination="M6u-1Q-Ttg" id="nXr-V9-zOn"/>
+                        <outlet property="diaDeHoje" destination="VXI-Rj-3hP" id="Snf-7a-7YG"/>
                         <outlet property="tableView" destination="cDx-bj-IP3" id="FMO-vP-0xd"/>
                         <segue destination="ZaE-QR-p3q" kind="show" identifier="segueDetail" id="wdz-6M-NN5"/>
                         <segue destination="3Gb-qu-pJF" kind="show" identifier="segueTask" id="lcM-NS-UxG"/>
@@ -617,22 +651,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amanda Congiu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ah-LD-Q45">
-                                <rect key="frame" x="51" y="309" width="122" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnw-rA-PPo">
                                 <rect key="frame" x="56" y="416" width="41" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gmdalosto@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNh-4h-WAz">
-                                <rect key="frame" x="56" y="445" width="175" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -645,23 +665,37 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="61 9507-2601" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otb-TH-gQe">
-                                <rect key="frame" x="56" y="568" width="109" height="21"/>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Amanda Congiu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4bZ-eg-jT4">
+                                <rect key="frame" x="51" y="309" width="185" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gmdalosto@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MlS-6O-X9s">
+                                <rect key="frame" x="66" y="455" width="261" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="61 99507-2601" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HXB-mx-3CO">
+                                <rect key="frame" x="61" y="568" width="165" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aiY-7y-rFk"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="email" destination="PNh-4h-WAz" id="K73-a8-1JR"/>
-                        <outlet property="name" destination="5ah-LD-Q45" id="zTw-ew-PS0"/>
+                        <outlet property="email" destination="MlS-6O-X9s" id="mi1-S4-JLN"/>
+                        <outlet property="nome" destination="4bZ-eg-jT4" id="0gy-tG-faC"/>
                         <outlet property="profilePhoto" destination="i5n-S6-zud" id="pQZ-dV-mJi"/>
-                        <outlet property="telefone" destination="otb-TH-gQe" id="LaR-3E-Zjj"/>
+                        <outlet property="telefone" destination="HXB-mx-3CO" id="a3P-jL-CrF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wks-PX-iKg" userLabel="First Responder" sceneMemberID="firstResponder"/>

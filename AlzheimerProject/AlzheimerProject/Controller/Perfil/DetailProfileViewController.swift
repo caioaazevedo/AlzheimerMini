@@ -9,7 +9,10 @@
 import UIKit
 
 class DetailProfileViewController: UIViewController {
-
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // if (profile == host){
@@ -17,12 +20,27 @@ class DetailProfileViewController: UIViewController {
         dataNascimento.isUserInteractionEnabled = true
         tipoSanguineo.isUserInteractionEnabled = true
         telefone.isUserInteractionEnabled = true
-        rg.isU
+        rg.isUserInteractionEnabled = true
         
         
     //}
         // Do any additional setup after loading the view.
     }
+    
+    func setAll(){
+//        idosoNome.text
+//        dataNascimento.text
+//        tipoSanguineo.text
+//        telefone.text
+//        rg.text
+        
+    }
+    
+    
+    
+    
+    
+    
     
     @IBOutlet weak var idosoNome: UITextField!
     @IBOutlet weak var dataNascimento: UITextField!

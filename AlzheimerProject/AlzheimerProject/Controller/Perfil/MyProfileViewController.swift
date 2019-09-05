@@ -12,15 +12,20 @@ class MyProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
 
     @IBOutlet weak var profilePhoto: UIImageView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var telefone: UILabel!
+    
+    
+    @IBOutlet weak var nome: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var telefone: UITextField!
+    
+    
     
 
 }

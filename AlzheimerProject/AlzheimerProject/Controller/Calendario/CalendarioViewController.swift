@@ -29,6 +29,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
     
+    @IBOutlet weak var diaDeHoje: UILabel!
     @IBOutlet weak var createTaskOutlet: UIBarButtonItem!
     
     
@@ -129,10 +130,12 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     var selectedDay : Date? {
         didSet{
+            
             auxDate = selectedDay!
             auxDiaSemanaNum = Calendar.current.component(.weekday, from: auxDate)
             auxDia = Calendar.current.component(.day, from: auxDate)
             auxMesNum = Calendar.current.component(.month, from: auxDate)
+            diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
             if let today = calendar.today, selectedDay! < today {
                 let alert = UIAlertController(title: "Error", message: "Nao e possivel adicionar tarefas a dias passados", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
@@ -171,17 +174,19 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createCalendar()
+        reloadAll()
+        
+    }
+    
     @IBAction func createTask(_ sender: Any) {
         marcarTask()
     }
 
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        createCalendar()
-        reloadAll()
-    }
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueTask"{
