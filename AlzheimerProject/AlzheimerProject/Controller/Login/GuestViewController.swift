@@ -9,20 +9,27 @@
 import UIKit
 
 class GuestViewController: UIViewController{
+    var isHost = false
+    @IBOutlet weak var familyCode: UITextField!
     
     @IBOutlet weak var homeButton: CustomButton!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var textNome: UITextField!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        
-        
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var userEmail: UITextField!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if isHost {
+            setUpImage()
+        }
     }
     
     func setUpImage() {
-        imageButton.setImage(#imageLiteral(resourceName: "loginPhoto"), for: .normal)
         imageButton.layer.cornerRadius = imageButton.frame.size.height / 2
+        imageButton.clipsToBounds = true
     }
     
     
@@ -34,9 +41,21 @@ class GuestViewController: UIViewController{
         
     }
     
+    @IBAction func VerifyFamilyCode(_ sender: Any) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "host2" {
+            let destination = segue.destination as! GuestViewController
+            destination.isHost = true
+        }
+    }
+    
     func insertCode(code: String){
-        self.textNome.text = code
+        self.familyCode.text = code
     }
     
 }
+
 

@@ -33,6 +33,7 @@
                                         <state key="normal" title="Host"/>
                                         <connections>
                                             <action selector="hostButtonAction:" destination="08K-uJ-Hp9" eventType="touchUpInside" id="9Qd-Xs-c9L"/>
+                                            <segue destination="Fg7-5o-6fC" kind="show" identifier="host" id="ycR-Qk-smF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7u-zy-Vp9" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
@@ -41,7 +42,7 @@
                                         <state key="normal" title="Guest"/>
                                         <connections>
                                             <action selector="guestButtonAction:" destination="08K-uJ-Hp9" eventType="touchUpInside" id="eX2-E5-W45"/>
-                                            <segue destination="Fg7-5o-6fC" kind="show" id="XFs-sZ-H8I"/>
+                                            <segue destination="6RI-kf-fto" kind="show" identifier="guest" id="Xbc-t6-Cwj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -67,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fn-EM-AJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-113.04347826086958" y="129.91071428571428"/>
+            <point key="canvasLocation" x="-843" y="188"/>
         </scene>
         <!--Guest View Controller-->
         <scene sceneID="g8b-63-Cjn">
@@ -111,16 +112,41 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="G24-z5-puF"/>
-                                    <segue destination="TQi-Lw-Dua" kind="show" id="NBI-Ie-k9F"/>
+                                    <segue destination="TQi-Lw-Dua" kind="show" id="Qd5-fh-e5L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN1-ya-tKw">
-                                <rect key="frame" x="114" y="127" width="187" height="178"/>
+                                <rect key="frame" x="89" y="154" width="236" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="sample"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="imageButtonAction:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="Okn-ks-4aA"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7K-Yo-vA7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Lnc-Vz-StZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="KqW-aR-iAF">
+                                            <connections>
+                                                <segue destination="08K-uJ-Hp9" kind="show" id="9Mn-in-7B5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nhj-PJ-lsX"/>
@@ -128,12 +154,13 @@
                     <connections>
                         <outlet property="homeButton" destination="2Fm-br-BBE" id="27d-G5-Cua"/>
                         <outlet property="imageButton" destination="gN1-ya-tKw" id="ChV-RQ-DFS"/>
-                        <outlet property="textNome" destination="Bea-tg-5ko" id="yDY-rx-Eo8"/>
+                        <outlet property="userEmail" destination="AlI-TZ-0rr" id="Wln-Vx-Qo2"/>
+                        <outlet property="userName" destination="Bea-tg-5ko" id="WH1-u4-odm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfq-l6-kXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="130"/>
+            <point key="canvasLocation" x="1035" y="188"/>
         </scene>
         <!--Home-->
         <scene sceneID="9Wx-Q0-JTo">
@@ -143,5 +170,73 @@
             </objects>
             <point key="canvasLocation" x="1831" y="140"/>
         </scene>
+        <!--Guest View Controller-->
+        <scene sceneID="PhC-ub-23K">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="6RI-kf-fto" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RVR-23-l1n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-wY-kXm" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
+                                <rect key="frame" x="23" y="802" width="351" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="VerifyFamilyCode:" destination="6RI-kf-fto" eventType="touchUpInside" id="nyh-4e-ePn"/>
+                                    <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="4ds-Nu-58j"/>
+                                    <segue destination="Fg7-5o-6fC" kind="show" identifier="host2" id="1a8-Ni-kb8"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuI-DB-gzU">
+                                <rect key="frame" x="3" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="fJn-nN-sbJ">
+                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="vav-Cv-QuT">
+                                            <connections>
+                                                <segue destination="08K-uJ-Hp9" kind="show" id="IQ5-KT-ffc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Codigo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-eI-ErX">
+                                <rect key="frame" x="38" y="572" width="344" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Digite o código da família" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-fX-XiC">
+                                <rect key="frame" x="38" y="543" width="193" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvc-N4-Xzk">
+                                <rect key="frame" x="69" y="154" width="276" height="202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JOg-Bq-nob"/>
+                    </view>
+                    <connections>
+                        <outlet property="familyCode" destination="2Wi-eI-ErX" id="q6U-Qb-6vQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cY-QM-WhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109" y="188"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="sample" width="100" height="63"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1a8-Ni-kb8"/>
+        <segue reference="IQ5-KT-ffc"/>
+    </inferredMetricsTieBreakers>
 </document>

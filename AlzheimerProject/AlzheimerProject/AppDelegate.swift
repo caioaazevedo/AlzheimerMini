@@ -92,12 +92,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
         print("url \(url)")
+        print("url host :\(url.host!)")
+        
         
         let loginStoryboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let initialViewController : GuestViewController = loginStoryboard.instantiateViewController(withIdentifier: "Login") as! GuestViewController
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
+        
+        initialViewController.insertCode(code: "\(url.host!)")
         
         return true
     }
