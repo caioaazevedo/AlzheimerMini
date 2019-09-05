@@ -199,7 +199,7 @@
         <!--Guest View Controller-->
         <scene sceneID="PhC-ub-23K">
             <objects>
-                <viewController id="6RI-kf-fto" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="6RI-kf-fto" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RVR-23-l1n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

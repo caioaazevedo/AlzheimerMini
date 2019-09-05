@@ -14,6 +14,7 @@ class GuestViewController: UIViewController{
     
     @IBOutlet weak var homeButton: CustomButton!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var textNome: UITextField!
     
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userEmail: UITextField!
@@ -54,6 +55,10 @@ class GuestViewController: UIViewController{
             let destination = segue.destination as! GuestViewController
             destination.isHost = true
         }
+    }
+    
+    func insertCode(code: String){
+        self.familyCode.text = code
     }
     
 }

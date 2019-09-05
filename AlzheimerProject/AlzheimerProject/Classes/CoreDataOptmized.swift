@@ -128,58 +128,64 @@ class CoreDataRebased{
     }
     
     // ✅ - Fetch do usuario do core data 😎
-    func fetchUsuario() -> Usuario{
-        
-        let userLoad = UserLoaded()
-        
-        let usuario = Usuario(context: managedObjectContext)
-        
+    func fetchUsuario() -> Usuario {
         let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
-        do {
-            
-            let usuarios = try managedObjectContext.fetch(userFetchRequest)
-            
-            for user in usuarios{
-                if userLoad.idUser == user.id && user.id != nil {
-                    usuario.id = user.id
-                    usuario.email = user.email
-                    usuario.nome = user.nome
-                    usuario.idSala = user.idSala
-                }
-            }
-        } catch  {
-            print("Error")
-        }
+        return try! managedObjectContext.fetch(userFetchRequest)[0]
         
-        return usuario
+//        let userLoad = UserLoaded()
+//
+//        //let usuario = Usuario(context: managedObjectContext)
+//        let usuario: Usuario
+//
+//        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+//        do {
+//
+//            let usuarios = try managedObjectContext.fetch(userFetchRequest)
+//            usuario = usuarios[0]
+//
+//            for user in usuarios{
+//                if userLoad.idUser == user.id && user.id != nil {
+//                    usuario.id = user.id
+//                    usuario.email = user.email
+//                    usuario.nome = user.nome
+//                    usuario.idSala = user.idSala
+//                }
+//            }
+//        } catch  {
+//            print("Error")
+//        }
+//
+//        return usuario
     }
     
     // ✅ - Fetch do sala do core data 🍁
     func fetchSala() -> Sala{
         
-        let userLoad = UserLoaded()
-        
-        let salaCore = Sala(context: managedObjectContext)
-        
         let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
-        do {
-            
-            let salas = try managedObjectContext.fetch(salaFetchRequest)
-            
-            for sala in salas{
-                if userLoad.idSala == sala.id && sala.id != nil {
-                    salaCore.id = sala.id
-                    salaCore.idCalendario = sala.idCalendario
-                    salaCore.idHost = sala.idHost
-                    salaCore.idPerfil = sala.idPerfil
-                    salaCore.idUsuarios = sala.idUsuarios
-                }
-            }
-        } catch  {
-            print("Error")
-        }
-        
-        return salaCore
+        return try! managedObjectContext.fetch(salaFetchRequest)[0]
+//
+//        let userLoad = UserLoaded()
+//
+//        let salaCore = Sala(context: managedObjectContext)
+//
+//        do {
+//
+//            let salas = try managedObjectContext.fetch(salaFetchRequest)
+//
+//            for sala in salas{
+//                if userLoad.idSala == sala.id && sala.id != nil {
+//                    salaCore.id = sala.id
+//                    salaCore.idCalendario = sala.idCalendario
+//                    salaCore.idHost = sala.idHost
+//                    salaCore.idPerfil = sala.idPerfil
+//                    salaCore.idUsuarios = sala.idUsuarios
+//                }
+//            }
+//        } catch  {
+//            print("Error")
+//        }
+//
+//        return salaCore
     }
     
     //✅ - Criar Usuario 😎
@@ -198,7 +204,6 @@ class CoreDataRebased{
         
         
     }
-    
     //✅ - Criar Sala Guest 😎
     func createSalaGuest(){
         let sala = Sala(context: managedObjectContext)
@@ -288,7 +293,9 @@ class CoreDataRebased{
                     user.id = usuario.id
                     user.idSala = usuario.idSala
                     user.nome = usuario.nome ?? ""
+                    
                     user.fotoPerfil = UIImage(data: usuario.fotoPerfil! as Data)
+                    print(usuario.fotoPerfil)
                 }
             }
         } catch {
@@ -318,11 +325,6 @@ class CoreDataRebased{
         } catch {
             print("Error")
         }
-        
-        
-        
-        
-        
         
         saveCoreData()
     }
@@ -492,13 +494,12 @@ class CoreDataRebased{
     //***TESTES***
     
     func showData(){
-        let profRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        let profRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
         do {
             let perfis = try managedObjectContext.fetch(profRequest)
             for i in perfis{
                 print(i.id)
-                print(i.idCalendario)
-                print(i.idPerfil)
+                print(i.fotoPerfil)
             }
         } catch {
         }
