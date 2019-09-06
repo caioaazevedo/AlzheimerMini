@@ -44,8 +44,8 @@ class ViewController: UIViewController {
         feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
         
-        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Pagode")
-        CoreDataRebased.shared.createSala()
+//        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Pagode")
+//        CoreDataRebased.shared.createSala()
         
         
         UserLoaded()

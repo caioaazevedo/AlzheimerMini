@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
         if segue.identifier == "host" {
             let destination = segue.destination as! GuestViewController
             destination.isHost = true
+            destination.realHost = true
         }
     }
 

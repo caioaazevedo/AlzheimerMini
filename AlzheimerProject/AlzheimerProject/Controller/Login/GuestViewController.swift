@@ -10,6 +10,7 @@ import UIKit
 
 class GuestViewController: UIViewController{
     var isHost = false
+    var realHost = false
     @IBOutlet weak var familyCode: UITextField!
     
     @IBOutlet weak var homeButton: CustomButton!
@@ -40,6 +41,13 @@ class GuestViewController: UIViewController{
     
     @IBAction func homeButton(_ sender: Any) {
         homeButton.pulsate()
+        
+        if realHost {
+            CoreDataRebased.shared.createUsuario(email: userEmail.text!, fotoDoPerfil: UIImage(named: "Remedio"), Nome: textNome.text!)
+            CoreDataRebased.shared.createSala()
+        } else {
+            CoreDataRebased.shared.createUsuarioGuest(email: userEmail.text!, fotoDoPerfil: UIImage(named: "Remedio"), Nome: textNome.text!, searchSala: familyCode.text!)
+        }
     }
     
     @IBAction func imageButtonAction(_ sender: UIButton) {
@@ -47,6 +55,7 @@ class GuestViewController: UIViewController{
     }
     
     @IBAction func VerifyFamilyCode(_ sender: Any) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
