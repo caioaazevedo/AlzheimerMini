@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol TaskViewControllerDelegate {
     func sendMesage(_ controller: TaskViewController, titulo: String,local : String,categoria : String,hora : String,repetir: String,responsavel: String,descricao: String)
@@ -190,13 +191,19 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
             
         }
+        responsaveis.append(responsavel)
         
         fetchData()
         delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,repetir: repetir,responsavel: responsavel,descricao: descricao)
         
+   
+        CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo)
+        CoreDataRebased.shared.saveCoreData()
         _ = navigationController?.popViewController(animated: true)
     }
     
+    
+ 
 
     
     

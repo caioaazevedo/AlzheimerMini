@@ -10,19 +10,9 @@ import UIKit
 import FSCalendar
 import CoreData
 
+
 let screenSize = UIScreen.main.bounds
 
-
-struct eventStruct{
-    var id = [""]
-    var titulos = [""]
-    var horarios = [""]
-    var descricao = [""]
-    var categorias = [""]
-    var repeatt = [""]
-    var localization = [""]
-    var responsavel = [""]
-}
 
 class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
@@ -40,9 +30,10 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     }()
     
     var DailyEvents = [Events]()
+    var eventosSalvos = [Evento]()
     var dates = [String]()
     var days = [Days]()
-    var events = [Events]()
+    
     var canPass = true
     
     var auxText : String = "" {
@@ -115,6 +106,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     var auxMes : String?
     var DiaSelecionado : Date?
+    var eventoSelecionado : Events?
     var DiaHoje : Date?
     var selectedDay : Date? {
         didSet{
@@ -124,22 +116,18 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             auxDia = Calendar.current.component(.day, from: DiaSelecionado!)
             auxMesNum = Calendar.current.component(.month, from: DiaSelecionado!)
             diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
-            if let today = calendar.today, selectedDay! < today {
-                let alert = UIAlertController(title: "Error", message: "Nao e possivel adicionar tarefas a dias passados", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
-                self.present(alert,animated: true,completion: nil)
-            }
-            else{
-                
-                for day in days{
-                    if selectedDay == day.day{
-                        for i in 0..<day.event.count{
-                            DailyEvents.append(day.event[i])
-                        }
+            
+            
+            
+            for day in days{
+                if selectedDay == day.day{
+                    for i in 0..<day.event.count{
+                        DailyEvents.append(day.event[i])
                     }
                 }
-                tableView.reloadData()
             }
+            tableView.reloadData()
+            
         }
     }
     
@@ -153,13 +141,30 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         DiaSelecionado = DiaHoje
         
         
+        
     }
     
     func fetchAll(){
-        
+        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            let eventos = try managedObjectContext.fetch(fetchRequest)
+            for evento in eventos{
+                eventosSalvos.append(evento)
+                print(evento.idResponsavel)
+            }
+        }catch{
+            
+        }
     }
+    
     @IBAction func createTask(_ sender: Any) {
-        marcarTask()
+        if DiaSelecionado < calendar.today {
+            let alert = UIAlertController(title: "Error", message: "Nao e possivel adicionar tarefas a dias passados", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
+            self.present(alert,animated: true,completion: nil)
+        } else{
+            marcarTask()
+        }
     }
     
     
@@ -175,12 +180,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
         if segue.identifier == "segueDetail"{
             if let vc = segue.destination as? DetailViewController{
-                vc.diaAux = "\(auxDia!) de \(auxMes!)"
-                vc.diaSemanaAux = auxDiaSemana ?? ""
-                vc.horaAux = auxTime ?? ""
-                vc.localAux = auxLocal ?? ""
-                vc.responsavelAux = auxResponsavel ?? ""
-                vc.tituloAux = auxText ?? ""
+                
             }
         }
     }
@@ -188,6 +188,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(false)
+        fetchAll()
     }
     
     
@@ -217,28 +218,23 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     canPass = false
                     let event = Events(titleParameter: auxText,timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",repeattParameter: auxRepetir ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "aa")
                     dia.event.append(event)
-                    events.append(event)
                     DailyEvents.append(event)
                 }
             }
             
             
             if canPass {
-                let day = Days(dayParameter: date)
+                let dia = Days(dayParameter: date)
                 let event = Events(titleParameter: auxText ?? "",timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",repeattParameter: auxRepetir ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "")
-                days.append(day)
-                day.event.append(event)
-                
+                days.append(dia)
+                dia.event.append(event)
                 DailyEvents.append(event)
                 canPass = true
             }
             
             tableView.reloadData()
         }
-        
-        
-        
-        
+    
         
     }
     
@@ -347,6 +343,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        eventoSelecionado = DailyEvents[indexPath.row]
         performSegue(withIdentifier: "segueDetail", sender: self)
         
     }
