@@ -12,19 +12,16 @@ class TableViewTaskViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
     }
-    
-    
     @IBOutlet weak var titulo: UITextField!
     @IBOutlet weak var local: UITextField!
     @IBOutlet weak var categoria: UIImageView!
     @IBOutlet weak var hora: UILabel!
-    @IBOutlet weak var repetir: UILabel!
     @IBOutlet weak var responsavel: UILabel!
     @IBOutlet weak var lembrete: UISwitch!
-    
+    @IBOutlet weak var descricao: UILabel!
     @IBOutlet weak var categoriaLabel: UILabel!
     
     
