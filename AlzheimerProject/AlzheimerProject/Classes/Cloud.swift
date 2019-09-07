@@ -95,6 +95,8 @@ class Cloud {
     }
     
     static func querySala(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
+        var exixst = false
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Sala", predicate: predicate)
         
@@ -115,11 +117,28 @@ class Cloud {
                 
                 print("DADOS: ", record["idSala"]!, array, record["idCalendario"]!, record["idPerfil"]!, record["idHost"]!)
                 
-                completion(true)
+                exixst = true
                 //                print(array)
+            } else {
+                print("NAO")
             }
             
+            
         }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    if exixst {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                }
+            }
+        }
+        
         publicDataBase.add(queryOp)
     }
     
@@ -162,14 +181,10 @@ class Cloud {
             if record["idCalendario"] == searchRecord {
                 
                 DadosClendario.calendario.idCalendario = record["idCalendario"]!
-                if  (record["idEventos"] as! NSArray).mutableCopy() as? [String] != nil {
-                    let eventos = (record["idEventos"] as! NSArray).mutableCopy() as! [String]
-                    DadosClendario.calendario.idEventos = eventos
+                if let rec = record["idEventos"] {
+                    DadosClendario.calendario.idEventos = ((rec as! NSArray).mutableCopy() as? [String])!
+                    
                 }
-                
-                
-                
-                
                 //                print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
                 
                 completion(true)
@@ -209,10 +224,10 @@ class Cloud {
                 
                 DadosPerfil.perfil.idPerfil = record["idPerfil"]!
                 DadosPerfil.perfil.nome = record["nome"] ?? ""
-                DadosPerfil.perfil.dataNascimento = record["dataNascimento"]!
+                DadosPerfil.perfil.dataNascimento = record["dataNascimento"]
                 DadosPerfil.perfil.telefone = record["telefone"] ?? ""
                 DadosPerfil.perfil.descricao = record["descricao"] ?? ""
-                DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"]!
+                DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"] 
                 DadosPerfil.perfil.endereco = record["endereco"] ?? ""
                 if record["remedios"] != nil {
                     DadosPerfil.perfil.remedios = (record["remedios"] as! NSArray).mutableCopy() as! [String]

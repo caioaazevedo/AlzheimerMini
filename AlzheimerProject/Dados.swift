@@ -53,10 +53,10 @@ class DadosClendario {
 class DadosPerfil {
     var idPerfil = String()
     var nome = String()
-    var dataNascimento = Date()
+    var dataNascimento: Date?
     var telefone = String()
     var descricao = String()
-    var fotoPerfil = Data()
+    var fotoPerfil: Data?
     var endereco = String()
     var remedios = [String]()
     var alergias = [String]()

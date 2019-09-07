@@ -226,10 +226,10 @@ class CoreDataRebased{
         
         perfil.nome = DadosPerfil.perfil.nome
         perfil.alergias = DadosPerfil.perfil.alergias as NSObject
-        perfil.dataDeNascimento = DadosPerfil.perfil.dataNascimento as NSDate
+        perfil.dataDeNascimento = DadosPerfil.perfil.dataNascimento as NSDate?
         perfil.descricao = DadosPerfil.perfil.descricao
         perfil.endereco = DadosPerfil.perfil.endereco
-        perfil.fotoDePerfil = DadosPerfil.perfil.fotoPerfil as NSData
+        perfil.fotoDePerfil = DadosPerfil.perfil.fotoPerfil as NSData?
         perfil.planoDeSaude = DadosPerfil.perfil.planoSaude
         perfil.remedios = DadosPerfil.perfil.remedios as NSObject
         perfil.tipoSanguineo = DadosPerfil.perfil.tipoSanguineo
