@@ -186,8 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				AC52965C231EED1300EACF44 /* DetailViewController.swift */,
-				AC9EE92F23144937004FA292 /* TaskViewController.swift */,
 				AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */,
+				AC9EE92F23144937004FA292 /* TaskViewController.swift */,
 				AC9EE923230C6901004FA292 /* CalendarioViewController.swift */,
 			);
 			path = Calendario;

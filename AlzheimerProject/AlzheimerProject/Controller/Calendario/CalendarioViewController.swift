@@ -144,6 +144,10 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
         
         
+        fetchAll()
+        
+        
+        
         
     }
     
@@ -203,7 +207,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(false)
-        fetchAll()
+        
     }
     
     
