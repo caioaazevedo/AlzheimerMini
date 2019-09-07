@@ -440,7 +440,7 @@ class Cloud {
         let eventCreate = Evento(context: managedObjectContext)
         let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         
-
+        
         //  1 -> ✅
         do{
             let eventosExistentes = try managedObjectContext.fetch(eventFetchRequest)
@@ -475,7 +475,7 @@ class Cloud {
             }
         }
         
-        
+        publicDataBase.add(queryOp)
         
     }
     // ✅
@@ -517,7 +517,7 @@ class Cloud {
                             CoreDataRebased.shared.saveCoreData()
                         }
                         
-
+                        
                     }
                 } catch{
                     print("Error")
@@ -525,6 +525,7 @@ class Cloud {
             }
         }
         
+        publicDataBase.add(queryOp)
         
     }
     // ✅
@@ -556,6 +557,8 @@ class Cloud {
             
         }
         
+        publicDataBase.add(queryOp)
+        
         
     }
     // ✅
@@ -571,29 +574,27 @@ class Cloud {
         queryOp.recordFetchedBlock = {(record) -> Void in
             
             if record["idSala"] == userLoad.idSala{
-                
                 do{
-                    
                     let salas = try managedObjectContext.fetch(salaFetchRequest)
                     
                     for sala in salas{
                         if sala.id == userLoad.idSala{
                             sala.idUsuarios = record["idUsuarios"] as? NSObject
                             sala.telefoneUsuarios = record["telefoneUsuarios"] as? NSObject
+                            
                             CoreDataRebased.shared.saveCoreData()
                         }
                     }
-                    
-                    
                 } catch {
                     print("Error")
                 }
-                
-                
+            } else {
+                print("Nao achou")
             }
             
         }
         
+        publicDataBase.add(queryOp)
     }
     
     
@@ -619,4 +620,5 @@ class Cloud {
     }
     
 }
+
 
