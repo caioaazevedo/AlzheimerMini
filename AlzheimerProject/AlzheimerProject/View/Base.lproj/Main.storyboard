@@ -44,6 +44,9 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dia de hoje" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXI-Rj-3hP">
@@ -986,18 +989,39 @@
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" red="0.8881459236" green="0.31211768760000003" blue="0.29836125959999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="ZaE-QR-p3q" eventType="touchUpInside" id="ETV-h9-Cc2"/>
+                                </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1V4-dh-IGE">
+                                <rect key="frame" x="292" y="84" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Editar"/>
+                                <connections>
+                                    <action selector="edit:" destination="ZaE-QR-p3q" eventType="touchUpInside" id="iyl-ae-1Qc"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Categoria" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0oS-xJ-g2i">
+                                <rect key="frame" x="90" y="568" width="136" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="e9j-FW-Voq"/>
                     </view>
                     <connections>
+                        <outlet property="categ" destination="0oS-xJ-g2i" id="YB4-IV-LCG"/>
                         <outlet property="dia" destination="7Ms-IG-Wzv" id="l8U-v4-0u4"/>
                         <outlet property="diaSemana" destination="nAR-JF-cwk" id="ZtJ-ME-s2d"/>
                         <outlet property="hora" destination="yDO-Iy-eFe" id="coc-Ga-DdP"/>
                         <outlet property="local" destination="CcD-DG-Af1" id="kER-N8-wh1"/>
                         <outlet property="responsavel" destination="LNb-bM-2RC" id="o8T-JK-HVK"/>
                         <outlet property="titulo" destination="Igg-RA-fnp" id="6cV-oa-Wfs"/>
+                        <segue destination="5uS-xS-Xhq" kind="show" identifier="goCalendar" id="KlY-dn-J6n"/>
+                        <segue destination="3Gb-qu-pJF" kind="show" identifier="segueEdit" id="pE7-hd-hzO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYa-lR-NLS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1046,4 +1070,8 @@
     <resources>
         <image name="Remedio" width="192" height="192"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pE7-hd-hzO"/>
+        <segue reference="KlY-dn-J6n"/>
+    </inferredMetricsTieBreakers>
 </document>

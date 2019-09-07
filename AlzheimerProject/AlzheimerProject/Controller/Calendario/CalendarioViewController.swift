@@ -137,9 +137,11 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         super.viewDidLoad()
         createCalendar()
         tableView.reloadData()
+        DiaSelecionado = calendar.today!
         auxDia = Calendar.current.component(.day, from: calendar.today!)
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
+        
         
         
         
@@ -161,9 +163,9 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     @IBAction func createTask(_ sender: Any) {
         
         if let today = calendar.today, DiaSelecionado ?? today < today {
-//            let alert = UIAlertController(title: "Atenção", message: "Não é possível adicionar tarefas a dias passados", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
-//            self.present(alert,animated: true,completion: nil)
+            let alert = UIAlertController(title: "Atenção", message: "Não é possível adicionar tarefas a dias passados", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
+            self.present(alert,animated: true,completion: nil)
             
             // Deixar opcao escondida
         } else{
@@ -178,7 +180,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         if segue.identifier == "segueTask"{
             if let vc = segue.destination as? TaskViewController{
                 vc.delegate = self
-                vc.dia = DiaSelecionado ?? calendar.today!;
+                vc.dia = DiaSelecionado ?? calendar.today!
             }
         }
         
@@ -189,13 +191,11 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
                     auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
                     
-                    vc.diaAux = "\(auxDia!) de \(auxMes!)"
                     
+                    vc.event = DailyEvents[indexPathAux]
+                    vc.diaAux = "\(auxDia!) de \(auxMes!)"
+    
                     vc.diaSemanaAux = "\(auxDiaSemana!)"
-                    vc.horaAux = DailyEvents[indexPathAux].time
-                    vc.localAux = DailyEvents[indexPathAux].localization
-                    vc.responsavelAux = DailyEvents[indexPathAux].responsavel
-                    vc.tituloAux = DailyEvents[indexPathAux].title
             }
         }
     }
@@ -301,7 +301,7 @@ extension CalendarioViewController{
         calendar.calendarHeaderView.backgroundColor = UIColor.white
         calendar.calendarWeekdayView.backgroundColor = UIColor.gray
         calendar.appearance.borderRadius = 1
-        calendar.appearance.todayColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.6)
+        calendar.appearance.todayColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         calendar.appearance.eventDefaultColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         
         view.addSubview(calendar)

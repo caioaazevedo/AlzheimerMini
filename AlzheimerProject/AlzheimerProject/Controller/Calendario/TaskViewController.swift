@@ -24,6 +24,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     let userNotification = Notification()
     
+    var event : Events?
+    
     var titulo = ""
     var local = ""
     var categoria = ""
@@ -32,7 +34,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     var responsaveis = [String]()
     var lembrete = true
     var descricao = ""
-    
+    var willEditing = false
     var dia = Date()
     
     let DatePicker = UIDatePicker()
@@ -51,6 +53,17 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if willEditing{
+            tableController.hora.text = event?.time
+            tableController.responsavel.text = event?.responsavel
+            tableController.titulo.text = event?.title
+            tableController.categoriaLabel.text = event?.categ
+            tableController.local.text = event?.localization
+            //tableController.descricao
+        }
+    }
     
     
     
@@ -164,7 +177,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             
             if lembrete{
                 var tempo = dia.timeIntervalSinceNow
-                if tempo == 0 {
+                if tempo < 36000 {
                     tempo = 36000
                 }
                 print(tempo)
@@ -180,7 +193,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             
             
             CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo)
-            CoreDataRebased.shared.saveCoreData()
+            
             _ = navigationController?.popViewController(animated: true)
         }
     }

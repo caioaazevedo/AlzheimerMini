@@ -10,25 +10,45 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var event : Events?
     var diaAux : String?
     var diaSemanaAux : String?
-    var tituloAux : String?
-    var horaAux : String?
-    var responsavelAux : String?
-    var localAux : String?
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dia.text = diaAux
         diaSemana.text = diaSemanaAux
-        titulo.text = tituloAux
-        hora.text = horaAux
-        responsavel.text = responsavelAux
-        local.text = localAux
+        titulo.text = event?.title
+        dia.text = event?.day
+        hora.text = event?.time
+        
+        
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func dismiss(_ sender: UIButton) {
+        performSegue(withIdentifier: "Calendar", sender: self)
+    }
+    
+    
+    
+    @IBAction func edit(_ sender: UIButton) {
+        performSegue(withIdentifier: "segueEdit", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueEdit"{
+            if let vc = segue.destination as? TaskViewController {
+                vc.event = self.event
+                vc.willEditing = true
+            }
+    }
+    }
+    
+    
+    @IBOutlet weak var categ: UITextField!
     @IBOutlet weak var dia: UILabel!
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
