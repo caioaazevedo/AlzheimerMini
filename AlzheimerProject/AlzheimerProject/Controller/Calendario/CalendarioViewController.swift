@@ -159,7 +159,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             let eventos = try managedObjectContext.fetch(fetchRequest)
             for evento in eventos{
                 eventosSalvos.append(evento)
-            
+                
                 
                 
             }
@@ -195,17 +195,17 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
         if segue.identifier == "segueDetail"{
             
-                if let vc = segue.destination as? DetailViewController{
-                    
-                    auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
-                    auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
-                   
-                    
-                    vc.event = DailyEvents[indexPathAux]
-                    
-                    vc.diaAux = "\(auxDia!) de \(auxMes!)"
-    
-                    vc.diaSemanaAux = "\(auxDiaSemana!)"
+            if let vc = segue.destination as? DetailViewController{
+                
+                auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
+                auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
+                
+                
+                vc.event = DailyEvents[indexPathAux]
+                
+                vc.diaAux = "\(auxDia!) de \(auxMes!)"
+                
+                vc.diaSemanaAux = "\(auxDiaSemana!)"
             }
         }
     }
@@ -243,7 +243,13 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                     let event = Events(titleParameter: auxText,timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "aa")
                     
                     dia.event.append(event)
-                    DailyEvents.append(event)
+                    
+                    for evento in eventosSalvos{
+                        if "\(evento.dia)" == "\(DiaSelecionado)"{
+                            convert(evento)
+                        }
+                    }
+                    
                 }
             }
             
@@ -253,16 +259,26 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 let event = Events(titleParameter: auxText ?? "",timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "")
                 days.append(dia)
                 dia.event.append(event)
-                DailyEvents.append(event)
+                for evento in eventosSalvos{
+                    if "\(evento.dia)" == "\(DiaSelecionado)"{
+                        convert(evento)
+                    }
+                }
                 canPass = true
             }
             
             tableView.reloadData()
         }
-    
+        
         
     }
     
+    func convert(_ evento : Evento){
+        DailyEvents[0].time = "\(evento.horario)"
+        DailyEvents[0].categ = "\(evento.dia)"
+        DailyEvents[0].title = "\(evento.nome)"
+        DailyEvents[0].responsavel = "\(evento.idUsuarios)"
+    }
     
     
     func marcarTask(){
@@ -357,17 +373,12 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let horario = Calendar.current.component(.hour, from: eventosSalvos[indexPath.row].horario! as Date)
-        let minutos = Calendar.current.component(.minute, from: eventosSalvos[indexPath.row].horario! as Date)
-        let segundos = Calendar.current.component(.second, from: eventosSalvos[indexPath.row].horario! as Date)
-        
-        
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
-        cell.titulo.text = eventosSalvos[indexPath.row].nome
-        cell.horario.text = "\(horario):\(minutos):\(segundos)"
-        cell.responsavel.text = "\(eventosSalvos[indexPath.row].idUsuarios!)"
-        cell.location.text = eventosSalvos[indexPath.row].localizacao
+        cell.titulo.text = DailyEvents[indexPath.row].title
+        cell.horario.text = DailyEvents[indexPath.row].time
+        cell.responsavel.text = DailyEvents[indexPath.row].responsavel
+        cell.location.text = DailyEvents[indexPath.row].localization
         
         return cell;
     }
