@@ -51,6 +51,8 @@
 		AC9EE92A230F175D004FA292 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE929230F175D004FA292 /* Events.swift */; };
 		AC9EE92C230F1A88004FA292 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE92B230F1A88004FA292 /* Days.swift */; };
 		AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE92F23144937004FA292 /* TaskViewController.swift */; };
+		ACAF13E8232437940085918B /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF13E7232437940085918B /* UsersViewController.swift */; };
+		ACAF13EA2324387C0085918B /* CellUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF13E92324387C0085918B /* CellUsers.swift */; };
 		ACBF43EF23204B9D0048416F /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBF43EE23204B9D0048416F /* DetailProfileViewController.swift */; };
 		ACBF43F123204C720048416F /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBF43F023204C720048416F /* MyProfileViewController.swift */; };
 		ACC5F51223199FCE003B7562 /* CellPerfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC5F51123199FCE003B7562 /* CellPerfil.swift */; };
@@ -104,6 +106,8 @@
 		AC9EE929230F175D004FA292 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		AC9EE92B230F1A88004FA292 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
 		AC9EE92F23144937004FA292 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		ACAF13E7232437940085918B /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		ACAF13E92324387C0085918B /* CellUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUsers.swift; sourceTree = "<group>"; };
 		ACBF43EE23204B9D0048416F /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		ACBF43F023204C720048416F /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		ACC5F51123199FCE003B7562 /* CellPerfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPerfil.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				AC9EE921230C64BC004FA292 /* PerfilViewController.swift */,
 				ACBF43EE23204B9D0048416F /* DetailProfileViewController.swift */,
 				ACBF43F023204C720048416F /* MyProfileViewController.swift */,
+				ACAF13E7232437940085918B /* UsersViewController.swift */,
 			);
 			path = Perfil;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				3A86469F2315C0490091BD0C /* CoreData.swift */,
 				1144AF182320467C00718CC6 /* CustomButton.swift */,
 				3A5F8F77231746BC00A8B05C /* Cloud.swift */,
+				ACAF13E92324387C0085918B /* CellUsers.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -448,10 +454,12 @@
 				3A54EC9D2320573D004BB09C /* PerfilUsuario+CoreDataClass.swift in Sources */,
 				1144AF192320467C00718CC6 /* CustomButton.swift in Sources */,
 				E2CEB480231850A200C90EFD /* Dados.swift in Sources */,
+				ACAF13E8232437940085918B /* UsersViewController.swift in Sources */,
 				AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */,
 				AC9EE928230F0D8D004FA292 /* CellCalendar.swift in Sources */,
 				AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */,
 				3A54EC9F2320573D004BB09C /* Sala+CoreDataClass.swift in Sources */,
+				ACAF13EA2324387C0085918B /* CellUsers.swift in Sources */,
 				3AD49DE7231621EC00904457 /* (null) in Sources */,
 				3AD49DE0231621EC00904457 /* (null) in Sources */,
 				AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */,

@@ -21,7 +21,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     }
     
     var delegate: TaskViewControllerDelegate?
-    
+    var eventEntity : Evento?
     let userNotification = Notification()
     
     var event : Events?
@@ -53,14 +53,19 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         
     }
     
-    
+    var auxTitulo = String()
+    var auxCateg = String()
     override func viewWillAppear(_ animated: Bool) {
         if willEditing{
+            
             tableController.hora.text = event?.time
             tableController.responsavel.text = event?.responsavel
             tableController.titulo.text = event?.title
             tableController.categoriaLabel.text = event?.categ
             tableController.local.text = event?.localization
+            auxTitulo = tableController.titulo.text!
+            auxCateg = tableController.categoriaLabel.text!
+            
             //tableController.descricao
         }
     }
@@ -164,7 +169,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
-        if tableController.titulo.text == "" || tableController.hora.text == ""{
+        if tableController.titulo.text == "" || tableController.hora.text == "" || tableController.categoriaLabel.text == "" || tableController.responsavel.text == ""{
             let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
@@ -173,6 +178,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             
         else{
             
+           
             
             
             if lembrete{
@@ -192,7 +198,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,responsavel: responsavel,descricao: descricao)
             
             
-            CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo)
+          
+            
+            if willEditing{
+                let date = Date()
+                CoreDataRebased.shared.updateEvent(auxText: auxTitulo ,auxCateg: categoria, categoria: tableController.categoriaLabel.text!, descricao: tableController.descricao.text!, dia: dia, horario: DatePicker.date, nome: tableController.titulo.text!, responsaveis: responsaveis,localizacao: tableController.local.text!)
+                           }
+            else{
+                  CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo)
+            }
+            
             
             _ = navigationController?.popViewController(animated: true)
         }

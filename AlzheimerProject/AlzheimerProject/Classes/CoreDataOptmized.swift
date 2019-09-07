@@ -334,6 +334,7 @@ class CoreDataRebased{
         event.categoria = categoria
         event.descricao = descricao
         event.nome = nome
+        
         event.id = UUID().uuidString
         event.dia = dia as NSDate
         event.horario = horario as NSDate
@@ -367,23 +368,43 @@ class CoreDataRebased{
         
     }
     
-    //✅ - Alterar Evento (Atualizaçao no usuarios participantes) 😎 ****
-    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String){
-        let userLoad = UserLoaded()
-        evento.categoria = categoria
-        evento.descricao = descricao
-        evento.dia = dia as NSDate
-        evento.horario = horario as NSDate
-        saveCoreData()
-        
-        let a = Date(timeInterval: 20, since: Date())
-        let b = Timer(fire: a, interval: 2, repeats: false) { (Timer) in
-        }
-        
-        Cloud.updateEvento(searchRecord: evento.id!, idEvento: evento.id!, nome: nome , categoria: categoria, descricao: descricao, dia: a, hora: b, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!)
-        
-    }
+
     
+    
+    //✅ - Alterar Evento (Atualizaçao no usuarios participantes) 😎 ****
+    func updateEvent(auxText: String, auxCateg: String,categoria: String, descricao: String?, dia: Date, horario: Date, nome: String, responsaveis: [String], localizacao: String?){
+        
+        let userLoad = UserLoaded()
+        
+        /*
+         1. Pegar o id do evento no paramentro
+         2. procurar o evento no coreData
+         3. atualizar os dados do evento
+         4. salvar
+         */
+        
+        let eventosFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        
+        do{
+            let eventos = try managedObjectContext.fetch(eventosFetchRequest)
+            for event in eventos{
+                
+                if event.nome == auxText && event.categoria == auxCateg{
+                    event.categoria = categoria
+                    event.descricao = descricao
+                    event.dia = dia as NSDate
+                    event.horario = horario as NSDate
+                    event.nome = nome
+                    event.idUsuarios = responsaveis as NSObject
+                    event.localizacao = localizacao
+                    saveCoreData()
+                    Cloud.updateEvento(searchRecord: event.id!, idEvento: event.id!, nome: nome , categoria: categoria, descricao: descricao, dia: dia, hora: horario, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!)
+                }
+            }
+        } catch{
+            print("Error")
+        }
+    }
     //✅ - Carregar Dados Evento 😎
     func loadEvent(evento: Evento) -> eventData{
         var event = eventData()
@@ -491,13 +512,13 @@ class CoreDataRebased{
     //***TESTES***
     
     func showData(){
-        let profRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        let profRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         do {
             let perfis = try managedObjectContext.fetch(profRequest)
             for i in perfis{
-                print(i.id)
-                print(i.idCalendario)
-                print(i.idPerfil)
+                print(i.nome)
+                print(i.categoria)
+                print(i.horario)
             }
         } catch {
         }

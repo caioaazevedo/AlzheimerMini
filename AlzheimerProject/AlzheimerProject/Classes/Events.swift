@@ -9,7 +9,6 @@
 import Foundation
 
 class Events {
-    var ID = Int()
     var title = "title of event"
     var time = "time of event"
     var day = "day of event"
@@ -17,6 +16,7 @@ class Events {
     var categ = "category of event"
     var responsavel = "responsable of event"
     var localization = "locatization of event"
+    var id  = ""
     
     init(titleParameter: String,timeParameter: String,descParameter: String,categParameter: String,responsavelParameter: String,localizationParameter: String) {
         self.title = titleParameter
