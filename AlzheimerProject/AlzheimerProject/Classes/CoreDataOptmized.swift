@@ -330,7 +330,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Evento 🍁
-    func createEvent(categoria: String, descricao: String, dia: Date, horario: Date, responsaveis: [String], nome: String){
+    func createEvent(categoria: String, descricao: String?, dia: Date, horario: Date, responsaveis: [String], nome: String, localizacao: String?){
         
         let userLoad = UserLoaded()
         
@@ -344,6 +344,7 @@ class CoreDataRebased{
         event.idResponsavel = userLoad.idUser
         event.idUsuarios = responsaveis as NSObject
         event.idCalendario = userLoad.idSalaCalendar
+        event.localizacao = localizacao
         var eventArray = [String]()
         
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -369,19 +370,20 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao!, dia: Date(), hora: Timer(), idUsuario: nil, idCalendario: userLoad.idSalaCalendar!)
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: Date(), hora: Timer(), idUsuario: nil, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "")
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         
     }
     
     //✅ - Alterar Evento (Atualizaçao no usuarios participantes) 😎 ****
-    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String){
+    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String, responsaveis: [String]){
         let userLoad = UserLoaded()
         evento.categoria = categoria
         evento.descricao = descricao
         evento.dia = dia as NSDate
         evento.horario = horario as NSDate
+        evento.idUsuarios = responsaveis as NSObject
         saveCoreData()
         
         let a = Date(timeInterval: 20, since: Date())

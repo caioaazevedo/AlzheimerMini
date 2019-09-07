@@ -27,5 +27,6 @@ extension Evento {
     @NSManaged public var nome: String?
     @NSManaged public var idResponsavel: String?
     @NSManaged public var ofCalendar: Calendario?
+    @NSManaged public var localizacao: String?
 
 }

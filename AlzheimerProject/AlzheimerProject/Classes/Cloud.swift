@@ -57,7 +57,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String?, idCalendario: String) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String?, idCalendario: String, localizacao: String?) {
         
         let record = CKRecord(recordType: "Evento")
         
@@ -70,6 +70,7 @@ class Cloud {
         record.setValue(hora, forKeyPath: "hora")
         record.setValue(idUsuario, forKeyPath: "idUsuario")
         record.setValue(idCalendario, forKeyPath: "idCalendario")
+        record.setValue(localizacao, forKey: "localizacao")
         
         saveRequest(record: record)
     }
@@ -470,7 +471,7 @@ class Cloud {
                 eventCreate.idCalendario = record["idCalendario"]
                 eventCreate.idResponsavel = record["idCriador"]
                 eventCreate.nome = record["nome"]
-                
+                eventCreate.localizacao = record["localizacao"]
                 CoreDataRebased.shared.saveCoreData()
             }
         }
@@ -506,14 +507,15 @@ class Cloud {
                         
                         if profile.id == userLoad.idSalaProfile{
                             profile.alergias = record["alergias"] as? NSObject
-                            profile.dataDeNascimento = record["dataDeNascimento"]
+                            profile.dataDeNascimento = record["dataNascimento"]
                             profile.descricao = record["descricao"]
                             profile.endereco = record["endereco"]
-                            profile.fotoDePerfil = record["fotoDePerfil"]
-                            profile.id = record["id"]
+                            profile.fotoDePerfil = record["fotoPerfil"]
+                            profile.id = record["idPerfil"]
                             profile.nome = record["nome"]
-                            profile.planoDeSaude = record["planoDeSaude"]
+                            profile.planoDeSaude = record["planoSaude"]
                             profile.remedios = record["remedios"] as? NSObject
+                            profile.tipoSanguineo = record["tipoSanguineo"]
                             CoreDataRebased.shared.saveCoreData()
                         }
                         
@@ -580,7 +582,7 @@ class Cloud {
                     for sala in salas{
                         if sala.id == userLoad.idSala{
                             sala.idUsuarios = record["idUsuarios"] as? NSObject
-                            sala.telefoneUsuarios = record["telefoneUsuarios"] as? NSObject
+//                            sala.telefoneUsuarios = record["telefoneUsuarios"] as? NSObject
                             
                             CoreDataRebased.shared.saveCoreData()
                         }
