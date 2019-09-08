@@ -49,6 +49,7 @@ class GuestViewController: UIViewController{
             CoreDataRebased.shared.createUsuario(email: userEmail.text!, fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
             CoreDataRebased.shared.createSala()
         } else {
+            print("=-=-=-=-=-=-> CodFamily: ", self.codFamily)
             CoreDataRebased.shared.createUsuarioGuest(email: userEmail.text!, fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily)
         }
     }

@@ -94,14 +94,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("url \(url)")
         print("url host :\(url.host!)")
         
-        
-        let loginStoryboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-        let initialViewController : GuestViewController = loginStoryboard.instantiateViewController(withIdentifier: "Login") as! GuestViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
-        
-        initialViewController.insertCode(code: "\(url.host!)")
+
+        Cloud.checkUsuario(searchUsuario: UserLoaded().recuperarId()) { (result) in
+            if result {
+                let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "inicialStoryboard")
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            } else {
+                let loginStoryboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+                let initialViewController : GuestViewController = loginStoryboard.instantiateViewController(withIdentifier: "Login") as! GuestViewController
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+                
+                initialViewController.insertCode(code: "\(url.host!)")
+            }
+        }
         
         return true
     }

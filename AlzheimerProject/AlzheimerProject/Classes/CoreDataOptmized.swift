@@ -238,8 +238,31 @@ class CoreDataRebased{
         CoreDataRebased.shared.saveCoreData()
     }
     
+    func reloadUsuario(searchUsuario: String){
+        
+       //✅ - Carregando informações do informações do Usuario da Nuvem 😎
+        
+        Cloud.queryUsuario(searchRecord: searchUsuario) { (_) in
+            
+            Cloud.querySala(searchRecord: DadosUsuario.usuario.idSala) { (_) in
+                print(DadosSala.sala.idCalendario)
+                
+                Cloud.queryCalendario(searchRecord: DadosSala.sala.idCalendario, completion: { (_) in
+                    
+                    Cloud.queryPerfil(searchRecord: DadosSala.sala.idPerfil, completion: { (_) in
+                        self.createSalaGuest()
+                    })
+                })
+                
+            }
+        }
+        
+    }
+    
     //✅ - Criar Usuario - GUEST 😎
     func createUsuarioGuest(email: String, fotoDoPerfil: UIImage?, Nome: String, searchSala: String){
+        
+        print("Search Sala: ", searchSala)
         
         let userLoad = UserLoaded()
         
@@ -264,11 +287,12 @@ class CoreDataRebased{
                     userArray.append(user.id!)
                     sala.idUsuarios = userArray as NSObject
                     CoreDataRebased.shared.saveCoreData()
-                    print(user.id!)
-                    let userIdent = user.id
+                    print("=======> :", user.idSala!)
+                    print("=======> :", userArray)
                     
                     
-                    Cloud.saveUsuario(idUsuario: userIdent ?? "", nome: user.nome, foto: nil, email: user.email, idSala: user.idSala!)
+                    Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, email: user.email, idSala: user.idSala!)
+                    
                     Cloud.updateSala(searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
                     
                 })

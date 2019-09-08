@@ -14,6 +14,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var hostButton: CustomButton!
     @IBOutlet weak var guestButton: CustomButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Cloud.checkUsuario(searchUsuario: UserLoaded().recuperarId()) { (result) in
+            if result {
+                let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "inicialStoryboard")
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBAction func hostButtonAction(_ sender: Any) {
         hostButton.pulsate()
         

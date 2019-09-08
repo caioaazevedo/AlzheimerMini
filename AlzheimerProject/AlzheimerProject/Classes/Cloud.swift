@@ -95,6 +95,42 @@ class Cloud {
         saveRequest(record: record)
     }
     
+    static func checkUsuario (searchUsuario: String, completion: @escaping (_ result: Bool) -> ()){
+        var usuarioExists = false
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Sala", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.queuePriority = .veryHigh
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            let array: [String] = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
+            
+            for user in array {
+                if searchUsuario == user {
+                    usuarioExists = true
+                }
+            }
+            
+            
+        }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    if usuarioExists {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                }
+            }
+        }
+        publicDataBase.add(queryOp)
+    }
+    
     static func querySala(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
         var exixst = false
         
@@ -143,7 +179,8 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func queryUsuario(searchRecord: String){
+    static func queryUsuario(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
+        var found = false
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
@@ -160,11 +197,24 @@ class Cloud {
                 DadosUsuario.usuario.email = record["email"]!
                 DadosUsuario.usuario.idSala = record["idSala"]!
                 
+                found = true
                 
                 print("DADOS: ", record["nome"], record["email"], record["idSala"])
                 
             }
             
+            queryOp.queryCompletionBlock = { (cursor, error) in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        if found {
+                            completion(true)
+                        } else {
+                            completion(false)
+                        }
+                        
+                    }
+                }
+            }
             
         }
         publicDataBase.add(queryOp)
