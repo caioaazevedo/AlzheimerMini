@@ -464,7 +464,7 @@ class CoreDataRebased{
                     prof.nome = profile.nome ?? ""
                     prof.endereco = profile.endereco ?? ""
                     prof.telefone = profile.telefone ?? ""
-                    prof.fotoDePerfil = UIImage(data: profile.fotoDePerfil! as Data)
+                    prof.fotoDePerfil = /*UIImage(data: profile.fotoDePerfil as Data) ?? */ UIImage(named: "Remedio")
                     prof.planoDeSaude = profile.planoDeSaude ?? ""
                     prof.remedios = profile.remedios as? String
                     prof.tipoSanguineo = profile.tipoSanguineo ?? ""
@@ -512,13 +512,12 @@ class CoreDataRebased{
     //***TESTES***
     
     func showData(){
-        let profRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        let profRequest = NSFetchRequest<PerfilUsuario>.init(entityName: "PerfilUsuario")
         do {
             let perfis = try managedObjectContext.fetch(profRequest)
             for i in perfis{
-                print(i.nome)
-                print(i.categoria)
-                print(i.horario)
+               print(i.nome)
+                print(i.dataDeNascimento)
             }
         } catch {
         }

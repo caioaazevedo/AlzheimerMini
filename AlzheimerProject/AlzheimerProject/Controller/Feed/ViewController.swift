@@ -15,76 +15,95 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var feedView: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
-    
-    struct Evento: Hashable, Comparable {
-        var titulo = ""
-        var horario = ""
-        var dia = ""
-        var localizacao = ""
-        var responsavel = ""
-        
-        // Operator Overloading (Sobrecarga de Operadores)
-        static func < (lhs: Evento, rhs: Evento) -> Bool {
-            return lhs.horario < rhs.horario
+    var auxMes = ""
+    var auxMesNum : Int?{
+        didSet{
+            switch(auxMesNum){
+            case 1:
+                auxMes = "Janeiro"
+            case 2:
+                auxMes = "Fevereiro"
+            case 3:
+                auxMes = "Marco"
+            case 4:
+                auxMes = "Abril"
+            case 5:
+                auxMes = "Maio"
+            case 6:
+                auxMes = "Junho"
+            case 7:
+                auxMes = "Julho"
+            case 8:
+                auxMes = "Agosto"
+            case 9:
+                auxMes = "Setembro"
+            case 10:
+                auxMes = "Outubro"
+            case 11:
+                auxMes = "Novembro"
+            default:
+                auxMes = "Dezembro"
+            }
         }
-        
     }
     
-    var eventos = Set<Evento>()
+    var eventosSalvos = [Evento]()
+//
+//    struct Evento: Hashable, Comparable {
+//        var titulo = ""
+//        var horario = ""
+//        var dia = ""
+//        var localizacao = ""
+//        var responsavel = ""
+//
+//        // Operator Overloading (Sobrecarga de Operadores)
+//        static func < (lhs: Evento, rhs: Evento) -> Bool {
+//            return lhs.horario < rhs.horario
+//        }
+//
+//    }
     
-    var eventosOrdenados: [Evento] {
-        get {
-            return eventos.sorted()
-        }
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         feedView.delegate = self
         feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
+
+//        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: nil, Nome: "Pagode")
+//        CoreDataRebased.shared.createSala()
         
-        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: nil, Nome: "Pagode")
-        CoreDataRebased.shared.createSala()
+        UserLoaded()
     }
     
     
     
 
     override func viewWillAppear(_ animated: Bool) {
-        eventos.removeAll()
-        getData()
+        eventosSalvos.removeAll()
+        fetchAll()
         feedView.reloadData()
     }
     
-    func getData(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Feed")
-        
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                let titulo = data.value(forKey: "titulo") as! String
-                let horario = data.value(forKey: "horario") as! String
-                let dia = data.value(forKey: "dia") as! String
-                let localizacao = data.value(forKey: "localizacao" ) as! String
-                let responsavel = data.value(forKey: "responsavel" ) as! String
-                
-                
-                let evento = Evento(titulo: titulo, horario: horario, dia: dia, localizacao: localizacao,responsavel: responsavel)
-                eventos.insert(evento)
-                
-                feedView.reloadData()
+    
+    func fetchAll(){
+        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            let eventos = try managedObjectContext.fetch(fetchRequest)
+            eventosSalvos.removeAll()
+            for evento in eventos{
+                eventosSalvos.append(evento)
             }
-        } catch {
-            print("failed")
+        }catch{
+            
         }
     }
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         feedView.reloadData()
     }
+    
     
     @IBAction func shareAction(_ sender: Any) {
         // text to share
@@ -109,13 +128,17 @@ class ViewController: UIViewController {
 
 extension ViewController : UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventos.count
+        return eventosSalvos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellFeed", for: indexPath) as! CellFeed
-        let indexRow = eventosOrdenados[indexPath.row]
-        cell.descricao.text = "\(indexRow.responsavel) marcou  \(indexRow.titulo) para Pedro Paulo em \(indexRow.localizacao) as \(indexRow.horario) no dia \(indexRow.dia) "
+        let indexRow = eventosSalvos[indexPath.row]
+        let hour = Calendar.current.component(.hour, from: indexRow.horario! as Date)
+        let minute = Calendar.current.component(.minute, from: indexRow.horario! as Date)
+        let day = Calendar.current.component(.day, from: indexRow.horario! as Date)
+        auxMesNum = Calendar.current.component(.month, from: indexRow.horario! as Date)
+        cell.descricao.text = "\(indexRow.idResponsavel ?? "Gui") marcou  \(indexRow.nome!) para Pedro Paulo em \(indexRow.localizacao ?? "Brasilia") as \(hour):\(minute) no dia \(day) de \(auxMes) "
         
 
         return cell

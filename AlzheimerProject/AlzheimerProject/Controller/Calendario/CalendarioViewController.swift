@@ -120,14 +120,21 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
             
             
+            let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
+            
             
             for evento in eventosSalvos{
                 let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
-                let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
-                if diaEvento == diaSelecionadoEvento{
+                if diaSelecionadoEvento == diaEvento{
+                    let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
+                    let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
+                    let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: "\(evento.idUsuarios!)", localizationParameter: evento.localizacao ?? "")
+                    
                     DailyEvents.append(evento)
+                    
                 }
             }
+            
             tableView.reloadData()
             
         }
@@ -224,57 +231,10 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         auxTime = hora
         auxResponsavel = responsavel
         auxDescricao = descricao
-        createEventDay()
     }
     
-    func createEventDay(){
-        
-        
-        if let date = calendar!.selectedDate{
-            let stringDate = toString(date)
-            dates.append(stringDate)
-            calendar(calendar, numberOfEventsFor: date)
-            
-            for dia in days{
-                if dia.day == date{
-                    canPass = false
-                    let event = Events(titleParameter: auxText,timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "aa")
-                    
-                    dia.event.append(event)
-                    
-                    for evento in eventosSalvos{
-                        if "\(evento.dia)" == "\(DiaSelecionado)"{
-                            convert(evento)
-                        }
-                    }
-                    
-                }
-            }
-            
-            
-            if canPass {
-                let dia = Days(dayParameter: date)
-                let event = Events(titleParameter: auxText ?? "",timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "")
-                days.append(dia)
-                dia.event.append(event)
-                for evento in eventosSalvos{
-                    if "\(evento.dia)" == "\(DiaSelecionado)"{
-                        convert(evento)
-                    }
-                }
-                canPass = true
-            }
-            
-            tableView.reloadData()
-        }
-        
-        
-        
-    }
+   
     
-    func convert(_ evento : Evento){
-        
-    }
     
     
     func marcarTask(){
@@ -283,9 +243,12 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        fetchAll()
         calendar.reloadData()
         tableView.reloadData()
-        fetchAll()
+        selectedDay = DiaSelecionado
+        
+        
     }
     
     
@@ -340,18 +303,20 @@ extension CalendarioViewController{
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let dateString = self.dateFormatter.string(from: date)
-        var aux = 1
+        var aux = 0
         
-        for x in days{
-            if x.day == date{
-                aux = x.event.count
+        for x in eventosSalvos{
+            let rhs = Calendar.current.component(.day,from: x.dia! as Date)
+            let lhs = Calendar.current.component(.day,from: date)
+            
+            if rhs == lhs {
+                aux += 1
             }
+            
+ 
         }
         
-        if self.dates.contains(dateString) {
-            return aux
-        }
-        
+        return aux
         return 0
         
     }
@@ -362,7 +327,7 @@ extension CalendarioViewController{
 extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventosSalvos.count;
+        return DailyEvents.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -371,13 +336,14 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
         
-        if DailyEvents.count != 0{
-            cell.titulo.text = DailyEvents[indexPath.row].title
-            cell.horario.text = DailyEvents[indexPath.row].time
-            cell.responsavel.text = DailyEvents[indexPath.row].responsavel
-            cell.location.text = DailyEvents[indexPath.row].localization
-        }
-      
+        
+        cell.titulo.text = DailyEvents[indexPath.row].title
+        cell.horario.text = DailyEvents[indexPath.row].time
+        cell.responsavel.text = DailyEvents[indexPath.row].responsavel
+        cell.location.text = DailyEvents[indexPath.row].localization
+        
+        
+        
         
         return cell;
     }
