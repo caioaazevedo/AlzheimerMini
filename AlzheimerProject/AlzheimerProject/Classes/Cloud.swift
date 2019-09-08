@@ -178,6 +178,39 @@ class Cloud {
         
         publicDataBase.add(queryOp)
     }
+    static func queryArrayUsuarios(searchUsuarios: [String], completion: @escaping (_ result: Bool) -> ()) {
+        var count = 0
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Usuario", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.queuePriority = .veryHigh
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            print("=-=-=-=-=-=> ", count)
+//            print("Search: \(searchUsuarios[count]) ===== Record: \(record["idUsuario"]!)")
+            if count < searchUsuarios.count {
+                if searchUsuarios[count] == record["idUsuario"] {
+                    DadosArrayUsuarios.array.id.append(record["idUsuario"]!)
+                    DadosArrayUsuarios.array.nome.append(record["nome"]!)
+                    DadosArrayUsuarios.array.foto?.append(record["foto"]!)
+                    
+                    count += 1
+                    
+                    print("=-=-=-=-=-=> ", count)
+                }
+            }
+        }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                completion(true)
+            }
+        }
+        publicDataBase.add(queryOp)
+    }
+    
     
     static func queryUsuario(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
         var found = false
@@ -202,20 +235,19 @@ class Cloud {
                 print("DADOS: ", record["nome"], record["email"], record["idSala"])
                 
             }
-            
-            queryOp.queryCompletionBlock = { (cursor, error) in
-                DispatchQueue.main.async {
-                    if error == nil {
-                        if found {
-                            completion(true)
-                        } else {
-                            completion(false)
-                        }
-                        
+        }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    if found {
+                        completion(true)
+                    } else {
+                        completion(false)
                     }
+                    
                 }
             }
-            
         }
         publicDataBase.add(queryOp)
     }

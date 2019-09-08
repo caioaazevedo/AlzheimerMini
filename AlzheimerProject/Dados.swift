@@ -88,3 +88,16 @@ class DadosEvento {
     static var evento = DadosEvento()
     
 }
+
+class DadosArrayUsuarios {
+    var id = [String]()
+    var foto: [Data]?
+    var nome = [String]()
+    
+    private init(){
+        
+    }
+    
+    static var array = DadosArrayUsuarios()
+    
+}
