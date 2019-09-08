@@ -121,11 +121,11 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
             
             
             
-            for day in days{
-                if selectedDay == day.day{
-                    for i in 0..<day.event.count{
-                        DailyEvents.append(day.event[i])
-                    }
+            for evento in eventosSalvos{
+                let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
+                let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
+                if diaEvento == diaSelecionadoEvento{
+                    DailyEvents.append(evento)
                 }
             }
             tableView.reloadData()
@@ -157,11 +157,9 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         do{
             let eventos = try managedObjectContext.fetch(fetchRequest)
+            eventosSalvos.removeAll()
             for evento in eventos{
                 eventosSalvos.append(evento)
-                
-                
-                
             }
         }catch{
             
@@ -271,13 +269,11 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         }
         
         
+        
     }
     
     func convert(_ evento : Evento){
-        DailyEvents[0].time = "\(evento.horario)"
-        DailyEvents[0].categ = "\(evento.dia)"
-        DailyEvents[0].title = "\(evento.nome)"
-        DailyEvents[0].responsavel = "\(evento.idUsuarios)"
+        
     }
     
     
@@ -289,9 +285,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         calendar.reloadData()
         tableView.reloadData()
-        print(eventosSalvos[0].nome)
-        print(eventosSalvos[0].categoria)
-        
+        fetchAll()
     }
     
     
@@ -375,10 +369,15 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
-        cell.titulo.text = DailyEvents[indexPath.row].title
-        cell.horario.text = DailyEvents[indexPath.row].time
-        cell.responsavel.text = DailyEvents[indexPath.row].responsavel
-        cell.location.text = DailyEvents[indexPath.row].localization
+        
+        
+        if DailyEvents.count != 0{
+            cell.titulo.text = DailyEvents[indexPath.row].title
+            cell.horario.text = DailyEvents[indexPath.row].time
+            cell.responsavel.text = DailyEvents[indexPath.row].responsavel
+            cell.location.text = DailyEvents[indexPath.row].localization
+        }
+      
         
         return cell;
     }
