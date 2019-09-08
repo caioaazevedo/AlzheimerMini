@@ -88,6 +88,7 @@ class GuestViewController: UIViewController{
         if segue.identifier == "sugueCadastro"{
             let destination = segue.destination as! GuestViewController
             destination.isHost = true
+            destination.codFamily = familyCode.text!
         }
     }
     
