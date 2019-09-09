@@ -42,6 +42,10 @@
 		AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */; };
 		AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965C231EED1300EACF44 /* DetailViewController.swift */; };
 		AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */; };
+		AC68B45E2326CF09002963C0 /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B45D2326CF09002963C0 /* DetailProfileViewController.swift */; };
+		AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */; };
+		AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B4612326CF86002963C0 /* UsersViewController.swift */; };
+		AC68B4642326CFE6002963C0 /* CellUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B4632326CFE6002963C0 /* CellUsers.swift */; };
 		AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90223071D01004FA292 /* AppDelegate.swift */; };
 		AC9EE90523071D01004FA292 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90423071D01004FA292 /* ViewController.swift */; };
 		AC9EE90823071D01004FA292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9EE90623071D01004FA292 /* Main.storyboard */; };
@@ -139,6 +143,10 @@
 		AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTaskViewController.swift; sourceTree = "<group>"; };
 		AC52965C231EED1300EACF44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilTableViewController.swift; sourceTree = "<group>"; };
+		AC68B45D2326CF09002963C0 /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
+		AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		AC68B4612326CF86002963C0 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		AC68B4632326CFE6002963C0 /* CellUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUsers.swift; sourceTree = "<group>"; };
 		AC9EE8FF23071D01004FA292 /* AlzheimerProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzheimerProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9EE90223071D01004FA292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9EE90423071D01004FA292 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +285,9 @@
 			children = (
 				AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */,
 				AC9EE921230C64BC004FA292 /* PerfilViewController.swift */,
+				AC68B45D2326CF09002963C0 /* DetailProfileViewController.swift */,
+				AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */,
+				AC68B4612326CF86002963C0 /* UsersViewController.swift */,
 			);
 			path = Perfil;
 			sourceTree = "<group>";
@@ -353,6 +364,7 @@
 				1144AF182320467C00718CC6 /* CustomButton.swift */,
 				3A5F8F77231746BC00A8B05C /* Cloud.swift */,
 				115CADF223268F420057B1E0 /* CellDetail.swift */,
+				AC68B4632326CFE6002963C0 /* CellUsers.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -529,6 +541,8 @@
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */,
 				115CADF323268F420057B1E0 /* CellDetail.swift in Sources */,
+				AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */,
+				AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
 				1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */,
 				3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */,
@@ -558,6 +572,8 @@
 				AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */,
 				3A54EC9F2320573D004BB09C /* Sala+CoreDataClass.swift in Sources */,
 				3AD49DE7231621EC00904457 /* (null) in Sources */,
+				AC68B4642326CFE6002963C0 /* CellUsers.swift in Sources */,
+				AC68B45E2326CF09002963C0 /* DetailProfileViewController.swift in Sources */,
 				3AD49DE0231621EC00904457 /* (null) in Sources */,
 				AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */,
 			);

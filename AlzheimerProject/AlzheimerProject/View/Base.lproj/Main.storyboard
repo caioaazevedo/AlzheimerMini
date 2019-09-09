@@ -839,7 +839,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="T4l-3h-4Up" customClass="CellUsers" customModule="AlzheimerProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="T4l-3h-4Up" customClass="CellUsers">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T4l-3h-4Up" id="SY7-VJ-3XZ">
@@ -861,6 +861,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="fotoPerfil" destination="lqr-q4-zcT" id="Lar-YI-W0t"/>
+                                            <outlet property="imagem" destination="lqr-q4-zcT" id="msU-pz-qLX"/>
+                                            <outlet property="nome" destination="pWN-3w-YUN" id="4Fw-bX-rtv"/>
                                             <outlet property="nomeUsuario" destination="pWN-3w-YUN" id="JAX-qm-lHh"/>
                                         </connections>
                                     </tableViewCell>
