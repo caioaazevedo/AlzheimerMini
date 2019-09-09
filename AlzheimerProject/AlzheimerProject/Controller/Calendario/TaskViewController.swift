@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 protocol TaskViewControllerDelegate {
-    func sendMesage(_ controller: TaskViewController, titulo: String,local : String,categoria : String,hora : String,repetir: String,responsavel: String,descricao: String)
+    func sendMesage(_ controller: TaskViewController, titulo: String,local : String,categoria : String,hora : String,responsavel: String,descricao: String)
 }
 
 class TaskViewController: UIViewController, ViewPopupDelegate  {
@@ -20,24 +21,24 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     }
     
     var delegate: TaskViewControllerDelegate?
-
+    var eventEntity : Evento?
     let userNotification = Notification()
+    
+    var event : Events?
     
     var titulo = ""
     var local = ""
     var categoria = ""
     var hora = ""
-    var repetir = ""
     var responsavel = ""
     var responsaveis = [String]()
     var lembrete = true
     var descricao = ""
-    
+    var willEditing = false
     var dia = Date()
     
     let DatePicker = UIDatePicker()
     let ParentPicker = UIDatePicker()
-    var toolBar = UIToolbar()
     
     @IBOutlet var viewPresent: ViewPopup!
     
@@ -52,23 +53,31 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         
     }
     
-    
-    
-    func createToolBar(){
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action:#selector(self.done))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.done))
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.setItems([cancelButton,spaceButton,doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
+    var auxTitulo = String()
+    var auxCateg = String()
+    override func viewWillAppear(_ animated: Bool) {
+        if willEditing{
+            
+            tableController.hora.text = event?.time
+            tableController.responsavel.text = event?.responsavel
+            tableController.titulo.text = event?.title
+            tableController.categoriaLabel.text = event?.categ
+            tableController.local.text = event?.localization
+            auxTitulo = tableController.titulo.text!
+            auxCateg = tableController.categoriaLabel.text!
+            
+            //tableController.descricao
+        }
     }
+    
+    
+    
     
     
     
     func createDatePicker(){
         DatePicker.datePickerMode = .time
-       
+        
         print(DatePicker.date)
         
         DatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
@@ -88,19 +97,20 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     }
     
     
+    
+    
     func createParentPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Amanda","Caio","DuDu","Gui","Pedro Paulo"]
+        viewPresent.array = ["Amanda","Caio","Eduardo","Guilherme","Pedro"]
         viewPresent.which = "Responsaveis"
         view.addSubview(viewPresent)
-
+        
         
         UIView.animate(withDuration: 1) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
     }
-    
     
     func createCategoryPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -127,14 +137,11 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
-        if which == "Repeat" {
-            tableController.repetir.text = texto
-        }
         if which == "Categoria" {
             tableController.categoriaLabel.text = texto
         }
-
-      
+        
+        
     }
     
     
@@ -150,32 +157,66 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     func fetchData(){
         DatePicker.datePickerMode = .time
-
+        
         titulo = tableController.titulo.text ?? ""
         local = tableController.local.text ?? ""
         hora = tableController.hora.text ?? ""
-        repetir = tableController.repetir.text ?? ""
         responsavel = tableController.responsavel.text ?? ""
-        responsaveis.append(responsavel)
         lembrete = tableController.lembrete.isOn
     }
     
-
-    @IBAction func addTask(_ sender: Any) {
-        if lembrete{
-            var tempo = dia.timeIntervalSinceNow
-            if tempo == 0 {
-                tempo += 3600
-            }
-            print(tempo)
-            
-            let notification = "\(titulo) foi marcado para \(hora) do dia \(dia)"
-            //userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
-            
-        }
+    
+    
+    @IBAction func addTask(_ sender: UIBarButtonItem) {
         
-        fetchData()
+        if tableController.titulo.text == "" || tableController.hora.text == "" || tableController.categoriaLabel.text == "" || tableController.responsavel.text == ""{
+            let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
+            self.present(alert,animated: true,completion: nil)
+        }
+            
+            
+        else{
+            
+            
+            
+            
+            if lembrete{
+                var tempo = dia.timeIntervalSinceNow
+                if tempo < 36000 {
+                    tempo = 36000
+                }
+                print(tempo)
+                
+                let notification = "\(titulo) foi marcado para \(hora) do dia \(dia)"
+                userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
+                
+            }
+            responsaveis.append(responsavel)
+            
+            fetchData()
+            delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,responsavel: responsavel,descricao: descricao)
+            
+            
+            
+            
+            if willEditing{
+                let date = Date()
+                CoreDataRebased.shared.updateEvent(evento: , categoria: tableController.categoriaLabel.text!, descricao: tableController.descricao.text!, dia: dia, horario: DatePicker.date, nome: tableController.titulo.text!, responsaveis: responsaveis)
+            }
+            else{
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo, localizacao: local)
+            }
+            
+            
+            _ = navigationController?.popViewController(animated: true)
+        }
     }
+    
+    
+    
+    
+    
     
     
     
@@ -200,15 +241,12 @@ extension TaskViewController : UITableViewDelegate{
             print("Hora")
             createDatePicker()
         case 4:
-            print("Repetir")
-            createRepeatPicker()
-        case 5:
             print("Responsavel")
             createParentPicker()
             
-        case 6:
+        case 5:
             print("Lembrete")
-        case 7:
+        case 6:
             print("Descricao")
         default:
             view.endEditing(true)

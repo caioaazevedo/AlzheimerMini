@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     var responsavelAux : String?
     var localAux : String?
     var indexValue = 0
-    
+    var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: "", localizationParameter: "")
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
