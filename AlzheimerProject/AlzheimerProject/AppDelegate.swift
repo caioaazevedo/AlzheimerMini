@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import UIKit
 import Foundation
+import UserNotifications
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Cloud Push-Up notifications ⚡️
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (result, error) in
+            
+            if let error = error{
+                print("Erro ao coletar a permissão: ",error)
+            } else {
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+            }
+            
+        }
+        //Cloud Push-Up notifications ⚡️
+        
+        
+        
         return true
     }
 
@@ -38,6 +57,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        
+        //Cloud Push-Up notifications ⚡️
+        DispatchQueue.main.async {
+            application.applicationIconBadgeNumber = 0
+            let operation = CKModifyBadgeOperation(badgeValue: 0)
+            operation.modifyBadgeCompletionBlock = { (error) in
+                if let error = error{
+                    print("ERROR",error)
+                    return
+                }
+            }
+            cloudContainer.add(operation)
+        }
+        //Cloud Push-Up notifications ⚡️
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
