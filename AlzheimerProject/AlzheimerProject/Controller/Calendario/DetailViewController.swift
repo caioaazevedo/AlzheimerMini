@@ -10,40 +10,73 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    let iconesArray = [UIImage(named: "Hora"), UIImage(named: "Responsável"), UIImage(named: "Local") , UIImage(named: "Notas")]
     var diaAux : String?
     var diaSemanaAux : String?
     var tituloAux : String?
     var horaAux : String?
     var responsavelAux : String?
     var localAux : String?
+    var indexValue = 0
     
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        dia.text = diaAux
-        diaSemana.text = diaSemanaAux
+        diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
         titulo.text = tituloAux
-        hora.text = horaAux
-        responsavel.text = responsavelAux
-        local.text = localAux
-        // Do any additional setup after loading the view.
+
     }
     
-    @IBOutlet weak var dia: UILabel!
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
-    @IBOutlet weak var hora: UILabel!
-    @IBOutlet weak var responsavel: UILabel!
-    @IBOutlet weak var local: UILabel!
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+}
+
+extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellDetail", for: indexPath) as! CellDetail
+        
+        var image = UIImage(named: "")
+        var tipo = ""
+        var detalhe = ""
+        
+        switch(indexValue){
+            case 0:
+                image = iconesArray[0]
+                tipo = "Hora"
+                detalhe = horaAux!
+            case 1:
+                image = iconesArray[1]
+                tipo = "Responsável"
+                detalhe = responsavelAux!
+            case 2:
+                image = iconesArray[2]
+                tipo = "Local"
+                detalhe = localAux!
+            default:
+                image = iconesArray[3]
+                tipo = "Notas"
+                detalhe = ""
+        }
+        
+        cell.imagem.image = image
+        cell.tipoDetalhe.text = tipo
+        cell.labelDetail.text = detalhe
+        indexValue += 1
+        return cell
+    }
+    
+    
+    
+    
+    
+    
 }
