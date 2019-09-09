@@ -15,6 +15,10 @@ protocol TaskViewControllerDelegate {
 class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     
+    @IBOutlet weak var tituloTextField: UITextField!
+    @IBOutlet weak var localTextField: UITextField!
+    
+    
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
@@ -44,6 +48,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tituloTextField.setBottomBorder()
+
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
     }
@@ -101,23 +107,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         }
     }
     
-    func createRepeatPicker(){
-        viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Nunca","Anual","Mensal","Semanal","Diário"]
-        viewPresent.which = "Repeat"
-        view.addSubview(viewPresent)
-        
-        
-        UIView.animate(withDuration: 1) {
-            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-            self.view.layoutIfNeeded()
-        }
-        
-        
-        
-        
-    }
-    
     func createCategoryPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         viewPresent.array = ["Medico","Dentista","Passeio","Farmacia","Alimentacao"]
@@ -130,11 +119,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             self.view.layoutIfNeeded()
         }
         
-        
-        
-        
-        
-        
     }
     
     
@@ -143,14 +127,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
-        if which == "Repeat" {
-            tableController.repetir.text = texto
-        }
-        if which == "Categoria" {
-            tableController.categoriaLabel.text = texto
-        }
-
-      
     }
     
     
@@ -167,10 +143,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     func fetchData(){
         DatePicker.datePickerMode = .time
 
-        titulo = tableController.titulo.text ?? ""
-        local = tableController.local.text ?? ""
+//        titulo = tableController.titulo.text ?? ""
+//        local = tableController.local.text ?? ""
         hora = tableController.hora.text ?? ""
-        repetir = tableController.repetir.text ?? ""
         responsavel = tableController.responsavel.text ?? ""
         lembrete = tableController.lembrete.isOn
     }
@@ -208,25 +183,21 @@ extension TaskViewController : UITableViewDelegate{
         self.ParentPicker.removeFromSuperview()
         self.viewPresent.removeFromSuperview()
         switch indexPath.row {
-        case 2:
-            
+        case 0:
             print("Categoria")
             //flexible button
             createCategoryPicker()
             
-        case 3:
+        case 1:
             print("Hora")
             createDatePicker()
-        case 4:
-            print("Repetir")
-            createRepeatPicker()
-        case 5:
+        case 2:
             print("Responsavel")
             createParentPicker()
             
-        case 6:
+        case 3:
             print("Lembrete")
-        case 7:
+        case 4:
             print("Descricao")
         default:
             view.endEditing(true)
@@ -283,6 +254,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
+        //cell.imagemResponsavel.image =
         return cell
     }
     
@@ -298,6 +270,7 @@ class CellClass : UITableViewCell{
     
     @IBOutlet weak var textTable: UILabel!
     
+    @IBOutlet weak var imagemResponsavel: UIImageView!
     
     
 }
