@@ -19,13 +19,17 @@ class DetailViewController: UIViewController {
     var localAux : String?
     var indexValue = 0
     var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: "", localizationParameter: "")
-    
+    @IBOutlet weak var blueView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
         titulo.text = tituloAux
-
+        
+        blueView.layer.cornerRadius = 8
+        blueView.clipsToBounds = true
     }
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!

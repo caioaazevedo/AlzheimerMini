@@ -16,6 +16,10 @@ protocol TaskViewControllerDelegate {
 class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     
+    @IBOutlet weak var tituloTextField: UITextField!
+    @IBOutlet weak var localTextField: UITextField!
+    
+    
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
@@ -45,6 +49,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tituloTextField.setBottomBorder()
+
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
     }
@@ -105,8 +111,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         viewPresent.array = ["Amanda","Caio","Eduardo","Guilherme","Pedro"]
         viewPresent.which = "Responsaveis"
         view.addSubview(viewPresent)
-        
-        
         UIView.animate(withDuration: 1) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
@@ -125,11 +129,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             self.view.layoutIfNeeded()
         }
         
-        
-        
-        
-        
-        
     }
     
     
@@ -139,10 +138,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             tableController.responsavel.text = texto
         }
         if which == "Categoria" {
-            tableController.categoriaLabel.text = texto
+         //   tableController.categoriaLabel.text = texto
         }
-        
-        
     }
     
     
@@ -158,7 +155,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     func fetchData(){
         DatePicker.datePickerMode = .time
-        
         titulo = tableController.titulo.text ?? ""
         local = tableController.local.text ?? ""
         hora = tableController.hora.text ?? ""
@@ -170,7 +166,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
-        if tableController.titulo.text == "" || tableController.hora.text == "" || tableController.categoriaLabel.text == "" || tableController.responsavel.text == ""{
+        if tableController.titulo.text == "" || tableController.hora.text == "" || tableController.responsavel.text == "" {
             let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
@@ -232,22 +228,21 @@ extension TaskViewController : UITableViewDelegate{
         self.ParentPicker.removeFromSuperview()
         self.viewPresent.removeFromSuperview()
         switch indexPath.row {
-        case 2:
-            
+        case 0:
             print("Categoria")
             //flexible button
             createCategoryPicker()
             
-        case 3:
+        case 1:
             print("Hora")
             createDatePicker()
-        case 4:
+        case 2:
             print("Responsavel")
             createParentPicker()
             
-        case 5:
+        case 3:
             print("Lembrete")
-        case 6:
+        case 4:
             print("Descricao")
         default:
             view.endEditing(true)
@@ -283,7 +278,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     
     
     @IBAction func Dismiss(_ sender: UIButton) {
-        delegateSend?.sendInfo(self, texto: array[aux],which: which)
+        delegateSend?.sendInfo(self, texto: array[aux] ?? "Aa",which: which)
         
         UIView.animate(withDuration: 0.5) {
             self.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -304,6 +299,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
+        //cell.imagemResponsavel.image =
         return cell
     }
     
@@ -319,6 +315,7 @@ class CellClass : UITableViewCell{
     
     @IBOutlet weak var textTable: UILabel!
     
+    @IBOutlet weak var imagemResponsavel: UIImageView!
     
     
 }

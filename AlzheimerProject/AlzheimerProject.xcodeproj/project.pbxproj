@@ -12,6 +12,9 @@
 		1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1B232046CF00718CC6 /* GuestViewController.swift */; };
 		1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1C232046D000718CC6 /* LoginViewController.swift */; };
 		115CADF323268F420057B1E0 /* CellDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CADF223268F420057B1E0 /* CellDetail.swift */; };
+		3A28DEF92326E665006FF390 /* profileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A28DEF62326E665006FF390 /* profileTableViewController.swift */; };
+		3A28DEFA2326E665006FF390 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A28DEF72326E665006FF390 /* ProfileTableViewCell.swift */; };
+		3A28DEFB2326E665006FF390 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A28DEF82326E665006FF390 /* ProfileViewController.swift */; };
 		3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */; };
 		3A54EC9A2320573D004BB09C /* Feed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */; };
 		3A54EC9B2320573D004BB09C /* Calendario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8F2320573D004BB09C /* Calendario+CoreDataClass.swift */; };
@@ -116,6 +119,9 @@
 		115CAE2223269A130057B1E0 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		115CAE2323269A130057B1E0 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.release.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.release.xcconfig"; sourceTree = "<group>"; };
+		3A28DEF62326E665006FF390 /* profileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileTableViewController.swift; sourceTree = "<group>"; };
+		3A28DEF72326E665006FF390 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		3A28DEF82326E665006FF390 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A54EC8F2320573D004BB09C /* Calendario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendario+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -365,6 +371,9 @@
 				3A5F8F77231746BC00A8B05C /* Cloud.swift */,
 				115CADF223268F420057B1E0 /* CellDetail.swift */,
 				AC68B4632326CFE6002963C0 /* CellUsers.swift */,
+				3A28DEF72326E665006FF390 /* ProfileTableViewCell.swift */,
+				3A28DEF62326E665006FF390 /* profileTableViewController.swift */,
+				3A28DEF82326E665006FF390 /* ProfileViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -531,6 +540,7 @@
 				3A54ECA12320573D004BB09C /* Usuario+CoreDataClass.swift in Sources */,
 				3AD49DE5231621EC00904457 /* (null) in Sources */,
 				3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */,
+				3A28DEF92326E665006FF390 /* profileTableViewController.swift in Sources */,
 				3A8646A02315C0490091BD0C /* CoreData.swift in Sources */,
 				3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */,
 				3A54ECA22320573D004BB09C /* Usuario+CoreDataProperties.swift in Sources */,
@@ -539,6 +549,7 @@
 				AC9EE90523071D01004FA292 /* ViewController.swift in Sources */,
 				AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
+				3A28DEFA2326E665006FF390 /* ProfileTableViewCell.swift in Sources */,
 				3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */,
 				115CADF323268F420057B1E0 /* CellDetail.swift in Sources */,
 				AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */,
@@ -547,6 +558,7 @@
 				1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */,
 				3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */,
 				3ABF2BA82318761700486A68 /* PersistenceManager.swift in Sources */,
+				3A28DEFB2326E665006FF390 /* ProfileViewController.swift in Sources */,
 				3AD49DDF231621EC00904457 /* (null) in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
