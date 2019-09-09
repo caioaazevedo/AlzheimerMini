@@ -11,6 +11,8 @@ import UIKit
 class GuestViewController: UIViewController{
     var isHost = false
     var realHost = false
+    var activeField: UITextField?
+    
     @IBOutlet weak var familyCode: UITextField!
     
     @IBOutlet weak var homeButton: CustomButton!
@@ -20,9 +22,21 @@ class GuestViewController: UIViewController{
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userEmail: UITextField!
     
+    let scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = true
+        sv.alwaysBounceVertical = true
+        sv.backgroundColor = UIColor.clear
+        sv.bounces = true
+        sv.showsVerticalScrollIndicator = false
+        return sv
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
+        
         if isHost {
             setUpImage()
             userName.setBottomBorder()
@@ -30,9 +44,19 @@ class GuestViewController: UIViewController{
         }else {
             familyCode.setBottomBorder()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func setUpView() {
+        self.activeField = UITextField()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
 
-    
+
     func setUpImage() {
         imageButton.layer.cornerRadius = imageButton.frame.size.height / 2
         imageButton.clipsToBounds = true
@@ -69,6 +93,26 @@ class GuestViewController: UIViewController{
     func insertCode(code: String){
         self.familyCode.text = code
     }
+    
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height - 200
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     
 }
 
