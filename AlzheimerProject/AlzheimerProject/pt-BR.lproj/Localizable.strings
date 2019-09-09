@@ -1,0 +1,91 @@
+/* 
+  Localizable.strings
+  AlzheimerProject
+
+  Created by Guilherme Martins Dalosto de Oliveira on 08/09/19.
+  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
+*/
+
+//                      BRAZILIAN PORTUGUESE
+"Host" = "Administrador";
+"Guest" = "Convidado";
+
+"Name" = "Nome";
+"Full Name" = "Nome Completo";
+
+
+"NAV-Calendar" = "Calendário";
+"NAV-Feed" = "Feed de notícias";
+"NAV-Profile" = "Perfil do usuário";
+
+
+"New Event" = "Novo evento";
+"Add" = "Adicionar";
+
+"Title" = "Título";
+"Localization" = "Localização";
+"Category" = "Categoria";
+
+// Categorias
+"Health" "Saúde";
+"Food" = "Comida";
+//  ---
+"Time" = "Hora";
+"Responsable" = "Responsável";
+"Notify" = "Lembrete";
+"Notes" = "Notas";
+
+
+
+
+
+"Edit" = "Editar";
+"Done" = "Pronto";
+"Cancel" = "Cancelar";
+"Remove" = "Remover";
+
+"Delete Event" = "Deletar Evento";
+
+"of" = "de";
+
+
+"January" = "Janeiro";
+"February" = "Fevereiro";
+"March" = "Marco";
+"April" = "Abril";
+"May" = "Maio";
+"June" = "Junho";
+"July" = "Julho";
+"August" = "Agosto";
+"September" = "Setembro";
+"October" = "Outubro";
+"November" = "Novembro";
+"December" = "Dezembro";
+
+"Activities" = "Atividades";
+"All" = "Todas";
+"Mine" = "Minhas";
+"Today" = "Hoje";
+"Previously" = "Anteriormente";
+
+"TaskFeed" = "%@ foi marcado por %@ para as %@ do dia %@.";
+
+"age" = "%@ anos";
+
+"Elder Profile" = "Dados do idoso";
+"My Profile" = "Meu Perfil";
+"Group" = "Grupo";
+"Notifications" = "Notificações";
+"My Data" = "Meus Dados";
+"Group" "Grupo";
+
+"Birth" = "Data de Nascimento";
+"Blood type" = "Tipo Sanguíneo";
+"ID" = "RG";
+"Phone" = "Telefone";
+"Allergies" = "Alergias";
+"Health Plan" = "Plano de Saúde";
+"Address" = "Endereço";
+"Medications" = "Medicamentos";
+"Obs" = "Observações";
+

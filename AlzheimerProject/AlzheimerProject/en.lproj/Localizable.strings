@@ -1,0 +1,91 @@
+/*
+  Localizable.strings
+  AlzheimerProject
+
+  Created by Guilherme Martins Dalosto de Oliveira on 08/09/19.
+  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
+*/
+
+//                      BRAZILIAN PORTUGUESE
+"Host" = "Host";
+"Guest" = "Guest";
+
+"Name" = "Name";
+"Full Name" = "Full Name";
+
+
+"NAV-Calendar" = "Calendar";
+"NAV-Feed" = "News Feed";
+"NAV-Profile" = "User Profile";
+
+
+"New Event" = "New Event";
+"Add" = "Add";
+
+"Title" = "Title";
+"Localization" = "Localization";
+"Category" = "Category";
+
+// Categorias
+"Health" "Health";
+"Food" = "Food";
+//  ---
+"Time" = "Time";
+"Responsable" = "Responsable";
+"Notify" = "Notify";
+"Notes" = "Notes";
+
+
+
+
+
+"Edit" = "Edit";
+"Done" = "Done";
+"Cancel" = "Cancel";
+"Remove" = "Remove";
+
+"Delete Event" = "Delete Event";
+
+"of" = "of";
+
+
+"January" = "January";
+"February" = "February";
+"March" = "March";
+"April" = "April";
+"May" = "May";
+"June" = "June";
+"July" = "July";
+"August" = "August";
+"September" = "September";
+"October" = "October";
+"November" = "November";
+"December" = "December";
+
+"Activities" = "Activities";
+"All" = "All";
+"Mine" = "Mine";
+"Today" = "Today";
+"Previously" = "Previously";
+
+"TaskFeed" = "%@ was scheduled by %@ to %@ of day %@.";
+
+"age" = "%@ years";
+
+"Elder Profile" = "Elder Profile";
+"My Profile" = "My Profile";
+"Group" = "Group";
+"Notifications" = "Notification";
+"My Data" = "My Data";
+
+
+"Birth" = "Birth";
+"Blood type" = "Blood type";
+"ID" = "ID";
+"Phone" = "Phone number";
+"Allergies" = "Allergies";
+"Health Plan" = "Health Plan";
+"Address" = "Address";
+"Medications" = "Medications";
+"Obs" = "Observations";
+

@@ -1,0 +1,219 @@
+
+/* Class = "UITextField"; text = "Categoria"; ObjectID = "0oS-xJ-g2i"; */
+"0oS-xJ-g2i.text" = "Categoria";
+
+/* Class = "UIButton"; normalTitle = "Editar"; ObjectID = "1V4-dh-IGE"; */
+"1V4-dh-IGE.normalTitle" = "Editar";
+
+/* Class = "UITextField"; text = "61 99507-2601"; ObjectID = "1ma-kw-qAJ"; */
+"1ma-kw-qAJ.text" = "Número de telefone";
+
+/* Class = "UILabel"; text = "Enderecos"; ObjectID = "2SX-06-hLD"; */
+"2SX-06-hLD.text" = "Enderecos";
+
+/* Class = "UITextField"; text = "Plano"; ObjectID = "4De-4n-Ihd"; */
+"4De-4n-Ihd.text" = "Plano";
+
+/* Class = "UITextField"; text = "Amanda Congiu"; ObjectID = "4bZ-eg-jT4"; */
+"4bZ-eg-jT4.text" = "Amanda Congiu";
+
+/* Class = "UITextField"; placeholder = "Título"; ObjectID = "4zI-Ii-ZCs"; */
+"4zI-Ii-ZCs.placeholder" = "Título";
+
+/* Class = "UITextField"; text = "3745447"; ObjectID = "5xk-r7-dT2"; */
+"5xk-r7-dT2.text" = "3745447";
+
+/* Class = "UILabel"; text = "22 de Fevereiro"; ObjectID = "7Ms-IG-Wzv"; */
+"7Ms-IG-Wzv.text" = "22 de Fevereiro";
+
+/* Class = "UITextField"; text = "Alergias"; ObjectID = "7nq-lt-idl"; */
+"7nq-lt-idl.text" = "Alergias";
+
+/* Class = "UILabel"; text = "Categoria"; ObjectID = "7sK-zY-rqy"; */
+"7sK-zY-rqy.text" = "Categoria";
+
+/* Class = "UITextView"; text = "Descricao do feed"; ObjectID = "8Pa-kd-VOc"; */
+"8Pa-kd-VOc.text" = "Descricao do feed";
+
+/* Class = "UITextField"; text = "A+"; ObjectID = "8kc-Q2-XA8"; */
+"8kc-Q2-XA8.text" = "A+";
+
+/* Class = "UIBarButtonItem"; title = "Calendário"; ObjectID = "8xJ-ta-bzw"; */
+"8xJ-ta-bzw.title" = "Calendário";
+
+/* Class = "UILabel"; text = "Horario"; ObjectID = "BHa-Qb-yE8"; */
+"BHa-Qb-yE8.text" = "Horario";
+
+/* Class = "UILabel"; text = "Responsavel"; ObjectID = "C7B-KN-ntq"; */
+"C7B-KN-ntq.text" = "Responsavel";
+
+/* Class = "UITextField"; text = "Medicacoes"; ObjectID = "CNa-e0-sat"; */
+"CNa-e0-sat.text" = "Medicacoes";
+
+/* Class = "UINavigationItem"; title = "Família Dalosto"; ObjectID = "CSO-Kd-zqS"; */
+"CSO-Kd-zqS.title" = "Família Dalosto";
+
+/* Class = "UILabel"; text = "Notificacoes"; ObjectID = "CYx-EN-OiR"; */
+"CYx-EN-OiR.text" = "Notificacoes";
+
+/* Class = "UILabel"; text = "Brasília"; ObjectID = "CcD-DG-Af1"; */
+"CcD-DG-Af1.text" = "Brasília";
+
+/* Class = "UITextField"; placeholder = "Local"; ObjectID = "D8R-ry-4pc"; */
+"D8R-ry-4pc.placeholder" = "Local";
+
+/* Class = "UINavigationItem"; title = "Perfil "; ObjectID = "DYr-Vb-ZlV"; */
+"DYr-Vb-ZlV.title" = "Perfil ";
+
+/* Class = "UILabel"; text = "77 y.o."; ObjectID = "Gj4-6h-03s"; */
+"Gj4-6h-03s.text" = "77 anos";
+
+/* Class = "UILabel"; text = "Plano de Saúde"; ObjectID = "H02-h2-qNI"; */
+"H02-h2-qNI.text" = "Plano de Saúde";
+
+/* Class = "UITextField"; text = "61 99507-2601"; ObjectID = "HXB-mx-3CO"; */
+"HXB-mx-3CO.text" = "61 99507-2601";
+
+/* Class = "UILabel"; text = "TITULO"; ObjectID = "Igg-RA-fnp"; */
+"Igg-RA-fnp.text" = "TITULO";
+
+/* Class = "UILabel"; text = "Meu Perfil"; ObjectID = "J09-AH-M4n"; */
+"J09-AH-M4n.text" = "Meu Perfil";
+
+/* Class = "UILabel"; text = "Descricao"; ObjectID = "KaN-hX-aEg"; */
+"KaN-hX-aEg.text" = "Descriçāo";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "Kkh-qu-ZON"; */
+"Kkh-qu-ZON.normalTitle" = "Apagar";
+
+/* Class = "UILabel"; text = "Responsável"; ObjectID = "LNb-bM-2RC"; */
+"LNb-bM-2RC.text" = "Responsável";
+
+/* Class = "UISegmentedControl"; Ltd-Fz-i4W.segmentTitles[0] = "Todas"; ObjectID = "Ltd-Fz-i4W"; */
+"Ltd-Fz-i4W.segmentTitles[0]" = "Todas";
+
+/* Class = "UISegmentedControl"; Ltd-Fz-i4W.segmentTitles[1] = "Minhas"; ObjectID = "Ltd-Fz-i4W"; */
+"Ltd-Fz-i4W.segmentTitles[1]" = "Minhas";
+
+/* Class = "UIViewController"; title = "Detalhes dos Dados"; ObjectID = "MdR-FW-x6J"; */
+"MdR-FW-x6J.title" = "Detalhes dos Dados";
+
+/* Class = "UITextField"; text = "gmdalosto@gmail.com"; ObjectID = "MlS-6O-X9s"; */
+"MlS-6O-X9s.text" = "gmdalosto@gmail.com";
+
+/* Class = "UILabel"; text = "CRIAR EVENTO"; ObjectID = "QAb-kq-hx3"; */
+"QAb-kq-hx3.text" = "Criar Evento";
+
+/* Class = "UILabel"; text = "Telefone"; ObjectID = "QDq-gD-Yfe"; */
+"QDq-gD-Yfe.text" = "Telefone";
+
+/* Class = "UILabel"; text = "Responsavel"; ObjectID = "SAy-Bs-HeK"; */
+"SAy-Bs-HeK.text" = "Responsavel";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "Shs-ti-UmW"; */
+"Shs-ti-UmW.title" = "Editar";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "Snh-rE-mAc"; */
+"Snh-rE-mAc.title" = "Adicionar";
+
+/* Class = "UILabel"; text = "Titulo"; ObjectID = "TEh-qd-Y3c"; */
+"TEh-qd-Y3c.text" = "Titulo";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "TVH-nF-pt2"; */
+"TVH-nF-pt2.normalTitle" = "Pronto";
+
+/* Class = "UIViewController"; title = "Meu Perfil"; ObjectID = "UcU-HX-d1L"; */
+"UcU-HX-d1L.title" = "Meu Perfil";
+
+/* Class = "UILabel"; text = "Usuários do Grupo"; ObjectID = "V15-Ls-MuN"; */
+"V15-Ls-MuN.text" = "Usuários do Grupo";
+
+/* Class = "UITextField"; text = "Endereco"; ObjectID = "VEV-8n-C02"; */
+"VEV-8n-C02.text" = "Endereco";
+
+/* Class = "UILabel"; text = "Dia de hoje"; ObjectID = "VXI-Rj-3hP"; */
+"VXI-Rj-3hP.text" = "Dia de hoje";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "Vnw-rA-PPo"; */
+"Vnw-rA-PPo.text" = "Email";
+
+/* Class = "UITextField"; text = "25/02/1999"; ObjectID = "XMU-gg-9Mm"; */
+"XMU-gg-9Mm.text" = "25/02/1999";
+
+/* Class = "UILabel"; text = "RG"; ObjectID = "Zsp-yu-Q4i"; */
+"Zsp-yu-Q4i.text" = "RG";
+
+/* Class = "UILabel"; text = "Dados de Pedro Paulo"; ObjectID = "aKq-3P-pba"; */
+"aKq-3P-pba.text" = "Dados de Pedro Paulo";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bKX-My-O2I"; */
+"bKX-My-O2I.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "bz1-DP-ZM0"; */
+"bz1-DP-ZM0.title" = "Adicionar";
+
+/* Class = "UILabel"; text = "Telefone"; ObjectID = "c49-mA-Q4U"; */
+"c49-mA-Q4U.text" = "Telefone";
+
+/* Class = "UINavigationItem"; title = "Grupo dos Dalosto"; ObjectID = "cR5-GN-q0H"; */
+"cR5-GN-q0H.title" = "Grupo dos Dalosto";
+
+/* Class = "UILabel"; text = "Localizacao"; ObjectID = "dZM-8Q-EHl"; */
+"dZM-8Q-EHl.text" = "Localizacao";
+
+/* Class = "UILabel"; text = "Notas"; ObjectID = "e58-6h-Fzc"; */
+"e58-6h-Fzc.text" = "Notas";
+
+/* Class = "UILabel"; text = "Medicacoes"; ObjectID = "flJ-zq-pmk"; */
+"flJ-zq-pmk.text" = "Medicacoes";
+
+/* Class = "UILabel"; text = "Responsáveis"; ObjectID = "fmj-hB-WsV"; */
+"fmj-hB-WsV.text" = "Responsáveis";
+
+/* Class = "UILabel"; text = "Nome"; ObjectID = "iLg-vI-HaU"; */
+"iLg-vI-HaU.text" = "Nome";
+
+/* Class = "UILabel"; text = "Data de nascimento"; ObjectID = "jDE-fr-cE4"; */
+"jDE-fr-cE4.text" = "Data de nascimento";
+
+/* Class = "UINavigationItem"; title = "Perfil do Paciente"; ObjectID = "k6W-ne-07I"; */
+"k6W-ne-07I.title" = "Perfil do Paciente";
+
+/* Class = "UILabel"; text = "PEDRO P. FEITOSA"; ObjectID = "leC-Jg-b1X"; */
+"leC-Jg-b1X.text" = "PEDRO P. FEITOSA";
+
+/* Class = "UILabel"; text = "Hora"; ObjectID = "m1V-wX-uUh"; */
+"m1V-wX-uUh.text" = "Hora";
+
+/* Class = "UILabel"; text = "Lembrete"; ObjectID = "mqN-tN-yyF"; */
+"mqN-tN-yyF.text" = "Lembrete";
+
+/* Class = "UILabel"; text = "Quinta-feira "; ObjectID = "nAR-JF-cwk"; */
+"nAR-JF-cwk.text" = "Quinta-feira ";
+
+/* Class = "UITextField"; text = "Guilherme Dalosto"; ObjectID = "o61-gj-7gk"; */
+"o61-gj-7gk.text" = "Guilherme Dalosto";
+
+/* Class = "UILabel"; text = "Tipo sanguineo"; ObjectID = "oRU-ko-5ru"; */
+"oRU-ko-5ru.text" = "Tipo sanguineo";
+
+/* Class = "UILabel"; text = "Obs:"; ObjectID = "px5-er-lka"; */
+"px5-er-lka.text" = "Observações:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "q6p-FG-Jei"; */
+"q6p-FG-Jei.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Adicionar Evento"; ObjectID = "rGz-hn-gir"; */
+"rGz-hn-gir.title" = "Adicionar Evento";
+
+/* Class = "UILabel"; text = "Alergias"; ObjectID = "toa-qd-prV"; */
+"toa-qd-prV.text" = "Alergias";
+
+/* Class = "UIBarButtonItem"; title = "Perfil"; ObjectID = "vsc-kT-Q4N"; */
+"vsc-kT-Q4N.title" = "Perfil";
+
+/* Class = "UILabel"; text = "2:00 PM"; ObjectID = "yDO-Iy-eFe"; */
+"yDO-Iy-eFe.text" = "2:00 PM";
+
+/* Class = "UITextField"; text = "Observacoes"; ObjectID = "yJZ-lu-a3g"; */
+"yJZ-lu-a3g.text" = "Observacoes";
