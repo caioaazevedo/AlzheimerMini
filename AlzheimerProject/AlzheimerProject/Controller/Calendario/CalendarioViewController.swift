@@ -150,6 +150,8 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         auxDia = Calendar.current.component(.day, from: calendar.today!)
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
         
+        calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
+        
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
         
         
