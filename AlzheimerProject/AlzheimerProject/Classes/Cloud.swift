@@ -721,6 +721,46 @@ class Cloud {
     }
     //Cloud Push-Up notifications ⚡️
     
+    //Cloud ⚡️
+    static func getPeople(){
+        
+        let newPeople = Pessoas(context: managedObjectContext)
+        let userLoad = UserLoaded()
+        /*
+         0. DELETAR O QUE ESTIVER NO CORE DATA!
+         1. Procurar os usuarios na nuvem que pertecem a mesma sala
+         2. Salvar o nome, o ID e a foto
+         3. ESSE METODO TEM QUE SER CHAMADO QUANDO ENTRAR NA TELA DE CRIAR EVENTO
+         */
+        let fetchRequest = NSFetchRequest<Pessoas>.init(entityName: "Pessoas")
+        do{
+            let peoples = try managedObjectContext.fetch(fetchRequest)
+            for p in peoples{
+                managedObjectContext.delete(p)
+                CoreDataRebased.shared.saveCoreData()
+            }
+        }catch{
+            print("Error")
+        }
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Usuario", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            if record["idSala"] == userLoad.idSala{
+                
+                newPeople.foto = record["foto"] as? NSData
+                newPeople.id = record["id"]
+                newPeople.nome = record["nome"]
+                
+                CoreDataRebased.shared.saveCoreData()
+                
+            }
+        }
+        publicDataBase.add(queryOp)
+    }
+    //Cloud ⚡️
+    
     
     
     

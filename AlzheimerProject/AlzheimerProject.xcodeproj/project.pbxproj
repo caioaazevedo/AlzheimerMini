@@ -24,6 +24,8 @@
 		3A54ECA32320573D004BB09C /* Evento+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC972320573D004BB09C /* Evento+CoreDataClass.swift */; };
 		3A54ECA42320573D004BB09C /* Evento+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC982320573D004BB09C /* Evento+CoreDataProperties.swift */; };
 		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
+		3A617DAB2326888800740342 /* Pessoas+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A617DA92326888800740342 /* Pessoas+CoreDataClass.swift */; };
+		3A617DAC2326888800740342 /* Pessoas+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A617DAA2326888800740342 /* Pessoas+CoreDataProperties.swift */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
 		3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF5962231D8D210073D65D /* UserLoaded.swift */; };
@@ -76,6 +78,8 @@
 		3A54EC972320573D004BB09C /* Evento+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Evento+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A54EC982320573D004BB09C /* Evento+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Evento+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
+		3A617DA92326888800740342 /* Pessoas+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A617DAA2326888800740342 /* Pessoas+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3AAF5962231D8D210073D65D /* UserLoaded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoaded.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		3A8646A12315E6A90091BD0C /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
+				3A617DA92326888800740342 /* Pessoas+CoreDataClass.swift */,
+				3A617DAA2326888800740342 /* Pessoas+CoreDataProperties.swift */,
 				3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */,
 				3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */,
 				3A54EC8F2320573D004BB09C /* Calendario+CoreDataClass.swift */,
@@ -440,9 +446,11 @@
 				1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */,
 				3A54EC9A2320573D004BB09C /* Feed+CoreDataProperties.swift in Sources */,
 				3A54EC9E2320573D004BB09C /* PerfilUsuario+CoreDataProperties.swift in Sources */,
+				3A617DAC2326888800740342 /* Pessoas+CoreDataProperties.swift in Sources */,
 				3A54EC9D2320573D004BB09C /* PerfilUsuario+CoreDataClass.swift in Sources */,
 				1144AF192320467C00718CC6 /* CustomButton.swift in Sources */,
 				E2CEB480231850A200C90EFD /* Dados.swift in Sources */,
+				3A617DAB2326888800740342 /* Pessoas+CoreDataClass.swift in Sources */,
 				AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */,
 				AC9EE928230F0D8D004FA292 /* CellCalendar.swift in Sources */,
 				AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */,
