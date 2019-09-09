@@ -182,14 +182,6 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
         
         
-        
-//        CoreDataRebased.shared.createUsuario(email: "gmdalosto@gmail.com", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
-//        CoreDataRebased.shared.createSala()
-        
-        
-        
-        
-        
     }
     
     
@@ -405,8 +397,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         let imagem = eventAux.categorias[indexPath.row]
         cell.titulo.text = eventAux.titulos[indexPath.row]
         cell.horario.text = eventAux.horarios[indexPath.row]
-        cell.imagem.image = UIImage(named: imagem)
-        cell.repeatt.text = eventAux.repeatt[indexPath.row]
+      //  cell.imagem.image = UIImage(named: imagem)
         cell.responsavel.text = eventAux.responsavel[indexPath.row]
         cell.location.text = eventAux.localization[indexPath.row]
         return cell;

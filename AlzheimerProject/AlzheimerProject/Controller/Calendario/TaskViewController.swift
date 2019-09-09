@@ -101,22 +101,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         }
     }
     
-    func createRepeatPicker(){
-        viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Nunca","Anual","Mensal","Semanal","Diário"]
-        viewPresent.which = "Repeat"
-        view.addSubview(viewPresent)
-        
-        
-        UIView.animate(withDuration: 1) {
-            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-            self.view.layoutIfNeeded()
-        }
-        
-        
-        
-        
-    }
     
     func createCategoryPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
