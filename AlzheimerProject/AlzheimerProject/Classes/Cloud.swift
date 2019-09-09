@@ -57,7 +57,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String?, idCalendario: String) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String?, idCalendario: String, localizacao: String?) {
         
         let record = CKRecord(recordType: "Evento")
         
@@ -70,6 +70,7 @@ class Cloud {
         record.setValue(hora, forKeyPath: "hora")
         record.setValue(idUsuario, forKeyPath: "idUsuario")
         record.setValue(idCalendario, forKeyPath: "idCalendario")
+        record.setValue(localizacao, forKey: "localizacao")
         
         saveRequest(record: record)
     }
@@ -94,7 +95,45 @@ class Cloud {
         saveRequest(record: record)
     }
     
+    static func checkUsuario (searchUsuario: String, completion: @escaping (_ result: Bool) -> ()){
+        var usuarioExists = false
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Sala", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.queuePriority = .veryHigh
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            let array: [String] = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
+            
+            for user in array {
+                if searchUsuario == user {
+                    usuarioExists = true
+                }
+            }
+            
+            
+        }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    if usuarioExists {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                }
+            }
+        }
+        publicDataBase.add(queryOp)
+    }
+    
     static func querySala(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
+        var exixst = false
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Sala", predicate: predicate)
         
@@ -115,15 +154,66 @@ class Cloud {
                 
                 print("DADOS: ", record["idSala"]!, array, record["idCalendario"]!, record["idPerfil"]!, record["idHost"]!)
                 
-                completion(true)
+                exixst = true
                 //                print(array)
+            } else {
+                print("NAO")
             }
             
+            
+        }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    if exixst {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                }
+            }
+        }
+        
+        publicDataBase.add(queryOp)
+    }
+    static func queryArrayUsuarios(searchUsuarios: [String], completion: @escaping (_ result: Bool) -> ()) {
+        var count = 0
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Usuario", predicate: predicate)
+        
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.queuePriority = .veryHigh
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            print("=-=-=-=-=-=> ", count)
+//            print("Search: \(searchUsuarios[count]) ===== Record: \(record["idUsuario"]!)")
+            if count < searchUsuarios.count {
+                if searchUsuarios[count] == record["idUsuario"] {
+                    DadosArrayUsuarios.array.id.append(record["idUsuario"]!)
+                    DadosArrayUsuarios.array.nome.append(record["nome"]!)
+                    DadosArrayUsuarios.array.foto?.append(record["foto"]!)
+                    
+                    count += 1
+                    
+                    print("=-=-=-=-=-=> ", count)
+                }
+            }
+        }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                completion(true)
+            }
         }
         publicDataBase.add(queryOp)
     }
     
-    static func queryUsuario(searchRecord: String){
+    
+    static func queryUsuario(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
+        var found = false
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
@@ -140,12 +230,24 @@ class Cloud {
                 DadosUsuario.usuario.email = record["email"]!
                 DadosUsuario.usuario.idSala = record["idSala"]!
                 
+                found = true
                 
                 print("DADOS: ", record["nome"], record["email"], record["idSala"])
                 
             }
-            
-            
+        }
+        
+        queryOp.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    if found {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                }
+            }
         }
         publicDataBase.add(queryOp)
     }
@@ -162,14 +264,10 @@ class Cloud {
             if record["idCalendario"] == searchRecord {
                 
                 DadosClendario.calendario.idCalendario = record["idCalendario"]!
-                if  (record["idEventos"] as! NSArray).mutableCopy() as? [String] != nil {
-                    let eventos = (record["idEventos"] as! NSArray).mutableCopy() as! [String]
-                    DadosClendario.calendario.idEventos = eventos
+                if let rec = record["idEventos"] {
+                    DadosClendario.calendario.idEventos = ((rec as! NSArray).mutableCopy() as? [String])!
+                    
                 }
-                
-                
-                
-                
                 //                print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
                 
                 completion(true)
@@ -209,10 +307,10 @@ class Cloud {
                 
                 DadosPerfil.perfil.idPerfil = record["idPerfil"]!
                 DadosPerfil.perfil.nome = record["nome"] ?? ""
-                DadosPerfil.perfil.dataNascimento = record["dataNascimento"]!
+                DadosPerfil.perfil.dataNascimento = record["dataNascimento"]
                 DadosPerfil.perfil.telefone = record["telefone"] ?? ""
                 DadosPerfil.perfil.descricao = record["descricao"] ?? ""
-                DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"]!
+                DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"] 
                 DadosPerfil.perfil.endereco = record["endereco"] ?? ""
                 if record["remedios"] != nil {
                     DadosPerfil.perfil.remedios = (record["remedios"] as! NSArray).mutableCopy() as! [String]
@@ -440,7 +538,7 @@ class Cloud {
         let eventCreate = Evento(context: managedObjectContext)
         let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         
-
+        
         //  1 -> ✅
         do{
             let eventosExistentes = try managedObjectContext.fetch(eventFetchRequest)
@@ -470,12 +568,12 @@ class Cloud {
                 eventCreate.idCalendario = record["idCalendario"]
                 eventCreate.idResponsavel = record["idCriador"]
                 eventCreate.nome = record["nome"]
-                
+                eventCreate.localizacao = record["localizacao"]
                 CoreDataRebased.shared.saveCoreData()
             }
         }
         
-        
+        publicDataBase.add(queryOp)
         
     }
     // ✅
@@ -506,18 +604,19 @@ class Cloud {
                         
                         if profile.id == userLoad.idSalaProfile{
                             profile.alergias = record["alergias"] as? NSObject
-                            profile.dataDeNascimento = record["dataDeNascimento"]
+                            profile.dataDeNascimento = record["dataNascimento"]
                             profile.descricao = record["descricao"]
                             profile.endereco = record["endereco"]
-                            profile.fotoDePerfil = record["fotoDePerfil"]
-                            profile.id = record["id"]
+                            profile.fotoDePerfil = record["fotoPerfil"]
+                            profile.id = record["idPerfil"]
                             profile.nome = record["nome"]
-                            profile.planoDeSaude = record["planoDeSaude"]
+                            profile.planoDeSaude = record["planoSaude"]
                             profile.remedios = record["remedios"] as? NSObject
+                            profile.tipoSanguineo = record["tipoSanguineo"]
                             CoreDataRebased.shared.saveCoreData()
                         }
                         
-
+                        
                     }
                 } catch{
                     print("Error")
@@ -525,6 +624,7 @@ class Cloud {
             }
         }
         
+        publicDataBase.add(queryOp)
         
     }
     // ✅
@@ -556,6 +656,8 @@ class Cloud {
             
         }
         
+        publicDataBase.add(queryOp)
+        
         
     }
     // ✅
@@ -571,29 +673,27 @@ class Cloud {
         queryOp.recordFetchedBlock = {(record) -> Void in
             
             if record["idSala"] == userLoad.idSala{
-                
                 do{
-                    
                     let salas = try managedObjectContext.fetch(salaFetchRequest)
                     
                     for sala in salas{
                         if sala.id == userLoad.idSala{
                             sala.idUsuarios = record["idUsuarios"] as? NSObject
-                            sala.telefoneUsuarios = record["telefoneUsuarios"] as? NSObject
+//                            sala.telefoneUsuarios = record["telefoneUsuarios"] as? NSObject
+                            
                             CoreDataRebased.shared.saveCoreData()
                         }
                     }
-                    
-                    
                 } catch {
                     print("Error")
                 }
-                
-                
+            } else {
+                print("Nao achou")
             }
             
         }
         
+        publicDataBase.add(queryOp)
     }
     
     
@@ -619,4 +719,5 @@ class Cloud {
     }
     
 }
+
 

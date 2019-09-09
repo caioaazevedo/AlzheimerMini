@@ -213,9 +213,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="VerifyFamilyCode:" destination="6RI-kf-fto" eventType="touchUpInside" id="nyh-4e-ePn"/>
+                                    <action selector="enterCode:" destination="6RI-kf-fto" eventType="touchUpInside" id="lRw-4D-H08"/>
                                     <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="4ds-Nu-58j"/>
-                                    <segue destination="Fg7-5o-6fC" kind="show" identifier="host2" id="1a8-Ni-kb8"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Código" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-eI-ErX">
@@ -254,6 +253,7 @@
                     </view>
                     <connections>
                         <outlet property="familyCode" destination="2Wi-eI-ErX" id="q6U-Qb-6vQ"/>
+                        <segue destination="Fg7-5o-6fC" kind="show" identifier="sugueCadastro" id="d0L-uA-RXe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cY-QM-WhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +265,7 @@
         <image name="sample" width="100" height="63"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ycR-Qk-smF"/>
+        <segue reference="d0L-uA-RXe"/>
         <segue reference="AZV-of-5Wc"/>
     </inferredMetricsTieBreakers>
 </document>
