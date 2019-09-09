@@ -523,6 +523,26 @@ class CoreDataRebased{
         saveCoreData()
     }
     
+    
+    func deleteEvent(eventID: String){
+        
+        let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        
+        do{
+            let eventos = try managedObjectContext.fetch(eventFetchRequest)
+            for eve in eventos{
+                if eve.id == eventID{
+                    managedObjectContext.delete(eve)
+                }
+            }
+        } catch{
+            print("Error")
+        }
+        
+        
+    }
+    
+    
     //***TESTES***
     
     func showData(){
