@@ -10,27 +10,19 @@ import UIKit
 import FSCalendar
 import CoreData
 
+
+
 let screenSize = UIScreen.main.bounds
 
 
-struct eventStruct{
-    var titulos = [""]
-    var horarios = [""]
-    var descricao = [""]
-    var categorias = [""]
-    var repeatt = [""]
-    var localization = [""]
-    var responsavel = [""]
-}
-
 class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
-
+   
+    let cdr = CoreDataRebased.shared
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
-    
+    @IBOutlet weak var diaDeHoje: UILabel!
     @IBOutlet weak var createTaskOutlet: UIBarButtonItem!
-    
     
     
     fileprivate lazy var dateFormatter : DateFormatter =  {
@@ -39,34 +31,22 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         return formatter
     }()
     
-    
-    
-    
-    
-    var eventAux = eventStruct()
-    var auxDate = Date()
-    
-    
+    var DailyEvents = [Events]()
+    var eventosSalvos = [Evento]()
     var dates = [String]()
-    
     var days = [Days]()
-    var events = [Events]()
+    var indexPathAux = 0
     
     var canPass = true
     
-    
-    
-    
-    
     var auxText : String = "" {
         didSet{
-            reloadAll()
+            tableView.reloadData()
         }
     }
     var auxLocal : String?
     var auxCateg : String?
     var auxTime : String?
-    var auxRepetir : String?
     var auxResponsavel : String?
     var auxLembrete : String?
     var auxDescricao : String?
@@ -127,63 +107,84 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     }
     
     var auxMes : String?
-    
+    var DiaSelecionado : Date?
+    var eventoSelecionado : Events?
+    var DiaHoje : Date?
     var selectedDay : Date? {
         didSet{
-            auxDate = selectedDay!
-            auxDiaSemanaNum = Calendar.current.component(.weekday, from: auxDate)
-            auxDia = Calendar.current.component(.day, from: auxDate)
-            auxMesNum = Calendar.current.component(.month, from: auxDate)
-            if let today = calendar.today, selectedDay! < today {
-                let alert = UIAlertController(title: "Error", message: "Nao e possivel adicionar tarefas a dias passados", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Click", style: .default, handler: nil))
-                self.present(alert,animated: true,completion: nil)
-            }
-            else{
-                
-                eventAux.titulos.removeAll()
-                eventAux.horarios.removeAll()
-                eventAux.localization.removeAll()
-                eventAux.repeatt.removeAll()
-                eventAux.responsavel.removeAll()
-                for day in days{
-                    if selectedDay == day.day{
-                        eventAux.titulos.removeAll()
-                        eventAux.horarios.removeAll()
-                        for i in 0..<day.event.count{
-                            eventAux.titulos.append(day.event[i].title)
-                            eventAux.descricao.append(day.event[i].desc)
-                            eventAux.horarios.append(day.event[i].time)
-                            eventAux.categorias.append(day.event[i].categ)
-                            eventAux.repeatt.append(day.event[i].repeatt)
-                            eventAux.responsavel.append(day.event[i].responsavel)
-                            eventAux.localization.append(day.event[i].localization)
-                            
-                            
-                            
-                            
-                        }
-                    }
+            DailyEvents.removeAll()
+            DiaSelecionado = selectedDay!
+            auxDiaSemanaNum = Calendar.current.component(.weekday, from: DiaSelecionado!)
+            auxDia = Calendar.current.component(.day, from: DiaSelecionado!)
+            auxMesNum = Calendar.current.component(.month, from: DiaSelecionado!)
+            diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
+            
+            
+            let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
+            
+            
+            for evento in eventosSalvos{
+                let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
+                if diaSelecionadoEvento == diaEvento{
+                    let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
+                    let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
+                    let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: "\(evento.idUsuarios!)", localizationParameter: evento.localizacao ?? "")
+                    
+                    DailyEvents.append(evento)
+                    
                 }
-                reloadAll()
             }
+            
+            tableView.reloadData()
+            
         }
     }
     
     
-    @IBAction func createTask(_ sender: Any) {
-        marcarTask()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createCalendar()
-        reloadAll()
+        tableView.reloadData()
+        DiaSelecionado = calendar.today!
+        auxDia = Calendar.current.component(.day, from: calendar.today!)
+        auxMesNum = Calendar.current.component(.month, from: calendar.today!)
+        diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
+        
+        
+        
+        fetchAll()
+        
         
         
         
     }
     
+    func fetchAll(){
+        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            let eventos = try managedObjectContext.fetch(fetchRequest)
+            eventosSalvos.removeAll()
+            for evento in eventos{
+                eventosSalvos.append(evento)
+            }
+        }catch{
+            
+        }
+    }
+    
+    @IBAction func createTask(_ sender: Any) {
+        
+        if let today = calendar.today, DiaSelecionado ?? today < today {
+            let alert = UIAlertController(title: "Atenção", message: "Não é possível adicionar tarefas a dias passados", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
+            self.present(alert,animated: true,completion: nil)
+            
+            // Deixar opcao escondida
+        } else{
+            marcarTask()
+        }
+    }
     
     
     
@@ -192,112 +193,47 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         if segue.identifier == "segueTask"{
             if let vc = segue.destination as? TaskViewController{
                 vc.delegate = self
-                vc.dia = auxDate;
+                vc.dia = DiaSelecionado ?? calendar.today!
+                
             }
         }
         
         if segue.identifier == "segueDetail"{
+            
             if let vc = segue.destination as? DetailViewController{
+                
+                auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
+                auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
+                
+                
+                vc.event = DailyEvents[indexPathAux]
+                
                 vc.diaAux = "\(auxDia!) de \(auxMes!)"
-                vc.diaSemanaAux = auxDiaSemana ?? ""
-                vc.horaAux = auxTime ?? ""
-                vc.localAux = auxLocal ?? ""
-                vc.responsavelAux = auxResponsavel ?? ""
-                vc.tituloAux = auxText ?? ""
+                
+                vc.diaSemanaAux = "\(auxDiaSemana!)"
             }
         }
-        
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(false)
+        
     }
     
     
     
     
-    func sendMesage(_ controller: TaskViewController, titulo: String, local: String, categoria: String, hora: String, repetir: String, responsavel: String, descricao: String) {
+    func sendMesage(_ controller: TaskViewController, titulo: String, local: String, categoria: String, hora: String, responsavel: String, descricao: String) {
         auxText = titulo
         auxLocal = local
         auxCateg = categoria
         auxTime = hora
-        auxRepetir = repetir
         auxResponsavel = responsavel
         auxDescricao = descricao
-        createEventDay()
     }
     
-    func createEventDay(){
-        
-        
-        if let date = calendar!.selectedDate{
-            let stringDate = toString(date)
-            dates.append(stringDate)
-            calendar(calendar, numberOfEventsFor: date)
-            
-            for dia in days{
-                if dia.day == date{
-                    canPass = false
-                    let event = Events(titleParameter: auxText,timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",repeattParameter: auxRepetir ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "aa")
-                    dia.event.append(event)
-                    events.append(event)
-                    eventAux.titulos.append(event.title)
-                    eventAux.descricao.append(event.desc)
-                    eventAux.horarios.append(event.time)
-                    eventAux.categorias.append(event.categ)
-                    eventAux.repeatt.append(event.repeatt)
-                    eventAux.localization.append(event.localization)
-                    eventAux.responsavel.append(event.responsavel)
-                    SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, localizacao: event.localization,responsavel: event.responsavel)
-                    
-                    
-                }
-            }
-            
-            
-            if canPass {
-                let day = Days(dayParameter: date)
-              let event = Events(titleParameter: auxText ?? "",timeParameter: auxTime ?? "",descParameter: auxDescricao ?? "" ,categParameter: auxCateg ?? "",repeattParameter: auxRepetir ?? "",responsavelParameter: auxResponsavel ?? "",localizationParameter: auxLocal ?? "")
-                days.append(day)
-                day.event.append(event)
-                
-                
-                events.append(event)
-                eventAux.titulos.append(event.title)
-                eventAux.horarios.append(event.time)
-                eventAux.descricao.append(event.desc)
-                eventAux.categorias.append(event.categ)
-                eventAux.repeatt.append(event.repeatt)
-                eventAux.localization.append(event.localization)
-                eventAux.responsavel.append(event.responsavel)
-                     SaveCoreData(titulo: event.title, horario: event.time, dia: stringDate, localizacao: event.localization,responsavel: event.responsavel)
-                
-                
-                canPass = true
-            }
-            
-            reloadAll()
-        }
-        
-        
-        
-        
-        
-    }
     
-    func SaveCoreData(titulo: String,horario: String,dia: String,localizacao: String,responsavel: String){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = appDelegate.persistentContainer.viewContext
-        guard let userEntity = NSEntityDescription.entity(forEntityName: "Feed", in: managedContext) else { return}
-        let user = NSManagedObject(entity: userEntity, insertInto: managedContext)
-        user.setValue(titulo, forKey: "titulo")
-        user.setValue(horario, forKey: "horario")
-        user.setValue(dia, forKey: "dia")
-        user.setValue(localizacao, forKey: "localizacao")
-        user.setValue(responsavel, forKey: "responsavel")
-       
-    }
     
     
     
@@ -307,13 +243,14 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        fetchAll()
         calendar.reloadData()
+        tableView.reloadData()
+        selectedDay = DiaSelecionado
+        
+        
     }
     
-    func reloadAll(){
-        
-        tableView.reloadData()
-    }
     
     
     func toString(_ date: Date) -> String{
@@ -323,10 +260,10 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         return dateFormatter.string(from: date)
     }
     
-   
     
-
-
+    
+    
+    
     
     
 }
@@ -352,7 +289,7 @@ extension CalendarioViewController{
         calendar.calendarHeaderView.backgroundColor = UIColor.white
         calendar.calendarWeekdayView.backgroundColor = UIColor.gray
         calendar.appearance.borderRadius = 1
-        calendar.appearance.todayColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.6)
+        calendar.appearance.todayColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         calendar.appearance.eventDefaultColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         
         view.addSubview(calendar)
@@ -366,21 +303,25 @@ extension CalendarioViewController{
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let dateString = self.dateFormatter.string(from: date)
-        var aux = 1
+        var aux = 0
         
-        for x in days{
-            if x.day == date{
-                aux = x.event.count
+        for x in eventosSalvos{
+            let rhs = Calendar.current.component(.day,from: x.dia! as Date)
+            let lhs = Calendar.current.component(.day,from: date)
+            
+            if rhs == lhs {
+                aux += 1
             }
+            
+            
         }
         
-        if self.dates.contains(dateString) {
-            return aux
-        }
-        
+        return aux
         return 0
         
     }
+    
+    
     
     
 }
@@ -388,18 +329,24 @@ extension CalendarioViewController{
 extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventAux.titulos.count;
+        return DailyEvents.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
-        let imagem = eventAux.categorias[indexPath.row]
-        cell.titulo.text = eventAux.titulos[indexPath.row]
-        cell.horario.text = eventAux.horarios[indexPath.row]
-      //  cell.imagem.image = UIImage(named: imagem)
-        cell.responsavel.text = eventAux.responsavel[indexPath.row]
-        cell.location.text = eventAux.localization[indexPath.row]
+        
+        
+        cell.titulo.text = DailyEvents[indexPath.row].title
+        cell.horario.text = DailyEvents[indexPath.row].time
+        cell.responsavel.text = DailyEvents[indexPath.row].responsavel
+        cell.location.text = DailyEvents[indexPath.row].localization
+        
+        
+        
+        
         return cell;
     }
     
@@ -408,9 +355,9 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        eventoSelecionado = DailyEvents[indexPath.row]
+        performSegue(withIdentifier: "segueDetail", sender: self)
         
-        
-
     }
     
     
