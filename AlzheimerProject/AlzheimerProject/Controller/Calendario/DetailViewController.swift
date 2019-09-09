@@ -25,26 +25,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
         titulo.text = tituloAux
-<<<<<<< HEAD
-        hora.text = horaAux
-        responsavel.text = responsavelAux
-        local.text = localAux
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
-=======
 
->>>>>>> efc7a4f0f17c420430e3395220443bd2e916c7be
     }
-    
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
     

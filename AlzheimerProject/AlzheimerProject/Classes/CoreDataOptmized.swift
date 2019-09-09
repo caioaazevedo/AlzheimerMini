@@ -546,31 +546,12 @@ class CoreDataRebased{
     //***TESTES***
     
     func showData(){
-<<<<<<< HEAD
-=======
-        let profRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
-        do {
-            let perfis = try managedObjectContext.fetch(profRequest)
-            for i in perfis{
-                print(i.id)
-                print(i.idEventos)
-            }
-        } catch {
-        }
-    }
-    func showData2(){
->>>>>>> efc7a4f0f17c420430e3395220443bd2e916c7be
+
         let profRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         do {
             let perfis = try managedObjectContext.fetch(profRequest)
             for i in perfis{
-<<<<<<< HEAD
-                print(i.nome)
-                
-=======
-                print(i.id)
-                print(i.idCalendario)
->>>>>>> efc7a4f0f17c420430e3395220443bd2e916c7be
+
             }
         } catch {
         }

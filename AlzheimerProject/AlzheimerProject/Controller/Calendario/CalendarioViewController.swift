@@ -419,19 +419,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        
-        "\(auxDia!) de \(auxMes!)"
-//       // auxDiaSemana = eventAux.
-//         auxTime  = eventAux.
-//         auxLocal  = eventAux.
-//         auxResponsavel =  eventAux.
-//         auxText = eventAux.
-//
-        
-        
-        CoreDataRebased.shared.updateEvent(evento: <#T##Evento#>, categoria: <#T##String#>, descricao: <#T##String#>, dia: <#T##Date#>, horario: <#T##Date#>, nome: <#T##String#>)
-        performSegue(withIdentifier: "segueDetail", sender: self)
-        
+
     }
     
     
