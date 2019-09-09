@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreData
+import UIKit
+import Foundation
+import UserNotifications
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Cloud Push-Up notifications ⚡️
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (result, error) in
+            
+            if let error = error{
+                print("Erro ao coletar a permissão: ",error)
+            } else {
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+            }
+            
+        }
+        //Cloud Push-Up notifications ⚡️
+        
+        
+        
         return true
     }
 
@@ -36,6 +57,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        
+        //Cloud Push-Up notifications ⚡️
+        DispatchQueue.main.async {
+            application.applicationIconBadgeNumber = 0
+            let operation = CKModifyBadgeOperation(badgeValue: 0)
+            operation.modifyBadgeCompletionBlock = { (error) in
+                if let error = error{
+                    print("ERROR",error)
+                    return
+                }
+            }
+            cloudContainer.add(operation)
+        }
+        //Cloud Push-Up notifications ⚡️
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -86,7 +122,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        print("url \(url)")
+        print("url host :\(url.host!)")
+        
 
+        Cloud.checkUsuario(searchUsuario: UserLoaded().recuperarId()) { (result) in
+            if result {
+                let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "inicialStoryboard")
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            } else {
+                let loginStoryboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+                let initialViewController : GuestViewController = loginStoryboard.instantiateViewController(withIdentifier: "Login") as! GuestViewController
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+                
+                initialViewController.insertCode(code: "\(url.host!)")
+            }
+        }
+        
+        return true
+    }
+    
+    
+    
 
 }
 

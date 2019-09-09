@@ -32,6 +32,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     @IBOutlet weak var createTaskOutlet: UIBarButtonItem!
     
     
+    
     fileprivate lazy var dateFormatter : DateFormatter =  {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -170,12 +171,9 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     }
     
     
-    
     @IBAction func createTask(_ sender: Any) {
         marcarTask()
     }
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -216,6 +214,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 vc.tituloAux = auxText ?? ""
             }
         }
+        
     }
     
     

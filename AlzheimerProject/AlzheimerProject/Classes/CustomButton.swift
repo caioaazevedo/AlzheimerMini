@@ -18,29 +18,40 @@ class CustomButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpButton()
+
     }
     
     func setUpButton() {
         setShadow()
-        
-        
+    
         setTitleColor(.white, for: .normal)
-        
-        backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
-        layer.cornerRadius = 15
-        layer.borderWidth = 3.0
-        layer.borderColor = UIColor.darkGray.cgColor
+        layer.cornerRadius = 10
+        
+        setGradient(colorOne: #colorLiteral(red: 0.9568627451, green: 0.5568627451, blue: 0.1058823529, alpha: 1), colorTwo: #colorLiteral(red: 0.9490196078, green: 0.7137254902, blue: 0.4549019608, alpha: 1))
     }
     
     
     func setShadow() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+        layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
         layer.shadowRadius = 5
         layer.shadowOpacity = 0.5
         clipsToBounds = true
         layer.masksToBounds = false
+    }
+    
+    func setGradient(colorOne: UIColor, colorTwo: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.locations = [0.1, 0.9]
+        gradientLayer.startPoint = CGPoint(x: 0.3, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+        
+        clipsToBounds = true
+        
+        layer.insertSublayer(gradientLayer, at: 0)
     }
     
     func pulsate() {
@@ -77,3 +88,26 @@ class CustomButton: UIButton {
     }
     
 }
+
+@IBDesignable
+class RoundButton: UIButton {
+    
+    @IBInspectable var cornerRadius: CGFloat = 0{
+        didSet{
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 0{
+        didSet{
+            self.layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor = UIColor.clear{
+        didSet{
+            self.layer.borderColor = borderColor.cgColor
+        }
+    }
+}
+

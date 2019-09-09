@@ -44,7 +44,21 @@ class ViewController: UIViewController {
         feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
         
+<<<<<<< HEAD
        
+=======
+//        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Pagode")
+//        CoreDataRebased.shared.createSala()
+        
+        
+//        UserLoaded()
+        
+        
+        
+//        CoreDataRebased.shared.showData()
+        
+        
+>>>>>>> efc7a4f0f17c420430e3395220443bd2e916c7be
     }
     
     
@@ -92,7 +106,9 @@ class ViewController: UIViewController {
         
         let user = CoreDataRebased.shared.loadUserData()
         
-        let text = "\(user.nome!) would like your participation in the family group. Access key: \(userload.idSala!)."
+        let url = URL(string: "login://" + "\(userload.idSala!)")
+        
+        let text = "\(user.nome!) would like your participation in the family group. Access key: \(url!)."
         
         // set up activity view controller
         let textToShare = [ text ]

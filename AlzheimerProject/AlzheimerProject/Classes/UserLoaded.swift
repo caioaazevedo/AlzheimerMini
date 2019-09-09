@@ -119,4 +119,17 @@ class UserLoaded {
         return id
         
     }
+    
+    func fetchDadosUsuario() {
+        let sala = CoreDataRebased.shared.fetchSala()
+        
+        print("=-=-=-=?> \((sala.idUsuarios as! [String])[0])")
+        
+        let max = (sala.idUsuarios as! [String]).count - 1
+        Cloud.queryArrayUsuarios(searchUsuarios: sala.idUsuarios as! [String]) { (_) in
+            for i in 0...max{
+                print("Nome: \(DadosArrayUsuarios.array.nome[i])")
+            }
+        }
+    }
 }

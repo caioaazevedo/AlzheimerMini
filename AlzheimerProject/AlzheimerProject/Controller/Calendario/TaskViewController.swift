@@ -176,10 +176,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         lembrete = tableController.lembrete.isOn
     }
     
-    
-    
-    @IBAction func addTask(_ sender: UIBarButtonItem) {
 
+    @IBAction func addTask(_ sender: Any) {
         if lembrete{
             var tempo = dia.timeIntervalSinceNow
             if tempo == 0 {
@@ -188,18 +186,20 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             print(tempo)
             
             let notification = "\(titulo) foi marcado para \(hora) do dia \(dia)"
-            userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
+            //userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
             
         }
         
         fetchData()
         
+<<<<<<< HEAD
         delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,repetir: repetir,responsavel: responsavel,descricao: descricao)
         CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo)
         _ = navigationController?.popViewController(animated: true)
+=======
+        self.dismiss(animated: true, completion: nil)
+>>>>>>> efc7a4f0f17c420430e3395220443bd2e916c7be
     }
-    
-
     
     
     
