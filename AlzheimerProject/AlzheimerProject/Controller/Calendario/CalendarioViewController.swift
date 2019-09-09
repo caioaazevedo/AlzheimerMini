@@ -149,6 +149,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         DiaSelecionado = calendar.today!
         auxDia = Calendar.current.component(.day, from: calendar.today!)
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
+        
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
         
         
@@ -351,7 +352,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 107
+        return 155
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

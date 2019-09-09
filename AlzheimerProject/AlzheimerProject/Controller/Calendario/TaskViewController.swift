@@ -55,6 +55,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     var auxTitulo = String()
     var auxCateg = String()
+    
     override func viewWillAppear(_ animated: Bool) {
         if willEditing{
             
@@ -200,14 +201,14 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             
             
             
+            
             if willEditing{
                 let date = Date()
-                CoreDataRebased.shared.updateEvent(evento: , categoria: tableController.categoriaLabel.text!, descricao: tableController.descricao.text!, dia: dia, horario: DatePicker.date, nome: tableController.titulo.text!, responsaveis: responsaveis)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: tableController.categoriaLabel.text!, descricao: descricao, dia: dia, horario: DatePicker.date, nome: tableController.titulo.text!, responsaveis: responsaveis)
             }
             else{
                 CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo, localizacao: local)
             }
-            
             
             _ = navigationController?.popViewController(animated: true)
         }
