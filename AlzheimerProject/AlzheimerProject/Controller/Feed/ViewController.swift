@@ -48,10 +48,11 @@ class ViewController: UIViewController {
 //        CoreDataRebased.shared.createSala()
         
         
-        UserLoaded()
+//        UserLoaded()
         
         
-        CoreDataRebased.shared.showData()
+        
+//        CoreDataRebased.shared.showData()
         
         
     }

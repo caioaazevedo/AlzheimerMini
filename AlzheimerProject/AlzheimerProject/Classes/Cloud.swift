@@ -697,6 +697,30 @@ class Cloud {
     }
     
     
+    //Cloud Push-Up notifications ⚡️
+    static func setupCloudKitNotifications(){
+        
+        let predicate = NSPredicate(value: true)
+        let subscription = CKQuerySubscription(recordType: "Evento", predicate: predicate, options: .firesOnRecordCreation)
+        let notificationInfo = CKQuerySubscription.NotificationInfo()
+        
+        notificationInfo.alertBody = "Novo evento criado! Venha conferir!"
+        notificationInfo.shouldBadge = true
+        notificationInfo.soundName = "default"
+        subscription.notificationInfo = notificationInfo
+        
+        publicDataBase.save(subscription) { (sub, error) in
+            if let error = error{
+                print("Error ao criar o request",error)
+            } else {
+                print("Tudo certo")
+            }
+        }
+        
+        
+    }
+    //Cloud Push-Up notifications ⚡️
+    
     
     
     
