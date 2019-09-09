@@ -140,7 +140,18 @@ extension PerfilViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-      
+        
+        switch(indexPath.row){
+        case 0:
+            performSegue(withIdentifier: "seguePerfilIdoso", sender: self)
+        case 1:
+            performSegue(withIdentifier: "segueMeusDados", sender: self)
+        case 2:
+            performSegue(withIdentifier: "segueUsuarios", sender: self)
+        default:
+            print("ai")
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -477,7 +477,7 @@ class CoreDataRebased{
                     prof.nome = profile.nome ?? ""
                     prof.endereco = profile.endereco ?? ""
                     prof.telefone = profile.telefone ?? ""
-                    prof.fotoDePerfil = UIImage(data: profile.fotoDePerfil! as Data)
+                //    prof.fotoDePerfil = UIImage(data: profile.fotoDePerfil! as Data)
                     prof.planoDeSaude = profile.planoDeSaude ?? ""
                     prof.remedios = profile.remedios as? [String]
                     prof.tipoSanguineo = profile.tipoSanguineo ?? ""

@@ -16,7 +16,7 @@ class DetailProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // if (profile == host) && editPressed{
-        setAll()
+     //   setAll()
         
         
         //}
@@ -54,7 +54,7 @@ class DetailProfileViewController: UIViewController {
         
         if (editPressed){
             changeAll(editPressed)
-            cdr.updateProfile(alergias: alergias.text, dataDeNascimento: Date(timeIntervalSinceNow: 0), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
+//            cdr.updateProfile(alergias: alergias.text, dataDeNascimento: Date(timeIntervalSinceNow: 0), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
             editOutlet.title = "Done"
         } else{
             changeAll(editPressed)

@@ -32,7 +32,7 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellUsers", for: indexPath) as! CellUsers
         
         //cell.fotoPerfil
-        cell.nomeUsuario.text = "User"
+        cell.nome.text = "User"
         
         return cell
     }
