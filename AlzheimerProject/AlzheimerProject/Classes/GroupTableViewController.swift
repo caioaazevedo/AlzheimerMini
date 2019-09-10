@@ -1,41 +1,30 @@
 //
-//  profileTableViewController.swift
+//  GroupTableViewController.swift
 //  core
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 09/09/19.
+//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 10/09/19.
 //  Copyright © 2019 Pedro Paulo Feitosa Rodrigues Carneiro. All rights reserved.
 //
 
+
+/*
+ 1. Copiar o que esta no coredata PEssoas para um array
+ 2. Popular o array com os dados.
+ 3. Carregar a view
+ 4.
+ 5.
+ 
+ 
+ */
+
+
 import UIKit
 
-class profileTableViewController: UITableViewController {
+class GroupTableViewController: UITableViewController {
 
-    @IBOutlet weak var quad1: UIView!
-    @IBOutlet weak var quad2: UIView!
-    @IBOutlet weak var quad3: UIView!
-    @IBOutlet weak var quad4: UIView!
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        quad1.layer.cornerRadius = 6
-        quad1.clipsToBounds = true
-        
-        quad2.layer.cornerRadius = 6
-        quad2.clipsToBounds = true
-        
-        quad3.layer.cornerRadius = 6
-        quad3.clipsToBounds = true
-        
-        quad4.layer.cornerRadius = 6
-        quad4.clipsToBounds = true
-    
-        
 
-  
     }
 
     // MARK: - Table view data source
@@ -47,26 +36,40 @@ class profileTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
-        case 0:
-            print("celula1")
-        case 1:
-            print("celula2")
-        case 2:
-            print("celula3")
-        case 3:
-            print("celular4")
-        default:
-            print("sai")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! GroupTableViewCell
+        
+        cell.imgGroup.image = UIImage(named: "hamster 2")
+        
+        
+        return cell
+    }
+
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let vw = UIView()
+        vw.backgroundColor = .darkGray
+        return "                    "
+    }
+    
+    @IBAction func dismiss(_ sender: Any) {
+     
+        self.dismiss(animated: true, completion: nil)
         
     }
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -76,18 +79,17 @@ class profileTableViewController: UITableViewController {
     }
     */
 
-
-    
-
+    /*
     // Override to support editing the table view.
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -113,14 +115,5 @@ class profileTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func loadCoreDataUsers(){
-        
-        
-        
-        
-        
-    }
-    
 
 }
