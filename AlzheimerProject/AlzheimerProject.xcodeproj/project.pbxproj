@@ -49,7 +49,7 @@
 		AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */; };
 		AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B4612326CF86002963C0 /* UsersViewController.swift */; };
 		AC68B4642326CFE6002963C0 /* CellUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B4632326CFE6002963C0 /* CellUsers.swift */; };
-		AC68B46623281FDC002963C0 /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B46523281FDC002963C0 /* NotasViewController.swift */; };
+		AC68B46823282AB6002963C0 /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B46723282AB6002963C0 /* NotasViewController.swift */; };
 		AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90223071D01004FA292 /* AppDelegate.swift */; };
 		AC9EE90523071D01004FA292 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90423071D01004FA292 /* ViewController.swift */; };
 		AC9EE90823071D01004FA292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9EE90623071D01004FA292 /* Main.storyboard */; };
@@ -153,7 +153,7 @@
 		AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		AC68B4612326CF86002963C0 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		AC68B4632326CFE6002963C0 /* CellUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUsers.swift; sourceTree = "<group>"; };
-		AC68B46523281FDC002963C0 /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
+		AC68B46723282AB6002963C0 /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
 		AC9EE8FF23071D01004FA292 /* AlzheimerProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzheimerProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9EE90223071D01004FA292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9EE90423071D01004FA292 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 				AC9EE92F23144937004FA292 /* TaskViewController.swift */,
 				AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */,
 				AC9EE923230C6901004FA292 /* CalendarioViewController.swift */,
-				AC68B46523281FDC002963C0 /* NotasViewController.swift */,
+				AC68B46723282AB6002963C0 /* NotasViewController.swift */,
 			);
 			path = Calendario;
 			sourceTree = "<group>";
@@ -542,7 +542,7 @@
 				3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */,
 				3A28DEF92326E665006FF390 /* profileTableViewController.swift in Sources */,
 				3A8646A02315C0490091BD0C /* CoreData.swift in Sources */,
-				AC68B46623281FDC002963C0 /* NotasViewController.swift in Sources */,
+				AC68B46823282AB6002963C0 /* NotasViewController.swift in Sources */,
 				3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */,
 				3A54ECA22320573D004BB09C /* Usuario+CoreDataProperties.swift in Sources */,
 				AC9EE924230C6901004FA292 /* CalendarioViewController.swift in Sources */,
