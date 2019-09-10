@@ -166,7 +166,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
-        if tableController.titulo.text == "" || tableController.hora.text == "" || tableController.responsavel.text == "" {
+        if tableController.titulo.text == "" || tableController.hora.text == "" {
             let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)

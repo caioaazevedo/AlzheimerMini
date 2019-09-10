@@ -157,6 +157,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
         
         
         fetchAll()
+        viewDidLayoutSubviews()
         
         
         
