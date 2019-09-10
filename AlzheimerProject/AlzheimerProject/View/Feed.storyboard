@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Grupo dos Congiu-->
         <scene sceneID="XmR-bR-GSU">
             <objects>
                 <viewController id="tJk-sW-KAf" customClass="ViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,24 +109,19 @@
                                     <outlet property="delegate" destination="tJk-sW-KAf" id="LfV-bV-pfp"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iiZ-fM-OYx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Grupo dos Congiu" id="f7A-Db-nEq"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.94900804760000002" green="0.94901365039999996" blue="0.94902819400000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="Zer-mj-rzr"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Grupo dos Congiu" id="2XS-YM-dew"/>
                     <connections>
+                        <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
                         <outlet property="segment" destination="ON6-st-0EH" id="yGj-ta-JOt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXI-dI-kDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17.39130434782609" y="-96.428571428571431"/>
+            <point key="canvasLocation" x="339" y="-65"/>
         </scene>
     </scenes>
     <resources>

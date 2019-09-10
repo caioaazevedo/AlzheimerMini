@@ -67,6 +67,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Cloud.setupCloudKitNotifications()
 //        feedView.delegate = self
 //        feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
@@ -75,6 +76,7 @@ class ViewController: UIViewController {
 //        CoreDataRebased.shared.createSala()
     }
     
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     
 
     override func viewWillAppear(_ animated: Bool) {
@@ -179,21 +181,21 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
         cell.view.layer.cornerRadius = 10
         
         if eventosSalvos.count > 0 {
-            for i in 0...z.count-1{
-                for j in 0...eventosSalvos.count-1 {
-                    if z[i].id == eventosSalvos[j].idResponsavel {
-                        cell.imageFoto.image = UIImage(data: z[i].foto as! Data)
-                        
-                        let hour = Calendar.current.component(.hour, from: eventosSalvos[j].horario! as Date)
-                        let minute = Calendar.current.component(.minute, from: eventosSalvos[j].horario! as Date)
-                        let day = Calendar.current.component(.day, from: eventosSalvos[j].horario! as Date)
-                        
-                        auxMesNum = Calendar.current.component(.month, from: eventosSalvos[j].horario! as Date)
-                        
-                        cell.label.text = "\(eventosSalvos[j].idResponsavel ?? "Gui") marcou  \(eventosSalvos[j].nome!) para Pedro Paulo em \(eventosSalvos[j].localizacao ?? "Brasilia") as \(hour):\(minute) no dia \(day) de \(auxMes) "
-                    }
-                }
-            }
+//            for i in 0...z.count-1{
+//                for j in 0...eventosSalvos.count-1 {
+//                    if z[i].id == eventosSalvos[j].idResponsavel {
+//                        cell.imageFoto.image = UIImage(data: z[i].foto as! Data)
+//
+//                        let hour = Calendar.current.component(.hour, from: eventosSalvos[j].horario! as Date)
+//                        let minute = Calendar.current.component(.minute, from: eventosSalvos[j].horario! as Date)
+//                        let day = Calendar.current.component(.day, from: eventosSalvos[j].horario! as Date)
+//
+//                        auxMesNum = Calendar.current.component(.month, from: eventosSalvos[j].horario! as Date)
+//
+//                        cell.label.text = "\(eventosSalvos[j].idResponsavel ?? "Gui") marcou  \(eventosSalvos[j].nome!) para Pedro Paulo em \(eventosSalvos[j].localizacao ?? "Brasilia") as \(hour):\(minute) no dia \(day) de \(auxMes) "
+//                    }
+//                }
+//            }
         }
 
         return cell
