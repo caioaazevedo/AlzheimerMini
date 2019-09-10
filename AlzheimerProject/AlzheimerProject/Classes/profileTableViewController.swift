@@ -38,36 +38,7 @@ class profileTableViewController: UITableViewController {
   
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 4
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        switch indexPath.row {
-        case 0:
-            print("celula1")
-        case 1:
-            print("celula2")
-        case 2:
-            print("celula3")
-        case 3:
-            print("celular4")
-        default:
-            print("sai")
-        }
-        
-    }
-
+ 
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
