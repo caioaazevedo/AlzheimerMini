@@ -144,6 +144,7 @@ class CalendarioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Cloud.getPeople()
         createCalendar()
         tableView.reloadData()
         DiaSelecionado = calendar.today!

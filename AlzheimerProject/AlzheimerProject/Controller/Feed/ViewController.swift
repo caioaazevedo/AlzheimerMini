@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     let UserNotification = Notification()
 
+    @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var feedView: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
     
@@ -172,7 +173,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
         var z = CoreDataRebased.shared.fetchPessoas()
 //         = [pessoas]
         
-        cell.view.layer.cornerRadius = 50
+        cell.view.layer.cornerRadius = 10
         
         if eventosSalvos.count > 0 {
             for i in 0...z.count-1{
@@ -196,7 +197,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 130
     }
 }
 
