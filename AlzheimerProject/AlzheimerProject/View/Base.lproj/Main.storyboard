@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lwv-GR-Mm1">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -560,73 +560,15 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>
-        <!--Família Dalosto-->
-        <scene sceneID="GBU-rI-CNc">
+        <!--Feed-->
+        <scene sceneID="8Tn-jv-lqa">
             <objects>
-                <viewController id="ryx-Fo-Xa2" customClass="ViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Otl-aE-sZl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YKv-4x-SMG">
-                                <rect key="frame" x="20" y="150" width="374" height="581"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellFeed" rowHeight="100" id="m0o-X3-dpH" customClass="CellFeed" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m0o-X3-dpH" id="GcL-Qp-tPD">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="99.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Descricao do feed" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Pa-kd-VOc">
-                                                    <rect key="frame" x="47" y="11" width="272" height="78"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="descricao" destination="8Pa-kd-VOc" id="kOk-ro-lpA"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ltd-Fz-i4W">
-                                <rect key="frame" x="273" y="101" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Todas"/>
-                                    <segment title="Minhas"/>
-                                </segments>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="segmentedAction:" destination="ryx-Fo-Xa2" eventType="valueChanged" id="6PW-GD-5ck"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" red="0.36467796559999999" green="0.73699390890000005" blue="0.74510383609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="41m-A3-QbE"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="76K-pw-yay"/>
-                    <navigationItem key="navigationItem" title="Família Dalosto" id="CSO-Kd-zqS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dRM-Tz-9vf">
-                            <connections>
-                                <action selector="shareAction:" destination="ryx-Fo-Xa2" id="bRF-ne-gzp"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="feedView" destination="YKv-4x-SMG" id="r63-vY-GlE"/>
-                        <outlet property="segmented" destination="Ltd-Fz-i4W" id="ZYg-lf-PJd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z6L-tN-Msa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Feed" id="Vzc-5i-omd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5Fs-zk-heW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vNE-Zb-8Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2879.7101449275365" y="270.53571428571428"/>
+            <point key="canvasLocation" x="2596" y="271"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Spt-8i-zum">
@@ -640,7 +582,8 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ryx-Fo-Xa2" kind="relationship" relationship="rootViewController" id="lwD-fx-Jd4"/>
+                        <segue destination="Vzc-5i-omd" kind="relationship" relationship="rootViewController" id="neo-df-jYC"/>
+                        <segue destination="Vzc-5i-omd" kind="show" id="2q4-f6-V2s"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXd-ND-tAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1385,16 +1328,19 @@
         <image name="Hora" width="16" height="15"/>
         <image name="Hora_1" width="36.5" height="36.5"/>
         <image name="Lembrete" width="36.5" height="36.5"/>
-        <image name="Local" width="22" height="22.5"/>
+        <image name="Local" width="15" height="15"/>
         <image name="Meu Perfil" width="96.5" height="96"/>
         <image name="Notas_1" width="36.5" height="36.5"/>
         <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
         <image name="Profile" width="180" height="180"/>
         <image name="Responsavel" width="36.5" height="36.5"/>
-        <image name="Responsável" width="24" height="22"/>
+        <image name="Responsável" width="16" height="15"/>
         <image name="calendario selecionado" width="38" height="40"/>
         <image name="camera" width="23" height="20"/>
         <image name="hamster 2" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="neo-df-jYC"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

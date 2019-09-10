@@ -67,6 +67,8 @@
 		BF95BC60618A0AD0F91A87A7 /* Pods_AlzheimerProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */; };
 		E2CEB47E23183DF300C90EFD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEB47D23183DF300C90EFD /* CloudKit.framework */; };
 		E2CEB480231850A200C90EFD /* Dados.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CEB47F231850A200C90EFD /* Dados.swift */; };
+		E2D77B542326CA340015EA2B /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2D77B532326CA340015EA2B /* Feed.storyboard */; };
+		E2D77B5D2326DB2B0015EA2B /* CustomCellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D77B5C2326DB2B0015EA2B /* CustomCellFeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +177,8 @@
 		E2CEB47C23183DEF00C90EFD /* AlzheimerProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlzheimerProject.entitlements; sourceTree = "<group>"; };
 		E2CEB47D23183DF300C90EFD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E2CEB47F231850A200C90EFD /* Dados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dados.swift; sourceTree = SOURCE_ROOT; };
+		E2D77B532326CA340015EA2B /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		E2D77B5C2326DB2B0015EA2B /* CustomCellFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCellFeed.swift; path = "/Users/caioazevedo/Developer Academy/SegundoMiniChallenge/AlzheimerMini/AlzheimerMini/AlzheimerProject/AlzheimerProject/Classes/CustomCellFeed.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +368,7 @@
 		AC9EE916230728C4004FA292 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E2D77B5C2326DB2B0015EA2B /* CustomCellFeed.swift */,
 				3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */,
 				3AAF5962231D8D210073D65D /* UserLoaded.swift */,
 				3ABF2BA52318761700486A68 /* ClasseTemp.swift */,
@@ -396,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				AC9EE90623071D01004FA292 /* Main.storyboard */,
+				E2D77B532326CA340015EA2B /* Feed.storyboard */,
 				AC9EE90B23071D02004FA292 /* LaunchScreen.storyboard */,
 				1144AF162320464000718CC6 /* Login.storyboard */,
 			);
@@ -484,6 +490,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2D77B542326CA340015EA2B /* Feed.storyboard in Resources */,
 				1144AF172320464000718CC6 /* Login.storyboard in Resources */,
 				AC9EE90D23071D02004FA292 /* LaunchScreen.storyboard in Resources */,
 				AC9EE90A23071D02004FA292 /* Assets.xcassets in Resources */,
@@ -574,6 +581,7 @@
 				3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */,
 				3A54ECA32320573D004BB09C /* Evento+CoreDataClass.swift in Sources */,
 				3A54EC9C2320573D004BB09C /* Calendario+CoreDataProperties.swift in Sources */,
+				E2D77B5D2326DB2B0015EA2B /* CustomCellFeed.swift in Sources */,
 				3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
 				1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */,
