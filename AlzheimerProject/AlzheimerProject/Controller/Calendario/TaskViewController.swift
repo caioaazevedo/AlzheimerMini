@@ -12,6 +12,7 @@ import CoreData
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
  
     
+    @IBOutlet weak var titulo2: UILabel!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
     
@@ -63,7 +64,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             
             tableController.hora.text = event?.time
             tableController.responsavel.text = event?.responsavel
-            tableController.categoriaLabel.text = event?.categ
         
             
             //tableController.descricao
@@ -106,6 +106,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         viewPresent.array = ["Amanda","Caio","Eduardo","Guilherme","Pedro"]
         viewPresent.which = "Responsaveis"
         view.addSubview(viewPresent)
+        titulo2.text = "Responsável"
         UIView.animate(withDuration: 1) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
@@ -113,10 +114,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     }
     
     func createCategoryPicker(){
+        
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         viewPresent.array = ["Medico","Dentista","Passeio","Farmacia","Alimentacao"]
         viewPresent.which = "Categoria"
         view.addSubview(viewPresent)
+        titulo2.text = "Categoria"
         
         
         UIView.animate(withDuration: 1) {
@@ -131,10 +134,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     func sendInfo(_ view: ViewPopup, texto: String,which: String) {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
-        }
-        
-        if which == "Categoria"{
-            tableController.categoriaLabel.text = texto
         }
     }
     

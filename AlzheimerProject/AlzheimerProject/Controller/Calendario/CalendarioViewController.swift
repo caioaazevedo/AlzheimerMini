@@ -59,7 +59,7 @@ class CalendarioViewController: UIViewController {
             case 2:
                 auxDiaSemana = "Segunda"
             case 3:
-                auxDiaSemana = "Terca"
+                auxDiaSemana = "Terça"
             case 4:
                 auxDiaSemana = "Quarta"
             case 5:
@@ -67,7 +67,7 @@ class CalendarioViewController: UIViewController {
             case 6:
                 auxDiaSemana = "Sexta"
             default:
-                auxDiaSemana = "Sabado"
+                auxDiaSemana = "Sábado"
             }
         }
     }
@@ -83,7 +83,7 @@ class CalendarioViewController: UIViewController {
             case 2:
                 auxMes = "Fevereiro"
             case 3:
-                auxMes = "Marco"
+                auxMes = "Março"
             case 4:
                 auxMes = "Abril"
             case 5:

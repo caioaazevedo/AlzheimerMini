@@ -26,8 +26,9 @@ class DetailViewController: UIViewController {
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
         titulo.text = event.title ?? ""
         
-        blueView.layer.cornerRadius = 8
+        blueView.layer.cornerRadius = 50
         blueView.clipsToBounds = true
+        setShadowBlueView()
         
         
     }
@@ -46,6 +47,8 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellDetail", for: indexPath) as! CellDetail
+        
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         var image = UIImage(named: "")
         var tipo = ""
@@ -82,7 +85,14 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     
-    
+    func setShadowBlueView() {
+        blueView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        blueView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        blueView.layer.shadowRadius = 5
+        blueView.layer.shadowOpacity = 0.5
+        blueView.clipsToBounds = true
+        blueView.layer.masksToBounds = false
+    }
     
     
 }
