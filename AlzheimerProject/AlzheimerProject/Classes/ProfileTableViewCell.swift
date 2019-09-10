@@ -14,6 +14,7 @@ class ProfileTableViewCell: UITableViewCell {
     var identifier: String?
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
