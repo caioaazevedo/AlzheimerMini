@@ -743,7 +743,7 @@
         <scene sceneID="QBX-kV-Ase">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dBy-BK-rbI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" id="ffA-vh-FPm"/>
+                    <tabBarItem key="tabBarItem" image="perfil nao selecionado" selectedImage="perfil selecionado" id="ffA-vh-FPm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RDv-tE-TGv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -762,7 +762,7 @@
         <scene sceneID="Spt-8i-zum">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VZF-ZP-w2Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" id="g9E-qM-3hP"/>
+                    <tabBarItem key="tabBarItem" image="Notificacoe nao selecionado (2)" selectedImage="Notifcacoes selecionado" id="g9E-qM-3hP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EaP-8P-aSQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -889,11 +889,11 @@
             </objects>
             <point key="canvasLocation" x="4015.9420289855075" y="-1266.2946428571429"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="v7E-Io-ucp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LjG-fa-xoa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7tk-dl-FVn"/>
+                    <tabBarItem key="tabBarItem" title="" image="calendario nao selecioando" selectedImage="calendario selecionado" id="7tk-dl-FVn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Xp-SN-toy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1214,36 +1214,20 @@
             </objects>
             <point key="canvasLocation" x="3818.8405797101454" y="2053.7946428571427"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="hRv-EY-NQT">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UTE-6E-W6D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="vrI-G4-iN7"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tgp-zc-xKN">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9D4-qH-PfQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yK3-m1-P5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1576.8115942028987" y="1422.9910714285713"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Edmondo" width="180" height="180"/>
         <image name="Hora" width="16" height="15"/>
         <image name="Local" width="15" height="15"/>
+        <image name="Notifcacoes selecionado" width="30" height="29"/>
+        <image name="Notificacoe nao selecionado (2)" width="31" height="29"/>
         <image name="Profile" width="180" height="180"/>
         <image name="Responsável" width="16" height="15"/>
+        <image name="calendario nao selecioando" width="38" height="40"/>
+        <image name="calendario selecionado" width="38" height="40"/>
         <image name="camera" width="23" height="20"/>
+        <image name="perfil nao selecionado" width="36" height="28"/>
+        <image name="perfil selecionado" width="36" height="28"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="HBj-2Y-PSZ"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
