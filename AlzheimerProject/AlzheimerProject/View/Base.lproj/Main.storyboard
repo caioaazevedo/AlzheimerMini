@@ -1363,17 +1363,17 @@
         <image name="Dados do idoso" width="16" height="16"/>
         <image name="Editar foto" width="16" height="16"/>
         <image name="Edmondo" width="180" height="180"/>
-        <image name="Grupo" width="16" height="16"/>
+        <image name="Grupo" width="96.5" height="96"/>
         <image name="Hora" width="16" height="15"/>
         <image name="Local" width="15" height="15"/>
         <image name="Meu perfil" width="16" height="16"/>
         <image name="Notifcacoes selecionado" width="30" height="29"/>
         <image name="Profile" width="180" height="180"/>
-        <image name="Responsável" width="16" height="15"/>
+        <image name="Responsável" width="24" height="22"/>
         <image name="calendario selecionado" width="38" height="40"/>
         <image name="camera" width="23" height="20"/>
         <image name="hamster 2" width="16" height="16"/>
-        <image name="perfil selecionado" width="36" height="28"/>
+        <image name="perfil selecionado" width="68.5" height="53.5"/>
     </resources>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
