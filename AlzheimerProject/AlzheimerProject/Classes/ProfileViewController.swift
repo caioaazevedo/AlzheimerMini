@@ -126,16 +126,16 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
         
         switch indexPath.row {
         case 0:
-            print("celula1")
+            
+            performSegue(withIdentifier: "seguePerfil", sender: self)
         case 1:
-            print("celula2")
+            
+            performSegue(withIdentifier: "segueMeuPerfil", sender: self)
+            
         case 2:
-            print("celula3")
             performSegue(withIdentifier: "segueShow", sender: self)
-        case 3:
-            print("celular4")
         default:
-            print("sai")
+            print()
         }
         
     }

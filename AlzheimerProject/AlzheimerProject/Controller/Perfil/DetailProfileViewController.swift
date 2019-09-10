@@ -25,8 +25,17 @@ class DetailProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         UserLoaded()
-        cdr.showData()
+        setAll()
     }
+    
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        cdr.updateProfile(alergias: [alergias.text!] , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: [medicacoes.text!], telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
+    }
+    
+    
     func setAll(){
         
         let a = cdr.loadProfileData()
@@ -54,10 +63,11 @@ class DetailProfileViewController: UIViewController {
         
         if (editPressed){
             changeAll(editPressed)
-//            cdr.updateProfile(alergias: alergias.text, dataDeNascimento: Date(timeIntervalSinceNow: 0), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
             editOutlet.title = "Done"
+          
         } else{
             changeAll(editPressed)
+                cdr.updateProfile(alergias: [alergias.text!] , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: [medicacoes.text!], telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
             editOutlet.title = "Edit"
         }
         
