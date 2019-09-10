@@ -9,6 +9,8 @@
 import UIKit
 
 class MyProfileViewController: UIViewController {
+    let cdr = CoreDataRebased.shared
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,15 @@ class MyProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let a = cdr.loadUserData()
+        nome.text = a.nome
+        email.text = a.email
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        cdr.updateUser(email: email.text ?? "", nome: nome.text ?? "", fotoPerfil: profilePhoto.image!)
+    }
     
     @IBOutlet weak var profilePhoto: UIImageView!
     

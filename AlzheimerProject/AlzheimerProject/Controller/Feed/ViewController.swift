@@ -70,6 +70,9 @@ class ViewController: UIViewController {
 //        feedView.delegate = self
 //        feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
+        
+//        CoreDataRebased.shared.createUsuario(email: "", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
+//        CoreDataRebased.shared.createSala()
     }
     
     
