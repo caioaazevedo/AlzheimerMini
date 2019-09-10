@@ -69,20 +69,7 @@ class ViewController: UIViewController {
 //        feedView.delegate = self
 //        feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
-        
-//        CoreDataRebased.shared.createUsuario(email: "pagodeira.com", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Pagode")
-//        CoreDataRebased.shared.createSala()
-        
-        
-//        UserLoaded()
-        
-        
-        
-//        CoreDataRebased.shared.showData()
-        
-        
     }
-    
     
     
 
@@ -212,3 +199,5 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
         return 100
     }
 }
+
+

@@ -7,43 +7,47 @@
 //
 
 import UIKit
+import CoreData
 
-protocol TaskViewControllerDelegate {
-    func sendMesage(_ controller: TaskViewController, titulo: String,local : String,categoria : String,hora : String,repetir: String,responsavel: String,descricao: String)
-}
-
-class TaskViewController: UIViewController, ViewPopupDelegate  {
+class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
+ 
+    
+    @IBOutlet weak var titulo2: UILabel!
+    @IBOutlet weak var tituloTextField: UITextField!
+    @IBOutlet weak var localTextField: UITextField!
     
     
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
     
-    var delegate: TaskViewControllerDelegate?
 
+    var eventEntity : Evento?
     let userNotification = Notification()
+    
+    var event : Events?
     
     var titulo = ""
     var local = ""
     var categoria = ""
     var hora = ""
-    var repetir = ""
     var responsavel = ""
     var responsaveis = [String]()
     var lembrete = true
     var descricao = ""
-    
+    var willEditing = false
     var dia = Date()
     
     let DatePicker = UIDatePicker()
     let ParentPicker = UIDatePicker()
-    var toolBar = UIToolbar()
     
     @IBOutlet var viewPresent: ViewPopup!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tituloTextField.setBottomBorder()
+
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
     }
@@ -52,23 +56,30 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         
     }
     
+    var auxTitulo = String()
+    var auxCateg = String()
     
-    
-    func createToolBar(){
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action:#selector(self.done))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.done))
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.setItems([cancelButton,spaceButton,doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
+    override func viewWillAppear(_ animated: Bool) {
+        if willEditing{
+            
+            tableController.hora.text = event?.time
+            tableController.responsavel.text = event?.responsavel
         
+            
+            //tableController.descricao
+        }
+        
+        tableController.descricao.text = auxNotas
     }
+    
+    
+    
     
     
     
     func createDatePicker(){
         DatePicker.datePickerMode = .time
-       
+        
         print(DatePicker.date)
         
         DatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
@@ -88,52 +99,33 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     }
     
     
+    
+    
     func createParentPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Amanda","Caio","DuDu","Gui","Pedro Paulo"]
+        viewPresent.array = ["Amanda","Caio","Eduardo","Guilherme","Pedro"]
         viewPresent.which = "Responsaveis"
         view.addSubview(viewPresent)
-
-        
+        titulo2.text = "Responsável"
         UIView.animate(withDuration: 1) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
-    }
-    
-    func createRepeatPicker(){
-        viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Nunca","Anual","Mensal","Semanal","Diário"]
-        viewPresent.which = "Repeat"
-        view.addSubview(viewPresent)
-        
-        
-        UIView.animate(withDuration: 1) {
-            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-            self.view.layoutIfNeeded()
-        }
-        
-        
-        
-        
     }
     
     func createCategoryPicker(){
+        
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         viewPresent.array = ["Medico","Dentista","Passeio","Farmacia","Alimentacao"]
         viewPresent.which = "Categoria"
         view.addSubview(viewPresent)
+        titulo2.text = "Categoria"
         
         
         UIView.animate(withDuration: 1) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
-        
-        
-        
-        
-        
         
     }
     
@@ -143,14 +135,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
-        if which == "Repeat" {
-            tableController.repetir.text = texto
-        }
-        if which == "Categoria" {
-            tableController.categoriaLabel.text = texto
-        }
-
-      
     }
     
     
@@ -166,34 +150,69 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     func fetchData(){
         DatePicker.datePickerMode = .time
-
-        titulo = tableController.titulo.text ?? ""
-        local = tableController.local.text ?? ""
+       
         hora = tableController.hora.text ?? ""
-        repetir = tableController.repetir.text ?? ""
-        responsavel = tableController.responsavel.text ?? ""
         lembrete = tableController.lembrete.isOn
     }
     
-
-    @IBAction func addTask(_ sender: Any) {
-        if lembrete{
-            var tempo = dia.timeIntervalSinceNow
-            if tempo == 0 {
-                tempo += 3600
-            }
-            print(tempo)
-            
-            let notification = "\(titulo) foi marcado para \(hora) do dia \(dia)"
-            //userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
-            
+    
+    
+    @IBAction func addTask(_ sender: UIBarButtonItem) {
+        
+        if tableController.hora.text == "" {
+            let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
+            self.present(alert,animated: true,completion: nil)
         }
-        
-        fetchData()
-        delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,repetir: repetir,responsavel: responsavel,descricao: descricao)
-        
-        self.dismiss(animated: true, completion: nil)
+            
+            
+        else{
+            
+            
+            
+            
+            if lembrete{
+                var tempo = dia.timeIntervalSinceNow
+                if tempo < 36000 {
+                    tempo = 36000
+                }
+                print(tempo)
+                
+                let notification = "\(titulo) foi marcado para \(hora) do dia \(dia)"
+                userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
+                
+            }
+            responsaveis.append(responsavel)
+            
+            fetchData()
+         
+            
+            
+            
+            
+            
+            if willEditing{
+                let date = Date()
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: "", responsaveis: responsaveis)
+            }
+            else{
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
+            }
+            
+            _ = navigationController?.popViewController(animated: true)
+        }
     }
+    
+    var auxNotas = ""
+    func sendInfo(_ controller: NotasViewController, texto: String) {
+        auxNotas = texto
+    }
+    
+    
+    
+    
+    
+    
     
     
     
@@ -208,32 +227,35 @@ extension TaskViewController : UITableViewDelegate{
         self.ParentPicker.removeFromSuperview()
         self.viewPresent.removeFromSuperview()
         switch indexPath.row {
-        case 2:
-            
+        case 0:
             print("Categoria")
             //flexible button
             createCategoryPicker()
             
-        case 3:
+        case 1:
             print("Hora")
             createDatePicker()
-        case 4:
-            print("Repetir")
-            createRepeatPicker()
-        case 5:
+        case 2:
             print("Responsavel")
             createParentPicker()
             
-        case 6:
+        case 3:
             print("Lembrete")
-        case 7:
+        case 4:
             print("Descricao")
+            performSegue(withIdentifier: "segueNotas", sender: self)
         default:
             view.endEditing(true)
         }
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueNotas"{
+            if let dest = segue.destination as? NotasViewController{
+                dest.delegate = self
+            }
+        }
+    }
     
     
     
@@ -262,7 +284,6 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     
     
     @IBAction func Dismiss(_ sender: UIButton) {
-        delegateSend?.sendInfo(self, texto: array[aux],which: which)
         
         UIView.animate(withDuration: 0.5) {
             self.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -290,6 +311,8 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         self.endEditing(true)
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
+        
+        
     }
     
 }
@@ -298,6 +321,7 @@ class CellClass : UITableViewCell{
     
     @IBOutlet weak var textTable: UILabel!
     
+    @IBOutlet weak var imagemResponsavel: UIImageView!
     
     
 }

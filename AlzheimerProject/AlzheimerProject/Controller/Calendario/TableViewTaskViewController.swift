@@ -16,17 +16,12 @@ class TableViewTaskViewController: UITableViewController {
         
     }
     
-    
-    @IBOutlet weak var titulo: UITextField!
-    @IBOutlet weak var local: UITextField!
+    @IBOutlet weak var notas: UIView!
     @IBOutlet weak var categoria: UIImageView!
     @IBOutlet weak var hora: UILabel!
-    @IBOutlet weak var repetir: UILabel!
     @IBOutlet weak var responsavel: UILabel!
     @IBOutlet weak var lembrete: UISwitch!
-    
-    @IBOutlet weak var categoriaLabel: UILabel!
-    
+    @IBOutlet weak var descricao: UILabel!
     
     
     

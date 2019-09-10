@@ -25,7 +25,7 @@ class CustomButton: UIButton {
         setShadow()
     
         setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
+        titleLabel?.font = UIFont(name: "SF-Pro-Display-Semibold", size: 20)
         layer.cornerRadius = 10
         
         setGradient(colorOne: #colorLiteral(red: 0.9568627451, green: 0.5568627451, blue: 0.1058823529, alpha: 1), colorTwo: #colorLiteral(red: 0.9490196078, green: 0.7137254902, blue: 0.4549019608, alpha: 1))
