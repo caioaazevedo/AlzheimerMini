@@ -227,6 +227,13 @@
                                                     <rect key="frame" x="311" y="7" width="45" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A definir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wr-FY-J2k">
+                                                    <rect key="frame" x="169" y="14" width="134" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.51366716623306274" green="0.5137590765953064" blue="0.51366132497787476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -276,8 +283,8 @@
                                                     <rect key="frame" x="20" y="10" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-1F-yAO">
-                                                    <rect key="frame" x="275" y="13" width="93" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A definir" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-1F-yAO">
+                                                    <rect key="frame" x="244" y="14" width="93" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.60000419616699219" green="0.59999257326126099" blue="0.60000044107437134" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -331,6 +338,13 @@
                                                     <rect key="frame" x="20" y="9" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFP-RW-Vue">
+                                                    <rect key="frame" x="185" y="14" width="93" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.60000419620000001" green="0.5999925733" blue="0.60000044109999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -347,6 +361,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoria" destination="gRu-3F-GDZ" id="qiV-8V-CcN"/>
+                        <outlet property="categoriaLabel" destination="1wr-FY-J2k" id="RVf-QT-1uh"/>
+                        <outlet property="descricao" destination="LFP-RW-Vue" id="jei-87-xYC"/>
                         <outlet property="hora" destination="vfl-J2-BY0" id="t47-hA-a1k"/>
                         <outlet property="lembrete" destination="DAF-XU-Fq7" id="LA5-ok-heY"/>
                         <outlet property="notas" destination="V1T-hP-nQV" id="c8F-dI-roP"/>
@@ -355,7 +371,41 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n17-cq-pi8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6047.826086956522" y="-344.53125"/>
+            <point key="canvasLocation" x="5850.7246376811599" y="-466.40625"/>
+        </scene>
+        <!--Notas-->
+        <scene sceneID="z5M-bY-4DQ">
+            <objects>
+                <viewController id="QWm-c6-U6U" customClass="NotasViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Am3-dG-kMP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Bzk-iZ-VZu">
+                                <rect key="frame" x="20" y="88" width="374" height="423"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="additional-name"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xwu-bp-q0B"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notas" id="bJV-fr-s7j">
+                        <barButtonItem key="rightBarButtonItem" title="Pronto" id="t40-9m-yib">
+                            <connections>
+                                <action selector="Done:" destination="QWm-c6-U6U" id="asB-zK-Ufs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="notas" destination="Bzk-iZ-VZu" id="xCj-qk-Pyn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMf-xD-ciz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6840.579710144928" y="-556.47321428571422"/>
         </scene>
         <!--Novo Evento-->
         <scene sceneID="Z19-o1-nh7">
@@ -437,6 +487,7 @@
                         <outlet property="localTextField" destination="XQf-uH-8hY" id="oz6-yC-AWi"/>
                         <outlet property="tituloTextField" destination="ENO-3N-ixA" id="oIQ-AF-eBb"/>
                         <outlet property="viewPresent" destination="Oyf-Ok-aro" id="QgX-J2-QBU"/>
+                        <segue destination="QWm-c6-U6U" kind="show" identifier="segueNotas" id="kDt-7w-4gj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdM-xb-oHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -594,7 +645,7 @@
         <scene sceneID="Spt-8i-zum">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VZF-ZP-w2Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="Notifcacoes selecionado" selectedImage="Notifcacoes selecionado" id="g9E-qM-3hP"/>
+                    <tabBarItem key="tabBarItem" image="Notificacoe nao selecionado" id="g9E-qM-3hP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EaP-8P-aSQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -637,7 +688,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="26 de Setembro, Terça" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vij-4k-5f4">
-                                        <rect key="frame" x="198" y="95" width="173" height="21"/>
+                                        <rect key="frame" x="198" y="95" width="204" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -666,14 +717,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0y-fF-R7j">
-                                                    <rect key="frame" x="60" y="12" width="46" height="21"/>
+                                                    <rect key="frame" x="60" y="12" width="245" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                     <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqS-tX-FWl">
-                                                    <rect key="frame" x="39" y="38" width="45" height="21"/>
+                                                    <rect key="frame" x="39" y="38" width="247" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1339,11 +1390,11 @@
             </objects>
             <point key="canvasLocation" x="3049" y="1564"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="MjB-3U-IRX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jL6-yI-iKb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="perfil selecionado" id="059-iL-2Aj"/>
+                    <tabBarItem key="tabBarItem" title="" image="perfil selecionado" id="059-iL-2Aj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rIP-IJ-ZzQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1367,13 +1418,13 @@
         <image name="Hora" width="16" height="15"/>
         <image name="Local" width="15" height="15"/>
         <image name="Meu perfil" width="16" height="16"/>
-        <image name="Notifcacoes selecionado" width="30" height="29"/>
+        <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
         <image name="Profile" width="180" height="180"/>
         <image name="Responsável" width="24" height="22"/>
         <image name="calendario selecionado" width="38" height="40"/>
         <image name="camera" width="23" height="20"/>
         <image name="hamster 2" width="16" height="16"/>
-        <image name="perfil selecionado" width="68.5" height="53.5"/>
+        <image name="perfil selecionado" width="36" height="28"/>
     </resources>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

@@ -9,12 +9,8 @@
 import UIKit
 import CoreData
 
-protocol TaskViewControllerDelegate {
-    func sendMesage(_ controller: TaskViewController, titulo: String,local : String,categoria : String,hora : String,responsavel: String,descricao: String)
-}
-
-class TaskViewController: UIViewController, ViewPopupDelegate  {
-    
+class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
+ 
     
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
@@ -24,7 +20,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         return self.children.first as! TableViewTaskViewController
     }
     
-    var delegate: TaskViewControllerDelegate?
+
     var eventEntity : Evento?
     let userNotification = Notification()
     
@@ -67,14 +63,13 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             
             tableController.hora.text = event?.time
             tableController.responsavel.text = event?.responsavel
-            tableController.titulo.text = event?.title
             tableController.categoriaLabel.text = event?.categ
-            tableController.local.text = event?.localization
-            auxTitulo = tableController.titulo.text!
-            auxCateg = tableController.categoriaLabel.text!
+        
             
             //tableController.descricao
         }
+        
+        tableController.descricao.text = auxNotas
     }
     
     
@@ -137,8 +132,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
-        if which == "Categoria" {
-         //   tableController.categoriaLabel.text = texto
+        
+        if which == "Categoria"{
+            tableController.categoriaLabel.text = texto
         }
     }
     
@@ -155,10 +151,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     func fetchData(){
         DatePicker.datePickerMode = .time
-        titulo = tableController.titulo.text ?? ""
-        local = tableController.local.text ?? ""
+       
         hora = tableController.hora.text ?? ""
-        responsavel = tableController.responsavel.text ?? ""
         lembrete = tableController.lembrete.isOn
     }
     
@@ -166,7 +160,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
-        if tableController.titulo.text == "" || tableController.hora.text == "" {
+        if tableController.hora.text == "" {
             let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
@@ -192,7 +186,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             responsaveis.append(responsavel)
             
             fetchData()
-            delegate?.sendMesage(self,titulo: titulo,local: local,categoria: categoria,hora: hora,responsavel: responsavel,descricao: descricao)
+         
             
             
             
@@ -200,15 +194,21 @@ class TaskViewController: UIViewController, ViewPopupDelegate  {
             
             if willEditing{
                 let date = Date()
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: tableController.categoriaLabel.text!, descricao: descricao, dia: dia, horario: DatePicker.date, nome: tableController.titulo.text!, responsaveis: responsaveis)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: "", responsaveis: responsaveis)
             }
             else{
-                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: descricao, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome: titulo, localizacao: local)
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
             }
             
             _ = navigationController?.popViewController(animated: true)
         }
     }
+    
+    var auxNotas = ""
+    func sendInfo(_ controller: NotasViewController, texto: String) {
+        auxNotas = texto
+    }
+    
     
     
     
@@ -244,12 +244,19 @@ extension TaskViewController : UITableViewDelegate{
             print("Lembrete")
         case 4:
             print("Descricao")
+            performSegue(withIdentifier: "segueNotas", sender: self)
         default:
             view.endEditing(true)
         }
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueNotas"{
+            if let dest = segue.destination as? NotasViewController{
+                dest.delegate = self
+            }
+        }
+    }
     
     
     
@@ -278,7 +285,6 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     
     
     @IBAction func Dismiss(_ sender: UIButton) {
-        delegateSend?.sendInfo(self, texto: array[aux] ?? "Aa",which: which)
         
         UIView.animate(withDuration: 0.5) {
             self.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -299,7 +305,6 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
-        //cell.imagemResponsavel.image =
         return cell
     }
     
@@ -307,6 +312,8 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         self.endEditing(true)
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
+        
+        
     }
     
 }

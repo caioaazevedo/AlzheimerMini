@@ -13,10 +13,6 @@ class DetailViewController: UIViewController {
     let iconesArray = [UIImage(named: "Hora"), UIImage(named: "Responsável"), UIImage(named: "Local") , UIImage(named: "Notas")]
     var diaAux : String?
     var diaSemanaAux : String?
-    var tituloAux : String?
-    var horaAux : String?
-    var responsavelAux : String?
-    var localAux : String?
     var indexValue = 0
     var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: "", localizationParameter: "")
     @IBOutlet weak var blueView: UIView!
@@ -25,11 +21,15 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
-        titulo.text = tituloAux
+        titulo.text = event.title ?? ""
         
         blueView.layer.cornerRadius = 8
         blueView.clipsToBounds = true
+        
+        
     }
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
@@ -51,32 +51,35 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         var tipo = ""
         var detalhe = ""
         
-        switch(indexValue){
+        switch(indexPath.row){
             case 0:
                 image = iconesArray[0]
                 tipo = "Hora"
-                detalhe = horaAux!
+                detalhe = event.time
+            
             case 1:
                 image = iconesArray[1]
                 tipo = "Responsável"
-                detalhe = responsavelAux!
+                detalhe = event.responsavel
             case 2:
                 image = iconesArray[2]
                 tipo = "Local"
-                detalhe = localAux!
+                detalhe = event.localization
             default:
                 image = iconesArray[3]
                 tipo = "Notas"
-                detalhe = ""
+                detalhe = event.desc ?? ""
         }
         
         cell.imagem.image = image
         cell.tipoDetalhe.text = tipo
         cell.labelDetail.text = detalhe
-        indexValue += 1
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
     
     
     

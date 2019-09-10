@@ -15,7 +15,7 @@ import CoreData
 let screenSize = UIScreen.main.bounds
 
 
-class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
+class CalendarioViewController: UIViewController {
    
     let cdr = CoreDataRebased.shared
     
@@ -128,7 +128,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 if diaSelecionadoEvento == diaEvento{
                     let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
                     let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
-                    let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: "\(evento.idUsuarios!)", localizationParameter: evento.localizacao ?? "")
+                    let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
                     
                     DailyEvents.append(evento)
                     
@@ -196,7 +196,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueTask"{
             if let vc = segue.destination as? TaskViewController{
-                vc.delegate = self
+
                 vc.dia = DiaSelecionado ?? calendar.today!
                 
             }
@@ -211,7 +211,6 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
                 
                 
                 vc.event = DailyEvents[indexPathAux]
-                
                 vc.diaAux = "\(auxDia!) de \(auxMes!)"
                 
                 vc.diaSemanaAux = "\(auxDiaSemana!)"
@@ -228,14 +227,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     
     
     
-    func sendMesage(_ controller: TaskViewController, titulo: String, local: String, categoria: String, hora: String, responsavel: String, descricao: String) {
-        auxText = titulo
-        auxLocal = local
-        auxCateg = categoria
-        auxTime = hora
-        auxResponsavel = responsavel
-        auxDescricao = descricao
-    }
+  
     
     
     
