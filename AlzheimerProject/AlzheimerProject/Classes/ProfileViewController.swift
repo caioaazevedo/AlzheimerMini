@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var imageProfileBck: UIView!
     
+    @IBOutlet weak var container: UIView!
     
 
     @IBOutlet weak var img1: UIView!
@@ -26,8 +27,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var pic3: UIImageView!
     @IBOutlet weak var pic4: UIImageView!
     @IBOutlet weak var pic5: UIImageView!
-    
-    
     
     
     //37x37
@@ -48,12 +47,13 @@ class ProfileViewController: UIViewController {
         imageProfileBck.layer.shadowRadius = 5
         
         shadowView()
-        
         arredondaPessoas()
-        
         arredondaImagemPerfis()
         
-        
+        var tableController : profileTableViewController {
+            return self.children.first as! profileTableViewController
+        }
+        tableController.tableView.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -113,5 +113,52 @@ class ProfileViewController: UIViewController {
     }
 
 
+}
+
+
+extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.row {
+        case 0:
+            print("celula1")
+        case 1:
+            print("celula2")
+        case 2:
+            print("celula3")
+            performSegue(withIdentifier: "segueShow", sender: self)
+        case 3:
+            print("celular4")
+        default:
+            print("sai")
+        }
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! GroupTableViewCell
+        
+        cell.imgGroup.image = UIImage(named: "hamster 2")
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let vw = UIView()
+        vw.backgroundColor = .darkGray
+        return "                    "
+    }
+    
+    
+    
+    
 }
 
