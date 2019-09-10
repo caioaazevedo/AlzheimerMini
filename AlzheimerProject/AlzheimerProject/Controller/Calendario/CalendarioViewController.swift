@@ -178,6 +178,7 @@ class CalendarioViewController: UIViewController, TaskViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         createCalendar()
+        CoreDataRebased.shared.createEvent(categoria: "", descricao: "", dia: Date(), horario: Date(), responsaveis: [""], nome: "", localizacao: "")
         reloadAll()
     }
     

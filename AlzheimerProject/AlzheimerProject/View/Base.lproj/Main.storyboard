@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5uS-xS-Xhq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lwv-GR-Mm1">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -634,6 +634,16 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>
+        <!--Feed-->
+        <scene sceneID="8Tn-jv-lqa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feed" id="Vzc-5i-omd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5Fs-zk-heW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vNE-Zb-8Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2596" y="271"/>
+        </scene>
         <!--Família Dalosto-->
         <scene sceneID="GBU-rI-CNc">
             <objects>
@@ -699,7 +709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6L-tN-Msa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2879.7101449275365" y="270.53571428571428"/>
+            <point key="canvasLocation" x="3064" y="271"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SaZ-6e-8Mp">
@@ -762,7 +772,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ryx-Fo-Xa2" kind="relationship" relationship="rootViewController" id="lwD-fx-Jd4"/>
+                        <segue destination="Vzc-5i-omd" kind="relationship" relationship="rootViewController" id="neo-df-jYC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXd-ND-tAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
