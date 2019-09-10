@@ -10,29 +10,14 @@ import UIKit
 
 class profileTableViewController: UITableViewController {
 
-    @IBOutlet weak var quad1: UIView!
-    @IBOutlet weak var quad2: UIView!
-    @IBOutlet weak var quad3: UIView!
-    @IBOutlet weak var quad4: UIView!
-    
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        quad1.layer.cornerRadius = 6
-        quad1.clipsToBounds = true
-        
-        quad2.layer.cornerRadius = 6
-        quad2.clipsToBounds = true
-        
-        quad3.layer.cornerRadius = 6
-        quad3.clipsToBounds = true
-        
-        quad4.layer.cornerRadius = 6
-        quad4.clipsToBounds = true
-    
+
         
 
   
