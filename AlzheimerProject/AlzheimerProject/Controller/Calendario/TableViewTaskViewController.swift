@@ -21,9 +21,6 @@ class TableViewTaskViewController: UITableViewController {
     @IBOutlet weak var hora: UILabel!
     @IBOutlet weak var responsavel: UILabel!
     @IBOutlet weak var lembrete: UISwitch!
-
-    @IBOutlet weak var categoriaLabel: UILabel!
-    
     @IBOutlet weak var descricao: UILabel!
     
     

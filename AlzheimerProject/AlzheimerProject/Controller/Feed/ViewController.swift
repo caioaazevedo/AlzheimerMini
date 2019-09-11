@@ -12,73 +12,90 @@ import CoreData
 class ViewController: UIViewController {
     
     let UserNotification = Notification()
-    
+
+    @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var feedView: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
     
-    struct Evento: Hashable, Comparable {
-        var titulo = ""
-        var horario = ""
-        var dia = ""
-        var localizacao = ""
-        var responsavel = ""
-        
-        // Operator Overloading (Sobrecarga de Operadores)
-        static func < (lhs: Evento, rhs: Evento) -> Bool {
-            return lhs.horario < rhs.horario
+//    struct Evento: Hashable, Comparable {
+//        var titulo = ""
+//        var horario = ""
+//        var dia = ""
+//        var localizacao = ""
+//        var responsavel = ""
+//
+//        // Operator Overloading (Sobrecarga de Operadores)
+//        static func < (lhs: Evento, rhs: Evento) -> Bool {
+//            return lhs.horario < rhs.horario
+//        }
+//
+//    }
+
+    var auxMes = ""
+    var auxMesNum : Int?{
+        didSet{
+            switch(auxMesNum){
+            case 1:
+                auxMes = "Janeiro"
+            case 2:
+                auxMes = "Fevereiro"
+            case 3:
+                auxMes = "Marco"
+            case 4:
+                auxMes = "Abril"
+            case 5:
+                auxMes = "Maio"
+            case 6:
+                auxMes = "Junho"
+            case 7:
+                auxMes = "Julho"
+            case 8:
+                auxMes = "Agosto"
+            case 9:
+                auxMes = "Setembro"
+            case 10:
+                auxMes = "Outubro"
+            case 11:
+                auxMes = "Novembro"
+            default:
+                auxMes = "Dezembro"
+            }
         }
-        
     }
     
-    var eventos = Set<Evento>()
-    
-    var eventosOrdenados: [Evento] {
-        get {
-            return eventos.sorted()
-        }
-    }
+    var eventosSalvos = [Evento]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        feedView.delegate = self
-        feedView.dataSource = self
+        Cloud.setupCloudKitNotifications()
+//        feedView.delegate = self
+//        feedView.dataSource = self
         UserNotification.requestNotificationAuthorization()
-        
+        //Cloud.setupCloudKitNotifications()
 //        CoreDataRebased.shared.createUsuario(email: "", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
 //        CoreDataRebased.shared.createSala()
     }
     
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     
 
     override func viewWillAppear(_ animated: Bool) {
-        eventos.removeAll()
-        getData()
-        feedView.reloadData()
-        
+        print("=-=-=-=-=-=->>>> \(eventosSalvos)")
+        eventosSalvos.removeAll()
+        fetchAll()
+        Cloud.getPeople()
     }
     
-    func getData(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Feed")
-        
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                let titulo = data.value(forKey: "titulo") as! String
-                let horario = data.value(forKey: "horario") as! String
-                let dia = data.value(forKey: "dia") as! String
-                let localizacao = data.value(forKey: "localizacao" ) as! String
-                let responsavel = data.value(forKey: "responsavel" ) as! String
-                
-                
-                let evento = Evento(titulo: titulo, horario: horario, dia: dia, localizacao: localizacao,responsavel: responsavel)
-                eventos.insert(evento)
-                
-                feedView.reloadData()
+    func fetchAll(){
+        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            let eventos = try managedObjectContext.fetch(fetchRequest)
+            eventosSalvos.removeAll()
+            for evento in eventos{
+                eventosSalvos.append(evento)
             }
-        } catch {
-            print("failed")
+        }catch{
+            
         }
     }
     
@@ -110,21 +127,82 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UITableViewDataSource , UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        let sectionName: String
+        switch section {
+        case 0:
+            sectionName = NSLocalizedString("Hoje", comment: "")
+        case 1:
+            sectionName = NSLocalizedString("Anteriores", comment: "")
+        // ...
+        default:
+            sectionName = ""
+        }
+        return sectionName
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventos.count
+        var count = 0
+        
+        if eventosSalvos.count > 0{
+            if section == 0 {
+                for i in 0...eventosSalvos.count-1 {
+                    if eventosSalvos[i].dia! == Date() as NSDate{
+                        count += 1
+                    }
+                }
+                return count
+            } else {
+                for i in count...eventosSalvos.count-1 {
+                    if eventosSalvos[i].dia! == Date() as NSDate{
+                        count += 1
+                    }
+                }
+                return eventosSalvos.count
+            }
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellFeed", for: indexPath) as! CellFeed
-        let indexRow = eventosOrdenados[indexPath.row]
-        cell.descricao.text = "\(indexRow.responsavel) marcou  \(indexRow.titulo) para Pedro Paulo em \(indexRow.localizacao) as \(indexRow.horario) no dia \(indexRow.dia) "
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
+        
+        var z = CoreDataRebased.shared.fetchPessoas()
+//         = [pessoas]
+        
+        cell.view.layer.cornerRadius = 10
+        
+        if eventosSalvos.count > 0 {
+//            for i in 0...z.count-1{
+//                for j in 0...eventosSalvos.count-1 {
+//                    if z[i].id == eventosSalvos[j].idResponsavel {
+//                        cell.imageFoto.image = UIImage(data: z[i].foto as! Data)
+//
+//                        let hour = Calendar.current.component(.hour, from: eventosSalvos[j].horario! as Date)
+//                        let minute = Calendar.current.component(.minute, from: eventosSalvos[j].horario! as Date)
+//                        let day = Calendar.current.component(.day, from: eventosSalvos[j].horario! as Date)
+//
+//                        auxMesNum = Calendar.current.component(.month, from: eventosSalvos[j].horario! as Date)
+//
+//                        cell.label.text = "\(eventosSalvos[j].idResponsavel ?? "Gui") marcou  \(eventosSalvos[j].nome!) para Pedro Paulo em \(eventosSalvos[j].localizacao ?? "Brasilia") as \(hour):\(minute) no dia \(day) de \(auxMes) "
+//                    }
+//                }
+//            }
+        }
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 130
     }
 }
 

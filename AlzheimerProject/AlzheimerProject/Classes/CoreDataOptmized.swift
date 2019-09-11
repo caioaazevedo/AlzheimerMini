@@ -188,6 +188,12 @@ class CoreDataRebased{
         //        return salaCore
     }
     
+    func fetchPessoas() -> [Pessoas]{
+        
+        let pessoasFetchRequest = NSFetchRequest<Pessoas>.init(entityName: "Pessoas")
+        return try! managedObjectContext.fetch(pessoasFetchRequest)
+    }
+    
     //✅ - Criar Usuario 😎
     func createUsuario(email: String, fotoDoPerfil: UIImage?, Nome: String){
         

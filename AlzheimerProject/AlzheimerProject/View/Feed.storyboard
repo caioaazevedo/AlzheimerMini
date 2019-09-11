@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tJk-sW-KAf">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Grupo dos Congiu-->
+        <scene sceneID="XmR-bR-GSU">
+            <objects>
+                <viewController id="tJk-sW-KAf" customClass="ViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CLn-4c-Pv2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ATIVIDADES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-vL-PtF">
+                                <rect key="frame" x="36" y="114" width="83" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" red="0.4392099679" green="0.43921270969999998" blue="0.43921983240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ON6-st-0EH">
+                                <rect key="frame" x="36" y="147" width="342" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Todas"/>
+                                    <segment title="Minhas"/>
+                                </segments>
+                                <color key="tintColor" red="0.90389251709999996" green="0.57948696609999995" blue="0.2391099334" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-iE-Kh1">
+                                <rect key="frame" x="20" y="182" width="374" height="580"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" red="0.43920996785163879" green="0.43921270966529846" blue="0.43921983242034912" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellFeed" rowHeight="135" id="q3x-3X-Jzn" customClass="CustomCellFeed" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="374" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3x-3X-Jzn" id="O61-8z-Bnd">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogB-wl-hXr">
+                                                    <rect key="frame" x="0.0" y="11" width="366" height="113"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="KFa-Ja-RYq">
+                                                            <rect key="frame" x="25" y="25" width="37" height="37"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="37" id="Nkq-jT-RPm"/>
+                                                                <constraint firstAttribute="width" constant="37" id="kSJ-sE-y8c"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYn-yC-uWa">
+                                                            <rect key="frame" x="85" y="17" width="281" height="79"/>
+                                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.9960663914680481" green="0.99607223272323608" blue="0.99608725309371948" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstItem="KFa-Ja-RYq" firstAttribute="leading" secondItem="ogB-wl-hXr" secondAttribute="leading" constant="25" id="1do-Fn-EfG"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ZYn-yC-uWa" secondAttribute="bottom" constant="17" id="4cB-Sk-K4Q"/>
+                                                        <constraint firstItem="KFa-Ja-RYq" firstAttribute="top" secondItem="ogB-wl-hXr" secondAttribute="top" constant="25" id="F0T-d9-HTc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KFa-Ja-RYq" secondAttribute="bottom" constant="51" id="I1E-PB-Nw6"/>
+                                                        <constraint firstItem="ZYn-yC-uWa" firstAttribute="top" secondItem="ogB-wl-hXr" secondAttribute="top" constant="17" id="Ucr-9f-MjJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZYn-yC-uWa" secondAttribute="trailing" id="Uge-FB-2Cz"/>
+                                                        <constraint firstAttribute="centerY" secondItem="ZYn-yC-uWa" secondAttribute="centerY" id="Yai-Fk-ubl"/>
+                                                        <constraint firstItem="ZYn-yC-uWa" firstAttribute="leading" secondItem="ogB-wl-hXr" secondAttribute="leading" constant="85" id="b9f-K9-Qm6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZYn-yC-uWa" secondAttribute="trailing" id="m3j-F9-pZp"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ogB-wl-hXr" firstAttribute="bottom" secondItem="O61-8z-Bnd" secondAttribute="bottomMargin" id="Ei9-Kv-1sb"/>
+                                                <constraint firstItem="ogB-wl-hXr" firstAttribute="leading" secondItem="O61-8z-Bnd" secondAttribute="leading" id="IfE-7D-DQm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ogB-wl-hXr" secondAttribute="trailing" constant="-12" id="VXr-KN-x6f"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="imageFoto" destination="KFa-Ja-RYq" id="kAl-N7-TLx"/>
+                                            <outlet property="imageView" destination="KFa-Ja-RYq" id="mgZ-a5-32a"/>
+                                            <outlet property="label" destination="ZYn-yC-uWa" id="7xQ-ah-H48"/>
+                                            <outlet property="view" destination="ogB-wl-hXr" id="Z0p-kY-FeH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tJk-sW-KAf" id="vHo-R9-s9r"/>
+                                    <outlet property="delegate" destination="tJk-sW-KAf" id="LfV-bV-pfp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94900804760000002" green="0.94901365039999996" blue="0.94902819400000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="Zer-mj-rzr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Grupo dos Congiu" id="2XS-YM-dew"/>
+                    <connections>
+                        <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
+                        <outlet property="segment" destination="ON6-st-0EH" id="yGj-ta-JOt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXI-dI-kDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="339" y="-65"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Remedio" width="192" height="192"/>
+    </resources>
+</document>
