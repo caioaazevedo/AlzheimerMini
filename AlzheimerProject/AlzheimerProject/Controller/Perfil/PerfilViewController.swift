@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 struct Tabelas {
     var name : String?
     var imageName: String?
@@ -42,8 +43,7 @@ class PerfilViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.moreInfo(_:)))
         gestureView.addGestureRecognizer(tap)
         self.view.addSubview(gestureView)
-        
-        
+       
         
     }
     

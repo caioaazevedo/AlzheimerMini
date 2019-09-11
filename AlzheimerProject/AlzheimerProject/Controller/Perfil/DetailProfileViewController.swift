@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class DetailProfileViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class DetailProfileViewController: UIViewController {
         super.viewDidLoad()
         // if (profile == host) && editPressed{
      //   setAll()
+    
         
         
         //}
@@ -26,6 +28,13 @@ class DetailProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         UserLoaded()
         setAll()
+        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.circleImageView.isHidden = true
+               vc.tabBarController?.tabBar.isHidden = true
+        }
+        
     }
     
     

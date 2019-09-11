@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cDx-bj-IP3">
-                                <rect key="frame" x="0.0" y="563" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="563" width="414" height="212"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -724,7 +724,7 @@
         <!--Detalhes dos Dados-->
         <scene sceneID="gaX-V8-3lf">
             <objects>
-                <viewController title="Detalhes dos Dados" id="Zdr-Zw-8bs" customClass="DetailProfileViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detalhes dos Dados" hidesBottomBarWhenPushed="YES" id="Zdr-Zw-8bs" customClass="DetailProfileViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PfV-FG-kxB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -917,7 +917,7 @@
         <!--Meus Dados-->
         <scene sceneID="LlC-qc-zgd">
             <objects>
-                <viewController title="Meus Dados" id="9lj-96-3Ns" customClass="MyProfileViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Meus Dados" hidesBottomBarWhenPushed="YES" id="9lj-96-3Ns" customClass="MyProfileViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Blm-vS-ACS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1104,7 +1104,7 @@
                                 <rect key="frame" x="126" y="126" width="170" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hamster 2" translatesAutoresizingMaskIntoConstraints="NO" id="kSb-wR-bK4">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Edmondo" translatesAutoresizingMaskIntoConstraints="NO" id="kSb-wR-bK4">
                                         <rect key="frame" x="4" y="4" width="162" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -1258,7 +1258,7 @@
         <!--Group Table View Controller-->
         <scene sceneID="5n8-1w-CvY">
             <objects>
-                <tableViewController id="5bY-SQ-2kb" customClass="GroupTableViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="5bY-SQ-2kb" customClass="GroupTableViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NcK-Yl-YA6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1300,11 +1300,11 @@
             </objects>
             <point key="canvasLocation" x="6697" y="1550"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="ePK-7A-Os2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KhX-Uj-UNy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="perfil selecionado" id="YqV-zi-pZt"/>
+                    <tabBarItem key="tabBarItem" title="" image="perfil selecionado" id="YqV-zi-pZt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Ol-8c-9fn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1328,7 +1328,7 @@
         <image name="Hora" width="16" height="15"/>
         <image name="Hora_1" width="36.5" height="36.5"/>
         <image name="Lembrete" width="36.5" height="36.5"/>
-        <image name="Local" width="15" height="15"/>
+        <image name="Local" width="22" height="22.5"/>
         <image name="Meu Perfil" width="96.5" height="96"/>
         <image name="Notas_1" width="36.5" height="36.5"/>
         <image name="Notificacoe nao selecionado" width="23" height="21.5"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class ProfileViewController: UIViewController {
 
@@ -53,9 +54,21 @@ class ProfileViewController: UIViewController {
         var tableController : profileTableViewController {
             return self.children.first as! profileTableViewController
         }
+        
+       
+        
         tableController.tableView.delegate = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = false
+            vc.circleImageView.isHidden = false
+               vc.tabBarController?.tabBar.isHidden = false
+        }
+        
     }
     
     
