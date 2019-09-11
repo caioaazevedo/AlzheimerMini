@@ -64,6 +64,7 @@
 		AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE92F23144937004FA292 /* TaskViewController.swift */; };
 		ACA91FC223296215005EB127 /* Pessoas+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC023296215005EB127 /* Pessoas+CoreDataClass.swift */; };
 		ACA91FC323296215005EB127 /* Pessoas+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC123296215005EB127 /* Pessoas+CoreDataProperties.swift */; };
+		ACA91FC92329657B005EB127 /* CustomCellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC82329657B005EB127 /* CustomCellFeed.swift */; };
 		BF95BC60618A0AD0F91A87A7 /* Pods_AlzheimerProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */; };
 		E2CEB47E23183DF300C90EFD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEB47D23183DF300C90EFD /* CloudKit.framework */; };
 		E2CEB480231850A200C90EFD /* Dados.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CEB47F231850A200C90EFD /* Dados.swift */; };
@@ -173,6 +174,7 @@
 		AC9EE92F23144937004FA292 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		ACA91FC023296215005EB127 /* Pessoas+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACA91FC123296215005EB127 /* Pessoas+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ACA91FC82329657B005EB127 /* CustomCellFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellFeed.swift; sourceTree = "<group>"; };
 		E2CEB47C23183DEF00C90EFD /* AlzheimerProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlzheimerProject.entitlements; sourceTree = "<group>"; };
 		E2CEB47D23183DF300C90EFD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E2CEB47F231850A200C90EFD /* Dados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dados.swift; sourceTree = SOURCE_ROOT; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */,
+				ACA91FC82329657B005EB127 /* CustomCellFeed.swift */,
 				3AAF5962231D8D210073D65D /* UserLoaded.swift */,
 				3ABF2BA52318761700486A68 /* ClasseTemp.swift */,
 				3ABF2BA62318761700486A68 /* PersistenceManager.swift */,
@@ -574,6 +577,7 @@
 				3A54ECA42320573D004BB09C /* Evento+CoreDataProperties.swift in Sources */,
 				AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */,
 				3A54EC9B2320573D004BB09C /* Calendario+CoreDataClass.swift in Sources */,
+				ACA91FC92329657B005EB127 /* CustomCellFeed.swift in Sources */,
 				AC9EE91523072645004FA292 /* Notification.swift in Sources */,
 				3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */,
 				3A54ECA32320573D004BB09C /* Evento+CoreDataClass.swift in Sources */,
