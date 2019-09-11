@@ -84,6 +84,9 @@ class ViewController: UIViewController {
         eventosSalvos.removeAll()
         fetchAll()
         Cloud.getPeople()
+        var z = CoreDataRebased.shared.fetchPessoas()
+        
+        print("=-===-=-=-> \(z)")
     }
     
     func fetchAll(){
@@ -175,7 +178,9 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
         
-        var z = CoreDataRebased.shared.fetchPessoas()
+//        var z = CoreDataRebased.shared.fetchPessoas()
+//
+//        print("=-===-=-=-> \(z)")
 //         = [pessoas]
         
         cell.view.layer.cornerRadius = 10
