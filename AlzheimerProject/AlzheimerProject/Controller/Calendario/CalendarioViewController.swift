@@ -247,8 +247,6 @@ class CalendarioViewController: UIViewController {
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = false
-            vc.circleImageView.isHidden = false
-               vc.tabBarController?.tabBar.isHidden = false
         }
     }
     

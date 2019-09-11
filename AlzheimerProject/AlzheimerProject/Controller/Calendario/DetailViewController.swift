@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class DetailViewController: UIViewController {
     
@@ -32,6 +33,14 @@ class DetailViewController: UIViewController {
         
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        }
+    }
+    
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
     

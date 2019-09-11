@@ -31,8 +31,9 @@ class DetailProfileViewController: UIViewController {
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
-            vc.circleImageView.isHidden = true
-               vc.tabBarController?.tabBar.isHidden = true
+            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
+            
+            
         }
         
     }
