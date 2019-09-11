@@ -16,7 +16,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
     
-    
+    var pessoas = [Pessoas]()
+
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
@@ -50,6 +51,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
 
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
+    }
+    
+    func fetchPeople(){
+        let fetchRequest = NSFetchRequest<Pessoas>.init(entityName: "Pessoas")
+        do{
+            let people = try managedObjectContext.fetch(fetchRequest)
+            pessoas = people
+        } catch{
+            
+        }
     }
     
     @objc func done(){
@@ -102,8 +113,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     func createParentPicker(){
-        viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Amanda","Caio","Eduardo","Guilherme","Pedro"]
+        viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -304,7 +314,17 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
+        /*
+ 
+         cell.textTable.text = pessoas[indexPath.row].nome
+         cell.imagemResponsavel.image = pessoas[indexPath.row].image
+         cell
+ 
+ */
+        
         return cell
+        
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -323,5 +343,7 @@ class CellClass : UITableViewCell{
     
     @IBOutlet weak var imagemResponsavel: UIImageView!
     
+    var id : String?
+    var selecionado : Bool?
     
 }

@@ -752,7 +752,7 @@ class Cloud {
                 newPeople.foto = record["foto"] as? NSData
                 newPeople.id = record["id"]
                 newPeople.nome = record["nome"]
-                
+                newPeople.selecionado = false
                 CoreDataRebased.shared.saveCoreData()
                 
             }

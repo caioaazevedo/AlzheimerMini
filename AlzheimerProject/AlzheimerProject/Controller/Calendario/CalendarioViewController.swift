@@ -153,19 +153,15 @@ class CalendarioViewController: UIViewController {
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
         
         calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
-        
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
         
-        
-        
         fetchAll()
-       
-        
-        
-        
-        
+        Cloud.getPeople()
     }
     
+    func aa(){
+        
+    }
     func fetchAll(){
         let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         do{
@@ -200,6 +196,7 @@ class CalendarioViewController: UIViewController {
             if let vc = segue.destination as? TaskViewController{
 
                 vc.dia = DiaSelecionado ?? calendar.today!
+                
                 
             }
         }
