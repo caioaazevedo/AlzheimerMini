@@ -18,12 +18,11 @@ class CoreDataBase {
     
     static var shared = CoreDataBase()
     
-    func createUsuario(email: String, fotoDoPerfil: UIImage?, id: UUID, idSala: UUID?, Nome: String){
+    func createUsuario(fotoDoPerfil: UIImage?, id: UUID, idSala: UUID?, Nome: String){
         
             let user = Usuario(context: managedObjectContext)
             
             user.id = self.userID
-            user.email = email
             //        user.fotoPerfil = fotoDoPerfil as! NSData
             user.idSala = nil
             user.nome = Nome
@@ -43,7 +42,7 @@ class CoreDataBase {
 
     }
     
-    func createSala(){
+    func createSala(nomeFamilia: String){
         let sala = Sala(context: managedObjectContext)
         let profile = PerfilUsuario(context: managedObjectContext)
         let calendar = Calendario(context: managedObjectContext)
@@ -246,9 +245,8 @@ class CoreDataBase {
         saveCoreData()
     }
     
-    func updateUser(user: Usuario,email: String?, fotoDoPerfil: UIImage?, Nome: String?) {
+    func updateUser(user: Usuario,fotoDoPerfil: UIImage?, Nome: String?) {
         
-        user.email = email
         user.fotoPerfil = fotoDoPerfil as! NSData
         user.nome = Nome
         

@@ -111,6 +111,8 @@ class ProfileViewController: UIViewController {
         viewShadow.addSubview(imageProfile)
         viewShadow.layer.cornerRadius = 85
     }
+    
+    
 
 
 }

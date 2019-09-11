@@ -19,11 +19,11 @@ class Cloud {
     
     static var cloud = Cloud()
     
-    static func saveSala(idSala: String, idUsuario: [String], idCalendario: String, idPerfil: String, idHost: String) {
+    static func saveSala(nomeFamilia: String, idSala: String, idUsuario: [String], idCalendario: String, idPerfil: String, idHost: String) {
         
         let record = CKRecord(recordType: "Sala")
         
-        
+        record.setValue(nomeFamilia, forKeyPath: "nomeFamilia")
         record.setValue(idSala, forKeyPath: "idSala")
         record.setValue(idUsuario, forKeyPath: "idUsuarios")
         record.setValue(idCalendario, forKeyPath: "idCalendario")
@@ -33,14 +33,13 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, email: String?, idSala: String) {
+    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, idSala: String) {
         let record = CKRecord(recordType: "Usuario")
         
         
         record.setValue(idUsuario, forKeyPath: "idUsuario")
         record.setValue(nome, forKeyPath: "nome")
         record.setValue(foto, forKeyPath: "foto")
-        record.setValue(email, forKeyPath: "email")
         record.setValue(idSala, forKeyPath: "idSala")
         
         saveRequest(record: record)
@@ -146,6 +145,7 @@ class Cloud {
                 
                 let array: [String] = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
                 
+                DadosSala.sala.nomeFamilia = record["nomeFamilia"]!
                 DadosSala.sala.idSala = record["idSala"]!
                 DadosSala.sala.idUsuarios = array
                 DadosSala.sala.idCalendario = record["idCalendario"]!
@@ -227,12 +227,11 @@ class Cloud {
                 DadosUsuario.usuario.idUsuario = record["idUsuario"]!
                 DadosUsuario.usuario.nome = record["nome"]!
                 DadosUsuario.usuario.foto = record["foto"]!
-                DadosUsuario.usuario.email = record["email"]!
                 DadosUsuario.usuario.idSala = record["idSala"]!
                 
                 found = true
                 
-                print("DADOS: ", record["nome"], record["email"], record["idSala"])
+                print("DADOS: ", record["nome"], record["idSala"])
                 
             }
         }
@@ -330,7 +329,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updateSala(searchRecord: String, idSala: String, idUsuario: [String], idCalendario: String, idPerfil: String, idHost: String) {
+    static func updateSala(nomeFamilia: String, searchRecord: String, idSala: String, idUsuario: [String], idCalendario: String, idPerfil: String, idHost: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Sala", predicate: predicate)
         
@@ -341,6 +340,7 @@ class Cloud {
             
             if record["idSala"] == searchRecord {
                 
+                record.setValue(nomeFamilia, forKeyPath: "nomeFamilia")
                 record.setValue(idSala, forKeyPath: "idSala")
                 record.setValue(idUsuario, forKeyPath: "idUsuarios")
                 record.setValue(idCalendario, forKeyPath: "idCalendario")
@@ -361,12 +361,12 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updateUsuario(searchRecord: String, nome: String?, foto: Data?, email: String?, idSala: String) {
+    static func updateUsuario(searchRecord: String, nome: String?, foto: Data?, idSala: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["nome", "foto", "email", "idSala"]
+        queryOp.desiredKeys = ["nome", "foto", "idSala"]
         queryOp.queuePriority = .veryHigh
         queryOp.resultsLimit = 10
         
@@ -376,7 +376,6 @@ class Cloud {
                 
                 record.setValue(nome, forKeyPath: "nome")
                 record.setValue(foto, forKeyPath: "foto")
-                record.setValue(email, forKeyPath: "email")
                 
                 publicDataBase.save(record, completionHandler: { (record, error) in
                     if error != nil{
@@ -780,16 +779,13 @@ class Cloud {
             
             queryOp.recordFetchedBlock = { (record) -> Void in
                 
-                if record["idSala"] == userLoad.idSala{
+                newPeople.foto = record["foto"] as? NSData
+                newPeople.id = record["id"]
+                newPeople.nome = record["nome"]
+                newPeople.selecionado = false
                     
-                    newPeople.foto = record["foto"] as? NSData
-                    newPeople.id = record["idUsuario"]
-                    newPeople.nome = record["nome"]
-                    
-                    print("ID PESSOA: \(newPeople.id)")
-                    CoreDataRebased.shared.saveCoreData()
-                    
-                }
+                print("ID PESSOA: \(newPeople.id)")
+                CoreDataRebased.shared.saveCoreData()
             }
             publicDataBase.add(queryOp)
 //        }

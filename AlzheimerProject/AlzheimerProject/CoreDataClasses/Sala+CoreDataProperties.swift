@@ -18,6 +18,7 @@ extension Sala {
     }
 
     @NSManaged public var id: String?
+    @NSManaged public var nomeFamilia: String?
     @NSManaged public var idCalendario: String?
     @NSManaged public var idHost: String?
     @NSManaged public var idPerfil: String?

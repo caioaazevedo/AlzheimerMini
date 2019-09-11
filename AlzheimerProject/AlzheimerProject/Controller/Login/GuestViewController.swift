@@ -12,6 +12,9 @@ class GuestViewController: UIViewController{
     var isHost = false
     var realHost = false
     var activeField: UITextField?
+    var currentVC: UIViewController!
+    static let shared = GuestViewController()
+    var imagePickedBlock: ((UIImage) -> Void)?
     
     @IBOutlet weak var familyCode: UITextField!
     
@@ -20,7 +23,7 @@ class GuestViewController: UIViewController{
 //    @IBOutlet weak var textNome: UITextField!
     
     @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var familyName: UITextField!
     
     var codFamily = String()
     var familyExists = false
@@ -31,9 +34,16 @@ class GuestViewController: UIViewController{
         setUpView()
         
         if isHost {
+            if realHost == false {
+                familyName.isHidden = true
+            }else{
+                familyName.setBottomBorder()
+            }
+            
             setUpImage()
             userName.setBottomBorder()
-            userEmail.setBottomBorder()
+            let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.moreInfo(_:)))
+            imageButton.addGestureRecognizer(tap)
         }else {
             familyCode.setBottomBorder()
         }
@@ -55,37 +65,27 @@ class GuestViewController: UIViewController{
         imageButton.clipsToBounds = true
     }
     
-    
     @IBAction func homeButton(_ sender: Any) {
         homeButton.pulsate()
         
         if realHost {
-            CoreDataRebased.shared.createUsuario(email: userEmail.text!, fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
-            CoreDataRebased.shared.createSala()
+            CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
+            CoreDataRebased.shared.createSala(nomeFamilia: familyName.text!)
         } else {
-            print("=-=-=-=-=-=-> CodFamily: ", self.codFamily)
-            CoreDataRebased.shared.createUsuarioGuest(email: userEmail.text!, fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily)
+            CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily)
         }
     }
     
-    @IBAction func imageButtonAction(_ sender: UIButton) {
-        
-    }
-    
     @IBAction func enterCode(_ sender: Any) {
-        self.verifyFamilyCode()
+        //self.verifyFamilyCode()
+        self.performSegue(withIdentifier: "sugueCadastro", sender: nil)
     }
     
     func verifyFamilyCode() {
         self.codFamily = self.familyCode.text!
-        print("\n\n\n -=-=-=-=-=->>> Entrooou \n\n\n : codFamily: \(self.codFamily)")
         DadosSala.sala.idSala = ""
         Cloud.querySala(searchRecord: codFamily, completion: {(result) in
-            
-            print("\n\n\n -=-=-=-=-=->>> Entrooou \n\n\n")
-            print("Result = \(result)")
             if result {
-                print("Passouuuuuuu")
                 self.performSegue(withIdentifier: "sugueCadastro", sender: nil)
                 
             } else {
@@ -110,7 +110,6 @@ class GuestViewController: UIViewController{
         self.familyCode.text = code
     }
     
-
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -124,11 +123,57 @@ class GuestViewController: UIViewController{
             self.view.frame.origin.y = 0
         }
     }
-    
+
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
+
+    
+    @IBAction func imageButtonAction(_ sender: UITapGestureRecognizer? = nil) {
+        
+        presentOption(vc: self)
+        
+
+        GuestViewController.shared.imagePickedBlock = { (image) in
+            self.imageButton.setImage(image, for: .normal)
+        }
+
+    }
+
+    func camera(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+        }
+    }
+
+    func galeria(){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
+        }
+    }
+
+    func presentOption(vc: UIViewController) {
+
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.camera()
+        }))
+
+        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.galeria()
+        }))
+
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        vc.present(actionSheet, animated: true, completion: nil)
+    }
+
     
 }
 
@@ -143,4 +188,18 @@ extension UITextField {
     }
 }
 
-
+extension GuestViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            self.imagePickedBlock?(image)
+            
+        }else{
+            print("Something went wrong")
+        }
+        currentVC.dismiss(animated: true, completion: nil)
+    }
+}
