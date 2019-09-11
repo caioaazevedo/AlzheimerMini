@@ -145,6 +145,7 @@ class CalendarioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createCalendar()
+        
         tableView.reloadData()
         DiaSelecionado = calendar.today!
         auxDia = Calendar.current.component(.day, from: calendar.today!)
@@ -157,7 +158,7 @@ class CalendarioViewController: UIViewController {
         
         
         fetchAll()
-        viewDidLayoutSubviews()
+       
         
         
         

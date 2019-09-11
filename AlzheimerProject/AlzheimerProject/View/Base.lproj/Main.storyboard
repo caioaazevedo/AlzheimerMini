@@ -557,7 +557,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="inicialStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="Lwv-GR-Mm1" customClass="SHCircleBarController" customModule="CircleBar" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qr1-2R-rrI" customClass="SHCircleBar" customModule="CircleBar">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="qr1-2R-rrI" customClass="SHCircleBar" customModule="CircleBar">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -663,7 +663,7 @@
         <!--Detalhes do Evento-->
         <scene sceneID="Iv6-Bj-uKb">
             <objects>
-                <viewController id="XBg-G5-9HL" customClass="DetailViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="XBg-G5-9HL" customClass="DetailViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pH2-FO-Aqz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1408,7 +1408,7 @@
         <scene sceneID="ePK-7A-Os2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KhX-Uj-UNy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YqV-zi-pZt"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="perfil selecionado" id="YqV-zi-pZt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Ol-8c-9fn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1429,7 +1429,7 @@
         <image name="Editar foto" width="16" height="16"/>
         <image name="Edmondo" width="180" height="180"/>
         <image name="Grupo" width="96.5" height="96"/>
-        <image name="Hora" width="16" height="15"/>
+        <image name="Hora" width="23" height="22.5"/>
         <image name="Local" width="15" height="15"/>
         <image name="Meu perfil" width="16" height="16"/>
         <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
@@ -1438,6 +1438,7 @@
         <image name="calendario selecionado" width="38" height="40"/>
         <image name="camera" width="23" height="20"/>
         <image name="hamster 2" width="16" height="16"/>
+        <image name="perfil selecionado" width="36" height="28"/>
     </resources>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
