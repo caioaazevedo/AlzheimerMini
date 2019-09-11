@@ -16,8 +16,7 @@ extension Usuario {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Usuario> {
         return NSFetchRequest<Usuario>(entityName: "Usuario")
     }
-
-    @NSManaged public var email: String?
+    
     @NSManaged public var fotoPerfil: NSData?
     @NSManaged public var id: String?
     @NSManaged public var idSala: String?

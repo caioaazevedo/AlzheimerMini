@@ -9,6 +9,7 @@
 import UIKit
 
 class DadosSala {
+    var nomeFamilia = String()
     var idSala = String()
     var idUsuarios = [String]()
     var idCalendario = String()
@@ -27,7 +28,6 @@ class DadosUsuario {
     var idUsuario = String()
     var nome = String()
     var foto = Data()
-    var email = String()
     var idSala = String()
     
     private init(){

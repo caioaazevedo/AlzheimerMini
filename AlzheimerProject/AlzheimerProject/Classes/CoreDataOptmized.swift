@@ -74,7 +74,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar sala 😎
-    func createSala(){
+    func createSala(nomeFamilia: String){
         
         let userLoad = UserLoaded()
         
@@ -91,6 +91,7 @@ class CoreDataRebased{
         sala.telefoneUsuarios = nil
         
         // atribuir a Sala seu calendario e perfil
+        sala.nomeFamilia = nomeFamilia
         sala.calendario = calendar
         sala.perfilUsuario = profile
         sala.idHost = userLoad.idUser
@@ -121,8 +122,8 @@ class CoreDataRebased{
         
         
         
-        Cloud.saveSala(idSala: sala.id!, idUsuario: [userLoad.idUser], idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
-        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, email: usuario.email, idSala: usuario.idSala!)
+        Cloud.saveSala(nomeFamilia: sala.nomeFamilia!, idSala: sala.id!, idUsuario: [userLoad.idUser], idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
+        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, idSala: usuario.idSala!)
         Cloud.saveCalendario(idCalendario: calendar.id!, idEventos: nil)
         Cloud.savePerfil(idPerfil: profile.id!, nome: nil, dataNascimento: nil, telefone: nil, descricao: nil, fotoPerfil: nil, endereco: nil, remedios: nil, alergias: nil, tipoSanguineo: nil, planoSaude: nil)
     }
@@ -195,13 +196,12 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Usuario 😎
-    func createUsuario(email: String, fotoDoPerfil: UIImage?, Nome: String){
+    func createUsuario(fotoDoPerfil: UIImage?, Nome: String){
         
         let userLoad = UserLoaded()
         
         let user = Usuario(context: managedObjectContext)
         user.id = userLoad.idUser
-        user.email = email
         user.nome = Nome
         user.idSala = nil
         user.fotoPerfil = fotoDoPerfil?.pngData()! as NSData?
@@ -266,7 +266,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Usuario - GUEST 😎
-    func createUsuarioGuest(email: String, fotoDoPerfil: UIImage?, Nome: String, searchSala: String){
+    func createUsuarioGuest(fotoDoPerfil: UIImage?, Nome: String, searchSala: String){
         
         print("Search Sala: ", searchSala)
         
@@ -275,7 +275,6 @@ class CoreDataRebased{
         let user = Usuario(context: managedObjectContext)
         user.id = userLoad.idUser
         user.fotoPerfil = fotoDoPerfil?.pngData()! as NSData?
-        user.email = email
         user.nome = Nome
         
         
@@ -297,9 +296,9 @@ class CoreDataRebased{
                     print("=======> :", userArray)
                     
                     
-                    Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, email: user.email, idSala: user.idSala!)
+                    Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, idSala: user.idSala!)
                     
-                    Cloud.updateSala(searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
+                    Cloud.updateSala(nomeFamilia: "",searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
                     
                 })
             })
@@ -319,7 +318,6 @@ class CoreDataRebased{
             let usuarios = try managedObjectContext.fetch(usuarioFetchRequest)
             for usuario in usuarios {
                 if userLoad.idUser == usuario.id && usuario.id != nil {
-                    user.email = usuario.email ?? ""
                     user.id = usuario.id
                     user.idSala = usuario.idSala
                     user.nome = usuario.nome ?? ""
@@ -335,7 +333,7 @@ class CoreDataRebased{
     }
     
     //✅ - Alterar dados usuário 😎
-    func updateUser(email: String, nome: String, fotoPerfil: UIImage){
+    func updateUser(nome: String, fotoPerfil: UIImage){
         let userLoad = UserLoaded()
         let usuarioFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
         do {
@@ -343,13 +341,12 @@ class CoreDataRebased{
             
             for usuario in usuarios{
                 if userLoad.idUser == usuario.id && usuario.id != nil {
-                    usuario.email = email
                     usuario.nome = nome
                     usuario.fotoPerfil = fotoPerfil.pngData()! as NSData
                     
                     let photoData = fotoPerfil.pngData()!
                     
-                    Cloud.updateUsuario(searchRecord: userLoad.idUser, nome:usuario.nome , foto: photoData, email: usuario.email, idSala: usuario.idSala ?? "")
+                    Cloud.updateUsuario(searchRecord: userLoad.idUser, nome:usuario.nome , foto: photoData, idSala: usuario.idSala ?? "")
                 }
             }
         } catch {
@@ -565,7 +562,6 @@ class CoreDataRebased{
     }
 }
 struct userData {
-    var email : String?
     var fotoPerfil : UIImage?
     var id : String!
     var idSala : String?
