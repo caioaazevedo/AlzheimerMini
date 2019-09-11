@@ -117,6 +117,7 @@
                     <connections>
                         <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
                         <outlet property="segment" destination="ON6-st-0EH" id="yGj-ta-JOt"/>
+                        <outlet property="tableView" destination="YuF-iE-Kh1" id="YOd-WI-RIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXI-dI-kDp" userLabel="First Responder" sceneMemberID="firstResponder"/>

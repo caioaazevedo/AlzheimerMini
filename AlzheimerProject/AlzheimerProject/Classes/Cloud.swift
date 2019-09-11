@@ -697,10 +697,34 @@ class Cloud {
     }
     
     
+    static func deleteCloudSubs(){
+        publicDataBase.fetchAllSubscriptions { subscriptions, error in
+            if error == nil {
+                if let subscriptions = subscriptions {
+                    for subscription in subscriptions {
+                        print("AQUI O MEME",subscription)
+                        publicDataBase.delete(withSubscriptionID: subscription.subscriptionID) { str, error in
+                            if error != nil {
+                                // do your error handling here!
+                                print(error!.localizedDescription)
+                            }
+                        }
+                    }
+                    // more code to come!
+                }
+            } else {
+                // do your error handling here!
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    
     //Cloud Push-Up notifications ⚡️
     static func setupCloudKitNotifications(){
         
-        let predicate = NSPredicate(value: true)
+//        let predicate = NSPredicate(value: true)
+        let predicate = NSPredicate(format: "idCalendario == %@", UserLoaded().idSalaCalendar!)
         let subscription = CKQuerySubscription(recordType: "Evento", predicate: predicate, options: .firesOnRecordCreation)
         let notificationInfo = CKQuerySubscription.NotificationInfo()
         
@@ -719,11 +743,27 @@ class Cloud {
         
         
     }
+    
+//    Deleta as Pessoas do CoreData
+    static func deletePessoas(completion: @escaping (_ result: Bool) -> ()) {
+        let fetchRequest = NSFetchRequest<Pessoas>.init(entityName: "Pessoas")
+        
+        do{
+            let peoples = try managedObjectContext.fetch(fetchRequest)
+            for p in peoples{
+                managedObjectContext.delete(p)
+                CoreDataRebased.shared.saveCoreData()
+                completion(true)
+            }
+        }catch{
+            print("Error")
+        }
+    }
     //Cloud Push-Up notifications ⚡️
     
     //Cloud ⚡️
     static func getPeople(){
-        
+     
         let newPeople = Pessoas(context: managedObjectContext)
         let userLoad = UserLoaded()
         /*
@@ -732,32 +772,28 @@ class Cloud {
          2. Salvar o nome, o ID e a foto
          3. ESSE METODO TEM QUE SER CHAMADO QUANDO ENTRAR NA TELA DE CRIAR EVENTO
          */
-        let fetchRequest = NSFetchRequest<Pessoas>.init(entityName: "Pessoas")
-        do{
-            let peoples = try managedObjectContext.fetch(fetchRequest)
-            for p in peoples{
-                managedObjectContext.delete(p)
-                CoreDataRebased.shared.saveCoreData()
-            }
-        }catch{
-            print("Error")
-        }
-        let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: "Usuario", predicate: predicate)
-        let queryOp = CKQueryOperation(query: query)
-        queryOp.recordFetchedBlock = { (record) -> Void in
+        
+//        Cloud.deletePessoas { (_) in
+            let predicate = NSPredicate(value: true)
+            let query = CKQuery(recordType: "Usuario", predicate: predicate)
+            let queryOp = CKQueryOperation(query: query)
             
-            if record["idSala"] == userLoad.idSala{
+            queryOp.recordFetchedBlock = { (record) -> Void in
                 
-                newPeople.foto = record["foto"] as? NSData
-                newPeople.id = record["id"]
-                newPeople.nome = record["nome"]
-                
-                CoreDataRebased.shared.saveCoreData()
-                
+                if record["idSala"] == userLoad.idSala{
+                    
+                    newPeople.foto = record["foto"] as? NSData
+                    newPeople.id = record["idUsuario"]
+                    newPeople.nome = record["nome"]
+                    
+                    print("ID PESSOA: \(newPeople.id)")
+                    CoreDataRebased.shared.saveCoreData()
+                    
+                }
             }
-        }
-        publicDataBase.add(queryOp)
+            publicDataBase.add(queryOp)
+//        }
+        
     }
     //Cloud ⚡️
     

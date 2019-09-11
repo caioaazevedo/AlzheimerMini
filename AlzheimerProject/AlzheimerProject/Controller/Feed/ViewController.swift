@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var feedView: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
     
 //    struct Evento: Hashable, Comparable {
 //        var titulo = ""
@@ -67,11 +68,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Cloud.setupCloudKitNotifications()
 //        feedView.delegate = self
 //        feedView.dataSource = self
-        UserNotification.requestNotificationAuthorization()
-        //Cloud.setupCloudKitNotifications()
+//        UserNotification.requestNotificationAuthorization()
+//        Cloud.setupCloudKitNotifications()
+//        Cloud.deleteCloudSubs()
 //        CoreDataRebased.shared.createUsuario(email: "", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
 //        CoreDataRebased.shared.createSala()
     }
@@ -84,9 +85,8 @@ class ViewController: UIViewController {
         eventosSalvos.removeAll()
         fetchAll()
         Cloud.getPeople()
-        var z = CoreDataRebased.shared.fetchPessoas()
         
-        print("=-===-=-=-> \(z)")
+        tableView.reloadData()
     }
     
     func fetchAll(){
@@ -178,18 +178,17 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
         
-//        var z = CoreDataRebased.shared.fetchPessoas()
-//
-//        print("=-===-=-=-> \(z)")
-//         = [pessoas]
+        var pessoas = CoreDataRebased.shared.fetchPessoas()
+
+        print("=-===-=-=-> \(pessoas)")
         
         cell.view.layer.cornerRadius = 10
         
-        if eventosSalvos.count > 0 {
-//            for i in 0...z.count-1{
+//        if eventosSalvos.count > 0 {
+//            for i in 0...pessoas.count-1{
 //                for j in 0...eventosSalvos.count-1 {
-//                    if z[i].id == eventosSalvos[j].idResponsavel {
-//                        cell.imageFoto.image = UIImage(data: z[i].foto as! Data)
+//                    if pessoas[i].id == eventosSalvos[j].idResponsavel {
+//                        cell.imageFoto.image = UIImage(data: pessoas[i].foto! as Data)
 //
 //                        let hour = Calendar.current.component(.hour, from: eventosSalvos[j].horario! as Date)
 //                        let minute = Calendar.current.component(.minute, from: eventosSalvos[j].horario! as Date)
@@ -201,7 +200,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
 //                    }
 //                }
 //            }
-        }
+//        }
 
         return cell
     }
