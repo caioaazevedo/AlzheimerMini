@@ -11,15 +11,13 @@ import UIKit
 class GuestViewController: UIViewController{
     var isHost = false
     var realHost = false
-    var activeField: UITextField?
-    var currentVC: UIViewController!
-    static let shared = GuestViewController()
-    var imagePickedBlock: ((UIImage) -> Void)?
     
+    var imagePicker: ImagePicker!
+
     @IBOutlet weak var familyCode: UITextField!
-    
-    @IBOutlet weak var homeButton: CustomButton!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var homeButton: CustomButton!
+    
 //    @IBOutlet weak var textNome: UITextField!
     
     @IBOutlet weak var userName: UITextField!
@@ -42,19 +40,18 @@ class GuestViewController: UIViewController{
             
             setUpImage()
             userName.setBottomBorder()
-            let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.moreInfo(_:)))
-            imageButton.addGestureRecognizer(tap)
+
         }else {
             familyCode.setBottomBorder()
         }
+        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setUpView() {
-        self.activeField = UITextField()
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
     }
@@ -63,6 +60,10 @@ class GuestViewController: UIViewController{
     func setUpImage() {
         imageButton.layer.cornerRadius = imageButton.frame.size.height / 2
         imageButton.clipsToBounds = true
+    }
+    
+    @IBAction func fotoPerfil(_ sender: Any) {
+        self.imagePicker.present(from: sender as! UIView)
     }
     
     @IBAction func homeButton(_ sender: Any) {
@@ -127,54 +128,7 @@ class GuestViewController: UIViewController{
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
-    
 
-    
-    @IBAction func imageButtonAction(_ sender: UITapGestureRecognizer? = nil) {
-        
-        presentOption(vc: self)
-        
-
-        GuestViewController.shared.imagePickedBlock = { (image) in
-            self.imageButton.setImage(image, for: .normal)
-        }
-
-    }
-
-    func camera(){
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            let picker = UIImagePickerController()
-            picker.sourceType = .camera
-            self.present(picker, animated: true, completion: nil)
-        }
-    }
-
-    func galeria(){
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            self.present(picker, animated: true, completion: nil)
-        }
-    }
-
-    func presentOption(vc: UIViewController) {
-
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
-            self.camera()
-        }))
-
-        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
-            self.galeria()
-        }))
-
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        vc.present(actionSheet, animated: true, completion: nil)
-    }
-
-    
 }
 
 extension UITextField {
@@ -188,18 +142,35 @@ extension UITextField {
     }
 }
 
-extension GuestViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
+extension GuestViewController: ImagePickerDelegate {
+    
+    func didSelect(imagem: UIImage?) {
+        self.imageButton.setBackgroundImage(imagem, for: .normal)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            self.imagePickedBlock?(image)
-            
-        }else{
-            print("Something went wrong")
-        }
-        currentVC.dismiss(animated: true, completion: nil)
-    }
 }
+
+//class ViewController: UIViewController {
+//    
+//    @IBOutlet var imageView: UIImageView!
+//
+//    var imagePicker: ImagePicker!
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+//    }
+//
+//    @IBAction func showImagePicker(_ sender: UIButton) {
+//        self.imagePicker.present(from: sender)
+//    }
+//}
+//
+//extension ViewController: ImagePickerDelegate {
+//
+//    func didSelect(image: UIImage?) {
+//        self.imageView.image = image
+//    }
+//}
+
