@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11320D44232999EE002C7F7F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11320D43232999EE002C7F7F /* ImagePicker.swift */; };
 		1144AF172320464000718CC6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1144AF162320464000718CC6 /* Login.storyboard */; };
 		1144AF192320467C00718CC6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF182320467C00718CC6 /* CustomButton.swift */; };
 		1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1B232046CF00718CC6 /* GuestViewController.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11320D43232999EE002C7F7F /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1144AF162320464000718CC6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1144AF182320467C00718CC6 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1144AF1B232046CF00718CC6 /* GuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		AC9EE916230728C4004FA292 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				11320D43232999EE002C7F7F /* ImagePicker.swift */,
 				3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */,
 				ACA91FC82329657B005EB127 /* CustomCellFeed.swift */,
 				3AAF5962231D8D210073D65D /* UserLoaded.swift */,
@@ -564,6 +567,7 @@
 				AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */,
+				11320D44232999EE002C7F7F /* ImagePicker.swift in Sources */,
 				115CADF323268F420057B1E0 /* CellDetail.swift in Sources */,
 				AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */,
 				AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */,
