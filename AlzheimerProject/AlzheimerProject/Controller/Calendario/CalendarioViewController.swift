@@ -157,7 +157,7 @@ class CalendarioViewController: UIViewController {
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
         
         fetchAll()
-        Cloud.getPeople()
+//        Cloud.getPeople()
         
         //Refresh
         
