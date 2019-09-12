@@ -64,7 +64,7 @@ class profileTableViewController: UITableViewController {
         }
         }else{
             if indexPath.row == 0{
-                performSegue(withIdentifier: "meuPerfil", sender: self)
+                performSegue(withIdentifier: "seguePerfil", sender: self)
             }
         
             
