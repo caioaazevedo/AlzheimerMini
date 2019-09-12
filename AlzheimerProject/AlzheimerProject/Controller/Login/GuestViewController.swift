@@ -58,8 +58,8 @@ class GuestViewController: UIViewController{
 
 
     func setUpImage() {
-        imageButton.layer.cornerRadius = imageButton.frame.size.height / 2
-        imageButton.clipsToBounds = true
+//        imageButton.layer.cornerRadius = imageButton.frame.size.height / 2
+//        imageButton.clipsToBounds = true
     }
     
     @IBAction func fotoPerfil(_ sender: Any) {
