@@ -76,7 +76,23 @@ class ViewController: UIViewController {
 //        Cloud.deleteCloudSubs()
 //        CoreDataRebased.shared.createUsuario(email: "", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
 //        CoreDataRebased.shared.createSala()
+        
+        //Refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        //Refresh
+        
+        
     }
+    
+    @objc func refreshTable(refreshControl: UIRefreshControl){
+        //Adicionar aqui o fetch do cloud para o coreData
+        refreshControl.endRefreshing()
+        
+    }
+    
+    
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
     

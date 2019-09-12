@@ -1032,10 +1032,10 @@
                                                     <rect key="frame" x="31" y="5" width="44" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IDOSO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAy-XU-1Qy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IDOSO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAy-XU-1Qy">
                                                     <rect key="frame" x="95" y="11" width="187" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1148,6 +1148,7 @@
                         <outlet property="familiaImage" destination="2gX-wb-6Ks" id="EXh-X0-beX"/>
                         <outlet property="grupoImage" destination="0wj-pt-cD7" id="hDG-fH-2sj"/>
                         <outlet property="idosoImage" destination="2MD-3B-Vvp" id="wYE-oA-YH8"/>
+                        <outlet property="idosoLabel" destination="RAy-XU-1Qy" id="Axi-Dj-EN2"/>
                         <outlet property="notificationImage" destination="rnp-1K-mo5" id="MY3-HE-6oh"/>
                         <outlet property="profileImage" destination="Yo6-qM-SQf" id="IHd-sl-ppa"/>
                         <segue destination="Zdr-Zw-8bs" kind="show" identifier="perfilIdoso" id="tTH-w1-Xug"/>
