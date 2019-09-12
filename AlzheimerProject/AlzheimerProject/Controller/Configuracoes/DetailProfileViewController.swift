@@ -49,7 +49,8 @@ class DetailProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         UserLoaded()
         setAll()
-        
+        self.fotoIdoso.clipsToBounds = true
+        self.fotoIdoso.layer.cornerRadius = 20
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
             vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
@@ -176,8 +177,7 @@ class DetailProfileViewController: UIViewController {
         DetailProfileViewController.shared.presentOption(vc: self)
         DetailProfileViewController.shared.imagePickedBlock = { (image) in
             self.fotoIdoso.image = image
-            self.fotoIdoso.clipsToBounds = true
-            self.fotoIdoso.layer.cornerRadius = 20
+            
         }
         
         
