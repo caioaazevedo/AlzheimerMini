@@ -8,21 +8,22 @@
 
 import UIKit
 import CoreData
+import CircleBar
 
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
- 
+    
     
     @IBOutlet weak var titulo2: UILabel!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
     
     var pessoas = [Pessoas]()
-
+    
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
     
-
+    
     var eventEntity : Evento?
     let userNotification = Notification()
     
@@ -48,9 +49,11 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         super.viewDidLoad()
         
         tituloTextField.setBottomBorder()
-
+        
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
+        print(self.tabBarController?.tabBar.isHidden)
+        
     }
     
     func fetchPeople(){
@@ -70,17 +73,28 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     var auxTitulo = String()
     var auxCateg = String()
     
+    
+    var circle : SHCircleBarController {
+        return self.children.first as! SHCircleBarController
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         if willEditing{
             
             tableController.hora.text = event?.time
             tableController.responsavel.text = event?.responsavel
-        
             
-            //tableController.descricao
+                        //tableController.descricao
         }
         
         tableController.descricao.text = auxNotas
+    
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
+        }
+    
     }
     
     
@@ -90,6 +104,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     func createDatePicker(){
         DatePicker.datePickerMode = .time
+        
+       
         
         print(DatePicker.date)
         
@@ -111,10 +127,10 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     
-    
     func createParentPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
+        viewPresent.pessoas = pessoas
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
         UIView.animate(withDuration: 1) {
@@ -145,6 +161,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
+        if which == "Categoria"{
+            tableController.categoriaLabel.text = texto
+        }
     }
     
     
@@ -160,7 +179,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     func fetchData(){
         DatePicker.datePickerMode = .time
-       
+        
         hora = tableController.hora.text ?? ""
         lembrete = tableController.lembrete.isOn
     }
@@ -169,7 +188,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
-        if tableController.hora.text == "" {
+        if tableController.hora.text == "" || tituloTextField.text == ""  {
             let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
@@ -195,7 +214,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             responsaveis.append(responsavel)
             
             fetchData()
-         
+            
             
             
             
@@ -203,7 +222,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             
             if willEditing{
                 let date = Date()
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: "", responsaveis: responsaveis)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
             }
             else{
                 CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
@@ -280,7 +299,7 @@ protocol  ViewPopupDelegate {
 class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     
     var array = [""]
-    
+    var pessoas = [Pessoas]()
     var delegateSend: ViewPopupDelegate?
     var aux = 0
     var which = ""
@@ -314,26 +333,49 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
-        /*
- 
-         cell.textTable.text = pessoas[indexPath.row].nome
-         cell.imagemResponsavel.image = pessoas[indexPath.row].image
-         cell
- 
- */
+        
+       
+//        if (which == "responsaveis"){
+//            cell.textTable.text = pessoas[indexPath.row].nome
+//            cell.imagemResponsavel.image = UIImage(data: pessoas[indexPath.row].foto! as Data)
+//            cell.id = pessoas[indexPath.row].i
+//            cell.selecionado = pessoas[indexPath.row].selecionado
+//
+//            if (!(pessoas[indexPath.row].selecionado)){
+//                cell.accessoryType = .none
+//            }else{
+//                cell.accessoryType = .checkmark
+//            }
+//        }
         
         return cell
         
         
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.endEditing(true)
+        let cell = tableView.cellForRow(at: indexPath) as! CellClass
+       
+//        if which == "responsaveis"{
+//        if cell.accessoryType == .checkmark{
+//            cell.accessoryType = .none
+//            pessoas[indexPath.row].selecionado = false
+//
+//        }else{
+//            cell.accessoryType = .checkmark
+//            pessoas[indexPath.row].selecionado = true
+//            array[indexPath.row] = pessoas[indexPath.row].id!
+//        }
+//        }
+        
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
         
-        
     }
+    
+    
     
 }
 

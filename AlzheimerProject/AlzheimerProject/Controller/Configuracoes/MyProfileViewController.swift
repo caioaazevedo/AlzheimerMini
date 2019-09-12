@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class MyProfileViewController: UIViewController {
     let cdr = CoreDataRebased.shared
@@ -22,6 +23,13 @@ class MyProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let a = cdr.loadUserData()
         nome.text = a.nome
+        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
+            
+            
+        }
         
     }
     override func viewWillDisappear(_ animated: Bool) {
