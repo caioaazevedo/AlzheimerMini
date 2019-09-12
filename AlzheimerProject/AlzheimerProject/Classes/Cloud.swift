@@ -760,9 +760,12 @@ class Cloud {
     }
     //Cloud Push-Up notifications ⚡️
     
+    
+    
+    
     //Cloud ⚡️
-    static func getPeople(){
-     
+//    static func getPeople(delegate: FetchPeopleDelegate ){
+    static func getPeople(_ completion: @escaping () -> Void) {
         let newPeople = Pessoas(context: managedObjectContext)
         let userLoad = UserLoaded()
         /*
@@ -776,17 +779,23 @@ class Cloud {
             let predicate = NSPredicate(value: true)
             let query = CKQuery(recordType: "Usuario", predicate: predicate)
             let queryOp = CKQueryOperation(query: query)
-            
+        
+            ViewController.ckData = []
             queryOp.recordFetchedBlock = { (record) -> Void in
                 
-                newPeople.foto = record["foto"] as? NSData
-                newPeople.id = record["id"]
-                newPeople.nome = record["nome"]
-                newPeople.selecionado = false
-                    
-                print("ID PESSOA: \(newPeople.id)")
-                CoreDataRebased.shared.saveCoreData()
+//                newPeople.foto = record["foto"] as? NSData
+//                newPeople.id = record["idUsuario"]
+//                newPeople.nome = record["nome"]
+//                newPeople.selecionado = false
+                
+//                print("ID PESSOA: \(newPeople.id)")
+                ViewController.ckData.append((record["idUsuario"]!, record["nome"]!))
+                
+                //CoreDataRebased.shared.saveCoreData()
             }
+        
+            queryOp.completionBlock = completion
+        
             publicDataBase.add(queryOp)
 //        }
         

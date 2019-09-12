@@ -144,7 +144,7 @@ class CalendarioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Cloud.getPeople()
+//        Cloud.getPeople()
         createCalendar()
         
         tableView.reloadData()
@@ -156,7 +156,7 @@ class CalendarioViewController: UIViewController {
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
         
         fetchAll()
-        Cloud.getPeople()
+//        Cloud.getPeople()
     }
     
     func aa(){

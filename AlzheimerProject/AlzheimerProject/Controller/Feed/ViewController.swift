@@ -79,14 +79,21 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
     
+    var pessoas = [Pessoas]()
+    
+    static var ckData: [(String, String)] = []
 
     override func viewWillAppear(_ animated: Bool) {
         print("=-=-=-=-=-=->>>> \(eventosSalvos)")
         eventosSalvos.removeAll()
         fetchAll()
-        Cloud.getPeople()
         
-        tableView.reloadData()
+        Cloud.getPeople {
+//            self.pessoas = CoreDataRebased.shared.fetchPessoas()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func fetchAll(){
@@ -129,7 +136,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : UITableViewDataSource , UITableViewDelegate{
+extension ViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
@@ -147,10 +154,13 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1;
+        // return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ViewController.ckData.count
+        
         var count = 0
         
         if eventosSalvos.count > 0{
@@ -177,12 +187,14 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
-        
-        var pessoas = CoreDataRebased.shared.fetchPessoas()
 
-        print("=-===-=-=-> \(pessoas)")
+//        print("=-===-=-=-> \(pessoas)")
         
         cell.view.layer.cornerRadius = 10
+        
+        let i = indexPath.row;
+        let (idUsuario, nome) = i < ViewController.ckData.count ? ViewController.ckData[i] : ("-1", "BATMAN")
+        cell.label.text = "\(idUsuario) - \(nome)"
         
 //        if eventosSalvos.count > 0 {
 //            for i in 0...pessoas.count-1{
@@ -209,5 +221,3 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
         return 130
     }
 }
-
-
