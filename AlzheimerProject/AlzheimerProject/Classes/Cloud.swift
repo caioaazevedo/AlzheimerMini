@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 import CoreData
+import UIKit
 
 let cloudContainer = CKContainer(identifier: "iCloud.Academy.AlzheimerProject")
 let publicDataBase = cloudContainer.publicCloudDatabase
@@ -787,9 +788,9 @@ class Cloud {
 //                newPeople.foto = record["foto"] as? NSData
 //                newPeople.id = record["idUsuario"]
 //                newPeople.nome = record["nome"]
-//                newPeople.selecionado = false
-                
-                ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"]!))
+//                newPeople.selecionado = falserefreshControl.endRefreshing()
+                let imageDefault = UIImage(named: "Remedio")
+                ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
                 
                 //CoreDataRebased.shared.saveCoreData()
             }

@@ -69,6 +69,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        feedView.delegate = self
 //        feedView.dataSource = self
 //        UserNotification.requestNotificationAuthorization()
@@ -88,8 +89,12 @@ class ViewController: UIViewController {
     
     @objc func refreshTable(refreshControl: UIRefreshControl){
         //Adicionar aqui o fetch do cloud para o coreData
-        refreshControl.endRefreshing()
-        
+        Cloud.getPeople {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                refreshControl.endRefreshing()
+            }
+        }
     }
     
     
@@ -106,7 +111,6 @@ class ViewController: UIViewController {
         self.tableView.reloadData()
         
         Cloud.getPeople {
-//            self.pessoas = CoreDataRebased.shared.fetchPessoas()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
