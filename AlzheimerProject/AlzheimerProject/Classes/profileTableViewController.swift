@@ -22,6 +22,8 @@ class profileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         arredondaIcones()
+        tableView.tableFooterView = UIView()
+   
     }
     
     
@@ -72,7 +74,7 @@ class profileTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 44
     }
     
     

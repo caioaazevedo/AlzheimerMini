@@ -23,7 +23,6 @@ class MyProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let a = cdr.loadUserData()
         nome.text = a.nome
-        email.text = a.email
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
@@ -34,14 +33,13 @@ class MyProfileViewController: UIViewController {
         
     }
     override func viewWillDisappear(_ animated: Bool) {
-        cdr.updateUser(email: email.text ?? "", nome: nome.text ?? "", fotoPerfil: profilePhoto.image!)
+        cdr.updateUser(nome: nome.text ?? "", fotoPerfil: profilePhoto.image!)
     }
     
     @IBOutlet weak var profilePhoto: UIImageView!
     
     
     @IBOutlet weak var nome: UITextField!
-    @IBOutlet weak var email: UITextField!
     @IBOutlet weak var telefone: UITextField!
     
     

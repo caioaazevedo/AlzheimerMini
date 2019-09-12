@@ -13,9 +13,6 @@ class DetailProfileViewController: UIViewController {
     
     var editPressed = false
     var cdr = CoreDataRebased.shared
-    var imagePickedBlock: ((UIImage) -> Void)?
-    fileprivate var currentVC: UIViewController!
-    static let shared = DetailProfileViewController()
     
     
     
@@ -35,15 +32,13 @@ class DetailProfileViewController: UIViewController {
     
     @IBOutlet weak var editOutlet: UIBarButtonItem!
     
+    var imagePicker: ImagePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // if (profile == host) && editPressed{
-        //   setAll()
         
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         
-        
-        //}
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +54,11 @@ class DetailProfileViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func mudarFoto(_ sender: UIButton) {
+        self.imagePicker.present(from: sender as UIView)
+    }
+    
     
     
     
@@ -77,7 +77,7 @@ class DetailProfileViewController: UIViewController {
         dataNascimento.text = "\(day)/\(month)/\(year)"
         observacoes.text = a.Descricao
         endereco.text = a.endereco
-      //  fotoIdoso.image = a.fotoDePerfil
+        //  fotoIdoso.image = a.fotoDePerfil
         idosoNome.text = a.nome
         plano.text = a.planoDeSaude
         medicacoes.text = a.remedios?[0]
@@ -121,91 +121,17 @@ class DetailProfileViewController: UIViewController {
     }
     
     
-    func setPhoto(){
-        //fotoIdoso.image = UIImage(named: "sample")
-        fotoIdoso.layer.borderWidth = 1
-        fotoIdoso.layer.masksToBounds = false
-        fotoIdoso.layer.cornerRadius = fotoIdoso.frame.height/2
-        fotoIdoso.clipsToBounds = true
-        
-    }
-    
-    func camera(){
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.sourceType = .camera
-            currentVC.present(picker, animated: true, completion: nil)
-        }
-    }
-    
-    func galeria(){
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.sourceType = .photoLibrary
-            currentVC.present(picker, animated: true, completion: nil)
-        }
-    }
-    
-    
-    
-    
-    func presentOption(vc: UIViewController) {
-        currentVC = vc
-        
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
-            self.camera()
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
-            self.galeria()
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        vc.present(actionSheet, animated: true, completion: nil)
-    }
     
     
     
     
     
-    @IBAction func mudarFoto(_ sender: UIButton) {
-        DetailProfileViewController.shared.presentOption(vc: self)
-        DetailProfileViewController.shared.imagePickedBlock = { (image) in
-            self.fotoIdoso.image = image
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }
 }
-extension DetailProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+
+
+extension DetailProfileViewController: ImagePickerDelegate{
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            self.imagePickedBlock?(image)
-            
-        }else{
-            print("Something went wrong")
-        }
-        currentVC.dismiss(animated: true, completion: nil)
-        
+    func didSelect(imagem: UIImage?) {
+        self.fotoIdoso.image = imagem
     }
 }
