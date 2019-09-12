@@ -781,7 +781,7 @@ class Cloud {
             let query = CKQuery(recordType: "Usuario", predicate: predicate)
             let queryOp = CKQueryOperation(query: query)
         
-            ViewController.ckData = []
+            ckData = []
             queryOp.recordFetchedBlock = { (record) -> Void in
                 
 //                newPeople.foto = record["foto"] as? NSData
@@ -789,8 +789,7 @@ class Cloud {
 //                newPeople.nome = record["nome"]
 //                newPeople.selecionado = false
                 
-//                print("ID PESSOA: \(newPeople.id)")
-                ViewController.ckData.append((record["idUsuario"]!, record["nome"]!))
+                ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"]!))
                 
                 //CoreDataRebased.shared.saveCoreData()
             }
