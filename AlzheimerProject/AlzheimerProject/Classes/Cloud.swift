@@ -722,8 +722,9 @@ class Cloud {
     //Cloud Push-Up notifications ⚡️
     static func setupCloudKitNotifications(){
         
-//        let predicate = NSPredicate(value: true)
-        let predicate = NSPredicate(format: "idCalendario == %@", UserLoaded().idSalaCalendar!)
+        let userLoad = UserLoaded()
+        
+        let predicate = NSPredicate(format: "%K == %@", argumentArray: ["idCalendario", userLoad.idSalaCalendar!])
         let subscription = CKQuerySubscription(recordType: "Evento", predicate: predicate, options: .firesOnRecordCreation)
         let notificationInfo = CKQuerySubscription.NotificationInfo()
         

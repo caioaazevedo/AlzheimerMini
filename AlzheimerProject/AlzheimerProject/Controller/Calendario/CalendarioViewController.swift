@@ -9,7 +9,7 @@
 import UIKit
 import FSCalendar
 import CoreData
-
+import CircleBar
 
 
 let screenSize = UIScreen.main.bounds
@@ -42,6 +42,7 @@ class CalendarioViewController: UIViewController {
     var auxText : String = "" {
         didSet{
             tableView.reloadData()
+            
         }
     }
     var auxLocal : String?
@@ -243,7 +244,9 @@ class CalendarioViewController: UIViewController {
         tableView.reloadData()
         selectedDay = DiaSelecionado
         
-        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = false
+        }
     }
     
     

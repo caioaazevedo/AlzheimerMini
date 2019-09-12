@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class UsersViewController: UIViewController {
     
@@ -20,7 +21,14 @@ class UsersViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
+            
+            
+        }
+    }
     
 }
 extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
