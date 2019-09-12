@@ -40,7 +40,6 @@ class MyProfileViewController: UIViewController {
     
     
     @IBOutlet weak var nome: UITextField!
-    @IBOutlet weak var telefone: UITextField!
     
     
     
