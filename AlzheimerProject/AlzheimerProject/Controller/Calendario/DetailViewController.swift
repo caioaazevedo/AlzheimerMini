@@ -30,8 +30,24 @@ class DetailViewController: UIViewController {
         blueView.layer.cornerRadius = 50
         blueView.clipsToBounds = true
         setShadowBlueView()
+        defineColor()
         
         
+    }
+    
+    func defineColor(){
+        switch(event.categ){
+        case "Saúde":
+            blueView.backgroundColor = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
+        case "Lazer":
+            blueView.backgroundColor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
+        case "Dentista":
+            blueView.backgroundColor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
+        case "Farmácia":
+            blueView.backgroundColor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
+        default:
+            blueView.backgroundColor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+        }
     }
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {

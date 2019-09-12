@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 import CoreData
+import UIKit
 
 let cloudContainer = CKContainer(identifier: "iCloud.Academy.AlzheimerProject")
 let publicDataBase = cloudContainer.publicCloudDatabase
@@ -781,16 +782,15 @@ class Cloud {
             let query = CKQuery(recordType: "Usuario", predicate: predicate)
             let queryOp = CKQueryOperation(query: query)
         
-            ViewController.ckData = []
+            ckData = []
             queryOp.recordFetchedBlock = { (record) -> Void in
                 
 //                newPeople.foto = record["foto"] as? NSData
 //                newPeople.id = record["idUsuario"]
 //                newPeople.nome = record["nome"]
-//                newPeople.selecionado = false
-                
-//                print("ID PESSOA: \(newPeople.id)")
-                ViewController.ckData.append((record["idUsuario"]!, record["nome"]!))
+//                newPeople.selecionado = falserefreshControl.endRefreshing()
+                let imageDefault = UIImage(named: "Remedio")
+                ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
                 
                 //CoreDataRebased.shared.saveCoreData()
             }

@@ -43,6 +43,13 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     let DatePicker = UIDatePicker()
     let ParentPicker = UIDatePicker()
     
+    
+    var bolaAzul = UIImage(named: "bola azul")
+    var bolaAmarela = UIImage(named: "bola amarela")
+    var bolaRosa = UIImage(named: "bola rosa")
+    var bolaRoxa = UIImage(named: "bola roxa")
+    var bolaVermelha = UIImage(named: "bola vermelha")
+    
     @IBOutlet var viewPresent: ViewPopup!
     
     override func viewDidLoad() {
@@ -52,7 +59,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
-        print(self.tabBarController?.tabBar.isHidden)
         
     }
     
@@ -85,16 +91,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             tableController.hora.text = event?.time
             tableController.responsavel.text = event?.responsavel
             
-                        //tableController.descricao
+            //tableController.descricao
         }
         
         tableController.descricao.text = auxNotas
-    
+        
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
             vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
         }
-    
+        
     }
     
     
@@ -105,7 +111,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     func createDatePicker(){
         DatePicker.datePickerMode = .time
         
-       
+        
         
         print(DatePicker.date)
         
@@ -130,6 +136,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     func createParentPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
+        //        viewPresent.arrayImage = [UIImage(named: ""),UIImage(named: ""),UIImage(named: ""),UIImage(named: ""),UIImage(named: "")]
         viewPresent.pessoas = pessoas
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -142,10 +149,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     func createCategoryPicker(){
         
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Medico","Dentista","Passeio","Farmacia","Alimentacao"]
+        viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"]
+        viewPresent.arrayImage.append(bolaAzul!)
+        viewPresent.arrayImage.append(bolaRoxa!)
+        viewPresent.arrayImage.append(bolaRosa!)
+        viewPresent.arrayImage.append(bolaAmarela!)
+        viewPresent.arrayImage.append(bolaVermelha!)
         viewPresent.which = "Categoria"
         view.addSubview(viewPresent)
         titulo2.text = "Categoria"
+        
         
         
         UIView.animate(withDuration: 1) {
@@ -156,13 +169,14 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     }
     
     
-    
+    var position = 0
     func sendInfo(_ view: ViewPopup, texto: String,which: String) {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
         if which == "Categoria"{
             tableController.categoriaLabel.text = texto
+            categoria = texto
         }
     }
     
@@ -299,6 +313,7 @@ protocol  ViewPopupDelegate {
 class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     
     var array = [""]
+    var arrayImage = [UIImage]()
     var pessoas = [Pessoas]()
     var delegateSend: ViewPopupDelegate?
     var aux = 0
@@ -333,20 +348,9 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
+        cell.imagemResponsavel.image = arrayImage[indexPath.row]
         
-       
-//        if (which == "responsaveis"){
-//            cell.textTable.text = pessoas[indexPath.row].nome
-//            cell.imagemResponsavel.image = UIImage(data: pessoas[indexPath.row].foto! as Data)
-//            cell.id = pessoas[indexPath.row].i
-//            cell.selecionado = pessoas[indexPath.row].selecionado
-//
-//            if (!(pessoas[indexPath.row].selecionado)){
-//                cell.accessoryType = .none
-//            }else{
-//                cell.accessoryType = .checkmark
-//            }
-//        }
+        
         
         return cell
         
@@ -357,18 +361,18 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
-       
-//        if which == "responsaveis"{
-//        if cell.accessoryType == .checkmark{
-//            cell.accessoryType = .none
-//            pessoas[indexPath.row].selecionado = false
-//
-//        }else{
-//            cell.accessoryType = .checkmark
-//            pessoas[indexPath.row].selecionado = true
-//            array[indexPath.row] = pessoas[indexPath.row].id!
-//        }
-//        }
+        
+        //        if which == "responsaveis"{
+        //        if cell.accessoryType == .checkmark{
+        //            cell.accessoryType = .none
+        //            pessoas[indexPath.row].selecionado = false
+        //
+        //        }else{
+        //            cell.accessoryType = .checkmark
+        //            pessoas[indexPath.row].selecionado = true
+        //            array[indexPath.row] = pessoas[indexPath.row].id!
+        //        }
+        //        }
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row

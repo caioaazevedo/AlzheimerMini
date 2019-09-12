@@ -9,6 +9,7 @@
 import UIKit
 import CloudKit
 import CoreData
+import FSCalendar
 class ViewController: UIViewController {
     
     let UserNotification = Notification()
@@ -68,6 +69,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        feedView.delegate = self
 //        feedView.dataSource = self
 //        UserNotification.requestNotificationAuthorization()
@@ -87,8 +89,12 @@ class ViewController: UIViewController {
     
     @objc func refreshTable(refreshControl: UIRefreshControl){
         //Adicionar aqui o fetch do cloud para o coreData
-        refreshControl.endRefreshing()
-        
+        Cloud.getPeople {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                refreshControl.endRefreshing()
+            }
+        }
     }
     
     
@@ -96,16 +102,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var navigationTitle: UINavigationItem!
     
     var pessoas = [Pessoas]()
-    
-    static var ckData: [(String, String)] = []
 
     override func viewWillAppear(_ animated: Bool) {
         print("=-=-=-=-=-=->>>> \(eventosSalvos)")
         eventosSalvos.removeAll()
         fetchAll()
         
+        self.tableView.reloadData()
+        
         Cloud.getPeople {
-//            self.pessoas = CoreDataRebased.shared.fetchPessoas()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -175,29 +180,31 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ViewController.ckData.count
-        
-        var count = 0
-        
+        var c = FSCalendar()
+       
+        var countToday = 0
+        var countBefore = 0
+        var diaHoje = Calendar.current.component(.day, from: c.today!)
         if eventosSalvos.count > 0{
             if section == 0 {
                 for i in 0...eventosSalvos.count-1 {
-                    if eventosSalvos[i].dia! == Date() as NSDate{
-                        count += 1
+                    var diaAux = Calendar.current.component(.day, from: eventosSalvos[i].dia as! Date)
+                    if diaAux == diaHoje && eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar!{
+                        countToday += 1
                     }
                 }
-                return count
+                return countToday
             } else {
-                for i in count...eventosSalvos.count-1 {
+                for i in countToday...eventosSalvos.count-1 {
                     if eventosSalvos[i].dia! == Date() as NSDate{
-                        count += 1
+                        countBefore += 1
                     }
                 }
-                return eventosSalvos.count
+                print("=-=-=-=-=-=->>>>>> \(countBefore)")
+                return countBefore
             }
-        } else {
-            return 1
         }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -208,27 +215,18 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
         
         cell.view.layer.cornerRadius = 10
         
-        let i = indexPath.row;
-        let (idUsuario, nome) = i < ViewController.ckData.count ? ViewController.ckData[i] : ("-1", "BATMAN")
-        cell.label.text = "\(idUsuario) - \(nome)"
-        
-//        if eventosSalvos.count > 0 {
-//            for i in 0...pessoas.count-1{
-//                for j in 0...eventosSalvos.count-1 {
-//                    if pessoas[i].id == eventosSalvos[j].idResponsavel {
-//                        cell.imageFoto.image = UIImage(data: pessoas[i].foto! as Data)
-//
-//                        let hour = Calendar.current.component(.hour, from: eventosSalvos[j].horario! as Date)
-//                        let minute = Calendar.current.component(.minute, from: eventosSalvos[j].horario! as Date)
-//                        let day = Calendar.current.component(.day, from: eventosSalvos[j].horario! as Date)
-//
-//                        auxMesNum = Calendar.current.component(.month, from: eventosSalvos[j].horario! as Date)
-//
-//                        cell.label.text = "\(eventosSalvos[j].idResponsavel ?? "Gui") marcou  \(eventosSalvos[j].nome!) para Pedro Paulo em \(eventosSalvos[j].localizacao ?? "Brasilia") as \(hour):\(minute) no dia \(day) de \(auxMes) "
-//                    }
-//                }
-//            }
-//        }
+        if eventosSalvos.count > 0 {
+            
+            for i in 0...eventosSalvos.count-1 {
+                if eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar! && ckData.count > 0{
+                    for j in 0...ckData.count-1 {
+                        if eventosSalvos[i].idResponsavel == ckData[j].0{
+                            cell.label.text = "\(eventosSalvos[i].idResponsavel!) - \(ckData[j].1)"
+                        }
+                    }
+                }
+            }
+        }
 
         return cell
     }
