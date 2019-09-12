@@ -46,6 +46,7 @@ class DetailProfileViewController: UIViewController {
         setAll()
         self.fotoIdoso.clipsToBounds = true
         self.fotoIdoso.layer.cornerRadius = 20
+        
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
             vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
@@ -134,4 +135,5 @@ extension DetailProfileViewController: ImagePickerDelegate{
     func didSelect(imagem: UIImage?) {
         self.fotoIdoso.image = imagem
     }
+    
 }

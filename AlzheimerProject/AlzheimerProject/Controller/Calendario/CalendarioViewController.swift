@@ -326,6 +326,26 @@ extension CalendarioViewController{
 
 extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate{
     
+    
+    
+    func defineColor(_ categoria: String) -> UIColor{
+        var cor = UIColor()
+        switch(categoria){
+        case "Saúde":
+            cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 0.8)
+        case "Lazer":
+            cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 0.8)
+        case "Dentista":
+            cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 0.8)
+        case "Farmácia":
+            cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 0.8)
+        default:
+           cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 0.8)
+        }
+        return cor
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DailyEvents.count;
     }
@@ -336,7 +356,8 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
         
-        
+        var categoria = DailyEvents[indexPath.row].categ
+        cell.backgroundColor = defineColor(categoria)
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
         cell.responsavel.text = DailyEvents[indexPath.row].responsavel
