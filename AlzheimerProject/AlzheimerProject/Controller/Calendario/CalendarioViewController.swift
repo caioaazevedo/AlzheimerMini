@@ -9,7 +9,7 @@
 import UIKit
 import FSCalendar
 import CoreData
-
+import CircleBar
 
 
 let screenSize = UIScreen.main.bounds
@@ -42,6 +42,7 @@ class CalendarioViewController: UIViewController {
     var auxText : String = "" {
         didSet{
             tableView.reloadData()
+            
         }
     }
     var auxLocal : String?
@@ -144,7 +145,7 @@ class CalendarioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Cloud.getPeople()
+//        Cloud.getPeople()
         createCalendar()
         
         tableView.reloadData()
@@ -156,12 +157,30 @@ class CalendarioViewController: UIViewController {
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
         
         fetchAll()
-        Cloud.getPeople()
+//        Cloud.getPeople()
+        
+        //Refresh
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        //Refresh
+
+        
+//        Cloud.getPeople()
     }
     
-    func aa(){
+    @objc func refreshTable(refreshControl: UIRefreshControl){
+        //Adicionar aqui o fetch do cloud para o coreData
+        refreshControl.endRefreshing()
         
     }
+    
+    
+    
+    
+    
+    
     func fetchAll(){
         let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         do{
@@ -243,7 +262,9 @@ class CalendarioViewController: UIViewController {
         tableView.reloadData()
         selectedDay = DiaSelecionado
         
-        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = false
+        }
     }
     
     
@@ -332,15 +353,10 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
-        
-        
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
         cell.responsavel.text = DailyEvents[indexPath.row].responsavel
         cell.location.text = DailyEvents[indexPath.row].localization
-        
-        
-        
         
         return cell;
     }

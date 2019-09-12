@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         //Cloud Push-Up notifications ⚡️
         
-        
+//                Cloud.getPeople()
         
         return true
     }

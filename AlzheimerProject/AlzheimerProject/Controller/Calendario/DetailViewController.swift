@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class DetailViewController: UIViewController {
     
@@ -32,6 +33,29 @@ class DetailViewController: UIViewController {
         
         
     }
+    
+    @IBAction func editButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "segueEdit", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueEdit"{
+            if let vc = segue.destination as? TaskViewController {
+                vc.event = self.event
+                vc.willEditing = true
+            }
+        }
+    }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        }
+    }
+    
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
     

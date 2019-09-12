@@ -7,26 +7,58 @@
 //
 
 import UIKit
+import CircleBar
 
 class DetailProfileViewController: UIViewController {
     
     var editPressed = false
     var cdr = CoreDataRebased.shared
     
+    
+    
+    
+    @IBOutlet weak var fotoIdoso: UIImageView!
+    @IBOutlet weak var idosoNome: UITextField!
+    @IBOutlet weak var dataNascimento: UITextField!
+    @IBOutlet weak var tipoSanguineo: UITextField!
+    @IBOutlet weak var rg: UITextField!
+    @IBOutlet weak var telefone: UITextField!
+    @IBOutlet weak var alergias: UITextField!
+    @IBOutlet weak var plano: UITextField!
+    
+    @IBOutlet weak var endereco: UITextField!
+    @IBOutlet weak var medicacoes: UITextField!
+    @IBOutlet weak var observacoes: UITextField!
+    
+    @IBOutlet weak var editOutlet: UIBarButtonItem!
+    
+    var imagePicker: ImagePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // if (profile == host) && editPressed{
-     //   setAll()
         
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         
-        //}
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         UserLoaded()
         setAll()
+        self.fotoIdoso.clipsToBounds = true
+        self.fotoIdoso.layer.cornerRadius = 20
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
+            
+            
+        }
+        
     }
+    
+    @IBAction func mudarFoto(_ sender: UIButton) {
+        self.imagePicker.present(from: sender as UIView)
+    }
+    
     
     
     
@@ -45,7 +77,7 @@ class DetailProfileViewController: UIViewController {
         dataNascimento.text = "\(day)/\(month)/\(year)"
         observacoes.text = a.Descricao
         endereco.text = a.endereco
-        fotoIdoso.image = a.fotoDePerfil
+        //  fotoIdoso.image = a.fotoDePerfil
         idosoNome.text = a.nome
         plano.text = a.planoDeSaude
         medicacoes.text = a.remedios?[0]
@@ -56,7 +88,7 @@ class DetailProfileViewController: UIViewController {
     
     
     
-    @IBOutlet weak var editOutlet: UIBarButtonItem!
+    
     
     @IBAction func editbutton(_ sender: UIBarButtonItem) {
         editPressed = !editPressed
@@ -64,10 +96,10 @@ class DetailProfileViewController: UIViewController {
         if (editPressed){
             changeAll(editPressed)
             editOutlet.title = "Done"
-          
+            
         } else{
             changeAll(editPressed)
-                cdr.updateProfile(alergias: [alergias.text!] , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: [medicacoes.text!], telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
+            cdr.updateProfile(alergias: [alergias.text!] , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: [medicacoes.text!], telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
             editOutlet.title = "Edit"
         }
         
@@ -89,26 +121,17 @@ class DetailProfileViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var fotoIdoso: UIImageView!
-    @IBOutlet weak var idosoNome: UITextField!
-    @IBOutlet weak var dataNascimento: UITextField!
-    @IBOutlet weak var tipoSanguineo: UITextField!
-    @IBOutlet weak var rg: UITextField!
-    @IBOutlet weak var telefone: UITextField!
-    @IBOutlet weak var alergias: UITextField!
-    @IBOutlet weak var plano: UITextField!
-    
-    @IBOutlet weak var endereco: UITextField!
-    @IBOutlet weak var medicacoes: UITextField!
-    @IBOutlet weak var observacoes: UITextField!
     
     
     
     
     
+}
+
+
+extension DetailProfileViewController: ImagePickerDelegate{
     
-    
-    
-    
-    
+    func didSelect(imagem: UIImage?) {
+        self.fotoIdoso.image = imagem
+    }
 }
