@@ -161,6 +161,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
+        if which == "Categoria"{
+            tableController.categoriaLabel.text = texto
+        }
     }
     
     
@@ -185,7 +188,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
-        if tableController.hora.text == "" {
+        if tableController.hora.text == "" || tituloTextField.text == ""  {
             let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
@@ -219,7 +222,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             
             if willEditing{
                 let date = Date()
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: "", responsaveis: responsaveis)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
             }
             else{
                 CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
@@ -330,17 +333,20 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
-        if (!(pessoas[indexPath.row].selecionado)){
-            cell.accessoryType = .none
-        }else{
-            cell.accessoryType = .checkmark
-        }
-        if (which == "responsaveis"){
-            cell.textTable.text = pessoas[indexPath.row].nome
-            cell.imagemResponsavel.image = UIImage(data: pessoas[indexPath.row].foto! as Data)
-            cell.id = pessoas[indexPath.row].id
-            cell.selecionado = pessoas[indexPath.row].selecionado
-        }
+        
+       
+//        if (which == "responsaveis"){
+//            cell.textTable.text = pessoas[indexPath.row].nome
+//            cell.imagemResponsavel.image = UIImage(data: pessoas[indexPath.row].foto! as Data)
+//            cell.id = pessoas[indexPath.row].id
+//            cell.selecionado = pessoas[indexPath.row].selecionado
+//
+//            if (!(pessoas[indexPath.row].selecionado)){
+//                cell.accessoryType = .none
+//            }else{
+//                cell.accessoryType = .checkmark
+//            }
+//        }
         
         return cell
         
@@ -352,16 +358,17 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
        
-        if cell.accessoryType == .checkmark{
-            cell.accessoryType = .none
-            pessoas[indexPath.row].selecionado = false
-            
-        }else{
-            cell.accessoryType = .checkmark
-            pessoas[indexPath.row].selecionado = true
-            array[indexPath.row] = pessoas[indexPath.row].id!
-        }
-        
+//        if which == "responsaveis"{
+//        if cell.accessoryType == .checkmark{
+//            cell.accessoryType = .none
+//            pessoas[indexPath.row].selecionado = false
+//
+//        }else{
+//            cell.accessoryType = .checkmark
+//            pessoas[indexPath.row].selecionado = true
+//            array[indexPath.row] = pessoas[indexPath.row].id!
+//        }
+//        }
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row

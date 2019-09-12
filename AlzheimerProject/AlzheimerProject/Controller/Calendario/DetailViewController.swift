@@ -34,7 +34,18 @@ class DetailViewController: UIViewController {
         
     }
     
+    @IBAction func editButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "segueEdit", sender: self)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueEdit"{
+            if let vc = segue.destination as? TaskViewController {
+                vc.event = self.event
+                vc.willEditing = true
+            }
+        }
+    }
     
     
     

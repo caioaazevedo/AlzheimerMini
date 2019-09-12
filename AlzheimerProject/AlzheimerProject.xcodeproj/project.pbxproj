@@ -29,7 +29,6 @@
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
 		3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF5962231D8D210073D65D /* UserLoaded.swift */; };
 		3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */; };
-		3ABD18D923282A00001B1DFA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD18D423282A00001B1DFA /* ProfileViewController.swift */; };
 		3ABD18DA23282A00001B1DFA /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD18D523282A00001B1DFA /* GroupTableViewController.swift */; };
 		3ABD18DB23282A00001B1DFA /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD18D623282A00001B1DFA /* GroupTableViewCell.swift */; };
 		3ABD18DC23282A00001B1DFA /* profileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD18D723282A00001B1DFA /* profileTableViewController.swift */; };
@@ -44,7 +43,6 @@
 		AC39EE192318638B00DC590C /* CellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39EE182318638B00DC590C /* CellFeed.swift */; };
 		AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */; };
 		AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965C231EED1300EACF44 /* DetailViewController.swift */; };
-		AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */; };
 		AC68B45E2326CF09002963C0 /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B45D2326CF09002963C0 /* DetailProfileViewController.swift */; };
 		AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */; };
 		AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B4612326CF86002963C0 /* UsersViewController.swift */; };
@@ -65,6 +63,7 @@
 		ACA91FC223296215005EB127 /* Pessoas+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC023296215005EB127 /* Pessoas+CoreDataClass.swift */; };
 		ACA91FC323296215005EB127 /* Pessoas+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC123296215005EB127 /* Pessoas+CoreDataProperties.swift */; };
 		ACA91FC92329657B005EB127 /* CustomCellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC82329657B005EB127 /* CustomCellFeed.swift */; };
+		ACF39C61232A78630049D38D /* FamiliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF39C60232A78630049D38D /* FamiliaViewController.swift */; };
 		BF95BC60618A0AD0F91A87A7 /* Pods_AlzheimerProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */; };
 		E2CEB47E23183DF300C90EFD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEB47D23183DF300C90EFD /* CloudKit.framework */; };
 		E2CEB480231850A200C90EFD /* Dados.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CEB47F231850A200C90EFD /* Dados.swift */; };
@@ -140,7 +139,6 @@
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3AAF5962231D8D210073D65D /* UserLoaded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoaded.swift; sourceTree = "<group>"; };
 		3AAF5963231D8D210073D65D /* CoreDataOptmized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOptmized.swift; sourceTree = "<group>"; };
-		3ABD18D423282A00001B1DFA /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../../Classes/ProfileViewController.swift; sourceTree = "<group>"; };
 		3ABD18D523282A00001B1DFA /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewController.swift; path = ../../Classes/GroupTableViewController.swift; sourceTree = "<group>"; };
 		3ABD18D623282A00001B1DFA /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		3ABD18D723282A00001B1DFA /* profileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = profileTableViewController.swift; path = ../../Classes/profileTableViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		AC39EE182318638B00DC590C /* CellFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFeed.swift; sourceTree = "<group>"; };
 		AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTaskViewController.swift; sourceTree = "<group>"; };
 		AC52965C231EED1300EACF44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilTableViewController.swift; sourceTree = "<group>"; };
 		AC68B45D2326CF09002963C0 /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		AC68B4612326CF86002963C0 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +172,7 @@
 		ACA91FC023296215005EB127 /* Pessoas+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACA91FC123296215005EB127 /* Pessoas+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACA91FC82329657B005EB127 /* CustomCellFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellFeed.swift; sourceTree = "<group>"; };
+		ACF39C60232A78630049D38D /* FamiliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamiliaViewController.swift; sourceTree = "<group>"; };
 		E2CEB47C23183DEF00C90EFD /* AlzheimerProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlzheimerProject.entitlements; sourceTree = "<group>"; };
 		E2CEB47D23183DF300C90EFD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E2CEB47F231850A200C90EFD /* Dados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dados.swift; sourceTree = SOURCE_ROOT; };
@@ -294,19 +292,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		AC529662231F100F00EACF44 /* Perfil */ = {
+		AC529662231F100F00EACF44 /* Configuracoes */ = {
 			isa = PBXGroup;
 			children = (
 				3ABD18D523282A00001B1DFA /* GroupTableViewController.swift */,
 				3ABD18D723282A00001B1DFA /* profileTableViewController.swift */,
-				3ABD18D423282A00001B1DFA /* ProfileViewController.swift */,
-				AC529660231F0E5000EACF44 /* PerfilTableViewController.swift */,
 				AC9EE921230C64BC004FA292 /* PerfilViewController.swift */,
 				AC68B45D2326CF09002963C0 /* DetailProfileViewController.swift */,
 				AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */,
 				AC68B4612326CF86002963C0 /* UsersViewController.swift */,
+				ACF39C60232A78630049D38D /* FamiliaViewController.swift */,
 			);
-			path = Perfil;
+			path = Configuracoes;
 			sourceTree = "<group>";
 		};
 		AC529663231F101E00EACF44 /* Calendario */ = {
@@ -414,7 +411,7 @@
 				1144AF1A232046BD00718CC6 /* Login */,
 				AC529664231F104B00EACF44 /* Feed */,
 				AC529663231F101E00EACF44 /* Calendario */,
-				AC529662231F100F00EACF44 /* Perfil */,
+				AC529662231F100F00EACF44 /* Configuracoes */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -558,13 +555,13 @@
 				AC68B46823282AB6002963C0 /* NotasViewController.swift in Sources */,
 				3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */,
 				3A54ECA22320573D004BB09C /* Usuario+CoreDataProperties.swift in Sources */,
-				3ABD18D923282A00001B1DFA /* ProfileViewController.swift in Sources */,
 				AC9EE924230C6901004FA292 /* CalendarioViewController.swift in Sources */,
 				AC9EE90523071D01004FA292 /* ViewController.swift in Sources */,
 				AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */,
 				AC9EE922230C64BC004FA292 /* PerfilViewController.swift in Sources */,
 				3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */,
 				115CADF323268F420057B1E0 /* CellDetail.swift in Sources */,
+				ACF39C61232A78630049D38D /* FamiliaViewController.swift in Sources */,
 				AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */,
 				AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
@@ -592,7 +589,6 @@
 				1144AF192320467C00718CC6 /* CustomButton.swift in Sources */,
 				E2CEB480231850A200C90EFD /* Dados.swift in Sources */,
 				ACA91FC223296215005EB127 /* Pessoas+CoreDataClass.swift in Sources */,
-				AC529661231F0E5000EACF44 /* PerfilTableViewController.swift in Sources */,
 				AC9EE928230F0D8D004FA292 /* CellCalendar.swift in Sources */,
 				3ABD18DB23282A00001B1DFA /* GroupTableViewCell.swift in Sources */,
 				AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */,
