@@ -157,11 +157,28 @@ class CalendarioViewController: UIViewController {
         
         fetchAll()
         Cloud.getPeople()
-    }
-    
-    func aa(){
+        
+        //Refresh
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        //Refresh
+
         
     }
+    
+    @objc func refreshTable(refreshControl: UIRefreshControl){
+        //Adicionar aqui o fetch do cloud para o coreData
+        refreshControl.endRefreshing()
+        
+    }
+    
+    
+    
+    
+    
+    
     func fetchAll(){
         let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         do{
@@ -332,15 +349,10 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         
-        
-        
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
         cell.responsavel.text = DailyEvents[indexPath.row].responsavel
         cell.location.text = DailyEvents[indexPath.row].localization
-        
-        
-        
         
         return cell;
     }
