@@ -338,7 +338,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
 //        if (which == "responsaveis"){
 //            cell.textTable.text = pessoas[indexPath.row].nome
 //            cell.imagemResponsavel.image = UIImage(data: pessoas[indexPath.row].foto! as Data)
-//            cell.id = pessoas[indexPath.row].id
+//            cell.id = pessoas[indexPath.row].i
 //            cell.selecionado = pessoas[indexPath.row].selecionado
 //
 //            if (!(pessoas[indexPath.row].selecionado)){
