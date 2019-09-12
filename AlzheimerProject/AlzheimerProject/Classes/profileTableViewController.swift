@@ -18,6 +18,7 @@ class profileTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var notificationImage: UIImageView!
     
+    @IBOutlet weak var idosoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
