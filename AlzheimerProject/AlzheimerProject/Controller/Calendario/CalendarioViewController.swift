@@ -179,6 +179,7 @@ class CalendarioViewController: UIViewController {
     @objc func refreshTable(refreshControl: UIRefreshControl){
         //Adicionar aqui o fetch do cloud para o coreData
         refreshControl.endRefreshing()
+        calendar.reloadData()
         
         
     }
@@ -214,11 +215,7 @@ class CalendarioViewController: UIViewController {
         }
     }
     
-    
-    func changeDotColor(){
-        
-    }
-    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueTask"{
@@ -228,7 +225,7 @@ class CalendarioViewController: UIViewController {
                 
                 
             }
-        }
+        } else {
         
         if segue.identifier == "segueDetail"{
             
@@ -243,6 +240,7 @@ class CalendarioViewController: UIViewController {
                 
                 vc.diaSemanaAux = "\(auxDiaSemana!)"
             }
+        }
         }
     }
     
@@ -276,11 +274,13 @@ class CalendarioViewController: UIViewController {
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = false
+            vc.viewDidLayoutSubviews()
+            vc.self.selectedIndex = 1
         }
         
         
     }
-    
+ 
     override func viewDidAppear(_ animated: Bool) {
         selectedDay = calendar.today!
         changeMonthName()
@@ -371,8 +371,6 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
         return nil
     }
     
-    
-    
 }
 
 
@@ -386,11 +384,12 @@ extension CalendarioViewController{
         calendar.delegate = self
         
         calendar.calendarHeaderView.backgroundColor = UIColor.white
-        calendar.appearance.borderRadius = 20
-        
-        
+//        calendar.appearance.borderRadius = 20
+        calendar.appearance.borderRadius = 1
+            calendar.clipsToBounds = false
         view.addSubview(calendar)
     }
+    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDay = date

@@ -25,7 +25,8 @@ class UsersViewController: UIViewController {
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
             vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
-            
+            vc.viewDidLayoutSubviews()
+            vc.self.selectedIndex = 2
             
         }
     }

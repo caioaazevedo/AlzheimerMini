@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class TableViewTaskViewController: UITableViewController {
 
@@ -14,6 +15,14 @@ class TableViewTaskViewController: UITableViewController {
         super.viewDidLoad()
 
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = false
+            vc.viewDidLayoutSubviews()
+            //vc.self.selectedIndex = 2
+        }
     }
     
     @IBOutlet weak var notas: UIView!

@@ -86,6 +86,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        }
+        
         if willEditing{
             
             tableController.hora.text = event?.time
@@ -96,13 +102,18 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         
         tableController.descricao.text = auxNotas
         
-        if let vc = self.tabBarController as! SHCircleBarController?{
-            vc.circleView.isHidden = true
-            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
-        }
+       
+      
+        
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        }
+    }
+
     
     
     
