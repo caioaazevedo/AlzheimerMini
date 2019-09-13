@@ -102,8 +102,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         
         tableController.descricao.text = auxNotas
         
-       
-      
+        
+        
         
         
     }
@@ -113,7 +113,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         }
     }
-
+    
     
     
     
@@ -374,17 +374,19 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
         
-        //        if which == "responsaveis"{
-        //        if cell.accessoryType == .checkmark{
-        //            cell.accessoryType = .none
-        //            pessoas[indexPath.row].selecionado = false
-        //
-        //        }else{
-        //            cell.accessoryType = .checkmark
-        //            pessoas[indexPath.row].selecionado = true
-        //            array[indexPath.row] = pessoas[indexPath.row].id!
-        //        }
-        //        }
+        if indexPath.row == 2{
+            
+            if cell.accessoryType == .checkmark{
+                cell.accessoryType = .none
+                pessoas[indexPath.row].selecionado = false
+                
+            }else{
+                cell.accessoryType = .checkmark
+                pessoas[indexPath.row].selecionado = true
+                array[indexPath.row] = pessoas[indexPath.row].id!
+            }
+            
+        }
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row

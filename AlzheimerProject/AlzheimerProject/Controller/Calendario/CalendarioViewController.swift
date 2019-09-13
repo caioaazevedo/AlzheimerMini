@@ -149,7 +149,9 @@ class CalendarioViewController: UIViewController {
         createCalendar()
         
         tableView.reloadData()
-        DiaSelecionado = calendar.today!
+        if DiaSelecionado == nil{
+            DiaSelecionado = calendar.today!
+        }
         auxDia = Calendar.current.component(.day, from: calendar.today!)
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
         
@@ -286,7 +288,7 @@ class CalendarioViewController: UIViewController {
     }
  
     override func viewDidAppear(_ animated: Bool) {
-        selectedDay = calendar.today!
+     
         changeMonthName()
     }
     
@@ -386,10 +388,11 @@ extension CalendarioViewController{
         
         calendar.dataSource = self
         calendar.delegate = self
-        
         calendar.calendarHeaderView.backgroundColor = UIColor.white
 //        calendar.appearance.borderRadius = 20
-        calendar.appearance.borderRadius = 1
+       
+        
+        
             calendar.clipsToBounds = false
         view.addSubview(calendar)
     }
@@ -409,9 +412,12 @@ extension CalendarioViewController{
             let rhs = Calendar.current.component(.day,from: x.dia! as Date)
             let lhs = Calendar.current.component(.day,from: date)
             
-            if rhs == lhs {
+            let rhsA = Calendar.current.component(.month, from: x.dia! as Date)
+            let lhsA = Calendar.current.component(.month, from: date)
+            
+            if rhs == lhs && rhsA == lhsA{
                 aux += 1
-                calendar.appearance.eventDefaultColor = .blue
+           
                 
             }
             
@@ -421,7 +427,7 @@ extension CalendarioViewController{
         
         
         return aux
-        return 0
+      
         
     }
     
@@ -457,12 +463,15 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         return DailyEvents.count;
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
-        
+        cell.layer.cornerRadius = 10
         var categoria = DailyEvents[indexPath.row].categ
+        
         cell.backgroundColor = defineColor(categoria)
         
         cell.titulo.text = DailyEvents[indexPath.row].title
@@ -477,10 +486,11 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         return 155
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         eventoSelecionado = DailyEvents[indexPath.row]
         performSegue(withIdentifier: "segueDetail", sender: self)
-        
     }
     
     
