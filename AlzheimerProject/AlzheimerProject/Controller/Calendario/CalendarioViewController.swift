@@ -172,6 +172,10 @@ class CalendarioViewController: UIViewController {
     
     @objc func refreshTable(refreshControl: UIRefreshControl){
         //Adicionar aqui o fetch do cloud para o coreData
+        CoreDataRebased.shared.deleteAllEvents()
+        Cloud.updateCalendario { (result) in
+            Cloud.updateAllEvents()
+        }
         refreshControl.endRefreshing()
         
     }

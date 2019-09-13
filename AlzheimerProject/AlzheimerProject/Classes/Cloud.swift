@@ -535,20 +535,8 @@ class Cloud {
          */
         
         let userLoad = UserLoaded()
-        let eventCreate = Evento(context: managedObjectContext)
-        let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         
-        
-        //  1 -> ✅
-        do{
-            let eventosExistentes = try managedObjectContext.fetch(eventFetchRequest)
-            for even in eventosExistentes{
-                managedObjectContext.delete(even)
-            }
-        } catch {
-            print("Error")
-        }
-        CoreDataRebased.shared.saveCoreData()
+
         // 2 -> ✅
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
@@ -559,6 +547,7 @@ class Cloud {
             
             if record["idCalendario"] == userLoad.idSalaCalendar{
                 // 3 -> ✅
+                let eventCreate = Evento(context: managedObjectContext)
                 eventCreate.id = record["idEvento"]
                 eventCreate.categoria = record["categoria"]
                 eventCreate.descricao = record["descricao"]
@@ -628,7 +617,7 @@ class Cloud {
         
     }
     // ✅
-    static func updateCalendario(){
+    static func updateCalendario(completion: @escaping (_ result: Bool) -> ()){
         
         let userLoad = UserLoaded()
         let calendarioFetchRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -646,6 +635,7 @@ class Cloud {
                             calend.id = record["idCalendario"]
                             calend.idEventos = record["idEventos"] as? NSObject
                             CoreDataRebased.shared.saveCoreData()
+                            completion(true)
                         }
                     }
                 } catch{
