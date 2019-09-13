@@ -122,19 +122,22 @@ class CalendarioViewController: UIViewController {
             
             
             let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
+            let mesSelecionadoEvento = Calendar.current.component(.month, from: DiaSelecionado!)
             
             
             for evento in eventosSalvos{
-                let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
-                if diaSelecionadoEvento == diaEvento{
-                    let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
-                    let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
-                    let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
-                    
-                    DailyEvents.append(evento)
-                    
-                }
-            }
+                if evento.dia != nil{
+                    let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
+                    let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
+                    if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
+                        let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
+                        let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
+                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
+                        
+                        DailyEvents.append(evento)
+                        
+                    }
+                }}
             
             tableView.reloadData()
             
@@ -170,6 +173,7 @@ class CalendarioViewController: UIViewController {
         //Refresh
         
         let refreshControl = UIRefreshControl()
+        
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
         //Refresh
@@ -182,10 +186,13 @@ class CalendarioViewController: UIViewController {
         //Adicionar aqui o fetch do cloud para o coreData
         CoreDataRebased.shared.deleteAllEvents()
         Cloud.updateCalendario { (result) in
-            Cloud.updateAllEvents()
+            Cloud.updateAllEvents(completion: { (t) in
+                self.fetchAll()
+            })
         }
+        tableView.reloadData()
         refreshControl.endRefreshing()
-        calendar.reloadData()
+
         
         
     }
@@ -221,7 +228,7 @@ class CalendarioViewController: UIViewController {
         }
     }
     
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueTask"{
@@ -232,21 +239,21 @@ class CalendarioViewController: UIViewController {
                 
             }
         } else {
-        
-        if segue.identifier == "segueDetail"{
             
-            if let vc = segue.destination as? DetailViewController{
+            if segue.identifier == "segueDetail"{
                 
-                auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
-                auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
-                
-                
-                vc.event = DailyEvents[indexPathAux]
-                vc.diaAux = "\(auxDia!) de \(auxMes!)"
-                
-                vc.diaSemanaAux = "\(auxDiaSemana!)"
+                if let vc = segue.destination as? DetailViewController{
+                    
+                    auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
+                    auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
+                    
+                    
+                    vc.event = DailyEvents[indexPathAux]
+                    vc.diaAux = "\(auxDia!) de \(auxMes!)"
+                    
+                    vc.diaSemanaAux = "\(auxDiaSemana!)"
+                }
             }
-        }
         }
     }
     
@@ -286,9 +293,9 @@ class CalendarioViewController: UIViewController {
         
         
     }
- 
+    
     override func viewDidAppear(_ animated: Bool) {
-     
+        
         changeMonthName()
     }
     
@@ -389,11 +396,11 @@ extension CalendarioViewController{
         calendar.dataSource = self
         calendar.delegate = self
         calendar.calendarHeaderView.backgroundColor = UIColor.white
-//        calendar.appearance.borderRadius = 20
-       
+        //        calendar.appearance.borderRadius = 20
         
         
-            calendar.clipsToBounds = false
+        
+        calendar.clipsToBounds = false
         view.addSubview(calendar)
     }
     
@@ -417,7 +424,7 @@ extension CalendarioViewController{
             
             if rhs == lhs && rhsA == lhsA{
                 aux += 1
-           
+                
                 
             }
             
@@ -427,7 +434,7 @@ extension CalendarioViewController{
         
         
         return aux
-      
+        
         
     }
     

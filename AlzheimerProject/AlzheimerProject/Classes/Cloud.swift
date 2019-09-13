@@ -17,7 +17,6 @@ let publicDataBase = cloudContainer.publicCloudDatabase
 class Cloud {
     
     private init(){}
-    
     static var cloud = Cloud()
     
     static func saveSala(nomeFamilia: String, idSala: String, idUsuario: [String], idCalendario: String, idPerfil: String, idHost: String) {
@@ -526,7 +525,8 @@ class Cloud {
     
     
     // ✅
-    static func updateAllEvents(){
+    
+    static func updateAllEvents(completion: @escaping (_ result: Bool) -> ()){
         
         /*
          1. Deletar todos os eventos do coreData
@@ -535,18 +535,16 @@ class Cloud {
          */
         
         let userLoad = UserLoaded()
-        
 
         // 2 -> ✅
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
         let queryOp = CKQueryOperation(query: query)
+        let secondOp = CKQueryOperation(query: query)
         queryOp.queuePriority = .veryHigh
-        
         queryOp.recordFetchedBlock = { (record) -> Void in
             
             if record["idCalendario"] == userLoad.idSalaCalendar{
-                // 3 -> ✅
                 let eventCreate = Evento(context: managedObjectContext)
                 eventCreate.id = record["idEvento"]
                 eventCreate.categoria = record["categoria"]
@@ -561,8 +559,17 @@ class Cloud {
                 CoreDataRebased.shared.saveCoreData()
             }
         }
+        secondOp.recordFetchedBlock = { (record) -> Void in
+            
+            completion(true)
+            
+            
+        }
+        
+        secondOp.addDependency(queryOp)
         
         publicDataBase.add(queryOp)
+        publicDataBase.add(secondOp)
         
     }
     // ✅
