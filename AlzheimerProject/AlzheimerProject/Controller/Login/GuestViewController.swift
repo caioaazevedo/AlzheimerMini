@@ -40,7 +40,6 @@ class GuestViewController: UIViewController{
             
             setUpImage()
             userName.setBottomBorder()
-
         }else {
             familyCode.setBottomBorder()
         }
