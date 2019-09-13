@@ -9,7 +9,9 @@
 import UIKit
 import CloudKit
 import CoreData
+import CircleBar
 import FSCalendar
+
 class ViewController: UIViewController {
     
     let UserNotification = Notification()
@@ -116,6 +118,12 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }
+        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = false
+            vc.viewDidLayoutSubviews()
+            vc.self.selectedIndex = 0
         }
     }
     
