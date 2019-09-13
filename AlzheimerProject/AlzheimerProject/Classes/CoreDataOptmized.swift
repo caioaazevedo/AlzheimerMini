@@ -156,7 +156,7 @@ class CoreDataRebased{
         //        //let usuario = Usuario(context: managedObjectContext)
         //        let usuario: Usuario
         //
-        //        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        //        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")zxc
         //        do {
         //
         //            let usuarios = try managedObjectContext.fetch(userFetchRequest)
@@ -415,7 +415,7 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: Date(), hora: Timer(), idUsuario: nil, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "")
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: nil, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "")
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         
@@ -572,7 +572,9 @@ class CoreDataRebased{
         do {
             let perfis = try managedObjectContext.fetch(profRequest)
             for i in perfis{
-
+                print(i.id)
+                print(i.dia)
+                print(i.horario)
             }
         } catch {
         }
