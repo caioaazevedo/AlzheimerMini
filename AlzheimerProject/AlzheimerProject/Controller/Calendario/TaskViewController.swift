@@ -145,9 +145,15 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     func createParentPicker(){
+        viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
         viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"] // ADD IMAGES OF USERS
+        viewPresent.arrayImage.append(bolaAzul!)
+        viewPresent.arrayImage.append(bolaRoxa!)
+        viewPresent.arrayImage.append(bolaRosa!)
+        viewPresent.arrayImage.append(bolaAmarela!)
+        viewPresent.arrayImage.append(bolaVermelha!)
         viewPresent.pessoas = pessoas
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -158,7 +164,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     }
     
     func createCategoryPicker(){
-        
+        viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"]
         viewPresent.arrayImage.append(bolaAzul!)
@@ -376,7 +382,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         
         if indexPath.row == 2{
             
-            if cell.accessoryType == .checkmark{
+git c            if cell.accessoryType == .checkmark{
                 cell.accessoryType = .none
                 pessoas[indexPath.row].selecionado = false
                 
