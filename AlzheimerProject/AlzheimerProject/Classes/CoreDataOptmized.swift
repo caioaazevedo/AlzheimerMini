@@ -156,7 +156,7 @@ class CoreDataRebased{
         //        //let usuario = Usuario(context: managedObjectContext)
         //        let usuario: Usuario
         //
-        //        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        //        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")zxc
         //        do {
         //
         //            let usuarios = try managedObjectContext.fetch(userFetchRequest)

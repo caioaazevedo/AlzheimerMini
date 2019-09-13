@@ -13,16 +13,21 @@ import CircleBar
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
+    
+    
     @IBOutlet weak var titulo2: UILabel!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
     
-    var pessoas = [Pessoas]()
+    var pessoas = [String]()
+    var pessoasIds = [String]()
+    var images = [UIImage]()
     
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
-    
+    let cdr = CoreDataRebased.shared
+    // updateSala -> arrayUsuariospresentes -> nuvem pessoas -> pegar dados pessoas -> armazenar
     
     var eventEntity : Evento?
     let userNotification = Notification()
@@ -55,22 +60,42 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        Cloud.getPeople {
+//            DispatchQueue.main.async {
+//                self.getIds()
+//            }
+//        }
+//        
         tituloTextField.setBottomBorder()
         
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
-        
+
+        print(pessoas)
     }
     
-    func fetchPeople(){
-        let fetchRequest = NSFetchRequest<Pessoas>.init(entityName: "Pessoas")
-        do{
-            let people = try managedObjectContext.fetch(fetchRequest)
-            pessoas = people
-        } catch{
-            
-        }
-    }
+//    func getIds(){
+//        let sala = CoreDataRebased.shared.fetchSala()
+//
+//        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+//
+//        for user in usuarios {
+//
+//            for i in 0...ckData.count {
+//                if ckData[i].0 == user {
+//                    // ID
+//                    pessoasIds.append(ckData[i].0)
+//                    // Nome
+//                    pessoas.append(ckData[i].1)
+//                    // Foto
+//                    let image = UIImage(data: ckData[i].2)
+//                    images.append(image!)
+//                }
+//            }
+//        }
+//    }
+    
+    
     
     @objc func done(){
         
@@ -148,13 +173,13 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
-        viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"] // ADD IMAGES OF USERS
+        viewPresent.array = pessoas// ADD IMAGES OF USERS
         viewPresent.arrayImage.append(bolaAzul!)
         viewPresent.arrayImage.append(bolaRoxa!)
         viewPresent.arrayImage.append(bolaRosa!)
         viewPresent.arrayImage.append(bolaAmarela!)
         viewPresent.arrayImage.append(bolaVermelha!)
-        viewPresent.pessoas = pessoas
+        // COLOCAR FOTO DOS INTEGRANTES
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
         UIView.animate(withDuration: 1) {
@@ -325,6 +350,7 @@ extension TaskViewController : UITableViewDelegate{
 protocol  ViewPopupDelegate {
     func sendInfo(_ view: ViewPopup, texto: String,which: String)
     
+    
 }
 
 class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
@@ -380,12 +406,32 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
         
+        if which == "Responsaveis"{
+            if cell.accessoryType == .checkmark{
+                cell.accessoryType = .none
+                
+                //  pessoas[indexPath.row].selecionado = false
+                
+            }else{
+                cell.accessoryType = .checkmark
+                //pessoas[indexPath.row].selecionado = true
+                //  array[indexPath.row] = pessoas[indexPath.row].id!
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
         
+        
+        
+        
     }
-    
-    
     
 }
 
