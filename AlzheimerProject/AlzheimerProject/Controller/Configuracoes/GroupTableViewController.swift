@@ -18,9 +18,10 @@
 
 import UIKit
 
-class GroupTableViewController: ViewController{
+class GroupTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableGroup: UITableView!
+    @IBOutlet weak var shareButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -29,33 +30,38 @@ class GroupTableViewController: ViewController{
                 self.tableGroup.reloadData()
             }
         }
+        
+        self.shareButton.layer.cornerRadius = 11
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableGroup.reloadData()
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let sala = CoreDataRebased.shared.fetchSala()
-        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         return usuarios.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellG", for: indexPath) as! GroupCell
         
         let sala = CoreDataRebased.shared.fetchSala()
-        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         if ckData.count > 0 {
             for i in 0...usuarios.count-1{
@@ -75,11 +81,11 @@ class GroupTableViewController: ViewController{
         
     }
     
-    //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    //        let vw = UIView()
-    //        vw.backgroundColor = .darkGray
-    //        return "                    "
-    //    }
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            let vw = UIView()
+            vw.backgroundColor = .darkGray
+            return "                    "
+        }
     
     @IBAction func shareGroup(_ sender: Any) {
         let userload = UserLoaded()
@@ -108,6 +114,19 @@ class GroupTableViewController: ViewController{
         self.dismiss(animated: true, completion: nil)
         
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            let sala = CoreDataRebased.shared.fetchSala()
+            let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+            
+            Cloud.deleteTable(searchRecord: usuarios[indexPath.row], searchKey: "idUsuario", searchTable: "Usuario")
+            
+        }
+    }
+    
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

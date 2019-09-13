@@ -57,7 +57,7 @@ class profileTableViewController: UITableViewController {
             performSegue(withIdentifier: "perfilIdoso", sender: self)
             
         case 1:
-            performSegue(withIdentifier: "usuariosGrupo", sender: self)
+            performSegue(withIdentifier: "grupo", sender: self)
         case 2:
             performSegue(withIdentifier: "familia", sender: self)
         default:
