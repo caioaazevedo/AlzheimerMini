@@ -108,7 +108,7 @@ class DetailProfileViewController: UIViewController {
         //  fotoIdoso.image = a.fotoDePerfil
         idosoNome.text = a.nome
         plano.text = a.planoDeSaude
-        medicacoes.text = a.remedios?[0]
+//        medicacoes.text = a.remedios?[0]
         telefone.text = a.telefone
         tipoSanguineo.text = a.tipoSanguineo
     }

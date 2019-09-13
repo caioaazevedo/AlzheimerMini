@@ -15,7 +15,12 @@ class CellCalendar :  UITableViewCell {
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var horario: UILabel!
     @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var repeatt: UILabel!
     @IBOutlet weak var responsavel: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        bounds = bounds.inset(by: padding)
+    }
     
 }

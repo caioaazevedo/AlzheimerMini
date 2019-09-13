@@ -40,6 +40,7 @@ class MyProfileViewController: UIViewController {
     @IBOutlet weak var profilePhoto: UIImageView!
     
     
+    
     @IBOutlet weak var nome: UITextField!
     
     

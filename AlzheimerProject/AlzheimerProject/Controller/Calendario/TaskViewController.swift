@@ -102,8 +102,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         
         tableController.descricao.text = auxNotas
         
-       
-      
+        
+        
         
         
     }
@@ -113,7 +113,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         }
     }
-
+    
     
     
     
@@ -145,9 +145,15 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     func createParentPicker(){
+        viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
         viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"] // ADD IMAGES OF USERS
+        viewPresent.arrayImage.append(bolaAzul!)
+        viewPresent.arrayImage.append(bolaRoxa!)
+        viewPresent.arrayImage.append(bolaRosa!)
+        viewPresent.arrayImage.append(bolaAmarela!)
+        viewPresent.arrayImage.append(bolaVermelha!)
         viewPresent.pessoas = pessoas
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -158,7 +164,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     }
     
     func createCategoryPicker(){
-        
+        viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"]
         viewPresent.arrayImage.append(bolaAzul!)
@@ -373,18 +379,6 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
-        
-        //        if which == "responsaveis"{
-        //        if cell.accessoryType == .checkmark{
-        //            cell.accessoryType = .none
-        //            pessoas[indexPath.row].selecionado = false
-        //
-        //        }else{
-        //            cell.accessoryType = .checkmark
-        //            pessoas[indexPath.row].selecionado = true
-        //            array[indexPath.row] = pessoas[indexPath.row].id!
-        //        }
-        //        }
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
