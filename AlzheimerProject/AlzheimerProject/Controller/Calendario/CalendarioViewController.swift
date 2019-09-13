@@ -113,6 +113,7 @@ class CalendarioViewController: UIViewController {
     var DiaHoje : Date?
     var selectedDay : Date? {
         didSet{
+            tableView.reloadData()
             DailyEvents.removeAll()
             DiaSelecionado = selectedDay!
             auxDiaSemanaNum = Calendar.current.component(.weekday, from: DiaSelecionado!)
@@ -187,11 +188,17 @@ class CalendarioViewController: UIViewController {
         CoreDataRebased.shared.deleteAllEvents()
         Cloud.updateCalendario { (result) in
             Cloud.updateAllEvents(completion: { (t) in
-                self.fetchAll()
+                    self.fetchAll()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    refreshControl.endRefreshing()
+                    self.selectedDay = self.DiaSelecionado
+                }
+                
             })
         }
-        tableView.reloadData()
-        refreshControl.endRefreshing()
+        
+        
 
         
         
