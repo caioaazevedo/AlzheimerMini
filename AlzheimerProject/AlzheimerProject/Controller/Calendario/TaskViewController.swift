@@ -382,7 +382,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         
         if indexPath.row == 2{
             
-git c            if cell.accessoryType == .checkmark{
+            if cell.accessoryType == .checkmark{
                 cell.accessoryType = .none
                 pessoas[indexPath.row].selecionado = false
                 
