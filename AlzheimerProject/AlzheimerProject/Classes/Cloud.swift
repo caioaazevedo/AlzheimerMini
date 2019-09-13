@@ -801,6 +801,39 @@ class Cloud {
     //Cloud ⚡️
     
     
+//    static func getIdPicName() -> [peopleIdPicName]{
+//
+//        /*
+//         1.Procurar nos usuarios do cloud os que tem o id da sala e armazenar em um array
+//         2.coletar o nome, foto e id
+//         */
+//        var array = [peopleIdPicName]()
+//
+//        let userLoad = UserLoaded()
+//        let predicate = NSPredicate(value: true)
+//        let query = CKQuery(recordType: "Usuario", predicate: predicate)
+//        let queryOp = CKQueryOperation(query: query)
+//        queryOp.queuePriority = .veryHigh
+//
+//        queryOp.recordFetchedBlock = { (record) -> Void in
+//
+//
+//            if record["idSala"] == userLoad.idSala{
+//                var item = peopleIdPicName(nome:record["nome"]!, id: record["id"]!, img:record["foto"]!)
+//                array.append(item)
+//            }
+//            return array
+//
+//
+//
+//        }
+//
+//        
+//
+//
+//    }
+    
+    
     
     
     static func geraAleatorio() -> Int64{
@@ -824,3 +857,11 @@ class Cloud {
 }
 
 
+struct peopleIdPicName{
+    
+    var nome: String
+    var id: String
+    var img : Data
+    
+    
+}

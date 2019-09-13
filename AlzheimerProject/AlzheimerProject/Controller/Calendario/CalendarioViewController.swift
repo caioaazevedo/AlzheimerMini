@@ -52,6 +52,8 @@ class CalendarioViewController: UIViewController {
     var auxLembrete : String?
     var auxDescricao : String?
     
+    var eventoDetail : Events?
+    
     var auxDiaSemanaNum : Int? {
         didSet{
             switch (auxDiaSemanaNum){
@@ -153,6 +155,7 @@ class CalendarioViewController: UIViewController {
         createCalendar()
         
         tableView.reloadData()
+        
         if DiaSelecionado == nil{
             DiaSelecionado = calendar.today!
         }
@@ -188,7 +191,7 @@ class CalendarioViewController: UIViewController {
         CoreDataRebased.shared.deleteAllEvents()
         Cloud.updateCalendario { (result) in
             Cloud.updateAllEvents(completion: { (t) in
-                    self.fetchAll()
+                self.fetchAll()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     refreshControl.endRefreshing()
@@ -199,7 +202,7 @@ class CalendarioViewController: UIViewController {
         }
         
         
-
+        
         
         
     }
@@ -255,7 +258,7 @@ class CalendarioViewController: UIViewController {
                     auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
                     
                     
-                    vc.event = DailyEvents[indexPathAux]
+                    vc.event = eventoDetail!
                     vc.diaAux = "\(auxDia!) de \(auxMes!)"
                     
                     vc.diaSemanaAux = "\(auxDiaSemana!)"
@@ -502,8 +505,10 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         eventoSelecionado = DailyEvents[indexPath.row]
+        eventoDetail = DailyEvents[indexPath.row]
         performSegue(withIdentifier: "segueDetail", sender: self)
     }
     
@@ -522,3 +527,4 @@ extension String {
         self = self.capitalizingFirstLetter()
     }
 }
+
