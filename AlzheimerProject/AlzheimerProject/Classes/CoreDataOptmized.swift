@@ -73,6 +73,24 @@ class CoreDataRebased{
         }
     }
     
+    // ✅ Deletar todos os eventos
+    func deleteAllEvents(){
+        let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        
+        
+        //  1 -> ✅
+        do{
+            let eventosExistentes = try managedObjectContext.fetch(eventFetchRequest)
+            for even in eventosExistentes{
+                managedObjectContext.delete(even)
+            }
+        } catch {
+            print("Error")
+        }
+        CoreDataRebased.shared.saveCoreData()
+    }
+    
+    
     //✅ - Criar sala 😎
     func createSala(nomeFamilia: String){
         
@@ -397,7 +415,7 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: Date(), hora: Timer(), idUsuario: nil, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "")
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: nil, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "")
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         
@@ -554,7 +572,9 @@ class CoreDataRebased{
         do {
             let perfis = try managedObjectContext.fetch(profRequest)
             for i in perfis{
-
+                print(i.id)
+                print(i.dia)
+                print(i.horario)
             }
         } catch {
         }

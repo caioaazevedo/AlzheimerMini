@@ -159,8 +159,14 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
-                                <rect key="frame" x="80" y="86" width="254" height="200"/>
+                                <rect key="frame" x="80" y="86" width="254" height="213"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="213" id="yfu-1i-hDF"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="Ativo 31"/>
+                                <connections>
+                                    <action selector="fotoPerfil:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="RQ6-9p-0jj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -169,17 +175,17 @@
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="AlI-TZ-0rr" secondAttribute="trailing" constant="36" id="8UR-ys-YrR"/>
                             <constraint firstItem="Bea-tg-5ko" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="9dY-fL-p8w"/>
                             <constraint firstItem="2Fm-br-BBE" firstAttribute="trailing" secondItem="DDd-uA-LvB" secondAttribute="trailing" id="Nba-vH-by0"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="top" secondItem="nhj-PJ-lsX" secondAttribute="top" constant="42" id="RvM-7C-Nmp"/>
                             <constraint firstItem="AlI-TZ-0rr" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="TpL-RV-I08"/>
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="342" id="VPi-Kp-KPp"/>
                             <constraint firstItem="DDd-uA-LvB" firstAttribute="top" secondItem="2Fm-br-BBE" secondAttribute="bottom" constant="36" id="Zsb-Qh-8sX"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="top" secondItem="nhj-PJ-lsX" secondAttribute="top" constant="42" id="cY7-wV-Lfv"/>
                             <constraint firstItem="DDd-uA-LvB" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="dBJ-FP-2Ip"/>
                             <constraint firstItem="2Fm-br-BBE" firstAttribute="leading" secondItem="DDd-uA-LvB" secondAttribute="leading" id="eSc-eD-6Ug"/>
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="DDd-uA-LvB" secondAttribute="bottom" constant="55" id="n2i-sn-NDa"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="2x2-Ti-HNh" secondAttribute="trailing" constant="80" id="oqu-mw-B9y"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="80" id="rTz-KX-IM1"/>
                             <constraint firstItem="AlI-TZ-0rr" firstAttribute="top" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="30" id="toR-SJ-4nK"/>
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="Bea-tg-5ko" secondAttribute="trailing" constant="36" id="v1w-D6-xu4"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="80" id="vtl-Xs-q8c"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="centerX" secondItem="Bea-tg-5ko" secondAttribute="centerX" id="yZR-Lk-tzH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nhj-PJ-lsX"/>
                     </view>

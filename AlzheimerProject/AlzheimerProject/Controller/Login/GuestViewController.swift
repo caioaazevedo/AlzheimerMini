@@ -58,8 +58,8 @@ class GuestViewController: UIViewController{
 
 
     func setUpImage() {
-//        imageButton.layer.cornerRadius = imageButton.frame.size.height / 2
-//        imageButton.clipsToBounds = true
+        imageButton.layer.cornerRadius = imageButton.frame.size.height / 2
+        imageButton.clipsToBounds = true
     }
     
     @IBAction func fotoPerfil(_ sender: Any) {
@@ -137,7 +137,6 @@ extension UITextField {
     
     func setBottomBorder() {
         self.layer.shadowColor = #colorLiteral(red: 0.6666666667, green: 0.6666666667, blue: 0.6666666667, alpha: 1)
-        
         self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
@@ -151,28 +150,4 @@ extension GuestViewController: ImagePickerDelegate {
     }
     
 }
-
-//class ViewController: UIViewController {
-//    
-//    @IBOutlet var imageView: UIImageView!
-//
-//    var imagePicker: ImagePicker!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-//    }
-//
-//    @IBAction func showImagePicker(_ sender: UIButton) {
-//        self.imagePicker.present(from: sender)
-//    }
-//}
-//
-//extension ViewController: ImagePickerDelegate {
-//
-//    func didSelect(image: UIImage?) {
-//        self.imageView.image = image
-//    }
-//}
 

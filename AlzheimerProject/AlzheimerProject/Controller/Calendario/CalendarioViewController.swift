@@ -16,7 +16,7 @@ let screenSize = UIScreen.main.bounds
 
 
 class CalendarioViewController: UIViewController {
-   
+    
     let cdr = CoreDataRebased.shared
     
     @IBOutlet weak var tableView: UITableView!
@@ -113,6 +113,7 @@ class CalendarioViewController: UIViewController {
     var DiaHoje : Date?
     var selectedDay : Date? {
         didSet{
+            tableView.reloadData()
             DailyEvents.removeAll()
             DiaSelecionado = selectedDay!
             auxDiaSemanaNum = Calendar.current.component(.weekday, from: DiaSelecionado!)
@@ -122,19 +123,22 @@ class CalendarioViewController: UIViewController {
             
             
             let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
+            let mesSelecionadoEvento = Calendar.current.component(.month, from: DiaSelecionado!)
             
             
             for evento in eventosSalvos{
-                let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
-                if diaSelecionadoEvento == diaEvento{
-                    let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
-                    let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
-                    let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
-                    
-                    DailyEvents.append(evento)
-                    
-                }
-            }
+                if evento.dia != nil{
+                    let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
+                    let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
+                    if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
+                        let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
+                        let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
+                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
+                        
+                        DailyEvents.append(evento)
+                        
+                    }
+                }}
             
             tableView.reloadData()
             
@@ -145,34 +149,58 @@ class CalendarioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Cloud.getPeople()
+        //        Cloud.getPeople()
         createCalendar()
         
         tableView.reloadData()
-        DiaSelecionado = calendar.today!
+        if DiaSelecionado == nil{
+            DiaSelecionado = calendar.today!
+        }
         auxDia = Calendar.current.component(.day, from: calendar.today!)
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
         
         calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
+        //calendar.appearance.eventDefaultColor
+        
+        
+        
+        
+        
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
         
         fetchAll()
-//        Cloud.getPeople()
+        //        Cloud.getPeople()
         
         //Refresh
         
         let refreshControl = UIRefreshControl()
+        
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
         //Refresh
-
         
-//        Cloud.getPeople()
+        
+        //        Cloud.getPeople()
     }
     
     @objc func refreshTable(refreshControl: UIRefreshControl){
         //Adicionar aqui o fetch do cloud para o coreData
-        refreshControl.endRefreshing()
+        CoreDataRebased.shared.deleteAllEvents()
+        Cloud.updateCalendario { (result) in
+            Cloud.updateAllEvents(completion: { (t) in
+                    self.fetchAll()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    refreshControl.endRefreshing()
+                    self.selectedDay = self.DiaSelecionado
+                }
+                
+            })
+        }
+        
+        
+
+        
         
     }
     
@@ -209,32 +237,34 @@ class CalendarioViewController: UIViewController {
     
     
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueTask"{
             if let vc = segue.destination as? TaskViewController{
-
+                
                 vc.dia = DiaSelecionado ?? calendar.today!
                 
                 
             }
-        }
-        
-        if segue.identifier == "segueDetail"{
+        } else {
             
-            if let vc = segue.destination as? DetailViewController{
+            if segue.identifier == "segueDetail"{
                 
-                auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
-                auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
-                
-                
-                vc.event = DailyEvents[indexPathAux]
-                vc.diaAux = "\(auxDia!) de \(auxMes!)"
-                
-                vc.diaSemanaAux = "\(auxDiaSemana!)"
+                if let vc = segue.destination as? DetailViewController{
+                    
+                    auxDia = Calendar.current.component(.day, from: DiaSelecionado ?? selectedDay!)
+                    auxMesNum = Calendar.current.component(.month, from: DiaSelecionado ?? selectedDay!)
+                    
+                    
+                    vc.event = DailyEvents[indexPathAux]
+                    vc.diaAux = "\(auxDia!) de \(auxMes!)"
+                    
+                    vc.diaSemanaAux = "\(auxDiaSemana!)"
+                }
             }
         }
     }
+    
+    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -245,7 +275,7 @@ class CalendarioViewController: UIViewController {
     
     
     
-  
+    
     
     
     
@@ -264,8 +294,35 @@ class CalendarioViewController: UIViewController {
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = false
+            vc.viewDidLayoutSubviews()
+            vc.self.selectedIndex = 1
+        }
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        changeMonthName()
+    }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        changeMonthName()
+    }
+    
+    
+    func changeMonthName(){
+        let collectionView = self.calendar.calendarHeaderView.value(forKey: "collectionView") as! UICollectionView
+        
+        collectionView.visibleCells.forEach { (cell) in
+            let c = cell as! FSCalendarHeaderCell
+            
+            c.titleLabel.text = c.titleLabel.text?.capitalizingFirstLetter()
         }
     }
+    
+    
+    
     
     
     
@@ -293,6 +350,50 @@ extension CalendarioViewController : FSCalendarDelegate {
     
 }
 
+extension CalendarioViewController :    FSCalendarDelegateAppearance{
+    
+    //
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+        var cor = UIColor()
+        var corOutro = UIColor.init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+        var dia = Calendar.current.component(.day, from: date)
+        for x in eventosSalvos{
+            var dia2 = Calendar.current.component(.day, from: x.dia! as Date)
+            if dia == dia2{
+                switch(x.categoria){
+                    
+                    
+                case "Saúde":
+                    cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
+                    
+                case "Lazer":
+                    cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
+                case "Dentista":
+                    cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
+                case "Farmácia":
+                    cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
+                    corOutro = cor
+                default:
+                    cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+                }
+                return [cor,corOutro]
+                
+            }
+        }
+        return nil
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
+        if date == calendar.today!{
+            return .lightGray
+        }
+        return nil
+    }
+    
+}
+
+
 extension CalendarioViewController{
     
     
@@ -301,15 +402,15 @@ extension CalendarioViewController{
         
         calendar.dataSource = self
         calendar.delegate = self
-        
         calendar.calendarHeaderView.backgroundColor = UIColor.white
-        calendar.calendarWeekdayView.backgroundColor = UIColor.gray
-        calendar.appearance.borderRadius = 1
-        calendar.appearance.todayColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
-        calendar.appearance.eventDefaultColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        //        calendar.appearance.borderRadius = 20
         
+        
+        
+        calendar.clipsToBounds = false
         view.addSubview(calendar)
     }
+    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDay = date
@@ -325,15 +426,22 @@ extension CalendarioViewController{
             let rhs = Calendar.current.component(.day,from: x.dia! as Date)
             let lhs = Calendar.current.component(.day,from: date)
             
-            if rhs == lhs {
+            let rhsA = Calendar.current.component(.month, from: x.dia! as Date)
+            let lhsA = Calendar.current.component(.month, from: date)
+            
+            if rhs == lhs && rhsA == lhsA{
                 aux += 1
+                
+                
             }
             
             
         }
         
+        
+        
         return aux
-        return 0
+        
         
     }
     
@@ -350,32 +458,36 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         var cor = UIColor()
         switch(categoria){
         case "Saúde":
-            cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 0.8)
+            cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
         case "Lazer":
-            cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 0.8)
+            cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
         case "Dentista":
-            cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 0.8)
+            cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
         case "Farmácia":
-            cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 0.8)
+            cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-           cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 0.8)
+            cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
         }
         return cor
     }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DailyEvents.count;
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
-
+        cell.layer.cornerRadius = 10
         var categoria = DailyEvents[indexPath.row].categ
+        
         cell.backgroundColor = defineColor(categoria)
-
+        
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
         cell.responsavel.text = DailyEvents[indexPath.row].responsavel
@@ -388,10 +500,11 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         return 155
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         eventoSelecionado = DailyEvents[indexPath.row]
         performSegue(withIdentifier: "segueDetail", sender: self)
-        
     }
     
     
@@ -400,3 +513,12 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
 }
 
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}

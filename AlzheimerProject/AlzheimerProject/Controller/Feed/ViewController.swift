@@ -9,7 +9,9 @@
 import UIKit
 import CloudKit
 import CoreData
+import CircleBar
 import FSCalendar
+
 class ViewController: UIViewController {
     
     let UserNotification = Notification()
@@ -77,6 +79,7 @@ class ViewController: UIViewController {
 //        Cloud.deleteCloudSubs()
 //        CoreDataRebased.shared.createUsuario(email: "", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
 //        CoreDataRebased.shared.createSala()
+
         
         //Refresh
         let refreshControl = UIRefreshControl()
@@ -105,6 +108,7 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         print("=-=-=-=-=-=->>>> \(eventosSalvos)")
+        CoreDataRebased.shared.showData()
         eventosSalvos.removeAll()
         fetchAll()
         
@@ -114,6 +118,12 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }
+        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = false
+            vc.viewDidLayoutSubviews()
+            vc.self.selectedIndex = 0
         }
     }
     

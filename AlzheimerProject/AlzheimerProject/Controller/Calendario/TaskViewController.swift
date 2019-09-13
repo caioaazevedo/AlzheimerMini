@@ -86,6 +86,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        }
+        
         if willEditing{
             
             tableController.hora.text = event?.time
@@ -96,11 +102,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         
         tableController.descricao.text = auxNotas
         
+        
+        
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
-            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         }
-        
     }
     
     
@@ -134,9 +145,15 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     func createParentPicker(){
+        viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
-        //        viewPresent.arrayImage = [UIImage(named: ""),UIImage(named: ""),UIImage(named: ""),UIImage(named: ""),UIImage(named: "")]
+        viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"] // ADD IMAGES OF USERS
+        viewPresent.arrayImage.append(bolaAzul!)
+        viewPresent.arrayImage.append(bolaRoxa!)
+        viewPresent.arrayImage.append(bolaRosa!)
+        viewPresent.arrayImage.append(bolaAmarela!)
+        viewPresent.arrayImage.append(bolaVermelha!)
         viewPresent.pessoas = pessoas
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -147,7 +164,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     }
     
     func createCategoryPicker(){
-        
+        viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"]
         viewPresent.arrayImage.append(bolaAzul!)
@@ -348,6 +365,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
+        
         cell.imagemResponsavel.image = arrayImage[indexPath.row]
         
         
@@ -361,18 +379,6 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
-        
-        //        if which == "responsaveis"{
-        //        if cell.accessoryType == .checkmark{
-        //            cell.accessoryType = .none
-        //            pessoas[indexPath.row].selecionado = false
-        //
-        //        }else{
-        //            cell.accessoryType = .checkmark
-        //            pessoas[indexPath.row].selecionado = true
-        //            array[indexPath.row] = pessoas[indexPath.row].id!
-        //        }
-        //        }
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
