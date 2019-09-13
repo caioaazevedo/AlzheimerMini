@@ -178,6 +178,10 @@ class CalendarioViewController: UIViewController {
     
     @objc func refreshTable(refreshControl: UIRefreshControl){
         //Adicionar aqui o fetch do cloud para o coreData
+        CoreDataRebased.shared.deleteAllEvents()
+        Cloud.updateCalendario { (result) in
+            Cloud.updateAllEvents()
+        }
         refreshControl.endRefreshing()
         calendar.reloadData()
         
@@ -434,15 +438,15 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         var cor = UIColor()
         switch(categoria){
         case "Saúde":
-            cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 0.8)
+            cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
         case "Lazer":
-            cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 0.8)
+            cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
         case "Dentista":
-            cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 0.8)
+            cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
         case "Farmácia":
-            cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 0.8)
+            cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-            cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 0.8)
+            cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
         }
         return cor
     }

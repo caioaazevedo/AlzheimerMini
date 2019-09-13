@@ -101,3 +101,5 @@ class DadosArrayUsuarios {
     static var array = DadosArrayUsuarios()
     
 }
+
+var ckData: [(String, String, Data)] = []

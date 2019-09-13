@@ -73,6 +73,24 @@ class CoreDataRebased{
         }
     }
     
+    // ✅ Deletar todos os eventos
+    func deleteAllEvents(){
+        let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        
+        
+        //  1 -> ✅
+        do{
+            let eventosExistentes = try managedObjectContext.fetch(eventFetchRequest)
+            for even in eventosExistentes{
+                managedObjectContext.delete(even)
+            }
+        } catch {
+            print("Error")
+        }
+        CoreDataRebased.shared.saveCoreData()
+    }
+    
+    
     //✅ - Criar sala 😎
     func createSala(nomeFamilia: String){
         

@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 import CoreData
+import UIKit
 
 let cloudContainer = CKContainer(identifier: "iCloud.Academy.AlzheimerProject")
 let publicDataBase = cloudContainer.publicCloudDatabase
@@ -534,20 +535,8 @@ class Cloud {
          */
         
         let userLoad = UserLoaded()
-        let eventCreate = Evento(context: managedObjectContext)
-        let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
         
-        
-        //  1 -> ✅
-        do{
-            let eventosExistentes = try managedObjectContext.fetch(eventFetchRequest)
-            for even in eventosExistentes{
-                managedObjectContext.delete(even)
-            }
-        } catch {
-            print("Error")
-        }
-        CoreDataRebased.shared.saveCoreData()
+
         // 2 -> ✅
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
@@ -558,6 +547,7 @@ class Cloud {
             
             if record["idCalendario"] == userLoad.idSalaCalendar{
                 // 3 -> ✅
+                let eventCreate = Evento(context: managedObjectContext)
                 eventCreate.id = record["idEvento"]
                 eventCreate.categoria = record["categoria"]
                 eventCreate.descricao = record["descricao"]
@@ -627,7 +617,7 @@ class Cloud {
         
     }
     // ✅
-    static func updateCalendario(){
+    static func updateCalendario(completion: @escaping (_ result: Bool) -> ()){
         
         let userLoad = UserLoaded()
         let calendarioFetchRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -645,6 +635,7 @@ class Cloud {
                             calend.id = record["idCalendario"]
                             calend.idEventos = record["idEventos"] as? NSObject
                             CoreDataRebased.shared.saveCoreData()
+                            completion(true)
                         }
                     }
                 } catch{
@@ -781,16 +772,15 @@ class Cloud {
             let query = CKQuery(recordType: "Usuario", predicate: predicate)
             let queryOp = CKQueryOperation(query: query)
         
-            ViewController.ckData = []
+            ckData = []
             queryOp.recordFetchedBlock = { (record) -> Void in
                 
 //                newPeople.foto = record["foto"] as? NSData
 //                newPeople.id = record["idUsuario"]
 //                newPeople.nome = record["nome"]
-//                newPeople.selecionado = false
-                
-//                print("ID PESSOA: \(newPeople.id)")
-                ViewController.ckData.append((record["idUsuario"]!, record["nome"]!))
+//                newPeople.selecionado = falserefreshControl.endRefreshing()
+                let imageDefault = UIImage(named: "Remedio")
+                ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
                 
                 //CoreDataRebased.shared.saveCoreData()
             }
