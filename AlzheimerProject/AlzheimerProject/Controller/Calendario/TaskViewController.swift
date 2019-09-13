@@ -380,19 +380,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
         
-        if indexPath.row == 2{
-            
-git c            if cell.accessoryType == .checkmark{
-                cell.accessoryType = .none
-                pessoas[indexPath.row].selecionado = false
-                
-            }else{
-                cell.accessoryType = .checkmark
-                pessoas[indexPath.row].selecionado = true
-                array[indexPath.row] = pessoas[indexPath.row].id!
-            }
-            
-        }
+
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
