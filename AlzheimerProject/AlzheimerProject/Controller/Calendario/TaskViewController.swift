@@ -136,7 +136,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     func createParentPicker(){
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
-        //        viewPresent.arrayImage = [UIImage(named: ""),UIImage(named: ""),UIImage(named: ""),UIImage(named: ""),UIImage(named: "")]
+        viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"] // ADD IMAGES OF USERS
         viewPresent.pessoas = pessoas
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -348,6 +348,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
+        
         cell.imagemResponsavel.image = arrayImage[indexPath.row]
         
         
