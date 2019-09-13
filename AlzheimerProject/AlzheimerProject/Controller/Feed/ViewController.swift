@@ -77,6 +77,7 @@ class ViewController: UIViewController {
 //        Cloud.deleteCloudSubs()
 //        CoreDataRebased.shared.createUsuario(email: "", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
 //        CoreDataRebased.shared.createSala()
+
         
         //Refresh
         let refreshControl = UIRefreshControl()
@@ -105,6 +106,7 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         print("=-=-=-=-=-=->>>> \(eventosSalvos)")
+        CoreDataRebased.shared.showData()
         eventosSalvos.removeAll()
         fetchAll()
         

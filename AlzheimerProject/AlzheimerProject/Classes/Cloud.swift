@@ -57,7 +57,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String?, idCalendario: String, localizacao: String?) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?) {
         
         let record = CKRecord(recordType: "Evento")
         
@@ -551,8 +551,8 @@ class Cloud {
                 eventCreate.id = record["idEvento"]
                 eventCreate.categoria = record["categoria"]
                 eventCreate.descricao = record["descricao"]
-                eventCreate.dia = record["dia"]
-                eventCreate.horario = record["hora"]
+                eventCreate.dia = record["dia"] as? NSDate
+                eventCreate.horario = record["hora"] as? NSDate
                 eventCreate.idUsuarios = record["idUsuarios"] as? NSObject
                 eventCreate.idCalendario = record["idCalendario"]
                 eventCreate.idResponsavel = record["idCriador"]
