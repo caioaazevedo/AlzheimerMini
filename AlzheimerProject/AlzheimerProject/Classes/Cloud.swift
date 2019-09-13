@@ -658,7 +658,7 @@ class Cloud {
         
     }
     // ✅
-    static func updateSala(){
+    static func updateSala(completion: @escaping (_ result: Bool) -> ()){
         let userLoad = UserLoaded()
         let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
         let predicate = NSPredicate(value: true)
@@ -681,6 +681,7 @@ class Cloud {
                             CoreDataRebased.shared.saveCoreData()
                         }
                     }
+                    completion(true)
                 } catch {
                     print("Error")
                 }
