@@ -59,7 +59,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
-        
+        fetchPeople()
+        print(pessoas)
     }
     
     func fetchPeople(){
@@ -148,12 +149,13 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
-        viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"] // ADD IMAGES OF USERS
+        viewPresent.array = ["Amanda","Caio","Eduardo","Guilherme","Pedro"] // ADD IMAGES OF USERS
         viewPresent.arrayImage.append(bolaAzul!)
         viewPresent.arrayImage.append(bolaRoxa!)
         viewPresent.arrayImage.append(bolaRosa!)
         viewPresent.arrayImage.append(bolaAmarela!)
         viewPresent.arrayImage.append(bolaVermelha!)
+        // COLOCAR FOTO DOS INTEGRANTES
         viewPresent.pessoas = pessoas
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -324,6 +326,7 @@ extension TaskViewController : UITableViewDelegate{
 
 protocol  ViewPopupDelegate {
     func sendInfo(_ view: ViewPopup, texto: String,which: String)
+
     
 }
 
@@ -380,14 +383,32 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         self.endEditing(true)
         let cell = tableView.cellForRow(at: indexPath) as! CellClass
         
-
+        if which == "Responsaveis"{
+            if cell.accessoryType == .checkmark{
+                cell.accessoryType = .none
+                
+              //  pessoas[indexPath.row].selecionado = false
+                
+            }else{
+                cell.accessoryType = .checkmark
+                //pessoas[indexPath.row].selecionado = true
+              //  array[indexPath.row] = pessoas[indexPath.row].id!
+            }
+            
+            
+        }
+      
+        
+        
+        
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
         aux = indexPath.row
+            
         
+    
+    
     }
-    
-    
     
 }
 
