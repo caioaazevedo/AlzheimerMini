@@ -23,6 +23,9 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableGroup: UITableView!
     @IBOutlet weak var shareButton: UIButton!
     
+    let sala = CoreDataRebased.shared.fetchSala()
+//    let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         Cloud.getPeople {
@@ -36,8 +39,10 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableGroup.reloadData()
     }
+
     
     // MARK: - Table view data source
     
@@ -48,8 +53,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let sala = CoreDataRebased.shared.fetchSala()
-        let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        let usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         return usuarios.count
     }
@@ -60,18 +64,17 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellG", for: indexPath) as! GroupCell
         
-        let sala = CoreDataRebased.shared.fetchSala()
-        let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        let usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         if ckData.count > 0 {
-            for i in 0...usuarios.count-1{
                 for j in 0...ckData.count-1{
-                    if usuarios[i] == ckData[j].0 {
+                    
+                    if usuarios[indexPath.row] == ckData[j].0 {
+                        print("ID: \(usuarios[indexPath.row]) === CKDATA: \(ckData[j].0)")
                         cell.imageGroup.image = UIImage(data: ckData[j].2)
                         cell.labelGroup.text = ckData[j].1
                     }
                 }
-            }
         }
         
         return cell
@@ -81,14 +84,13 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Leave Group", message: "Are you sure you want to leave the group?", preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            let sala = CoreDataRebased.shared.fetchSala()
-            var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+            var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
             
             for i in 0...usuarios.count-1 {
                 if usuarios[i] == UserLoaded().idUser{
                     usuarios.remove(at: i)
                     
-                    Cloud.updateSala(nomeFamilia: sala.nomeFamilia!, searchRecord: sala.id!, idSala: sala.id!, idUsuario: usuarios, idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
+                    Cloud.updateSala(nomeFamilia: self.sala.nomeFamilia!, searchRecord: self.sala.id!, idSala: self.sala.id!, idUsuario: usuarios, idCalendario: self.sala.idCalendario!, idPerfil: self.sala.idPerfil!, idHost: self.sala.idHost!)
                     
                     Cloud.deleteTable(searchRecord: usuarios[i], searchKey: "idUsuario", searchTable: "Usuario")
                     
@@ -137,19 +139,22 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        let sala = CoreDataRebased.shared.fetchSala()
-        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         if editingStyle == .delete && UserLoaded().idUser != usuarios[indexPath.row]{
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
             
             usuarios.remove(at: indexPath.row)
             
-            Cloud.updateSala(nomeFamilia: sala.nomeFamilia!, searchRecord: sala.id!, idSala: sala.id!, idUsuario: usuarios, idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
+            print("=-=-=-=-=-fdsgfhg >>> ", usuarios.count)
+            
+            
+            CoreDataRebased.shared.updateSala(idUsuarios: usuarios)
+            
+            Cloud.updateSala(nomeFamilia: self.sala.nomeFamilia!, searchRecord: self.sala.id!, idSala: self.sala.id!, idUsuario: usuarios, idCalendario: self.sala.idCalendario!, idPerfil: self.sala.idPerfil!, idHost: self.sala.idHost!)
             
             Cloud.deleteTable(searchRecord: usuarios[indexPath.row], searchKey: "idUsuario", searchTable: "Usuario")
             
+            self.tableGroup.deleteRows(at: [indexPath], with: .fade)
         }
     }
     

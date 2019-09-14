@@ -70,7 +70,7 @@ class GuestViewController: UIViewController{
         
         if realHost {
 
-          //  CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
+            CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
             CoreDataRebased.shared.createSala(nomeFamilia: familyName.text!)
 
         } else {

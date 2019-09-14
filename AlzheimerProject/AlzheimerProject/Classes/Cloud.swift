@@ -775,12 +775,15 @@ class Cloud {
          3. ESSE METODO TEM QUE SER CHAMADO QUANDO ENTRAR NA TELA DE CRIAR EVENTO
          */
         
+        
 //        Cloud.deletePessoas { (_) in
             let predicate = NSPredicate(value: true)
             let query = CKQuery(recordType: "Usuario", predicate: predicate)
             let queryOp = CKQueryOperation(query: query)
         
             ckData = []
+            var arrayUsuarios = [String]()
+        
             queryOp.recordFetchedBlock = { (record) -> Void in
                 
 //                newPeople.foto = record["foto"] as? NSData
@@ -789,6 +792,12 @@ class Cloud {
 //                newPeople.selecionado = falserefreshControl.endRefreshing()
                 let imageDefault = UIImage(named: "Remedio")
                 ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
+                
+                if userLoad.idSala == record["idSala"]! {
+                    arrayUsuarios.append(record["idUsuario"]!)
+                    CoreDataRebased.shared.updateSala(idUsuarios: arrayUsuarios)
+                }
+                
                 
                 //CoreDataRebased.shared.saveCoreData()
             }
