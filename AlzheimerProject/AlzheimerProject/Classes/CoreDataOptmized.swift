@@ -374,6 +374,20 @@ class CoreDataRebased{
         saveCoreData()
     }
     
+    // Update Sala
+    func updateSala(idUsuarios: [String]){
+        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        do {
+            let sala = try managedObjectContext.fetch(salaFetchRequest)[0]
+            
+            sala.idUsuarios = idUsuarios as NSObject
+        } catch {
+            print("Error")
+        }
+        
+        saveCoreData()
+    }
+    
     //✅ - Criar Evento 🍁
     func createEvent(categoria: String, descricao: String?, dia: Date, horario: Date, responsaveis: [String], nome: String, localizacao: String?){
         

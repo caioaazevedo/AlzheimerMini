@@ -78,7 +78,27 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func exitGroup(_ sender: Any) {
+        let alert = UIAlertController(title: "Leave Group", message: "Are you sure you want to leave the group?", preferredStyle: UIAlertController.Style.alert)
         
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            let sala = CoreDataRebased.shared.fetchSala()
+            var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+            
+            for i in 0...usuarios.count-1 {
+                if usuarios[i] == UserLoaded().idUser{
+                    usuarios.remove(at: i)
+                    
+                    Cloud.updateSala(nomeFamilia: sala.nomeFamilia!, searchRecord: sala.id!, idSala: sala.id!, idUsuario: usuarios, idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
+                    
+                    Cloud.deleteTable(searchRecord: usuarios[i], searchKey: "idUsuario", searchTable: "Usuario")
+                    
+                }
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -116,11 +136,17 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        
+        let sala = CoreDataRebased.shared.fetchSala()
+        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        
+        if editingStyle == .delete && UserLoaded().idUser != usuarios[indexPath.row]{
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
-            let sala = CoreDataRebased.shared.fetchSala()
-            let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+            
+            usuarios.remove(at: indexPath.row)
+            
+            Cloud.updateSala(nomeFamilia: sala.nomeFamilia!, searchRecord: sala.id!, idSala: sala.id!, idUsuario: usuarios, idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
             
             Cloud.deleteTable(searchRecord: usuarios[indexPath.row], searchKey: "idUsuario", searchTable: "Usuario")
             
