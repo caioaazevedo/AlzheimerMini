@@ -11,6 +11,15 @@ import UIKit
 class profileTableViewController: UITableViewController {
     
     
+    @IBOutlet weak var idosoLabel: UILabel!
+    @IBOutlet weak var grupoLabel: UILabel!
+    
+    @IBOutlet weak var nomeDaFamiliaLabel: UILabel!
+    
+    @IBOutlet weak var meuPerfilLabel: UILabel!
+    
+    @IBOutlet weak var notificacoesLabel: UILabel!
+    
     
     @IBOutlet weak var idosoImage: UIImageView!
     @IBOutlet weak var grupoImage: UIImageView!
@@ -18,12 +27,16 @@ class profileTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var notificationImage: UIImageView!
     
-    @IBOutlet weak var idosoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         arredondaIcones()
         tableView.tableFooterView = UIView()
+        
+        setUpDynamicFonts()
+//        fixDynamicTypeForStaticTableViews()
+        
+
    
     }
     
@@ -48,6 +61,50 @@ class profileTableViewController: UITableViewController {
         
         
     }
+    
+//    func fixDynamicTypeForStaticTableViews() {
+//        // Remove the observer from the table view to prevent it from blanking out the cells
+//        NotificationCenter.default.removeObserver(tableView!, name: UIContentSizeCategory.didChangeNotification, object: nil)
+//        // Add our own observer and handle it ourselves
+//        NotificationCenter.default.addObserver(self, selector: #selector(contentSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+//    }
+//
+//    @objc func contentSizeChanged() {
+//        tableView.reloadData()
+//        print("AHAHAHA")
+//
+//    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    
+    func setUpDynamicFonts(){
+        
+        
+        
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        idosoLabel.font = scaledFont.font(forTextStyle: .body)
+        idosoLabel.adjustsFontForContentSizeCategory = true
+        grupoLabel.font = scaledFont.font(forTextStyle: .body)
+        grupoLabel.adjustsFontForContentSizeCategory = true
+        nomeDaFamiliaLabel.font = scaledFont.font(forTextStyle: .body)
+        nomeDaFamiliaLabel.adjustsFontForContentSizeCategory = true
+        meuPerfilLabel.font = scaledFont.font(forTextStyle: .body)
+        meuPerfilLabel.adjustsFontForContentSizeCategory = true
+        notificacoesLabel.font = scaledFont.font(forTextStyle: .body)
+        notificacoesLabel.adjustsFontForContentSizeCategory = true
+        
+        
+    }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section) - \(indexPath.row)")
@@ -74,9 +131,9 @@ class profileTableViewController: UITableViewController {
     
     
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 44
+//    }
     
     
     
