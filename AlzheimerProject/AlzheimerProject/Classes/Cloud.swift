@@ -695,6 +695,29 @@ class Cloud {
     }
     
     
+    static func cloudDeleteEvento(eventoId: String){
+        let userLoad = UserLoaded()
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Evento", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            if record["id"] == eventoId{
+                let delete = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [record.recordID])
+                publicDataBase.add(delete)
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+            }
+            
+        }
+        
+        publicDataBase.add(queryOp)
+    }
+    
     static func deleteCloudSubs(){
         publicDataBase.fetchAllSubscriptions { subscriptions, error in
             if error == nil {

@@ -466,13 +466,14 @@ class CoreDataRebased{
     }
     
     //✅ - Deletar Evento 🍁
-    func deleteEvento(evento: Evento){
+    func deleteEvento(eventoId: String){
         /*
          1. Transformar o array de idEventos em [String]
          2. Procurar o evento com o mesmo id do parametro passado
          3. Remover o evento no índice "X"
          4. Sobreescrever o vetor
          */
+        
         let userLoad = UserLoaded()
         var contador = 0
         let calendarioFetchRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -484,7 +485,7 @@ class CoreDataRebased{
                 if userLoad.idSalaCalendar == calendario.id && calendario.id != nil{
                     arrayEventos = (calendario.idEventos)?.mutableCopy() as! [String]
                     for id in arrayEventos {
-                        if id == evento.id{
+                        if id == eventoId{
                             arrayEventos.remove(at: contador)
                         }
                         contador += 1
@@ -495,6 +496,24 @@ class CoreDataRebased{
             print("Error")
         }
         saveCoreData()
+        let eventoFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            
+            let eventos = try managedObjectContext.fetch(eventoFetchRequest)
+            
+            for e in eventos{
+                if e.id == eventoId{
+                    managedObjectContext.delete(e)
+                    saveCoreData()
+                }
+            }
+            
+            
+        } catch{
+            print("Error")
+        }
+        
+        
     }
     
     //✅ - Carregar Dados Profile 🍁
