@@ -466,7 +466,7 @@ class CoreDataRebased{
     }
     
     //✅ - Deletar Evento 🍁
-    func deleteEvento(eventoId: String){
+    func deleteEvento(eventoId: String, completion: @escaping (_ result: [String]) -> ()){
         /*
          1. Transformar o array de idEventos em [String]
          2. Procurar o evento com o mesmo id do parametro passado
@@ -487,6 +487,7 @@ class CoreDataRebased{
                     for id in arrayEventos {
                         if id == eventoId{
                             arrayEventos.remove(at: contador)
+                            completion(arrayEventos)
                         }
                         contador += 1
                     }
