@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Categorias.png",
+      "filename" : "Camada 2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Categorias@2x.png",
+      "filename" : "Camada 2@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Categorias@3x.png",
+      "filename" : "Camada 2@3x.png",
       "scale" : "3x"
     }
   ],

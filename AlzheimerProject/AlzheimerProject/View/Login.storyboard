@@ -119,19 +119,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
                                 <rect key="frame" x="36" y="499" width="342" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
                                 <rect key="frame" x="36" y="678" width="342" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="uFX-jQ-4Lh"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                 <state key="normal" title="ENTRAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,8 +140,9 @@
                                     <segue destination="TQi-Lw-Dua" kind="show" id="Qd5-fh-e5L"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
                                 <rect key="frame" x="36" y="774" width="342" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Voltar">
                                     <color key="titleColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,18 +151,16 @@
                                     <segue destination="08K-uJ-Hp9" kind="show" id="YAN-b0-el0"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome da Família" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome da Família" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
                                 <rect key="frame" x="36" y="555" width="342" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
-                                <rect key="frame" x="80" y="89" width="254" height="254"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="254" id="Mvo-xg-b0O"/>
-                                </constraints>
+                                <rect key="frame" x="71" y="101" width="273.5" height="198.5"/>
                                 <state key="normal" backgroundImage="Ativo 31"/>
                                 <connections>
                                     <action selector="fotoPerfil:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="RQ6-9p-0jj"/>
@@ -171,21 +169,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="DDd-uA-LvB" secondAttribute="trailing" constant="36" id="1CW-lu-RED"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="top" secondItem="nhj-PJ-lsX" secondAttribute="top" constant="45" id="1VV-4t-xqz"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="AlI-TZ-0rr" secondAttribute="trailing" constant="36" id="8UR-ys-YrR"/>
-                            <constraint firstItem="Bea-tg-5ko" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="9dY-fL-p8w"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="centerX" secondItem="Bea-tg-5ko" secondAttribute="centerX" id="Cq3-JX-lV8"/>
-                            <constraint firstItem="2Fm-br-BBE" firstAttribute="trailing" secondItem="DDd-uA-LvB" secondAttribute="trailing" id="Nba-vH-by0"/>
-                            <constraint firstItem="AlI-TZ-0rr" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="TpL-RV-I08"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="342" id="VPi-Kp-KPp"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="80" id="VoY-3x-wFA"/>
-                            <constraint firstItem="DDd-uA-LvB" firstAttribute="top" secondItem="2Fm-br-BBE" secondAttribute="bottom" constant="36" id="Zsb-Qh-8sX"/>
-                            <constraint firstItem="DDd-uA-LvB" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="dBJ-FP-2Ip"/>
-                            <constraint firstItem="2Fm-br-BBE" firstAttribute="leading" secondItem="DDd-uA-LvB" secondAttribute="leading" id="eSc-eD-6Ug"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="DDd-uA-LvB" secondAttribute="bottom" constant="55" id="n2i-sn-NDa"/>
-                            <constraint firstItem="AlI-TZ-0rr" firstAttribute="top" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="35" id="toR-SJ-4nK"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="Bea-tg-5ko" secondAttribute="trailing" constant="36" id="v1w-D6-xu4"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="width" secondItem="8Ft-7c-AZC" secondAttribute="width" multiplier="0.66" id="7Xc-Lx-NFi"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="centerY" secondItem="nhj-PJ-lsX" secondAttribute="centerY" multiplier="0.442" id="ZAe-l6-g9q"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="centerX" secondItem="nhj-PJ-lsX" secondAttribute="centerX" multiplier="1.004" id="hXA-AC-QB5"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="height" secondItem="8Ft-7c-AZC" secondAttribute="height" multiplier="0.222" id="kPa-xE-K2L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nhj-PJ-lsX"/>
                     </view>
