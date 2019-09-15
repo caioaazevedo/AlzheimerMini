@@ -26,6 +26,7 @@ public final class ScaledFont {
             let decoder = PropertyListDecoder()
             styleDictionary = try? decoder.decode(StyleDictionary.self, from: data)
         }
+        
     }
     
     public func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
