@@ -60,11 +60,11 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        Cloud.getPeople {
-//            DispatchQueue.main.async {
-//                self.getIds()
-//            }
-//        }
+        Cloud.getPeople {
+            DispatchQueue.main.async {
+                self.getIds()
+            }
+        }
 //        
         tituloTextField.setBottomBorder()
         
@@ -74,26 +74,26 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         print(pessoas)
     }
     
-//    func getIds(){
-//        let sala = CoreDataRebased.shared.fetchSala()
-//
-//        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
-//
-//        for user in usuarios {
-//
-//            for i in 0...ckData.count {
-//                if ckData[i].0 == user {
-//                    // ID
-//                    pessoasIds.append(ckData[i].0)
-//                    // Nome
-//                    pessoas.append(ckData[i].1)
-//                    // Foto
-//                    let image = UIImage(data: ckData[i].2)
-//                    images.append(image!)
-//                }
-//            }
-//        }
-//    }
+    func getIds(){
+        let sala = CoreDataRebased.shared.fetchSala()
+
+        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+
+        for user in usuarios {
+
+            for i in 0...ckData.count {
+                if ckData[i].0 == user {
+                    // ID
+                    pessoasIds.append(ckData[i].0)
+                    // Nome
+                    pessoas.append(ckData[i].1)
+                    // Foto
+                    let image = UIImage(data: ckData[i].2)
+                    images.append(image!)
+                }
+            }
+        }
+    }
     
     
     
