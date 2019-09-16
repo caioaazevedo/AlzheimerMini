@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableAnteriores: UITableView!
+    
 //    struct Evento: Hashable, Comparable {
 //        var titulo = ""
 //        var horario = ""
@@ -34,6 +36,7 @@ class ViewController: UIViewController {
 //        }
 //
 //    }
+    var anteriores = 0
 
     var auxMes = ""
     var auxMesNum : Int?{
@@ -85,6 +88,7 @@ class ViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        tableAnteriores.refreshControl = refreshControl
         //Refresh
         
         
@@ -94,7 +98,9 @@ class ViewController: UIViewController {
         //Adicionar aqui o fetch do cloud para o coreData
         Cloud.getPeople {
             DispatchQueue.main.async {
+                self.anteriores = 0
                 self.tableView.reloadData()
+                self.tableAnteriores.reloadData()
                 refreshControl.endRefreshing()
             }
         }
@@ -171,17 +177,26 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        let sectionName: String
-        switch section {
-        case 0:
-            sectionName = NSLocalizedString("Hoje", comment: "")
-        case 1:
-            sectionName = NSLocalizedString("Anteriores", comment: "")
-        // ...
-        default:
-            sectionName = ""
+        if tableView == self.tableView {
+            let sectionName: String
+            switch section {
+            case 0:
+                sectionName = NSLocalizedString("Hoje", comment: "")
+            default:
+                sectionName = ""
+            }
+            return sectionName
+        } else {
+            let sectionName: String
+            switch section {
+            case 0:
+                sectionName = NSLocalizedString("Anteriores", comment: "")
+            default:
+                sectionName = ""
+            }
+            return sectionName
         }
-        return sectionName
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -190,58 +205,119 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var c = FSCalendar()
-       
-        var countToday = 0
-        var countBefore = 0
-        var diaHoje = Calendar.current.component(.day, from: c.today!)
-        if eventosSalvos.count > 0{
-            if section == 0 {
+        
+        if tableView == self.tableView {
+            let c = FSCalendar()
+            
+            var countToday = 0
+            let diaHoje = Calendar.current.component(.day, from: c.today!)
+            
+            if eventosSalvos.count > 0 {
                 for i in 0...eventosSalvos.count-1 {
-                    var diaAux = Calendar.current.component(.day, from: eventosSalvos[i].dia as! Date)
+                    let diaAux = Calendar.current.component(.day, from: eventosSalvos[i].creationDate! as Date)
                     if diaAux == diaHoje && eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar!{
                         countToday += 1
                     }
                 }
-                return countToday
-            } else {
-                for i in countToday...eventosSalvos.count-1 {
-                    if eventosSalvos[i].dia! == Date() as NSDate{
-                        countBefore += 1
+            }
+            
+            return countToday
+        } else {
+            let c = FSCalendar()
+            
+            var count = 0
+            let diaHoje = Calendar.current.component(.day, from: c.today!)
+            
+            if eventosSalvos.count > 0 {
+                for i in 0...eventosSalvos.count-1 {
+                    let diaAux = Calendar.current.component(.day, from: eventosSalvos[i].creationDate! as Date)
+                    if diaAux != diaHoje && eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar!{
+                        count += 1
                     }
                 }
-                print("=-=-=-=-=-=->>>>>> \(countBefore)")
-                return countBefore
+                
             }
+            
+            return count
         }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
-
-//        print("=-===-=-=-> \(pessoas)")
-        
-        cell.view.layer.cornerRadius = 10
-        
-        if eventosSalvos.count > 0 {
+        if tableView == self.tableView {
             
-            for i in 0...eventosSalvos.count-1 {
-                if eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar! && ckData.count > 0{
-                    for j in 0...ckData.count-1 {
-                        if eventosSalvos[i].idResponsavel == ckData[j].0{
-                            cell.label.text = "\(eventosSalvos[i].idResponsavel!) - \(ckData[j].1)"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
+            
+            cell.view.layer.cornerRadius = 10
+            
+            if eventosSalvos.count > 0 {
+                
+                for i in 0...eventosSalvos.count-1 {
+                    if eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar! && ckData.count > 0{
+                        for j in 0...ckData.count-1 {
+                            if eventosSalvos[i].idResponsavel == ckData[j].0{
+                                let c = FSCalendar()
+                                let diaHoje = Calendar.current.component(.day, from: c.today!)
+                                let diaAux = Calendar.current.component(.day, from: eventosSalvos[i].creationDate! as Date)
+                                
+                                if diaAux == diaHoje && eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar! && indexPath.section == 0{
+                                    
+                                    cell.imageFoto.image = UIImage(data: ckData[j].2)
+                                    
+                                    let hour = Calendar.current.component(.hour, from: eventosSalvos[i].horario! as Date)
+                                    let minute = Calendar.current.component(.minute, from: eventosSalvos[i].horario! as Date)
+                                    let day = Calendar.current.component(.day, from: eventosSalvos[i].dia! as Date)
+                                    
+                                    auxMesNum = Calendar.current.component(.month, from: eventosSalvos[i].horario! as Date)
+                                    
+                                    cell.label.text = "\(ckData[j].1) marcou  \(eventosSalvos[i].nome!) em \(eventosSalvos[i].localizacao!) as \(hour):\(minute) no dia \(day) de \(auxMes)"
+                                }
+                            }
                         }
                     }
                 }
+            
+            }
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableFeedCell", for: indexPath) as! CellAnteriores
+            
+            cell.view.layer.cornerRadius = 10
+            
+            if eventosSalvos.count > 0 {
+                
+                for i in 0...eventosSalvos.count-1 {
+                    if eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar! && ckData.count > 0{
+                        for j in 0...ckData.count-1 {
+                            if eventosSalvos[i].idResponsavel == ckData[j].0{
+                                let c = FSCalendar()
+                                let diaHoje = Calendar.current.component(.day, from: c.today!)
+                                let diaAux = Calendar.current.component(.day, from: eventosSalvos[i].creationDate! as Date)
+                                
+                                if diaAux != diaHoje && eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar! && indexPath.section == 0{
+                                    
+                                    cell.imageFoto.image = UIImage(data: ckData[j].2)
+                                    
+                                    let hour = Calendar.current.component(.hour, from: eventosSalvos[i].horario! as Date)
+                                    let minute = Calendar.current.component(.minute, from: eventosSalvos[i].horario! as Date)
+                                    let day = Calendar.current.component(.day, from: eventosSalvos[i].horario! as Date)
+                                    
+                                    auxMesNum = Calendar.current.component(.month, from: eventosSalvos[i].horario! as Date)
+                                    
+                                    cell.label.text = "\(ckData[j].1) marcou  \(eventosSalvos[i].nome!) em \(eventosSalvos[i].localizacao!) as \(hour):\(minute) no dia \(day) de \(auxMes)"
+                                }
+                            }
+                        }
+                    }
+                }
+                
             }
         }
 
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
+    
 }

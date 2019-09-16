@@ -17,6 +17,7 @@ class Events {
     var categ = "category of event"
     var responsavel = "responsable of event"
     var localization = "locatization of event"
+    var creationDate = Date()
     
     init(titleParameter: String,timeParameter: String,descParameter: String,categParameter: String,responsavelParameter: String,localizationParameter: String) {
         self.title = titleParameter

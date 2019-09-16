@@ -133,8 +133,10 @@ class CalendarioViewController: UIViewController {
                     let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
                     let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
                     if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
+                        
                         let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
                         let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
+                        
                         let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
                         
                         DailyEvents.append(evento)
@@ -492,6 +494,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         cell.backgroundColor = defineColor(categoria)
 
         cell.titulo.text = DailyEvents[indexPath.row].title
+
         cell.horario.text = DailyEvents[indexPath.row].time
         cell.responsavel.text = DailyEvents[indexPath.row].responsavel
         cell.location.text = DailyEvents[indexPath.row].localization

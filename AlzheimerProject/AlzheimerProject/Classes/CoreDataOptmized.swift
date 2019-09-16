@@ -405,6 +405,8 @@ class CoreDataRebased{
         event.idUsuarios = responsaveis as NSObject
         event.idCalendario = userLoad.idSalaCalendar
         event.localizacao = localizacao
+        event.creationDate = Date() as NSDate
+        
         var eventArray = [String]()
         
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -444,6 +446,8 @@ class CoreDataRebased{
         evento.dia = dia as NSDate
         evento.horario = horario as NSDate
         evento.idUsuarios = responsaveis as NSObject
+        evento.creationDate = Date() as NSDate
+        
         saveCoreData()
         
         let a = Date(timeInterval: 20, since: Date())

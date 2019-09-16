@@ -8,6 +8,7 @@
     </entity>
     <entity name="Evento" representedClassName="Evento" syncable="YES">
         <attribute name="categoria" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dia" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="horario" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -75,7 +76,7 @@
     </entity>
     <elements>
         <element name="Calendario" positionX="9" positionY="99" width="128" height="105"/>
-        <element name="Evento" positionX="27" positionY="117" width="128" height="210"/>
+        <element name="Evento" positionX="27" positionY="117" width="128" height="225"/>
         <element name="Feed" positionX="9" positionY="162" width="128" height="135"/>
         <element name="Ids" positionX="9" positionY="162" width="128" height="105"/>
         <element name="PerfilUsuario" positionX="45" positionY="189" width="128" height="225"/>
