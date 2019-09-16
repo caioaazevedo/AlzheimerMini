@@ -141,7 +141,7 @@ class CoreDataRebased{
         
         
         Cloud.saveSala(nomeFamilia: sala.nomeFamilia!, idSala: sala.id!, idUsuario: [userLoad.idUser], idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
-        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, idSala: usuario.idSala!)
+        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, idSala: usuario.idSala!, host: usuario.isHost)
         Cloud.saveCalendario(idCalendario: calendar.id!, idEventos: nil)
         Cloud.savePerfil(idPerfil: profile.id!, nome: nil, dataNascimento: nil, telefone: nil, descricao: nil, fotoPerfil: nil, endereco: nil, remedios: nil, alergias: nil, tipoSanguineo: nil, planoSaude: nil)
     }
@@ -214,7 +214,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Usuario 😎
-    func createUsuario(fotoDoPerfil: UIImage?, Nome: String){
+    func createUsuario(fotoDoPerfil: UIImage?, Nome: String, host: Int64){
         
         let userLoad = UserLoaded()
         
@@ -223,6 +223,7 @@ class CoreDataRebased{
         user.nome = Nome
         user.idSala = nil
         user.fotoPerfil = fotoDoPerfil?.pngData()! as NSData?
+        user.isHost = host
         saveCoreData()
         
         
@@ -284,7 +285,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Usuario - GUEST 😎
-    func createUsuarioGuest(fotoDoPerfil: UIImage?, Nome: String, searchSala: String){
+    func createUsuarioGuest(fotoDoPerfil: UIImage?, Nome: String, searchSala: String, host: Int64){
         
         print("Search Sala: ", searchSala)
         
@@ -314,7 +315,7 @@ class CoreDataRebased{
                     print("=======> :", userArray)
                     
                     
-                    Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, idSala: user.idSala!)
+                    Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, idSala: user.idSala!, host: host)
                     
                     Cloud.updateSala(nomeFamilia: "",searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
                     

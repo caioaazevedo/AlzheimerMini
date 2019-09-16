@@ -29,6 +29,7 @@ class DadosUsuario {
     var nome = String()
     var foto = Data()
     var idSala = String()
+    var isHost = Int64()
     
     private init(){
         
