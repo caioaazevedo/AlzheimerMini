@@ -69,12 +69,13 @@ class GuestViewController: UIViewController{
         homeButton.pulsate()
         
         if realHost {
-
-            CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
+            // Para Usuarios com valor host = 1 - Indicam que são Administradores
+            CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, host: 1)
             CoreDataRebased.shared.createSala(nomeFamilia: familyName.text!)
 
         } else {
-            CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily)
+            // Para Usuarios com valor host = 0 - Indicam que são Administradores
+            CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily, host: 0)
         }
     }
     

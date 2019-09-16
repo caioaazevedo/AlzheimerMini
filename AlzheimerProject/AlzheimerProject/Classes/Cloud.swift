@@ -33,7 +33,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, idSala: String) {
+    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, idSala: String, host: Int64) {
         let record = CKRecord(recordType: "Usuario")
         
         
@@ -41,6 +41,7 @@ class Cloud {
         record.setValue(nome, forKeyPath: "nome")
         record.setValue(foto, forKeyPath: "foto")
         record.setValue(idSala, forKeyPath: "idSala")
+        record.setValue(host, forKey: "isHost")
         
         saveRequest(record: record)
     }
@@ -228,6 +229,7 @@ class Cloud {
                 DadosUsuario.usuario.nome = record["nome"]!
                 DadosUsuario.usuario.foto = record["foto"]!
                 DadosUsuario.usuario.idSala = record["idSala"]!
+                DadosUsuario.usuario.isHost = record["isHost"]!
                 
                 found = true
                 
