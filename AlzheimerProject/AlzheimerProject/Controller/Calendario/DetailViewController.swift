@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
-        titulo.text = event.title ?? ""
+        titulo.text = event.title
         
         blueView.layer.cornerRadius = 50
         blueView.clipsToBounds = true
@@ -33,6 +33,15 @@ class DetailViewController: UIViewController {
         defineColor()
         
         
+    }
+    
+    func setShadowBlueView() {
+        blueView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        blueView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        blueView.layer.shadowRadius = 5
+        blueView.layer.shadowOpacity = 0.5
+        blueView.clipsToBounds = true
+        blueView.layer.masksToBounds = false
     }
     
     func defineColor(){
@@ -74,10 +83,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
-    
-
-    
-    
+   
 }
 
 extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
@@ -99,7 +105,6 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
                 image = iconesArray[0]
                 tipo = "Hora"
                 detalhe = event.time
-            
             case 1:
                 image = iconesArray[1]
                 tipo = "Responsável"
@@ -125,14 +130,7 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     
-    func setShadowBlueView() {
-        blueView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        blueView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        blueView.layer.shadowRadius = 5
-        blueView.layer.shadowOpacity = 0.5
-        blueView.clipsToBounds = true
-        blueView.layer.masksToBounds = false
-    }
+
     
     
 }

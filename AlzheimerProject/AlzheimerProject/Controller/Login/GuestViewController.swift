@@ -68,14 +68,14 @@ class GuestViewController: UIViewController{
     @IBAction func homeButton(_ sender: Any) {
         homeButton.pulsate()
         
-        if realHost {
-
-          //  CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
-            CoreDataRebased.shared.createSala(nomeFamilia: familyName.text!)
-
-        } else {
-            CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily)
-        }
+//        if realHost {
+//
+//          //  CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!)
+//            CoreDataRebased.shared.createSala(nomeFamilia: familyName.text!)
+//
+//        } else {
+//            CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily)
+//        }
     }
     
     @IBAction func enterCode(_ sender: Any) {
