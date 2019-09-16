@@ -553,7 +553,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OpY-1K-MXb">
-                            <rect key="frame" x="0.0" y="50.5" width="414" height="224.5"/>
+                            <rect key="frame" x="0.0" y="64" width="414" height="224.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <prototypes>
                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellRes" id="U0V-vl-djD" customClass="CellClass" customModule="AlzheimerProject" customModuleProvider="target">
@@ -611,7 +611,7 @@
                         <constraint firstItem="fmj-hB-WsV" firstAttribute="height" secondItem="Oyf-Ok-aro" secondAttribute="height" multiplier="0.1" id="8FW-G9-9UZ"/>
                         <constraint firstItem="OpY-1K-MXb" firstAttribute="width" secondItem="Oyf-Ok-aro" secondAttribute="width" id="EEA-ua-kMY"/>
                         <constraint firstItem="fmj-hB-WsV" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="0.2" id="HhF-Ma-NN6"/>
-                        <constraint firstItem="OpY-1K-MXb" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="1.2" id="Nri-fU-XjR"/>
+                        <constraint firstItem="OpY-1K-MXb" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="1.3" id="Nri-fU-XjR"/>
                         <constraint firstItem="TVH-nF-pt2" firstAttribute="centerX" secondItem="3QG-jq-qyL" secondAttribute="centerX" multiplier="1.8" id="Sdx-sq-zBg"/>
                         <constraint firstItem="TVH-nF-pt2" firstAttribute="height" secondItem="Oyf-Ok-aro" secondAttribute="height" multiplier="0.1" id="Tht-Ga-fLS"/>
                         <constraint firstItem="TVH-nF-pt2" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="0.2" id="XSe-MN-dzV"/>
@@ -1470,7 +1470,7 @@
         <image name="Dados do Idoso" width="96.5" height="96"/>
         <image name="Edmondo" width="180" height="180"/>
         <image name="Grupo" width="96.5" height="96"/>
-        <image name="Hora" width="23" height="22.5"/>
+        <image name="Hora" width="16" height="15"/>
         <image name="Lembrete" width="36.5" height="36.5"/>
         <image name="Local" width="22" height="22.5"/>
         <image name="Meu Perfil" width="96.5" height="96"/>
@@ -1484,7 +1484,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="neo-df-jYC"/>
-        <segue reference="WWb-rA-i4h"/>
+        <segue reference="lcM-NS-UxG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

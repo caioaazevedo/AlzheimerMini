@@ -78,6 +78,8 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func deleteTask(_ sender: UIButton) {
+        CoreDataRebased.shared.deleteEvent(eventID: event.ID)
+        self.dismiss(animated: true, completion: nil)
         
     }
     

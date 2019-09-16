@@ -361,6 +361,8 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
+    
+    
     static func updateUsuario(searchRecord: String, nome: String?, foto: Data?, idSala: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
