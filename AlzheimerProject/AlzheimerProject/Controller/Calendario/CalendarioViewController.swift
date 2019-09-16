@@ -135,7 +135,7 @@ class CalendarioViewController: UIViewController {
                     if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
                         let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
                         let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
-                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
+                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
                         
                         DailyEvents.append(evento)
                         
@@ -199,6 +199,15 @@ class CalendarioViewController: UIViewController {
                 }
                 
             })
+            DispatchQueue.main.async {
+                
+                UIView.animate(withDuration: 2, animations: {
+                    refreshControl.endRefreshing()
+                }, completion: { (k) in
+                    self.tableView.reloadData()
+                })
+            }
+           
         }
         
         

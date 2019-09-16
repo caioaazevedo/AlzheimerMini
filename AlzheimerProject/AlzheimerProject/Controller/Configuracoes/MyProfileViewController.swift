@@ -11,10 +11,12 @@ import CircleBar
 
 class MyProfileViewController: UIViewController {
     let cdr = CoreDataRebased.shared
-    
+    var imagePicker : ImagePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         
         
         // Do any additional setup after loading the view.
@@ -39,6 +41,9 @@ class MyProfileViewController: UIViewController {
     
     @IBOutlet weak var profilePhoto: UIImageView!
     
+    @IBAction func cameraButton(_ sender: UIButton) {
+        self.imagePicker.present(from: sender as UIView)
+    }
     
     
     @IBOutlet weak var nome: UITextField!
@@ -46,4 +51,13 @@ class MyProfileViewController: UIViewController {
     
     
     
+}
+
+extension MyProfileViewController: ImagePickerDelegate{
+    
+    
+    
+    func didSelect(imagem: UIImage?){
+        self.profilePhoto.image = imagem
+    }
 }

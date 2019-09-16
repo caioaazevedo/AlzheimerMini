@@ -721,6 +721,48 @@ class Cloud {
         }
     }
     
+    static func cloudUpdateCalendarioEventos(array: [String]){
+        let userLoad = UserLoaded()
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Calendario", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            if record["idCalendario"] == userLoad.idSalaCalendar{
+                record["idEvetos"] = array
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+            }
+        }
+        publicDataBase.add(queryOp)
+        
+    }
+    
+    static func cloudDeleteEvento(eventoId: String){
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Evento", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            if record["idEvento"] == eventoId{
+                let delete = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [record.recordID])
+                publicDataBase.add(delete)
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+            }
+            
+        }
+        
+        publicDataBase.add(queryOp)
+    }
     
     //Cloud Push-Up notifications ⚡️
     static func setupCloudKitNotifications(){

@@ -87,7 +87,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Gi-sh-oeU">
-                                                    <rect key="frame" x="0.0" y="143" width="374" height="31"/>
+                                                    <rect key="frame" x="0.0" y="143" width="374" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94902592897415161" green="0.9490082859992981" blue="0.94902020692825317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
@@ -380,21 +380,21 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="90" id="D9s-kV-iB6">
-                                        <rect key="frame" x="0.0" y="196" width="414" height="90"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="D9s-kV-iB6">
+                                        <rect key="frame" x="0.0" y="196" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D9s-kV-iB6" id="V1T-hP-nQV">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7id-Jm-Bow">
-                                                    <rect key="frame" x="63" y="4.5" width="188" height="44.5"/>
+                                                    <rect key="frame" x="63" y="12.5" width="188" height="24.5"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ADDEditar" translatesAutoresizingMaskIntoConstraints="NO" id="teL-qP-eOo">
-                                                    <rect key="frame" x="30" y="-4.5" width="22.5" height="62.5"/>
+                                                    <rect key="frame" x="30" y="7.5" width="22.5" height="34.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFP-RW-Vue">
                                                     <rect key="frame" x="30" y="49" width="308" height="21"/>
@@ -409,9 +409,9 @@
                                                 <constraint firstItem="7id-Jm-Bow" firstAttribute="height" secondItem="V1T-hP-nQV" secondAttribute="height" multiplier="0.5" id="Xu6-nr-T4w"/>
                                                 <constraint firstItem="7id-Jm-Bow" firstAttribute="width" secondItem="V1T-hP-nQV" secondAttribute="width" multiplier="0.5" id="Zv4-9y-Sn9"/>
                                                 <constraint firstItem="teL-qP-eOo" firstAttribute="width" secondItem="V1T-hP-nQV" secondAttribute="width" multiplier="0.06" id="a8Z-u3-Jry"/>
-                                                <constraint firstItem="teL-qP-eOo" firstAttribute="centerY" secondItem="V1T-hP-nQV" secondAttribute="centerY" multiplier="0.6" id="bbN-vv-tCH"/>
+                                                <constraint firstItem="teL-qP-eOo" firstAttribute="centerY" secondItem="V1T-hP-nQV" secondAttribute="centerY" id="bbN-vv-tCH"/>
                                                 <constraint firstItem="teL-qP-eOo" firstAttribute="height" secondItem="V1T-hP-nQV" secondAttribute="height" multiplier="0.7" id="r5j-cI-6xs"/>
-                                                <constraint firstItem="7id-Jm-Bow" firstAttribute="centerY" secondItem="V1T-hP-nQV" secondAttribute="centerY" multiplier="0.6" id="vpE-9m-Na7"/>
+                                                <constraint firstItem="7id-Jm-Bow" firstAttribute="centerY" secondItem="V1T-hP-nQV" secondAttribute="centerY" id="vpE-9m-Na7"/>
                                                 <constraint firstItem="teL-qP-eOo" firstAttribute="centerX" secondItem="V1T-hP-nQV" secondAttribute="centerX" multiplier="0.22" id="wZZ-Ou-eXI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -428,6 +428,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" id="bz1-DP-ZM0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bolinha" destination="gRu-3F-GDZ" id="kdh-TI-0NX"/>
                         <outlet property="categoria" destination="d3z-Gc-0Ne" id="nde-5i-9Ae"/>
                         <outlet property="categoriaLabel" destination="d3z-Gc-0Ne" id="QTa-Re-kdu"/>
                         <outlet property="descricao" destination="LFP-RW-Vue" id="jei-87-xYC"/>
@@ -553,7 +554,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OpY-1K-MXb">
-                            <rect key="frame" x="0.0" y="64" width="414" height="224.5"/>
+                            <rect key="frame" x="0.0" y="112.5" width="414" height="208.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <prototypes>
                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellRes" id="U0V-vl-djD" customClass="CellClass" customModule="AlzheimerProject" customModuleProvider="target">
@@ -611,12 +612,12 @@
                         <constraint firstItem="fmj-hB-WsV" firstAttribute="height" secondItem="Oyf-Ok-aro" secondAttribute="height" multiplier="0.1" id="8FW-G9-9UZ"/>
                         <constraint firstItem="OpY-1K-MXb" firstAttribute="width" secondItem="Oyf-Ok-aro" secondAttribute="width" id="EEA-ua-kMY"/>
                         <constraint firstItem="fmj-hB-WsV" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="0.2" id="HhF-Ma-NN6"/>
-                        <constraint firstItem="OpY-1K-MXb" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="1.3" id="Nri-fU-XjR"/>
+                        <constraint firstItem="OpY-1K-MXb" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="1.6" id="Nri-fU-XjR"/>
                         <constraint firstItem="TVH-nF-pt2" firstAttribute="centerX" secondItem="3QG-jq-qyL" secondAttribute="centerX" multiplier="1.8" id="Sdx-sq-zBg"/>
                         <constraint firstItem="TVH-nF-pt2" firstAttribute="height" secondItem="Oyf-Ok-aro" secondAttribute="height" multiplier="0.1" id="Tht-Ga-fLS"/>
                         <constraint firstItem="TVH-nF-pt2" firstAttribute="centerY" secondItem="3QG-jq-qyL" secondAttribute="centerY" multiplier="0.2" id="XSe-MN-dzV"/>
                         <constraint firstItem="TVH-nF-pt2" firstAttribute="width" secondItem="Oyf-Ok-aro" secondAttribute="width" multiplier="0.15" id="XXZ-N2-jSQ"/>
-                        <constraint firstItem="OpY-1K-MXb" firstAttribute="height" secondItem="Oyf-Ok-aro" secondAttribute="height" multiplier="0.86" id="clt-2x-yST"/>
+                        <constraint firstItem="OpY-1K-MXb" firstAttribute="height" secondItem="Oyf-Ok-aro" secondAttribute="height" multiplier="0.8" id="clt-2x-yST"/>
                         <constraint firstItem="fmj-hB-WsV" firstAttribute="centerX" secondItem="3QG-jq-qyL" secondAttribute="centerX" id="oeC-kY-3vz"/>
                         <constraint firstItem="OpY-1K-MXb" firstAttribute="centerX" secondItem="3QG-jq-qyL" secondAttribute="centerX" id="sfK-nf-fe7"/>
                     </constraints>
@@ -969,7 +970,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Edmondo" translatesAutoresizingMaskIntoConstraints="NO" id="HIB-Ju-681">
-                                        <rect key="frame" x="125" y="-81" width="162" height="180"/>
+                                        <rect key="frame" x="125" y="-81" width="162" height="16"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Todas as medicacoes sao feitas a cada 12h..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-7C-N1C">
                                         <rect key="frame" x="33" y="584" width="349" height="32"/>
@@ -1081,6 +1082,15 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7r-eq-sR7">
+                                        <rect key="frame" x="279" y="48" width="25" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="camera"/>
+                                        <connections>
+                                            <action selector="cameraButton:" destination="9lj-96-3Ns" eventType="touchUpInside" id="sd0-SF-vgN"/>
+                                            <action selector="mudarFoto:" destination="Zdr-Zw-8bs" eventType="touchUpInside" id="Lx4-bA-naI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1093,10 +1103,6 @@
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="XSP-fU-h2H">
                                 <rect key="frame" x="126" y="101" width="162" height="180"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="WG2-Fm-mTk">
-                                <rect key="frame" x="274" y="236" width="23" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94902592897415161" green="0.9490082859992981" blue="0.94902020692825317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1192,7 +1198,7 @@
                                                             <rect key="frame" x="20" y="11" width="37" height="37"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1X-il-Dba">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1X-il-Dba">
                                                             <rect key="frame" x="65" y="19" width="329" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
@@ -1274,17 +1280,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IDOSO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAy-XU-1Qy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dados do Idoso" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAy-XU-1Qy">
                                                     <rect key="frame" x="95" y="11" width="201" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Dados do Idoso" translatesAutoresizingMaskIntoConstraints="NO" id="2MD-3B-Vvp">
-                                                    <rect key="frame" x="31" y="5" width="44" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Dados do Idoso" translatesAutoresizingMaskIntoConstraints="NO" id="98B-s4-phQ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="configIdoso" translatesAutoresizingMaskIntoConstraints="NO" id="2MD-3B-Vvp">
                                                     <rect key="frame" x="31" y="5" width="44" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1304,13 +1306,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GRUPO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwC-aZ-5TQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grupo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwC-aZ-5TQ">
                                                     <rect key="frame" x="95" y="12" width="205" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Grupo" translatesAutoresizingMaskIntoConstraints="NO" id="0wj-pt-cD7">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="configGrupo" translatesAutoresizingMaskIntoConstraints="NO" id="0wj-pt-cD7">
                                                     <rect key="frame" x="37" y="5" width="31" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1330,13 +1332,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOME DA FAMÍLIA" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oN-4o-X4F">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome da Família" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oN-4o-X4F">
                                                     <rect key="frame" x="95" y="13" width="225" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Grupo" translatesAutoresizingMaskIntoConstraints="NO" id="2gX-wb-6Ks">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="configNome" translatesAutoresizingMaskIntoConstraints="NO" id="2gX-wb-6Ks">
                                                     <rect key="frame" x="28" y="5" width="52" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1360,13 +1362,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEU PERFIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="lWP-ta-RvH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meu perfil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="lWP-ta-RvH">
                                                     <rect key="frame" x="95" y="12" width="220" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Meu Perfil" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-qM-SQf">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="configPerfil" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-qM-SQf">
                                                     <rect key="frame" x="20" y="6" width="65" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1386,13 +1388,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTIFICACOES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3w9-x9-sTX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificaçōes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3w9-x9-sTX">
                                                     <rect key="frame" x="95" y="12" width="193" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lembrete" translatesAutoresizingMaskIntoConstraints="NO" id="rnp-1K-mo5">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="configNome" translatesAutoresizingMaskIntoConstraints="NO" id="rnp-1K-mo5">
                                                     <rect key="frame" x="20" y="5" width="64" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1467,13 +1469,9 @@
         <image name="ADDRelogio" width="20.5" height="20.5"/>
         <image name="ADDTag" width="23" height="15.5"/>
         <image name="Configuracoes" width="36" height="36"/>
-        <image name="Dados do Idoso" width="96.5" height="96"/>
         <image name="Edmondo" width="180" height="180"/>
-        <image name="Grupo" width="96.5" height="96"/>
-        <image name="Hora" width="16" height="15"/>
-        <image name="Lembrete" width="36.5" height="36.5"/>
+        <image name="Hora" width="23" height="22.5"/>
         <image name="Local" width="22" height="22.5"/>
-        <image name="Meu Perfil" width="96.5" height="96"/>
         <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
         <image name="Profile" width="180" height="180"/>
         <image name="Responsável" width="24" height="22"/>
@@ -1481,10 +1479,14 @@
         <image name="bola vermelha" width="19" height="19"/>
         <image name="calendario selecionado" width="38" height="40"/>
         <image name="camera" width="23" height="20"/>
+        <image name="configGrupo" width="37.5" height="22.5"/>
+        <image name="configIdoso" width="29.5" height="23"/>
+        <image name="configNome" width="22" height="23"/>
+        <image name="configPerfil" width="16" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="neo-df-jYC"/>
-        <segue reference="lcM-NS-UxG"/>
+        <segue reference="WWb-rA-i4h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

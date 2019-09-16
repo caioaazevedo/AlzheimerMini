@@ -18,13 +18,14 @@ class Events {
     var responsavel = "responsable of event"
     var localization = "locatization of event"
     
-    init(titleParameter: String,timeParameter: String,descParameter: String,categParameter: String,responsavelParameter: String,localizationParameter: String) {
+    init(titleParameter: String,timeParameter: String,descParameter: String,categParameter: String,responsavelParameter: String,localizationParameter: String,idParameter: String) {
         self.title = titleParameter
         self.time = timeParameter
         self.desc = descParameter
         self.categ = categParameter
         self.responsavel = responsavelParameter
         self.localization = localizationParameter
+        self.ID = idParameter
     
     }
     

@@ -60,6 +60,10 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Cloud.getPeople {
+                self.getIds()
+        }
+        
         tituloTextField.setBottomBorder()
         
         tableController.tableView.delegate = self
@@ -207,16 +211,37 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     
     var position = 0
-    func sendInfo(_ view: ViewPopup, texto: String,which: String) {
+    func sendInfo(_ view: ViewPopup, texto: String,which: String,index: Int) {
         if which == "Responsaveis" {
             tableController.responsavel.text = texto
         }
         if which == "Categoria"{
             tableController.categoriaLabel.text = texto
             categoria = texto
+            
+            applyToDef(index: index)
+            
+            
         }
     }
     
+    func applyToDef(index: Int){
+        var bola = ""
+        switch (index){
+        case 0:
+            bola = "bola azul"
+        case 1:
+            bola = "bola roxa"
+        case 2:
+            bola = "bola rosa"
+        case 3:
+            bola = "bola amarela"
+        default:
+            bola = "bola vermelha"
+            
+        }
+        tableController.bolinha.image = UIImage(named: bola)
+    }
     
     
     
@@ -385,7 +410,7 @@ extension TaskViewController : UITableViewDelegate{
 
 
 protocol  ViewPopupDelegate {
-    func sendInfo(_ view: ViewPopup, texto: String,which: String)
+    func sendInfo(_ view: ViewPopup, texto: String,which: String,index: Int)
     
     
 }
@@ -462,7 +487,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         
         
         
-        delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which)
+        delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which,index: indexPath.row)
         aux = indexPath.row
         
         

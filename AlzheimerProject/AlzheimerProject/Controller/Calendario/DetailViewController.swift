@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     var diaAux : String?
     var diaSemanaAux : String?
     var indexValue = 0
-    var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: "", localizationParameter: "")
+    var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: "", localizationParameter: "",idParameter: "")
     @IBOutlet weak var blueView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -76,10 +76,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titulo: UILabel!
     
     
+    let userLoad = UserLoaded()
     
     @IBAction func deleteTask(_ sender: UIButton) {
-        CoreDataRebased.shared.deleteEvent(eventID: event.ID)
-        self.dismiss(animated: true, completion: nil)
+        Cloud.cloudDeleteEvento(eventoId: event.ID)
+      
+        
+        CoreDataRebased.shared.deleteEvento(eventoId: event.ID) { (nome) in
+            Cloud.updateCalendario(searchRecord: self.userLoad.idSalaCalendar!, idEventos: nome)
+        }
+        
+        
+        _ = navigationController?.popViewController(animated: true)
         
     }
     
