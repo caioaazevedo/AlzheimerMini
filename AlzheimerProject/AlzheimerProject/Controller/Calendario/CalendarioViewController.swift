@@ -490,7 +490,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         var categoria = DailyEvents[indexPath.row].categ
         
         cell.backgroundColor = defineColor(categoria)
-        
+
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
         cell.responsavel.text = DailyEvents[indexPath.row].responsavel
@@ -500,8 +500,10 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 155
+        return 175
     }
+    
+    
     
     
     

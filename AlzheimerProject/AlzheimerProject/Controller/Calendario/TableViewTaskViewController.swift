@@ -17,6 +17,8 @@ class TableViewTaskViewController: UITableViewController {
         
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = false

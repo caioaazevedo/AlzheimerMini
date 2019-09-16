@@ -65,7 +65,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
 //                self.getIds()
 //            }
 //        }
-//        
+//
         tituloTextField.setBottomBorder()
         
         tableController.tableView.delegate = self
@@ -164,6 +164,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         let df = DateFormatter()
         df.dateFormat = "hh:mm"
         
+       // Calendar.current.component(DatePi, from: <#T##Date#>)
         tableController.hora.text = df.string(from: DatePicker.date)
     }
     
@@ -241,6 +242,39 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     }
     
     
+    var auxMes = ""
+    
+    var auxMesNum : Int?{
+        didSet{
+            switch(auxMesNum){
+            case 1:
+                auxMes = "Janeiro"
+            case 2:
+                auxMes = "Fevereiro"
+            case 3:
+                auxMes = "Março"
+            case 4:
+                auxMes = "Abril"
+            case 5:
+                auxMes = "Maio"
+            case 6:
+                auxMes = "Junho"
+            case 7:
+                auxMes = "Julho"
+            case 8:
+                auxMes = "Agosto"
+            case 9:
+                auxMes = "Setembro"
+            case 10:
+                auxMes = "Outubro"
+            case 11:
+                auxMes = "Novembro"
+            default:
+                auxMes = "Dezembro"
+            }
+        }
+    }
+    
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
@@ -262,8 +296,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
                     tempo = 36000
                 }
                 print(tempo)
-                
-                let notification = "\(titulo) foi marcado para \(hora) do dia \(dia)"
+                let diaD = Calendar.current.component(.day, from: dia)
+                 auxMesNum = Calendar.current.component(.month, from: dia)
+                let notification = "Um evento foi marcado para as \(hora) do dia \(diaD) de \(auxMes)"
                 userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
                 
             }
@@ -277,11 +312,17 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             
             
             if willEditing{
-                let date = Date()
+                
+                
                 CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
             }
             else{
-                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
+                let df = DateFormatter()
+                df.dateFormat = "hh:mm"
+                let data = df.string(from: DatePicker.date)
+                let date = df.date(from: data)
+                
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
             }
             
             _ = navigationController?.popViewController(animated: true)
