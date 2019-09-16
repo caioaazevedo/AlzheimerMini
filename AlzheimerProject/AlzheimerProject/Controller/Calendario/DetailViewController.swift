@@ -31,9 +31,23 @@ class DetailViewController: UIViewController {
         blueView.clipsToBounds = true
         setShadowBlueView()
         defineColor()
+        defineDynamicType()
         
         
     }
+    
+    func defineDynamicType(){
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        
+        diaSemana.font = scaledFont.font(forTextStyle: .body)
+        diaSemana.adjustsFontForContentSizeCategory = true
+    }
+    
     
     func defineColor(){
         switch(event.categ){
@@ -106,6 +120,13 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellDetail", for: indexPath) as! CellDetail
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         var image = UIImage(named: "")
@@ -135,6 +156,12 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         cell.imagem.image = image
         cell.tipoDetalhe.text = tipo
         cell.labelDetail.text = detalhe
+        
+        cell.tipoDetalhe.font = scaledFont.font(forTextStyle: .body)
+        cell.tipoDetalhe.adjustsFontForContentSizeCategory = true
+        
+        cell.labelDetail.font = scaledFont.font(forTextStyle: .body)
+        cell.labelDetail.adjustsFontForContentSizeCategory = true
         
         return cell
     }

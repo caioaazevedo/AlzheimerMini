@@ -24,8 +24,14 @@ class TableViewTaskViewController: UITableViewController {
             vc.circleView.isHidden = false
             vc.viewDidLayoutSubviews()
             //vc.self.selectedIndex = 2
+            
         }
+        setUpDynamicType()
     }
+    @IBOutlet weak var horaLabel: UILabel!
+    @IBOutlet weak var responLabel: UILabel!
+    @IBOutlet weak var notificarEventoLabel: UILabel!
+    @IBOutlet weak var notasLabel: UILabel!
     
     @IBOutlet weak var notas: UIView!
     @IBOutlet weak var categoria: UIImageView!
@@ -37,7 +43,39 @@ class TableViewTaskViewController: UITableViewController {
     @IBOutlet weak var bolinha: UIImageView!
     @IBOutlet weak var categoriaLabel: UILabel!
     
-    
+    func setUpDynamicType(){
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        horaLabel.font = scaledFont.font(forTextStyle: .body)
+        horaLabel.adjustsFontForContentSizeCategory = true
+        
+        responLabel.font = scaledFont.font(forTextStyle: .body)
+        responLabel.adjustsFontForContentSizeCategory = true
+        
+        notificarEventoLabel.font = scaledFont.font(forTextStyle: .body)
+        notificarEventoLabel.adjustsFontForContentSizeCategory = true
+        
+        notasLabel.font = scaledFont.font(forTextStyle: .body)
+        notasLabel.adjustsFontForContentSizeCategory = true
+        
+        hora.font = scaledFont.font(forTextStyle: .body)
+        hora.adjustsFontForContentSizeCategory = true
+        
+        descricao.font = scaledFont.font(forTextStyle: .body)
+        descricao.adjustsFontForContentSizeCategory = true
+        
+        categoriaLabel.font = scaledFont.font(forTextStyle: .body)
+        categoriaLabel.adjustsFontForContentSizeCategory = true
+        
+        hora.font = scaledFont.font(forTextStyle: .body)
+        hora.adjustsFontForContentSizeCategory = true
+        
+        
+    }
 
 
 }

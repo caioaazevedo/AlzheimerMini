@@ -165,8 +165,15 @@ class CalendarioViewController: UIViewController {
         calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
         //calendar.appearance.eventDefaultColor
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
         
         
+        diaDeHoje.font = scaledFont.font(forTextStyle: .body)
+        diaDeHoje.adjustsFontForContentSizeCategory = true
         
         
         diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
@@ -493,6 +500,12 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         cell.layer.cornerRadius = 10
@@ -504,6 +517,18 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         cell.horario.text = DailyEvents[indexPath.row].time
         cell.responsavel.text = DailyEvents[indexPath.row].responsavel
         cell.location.text = DailyEvents[indexPath.row].localization
+        
+        cell.horario.font = scaledFont.font(forTextStyle: .body)
+        cell.horario.adjustsFontForContentSizeCategory = true
+        
+        cell.responsavel.font = scaledFont.font(forTextStyle: .body)
+        cell.responsavel.adjustsFontForContentSizeCategory = true
+        
+        cell.location.font = scaledFont.font(forTextStyle: .body)
+        cell.location.adjustsFontForContentSizeCategory = true
+        
+        cell.titulo.font = scaledFont.font(forTextStyle: .body)
+        cell.titulo.adjustsFontForContentSizeCategory = true
         
         return cell;
     }

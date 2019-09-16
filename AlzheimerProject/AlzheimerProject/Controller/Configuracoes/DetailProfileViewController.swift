@@ -15,6 +15,16 @@ class DetailProfileViewController: UIViewController {
     var cdr = CoreDataRebased.shared
     
     
+
+    @IBOutlet weak var nascimentoGray: UILabel!
+    @IBOutlet weak var tgGray: UILabel!
+    @IBOutlet weak var alergiasGray: UILabel!
+    @IBOutlet weak var enderecoGray: UILabel!
+    @IBOutlet weak var medicamentoGray: UILabel!
+    @IBOutlet weak var obsGray: UILabel!
+    @IBOutlet weak var tipoSanguineoGray: UILabel!
+    @IBOutlet weak var telefoneGray: UILabel!
+    @IBOutlet weak var planoGray: UILabel!
     
     
     @IBOutlet weak var fotoIdoso: UIImageView!
@@ -44,6 +54,78 @@ class DetailProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    func setDynamicType(){
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        idosoNome.font = scaledFont.font(forTextStyle: .body)
+        idosoNome.adjustsFontForContentSizeCategory = true
+        
+        nascimentoGray.font = scaledFont.font(forTextStyle: .body)
+        nascimentoGray.adjustsFontForContentSizeCategory = true
+        
+        tipoSanguineoGray.font = scaledFont.font(forTextStyle: .body)
+        tipoSanguineoGray.adjustsFontForContentSizeCategory = true
+        
+        telefoneGray.font = scaledFont.font(forTextStyle: .body)
+        telefoneGray.adjustsFontForContentSizeCategory = true
+        
+        tgGray.font = scaledFont.font(forTextStyle: .body)
+        tgGray.adjustsFontForContentSizeCategory = true
+        
+        alergiasGray.font = scaledFont.font(forTextStyle: .body)
+        alergiasGray.adjustsFontForContentSizeCategory = true
+        
+        planoGray.font = scaledFont.font(forTextStyle: .body)
+        planoGray.adjustsFontForContentSizeCategory = true
+        
+        enderecoGray.font = scaledFont.font(forTextStyle: .body)
+        enderecoGray.adjustsFontForContentSizeCategory = true
+        
+        medicamentoGray.font = scaledFont.font(forTextStyle: .body)
+        medicamentoGray.adjustsFontForContentSizeCategory = true
+        
+        obsGray.font = scaledFont.font(forTextStyle: .body)
+        obsGray.adjustsFontForContentSizeCategory = true
+        
+        
+        //---------
+        
+        
+        dataNascimento.font = scaledFont.font(forTextStyle: .body)
+        dataNascimento.adjustsFontForContentSizeCategory = true
+        
+        tipoSanguineo.font = scaledFont.font(forTextStyle: .body)
+        tipoSanguineo.adjustsFontForContentSizeCategory = true
+        
+        telefone.font = scaledFont.font(forTextStyle: .body)
+        telefone.adjustsFontForContentSizeCategory = true
+        
+        rg.font = scaledFont.font(forTextStyle: .body)
+        rg.adjustsFontForContentSizeCategory = true
+        
+        alergias.font = scaledFont.font(forTextStyle: .body)
+        alergias.adjustsFontForContentSizeCategory = true
+        
+        plano.font = scaledFont.font(forTextStyle: .body)
+        plano.adjustsFontForContentSizeCategory = true
+        
+        endereco.font = scaledFont.font(forTextStyle: .body)
+        endereco.adjustsFontForContentSizeCategory = true
+        
+        medicacoes.font = scaledFont.font(forTextStyle: .body)
+        medicacoes.adjustsFontForContentSizeCategory = true
+        
+        observacoes.font = scaledFont.font(forTextStyle: .body)
+        observacoes.adjustsFontForContentSizeCategory = true
+        
+        
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         UserLoaded()
         setAll()
@@ -58,7 +140,7 @@ class DetailProfileViewController: UIViewController {
             
             
         }
-        
+        setDynamicType()
     }
     
     func setUpView() {

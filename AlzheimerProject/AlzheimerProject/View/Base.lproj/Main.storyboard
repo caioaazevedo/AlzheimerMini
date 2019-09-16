@@ -430,11 +430,15 @@
                     <connections>
                         <outlet property="bolinha" destination="gRu-3F-GDZ" id="kdh-TI-0NX"/>
                         <outlet property="categoria" destination="d3z-Gc-0Ne" id="nde-5i-9Ae"/>
-                        <outlet property="categoriaLabel" destination="d3z-Gc-0Ne" id="QTa-Re-kdu"/>
+                        <outlet property="categoriaLabel" destination="7sK-zY-rqy" id="Py3-8Q-V5i"/>
                         <outlet property="descricao" destination="LFP-RW-Vue" id="jei-87-xYC"/>
                         <outlet property="hora" destination="vfl-J2-BY0" id="t47-hA-a1k"/>
+                        <outlet property="horaLabel" destination="m1V-wX-uUh" id="ua1-4e-lYN"/>
                         <outlet property="lembrete" destination="DAF-XU-Fq7" id="LA5-ok-heY"/>
                         <outlet property="notas" destination="V1T-hP-nQV" id="c8F-dI-roP"/>
+                        <outlet property="notasLabel" destination="7id-Jm-Bow" id="mBS-On-rQa"/>
+                        <outlet property="notificarEventoLabel" destination="mqN-tN-yyF" id="T6S-eP-YpG"/>
+                        <outlet property="responLabel" destination="SAy-Bs-HeK" id="ce8-9e-j75"/>
                         <outlet property="responsavel" destination="1B2-1F-yAO" id="5Ve-UR-DUZ"/>
                     </connections>
                 </tableViewController>
@@ -1042,17 +1046,26 @@
                     </navigationItem>
                     <connections>
                         <outlet property="alergias" destination="Sk0-Za-jft" id="Ya1-zL-RlG"/>
+                        <outlet property="alergiasGray" destination="DfZ-OX-BrM" id="89n-s9-h7d"/>
                         <outlet property="dataNascimento" destination="S7l-u8-WPh" id="oVU-5d-bU3"/>
                         <outlet property="editOutlet" destination="mJ8-zU-KSU" id="cfS-ad-j88"/>
                         <outlet property="endereco" destination="UXK-R1-a32" id="Jas-IB-UGx"/>
+                        <outlet property="enderecoGray" destination="ut9-VK-lGa" id="H9X-Ap-N7W"/>
                         <outlet property="fotoIdoso" destination="HIB-Ju-681" id="5cX-0X-Neb"/>
                         <outlet property="idosoNome" destination="6Zr-I9-Cd5" id="TTJ-eK-m4s"/>
                         <outlet property="medicacoes" destination="f5J-Nk-W0f" id="no7-gW-NXA"/>
+                        <outlet property="medicamentoGray" destination="Sk8-sA-sKc" id="fDO-h6-LUf"/>
+                        <outlet property="nascimentoGray" destination="Rtu-8T-HdA" id="yWo-gl-FwT"/>
+                        <outlet property="obsGray" destination="ahL-uh-EZ1" id="scv-dR-WuV"/>
                         <outlet property="observacoes" destination="jcp-7C-N1C" id="pQh-YN-nSL"/>
                         <outlet property="plano" destination="Lcf-xK-6Bm" id="Z7q-S7-IUh"/>
+                        <outlet property="planoGray" destination="NlG-GP-LXt" id="LXg-Bp-6sc"/>
                         <outlet property="rg" destination="oma-YM-dBT" id="We6-95-zZV"/>
                         <outlet property="telefone" destination="MTd-ZG-55v" id="bdm-vv-3vE"/>
+                        <outlet property="telefoneGray" destination="S8W-l8-2kT" id="UsA-ow-yxM"/>
+                        <outlet property="tgGray" destination="24H-jG-55E" id="IXC-Xi-It0"/>
                         <outlet property="tipoSanguineo" destination="7kK-iJ-tzv" id="xb9-W2-0wq"/>
+                        <outlet property="tipoSanguineoGray" destination="L83-O6-ZxL" id="A2o-5k-BoZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfZ-jM-jwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1121,6 +1134,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="nome" destination="ldJ-7W-xXE" id="aIT-eD-z1D"/>
+                        <outlet property="nomeText" destination="7UP-Xy-1kR" id="IWy-1c-Nnr"/>
                         <outlet property="profilePhoto" destination="XSP-fU-h2H" id="bu2-Ac-Nvc"/>
                     </connections>
                 </viewController>
@@ -1472,7 +1486,7 @@
         <image name="ADDTag" width="23" height="15.5"/>
         <image name="Configuracoes" width="36" height="36"/>
         <image name="Edmondo" width="180" height="180"/>
-        <image name="Hora" width="16" height="15"/>
+        <image name="Hora" width="23" height="22.5"/>
         <image name="Local" width="22" height="22.5"/>
         <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
         <image name="Profile" width="180" height="180"/>
@@ -1488,7 +1502,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="neo-df-jYC"/>
-        <segue reference="WWb-rA-i4h"/>
+        <segue reference="lcM-NS-UxG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

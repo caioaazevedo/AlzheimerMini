@@ -13,12 +13,22 @@ class MyProfileViewController: UIViewController {
     let cdr = CoreDataRebased.shared
     var imagePicker : ImagePicker!
     
+    @IBOutlet weak var nomeText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         
+        let fontName = "SFProText-Regular"
         
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        nomeText.font = scaledFont.font(forTextStyle: .body)
+        nomeText.adjustsFontForContentSizeCategory = true
+        nome.font = scaledFont.font(forTextStyle: .body)
+        nome.adjustsFontForContentSizeCategory = true
         // Do any additional setup after loading the view.
     }
     

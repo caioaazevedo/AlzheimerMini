@@ -67,7 +67,13 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let fontName = "SFProText-Regular"
         
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellG", for: indexPath) as! GroupCell
@@ -81,6 +87,10 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
                         print("ID: \(usuarios[indexPath.row]) === CKDATA: \(ckData[j].0)")
                         cell.imageGroup.image = UIImage(data: ckData[j].2)
                         cell.labelGroup.text = ckData[j].1
+                        
+                        cell.labelGroup.font = scaledFont.font(forTextStyle: .body)
+                        cell.labelGroup.adjustsFontForContentSizeCategory = true
+                        
                     }
                 }
         }
