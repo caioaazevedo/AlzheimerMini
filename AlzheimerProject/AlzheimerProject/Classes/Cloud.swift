@@ -648,14 +648,9 @@ class Cloud {
                 } catch{
                     print("Error")
                 }
-                
             }
-            
         }
-        
         publicDataBase.add(queryOp)
-        
-        
     }
     // ✅
     static func updateSala(completion: @escaping (_ result: Bool) -> ()){

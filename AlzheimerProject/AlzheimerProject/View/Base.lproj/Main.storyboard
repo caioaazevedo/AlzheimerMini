@@ -1305,15 +1305,17 @@
                                                     <rect key="frame" x="20" y="5" width="64" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PiL-a7-To8">
-                                                    <rect key="frame" x="347" y="7" width="49" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PiL-a7-To8">
+                                                    <rect key="frame" x="345" y="6" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.89609354730000002" green="0.66977280380000004" blue="0.39993983509999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="3w9-x9-sTX" secondAttribute="trailing" constant="126" id="C02-ZP-iRY"/>
+                                                <constraint firstAttribute="bottom" secondItem="PiL-a7-To8" secondAttribute="bottom" constant="6.5" id="HNv-eG-RJd"/>
                                                 <constraint firstItem="3w9-x9-sTX" firstAttribute="top" secondItem="z8o-dS-geJ" secondAttribute="top" constant="12" id="RSp-pV-aXa"/>
+                                                <constraint firstItem="PiL-a7-To8" firstAttribute="leading" secondItem="3w9-x9-sTX" secondAttribute="trailing" constant="57" id="Yen-jx-ha5"/>
+                                                <constraint firstAttribute="trailing" secondItem="PiL-a7-To8" secondAttribute="trailing" constant="20" id="dmV-6Y-Fso"/>
                                                 <constraint firstItem="3w9-x9-sTX" firstAttribute="leading" secondItem="z8o-dS-geJ" secondAttribute="leading" constant="95" id="hXx-gT-2aD"/>
                                                 <constraint firstAttribute="bottom" secondItem="3w9-x9-sTX" secondAttribute="bottom" constant="11" id="nkv-cV-Ged"/>
                                             </constraints>
