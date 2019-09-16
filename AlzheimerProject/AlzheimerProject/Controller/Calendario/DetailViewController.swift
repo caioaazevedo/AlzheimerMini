@@ -75,6 +75,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var diaSemana: UILabel!
     @IBOutlet weak var titulo: UILabel!
     
+    
+    
+    @IBAction func deleteTask(_ sender: UIButton) {
+        
+    }
+    
+    
+    
 
     
     

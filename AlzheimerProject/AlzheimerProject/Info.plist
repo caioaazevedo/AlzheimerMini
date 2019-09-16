@@ -37,6 +37,10 @@
 	<string>$(PRODUCT_NAME) camera use</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF-Pro-Text-Regular.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
