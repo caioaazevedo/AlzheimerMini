@@ -2,7 +2,7 @@
 //  Usuario+CoreDataProperties.swift
 //  AlzheimerProject
 //
-//  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 04/09/19.
+//  Created by Caio Azevedo on 16/09/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -16,11 +16,12 @@ extension Usuario {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Usuario> {
         return NSFetchRequest<Usuario>(entityName: "Usuario")
     }
-    
+
     @NSManaged public var fotoPerfil: NSData?
     @NSManaged public var id: String?
     @NSManaged public var idSala: String?
     @NSManaged public var nome: String?
+    @NSManaged public var isHost: Int64
     @NSManaged public var ofUser: NSSet?
 
 }

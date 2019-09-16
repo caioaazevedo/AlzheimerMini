@@ -119,6 +119,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
+                                <rect key="frame" x="36" y="500" width="342" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
                                 <rect key="frame" x="36" y="678" width="342" height="60"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -144,6 +151,13 @@
                                     <segue destination="08K-uJ-Hp9" kind="show" id="YAN-b0-el0"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome da Família" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
+                                <rect key="frame" x="36" y="555" width="342" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress" textContentType="email"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
                                 <rect key="frame" x="80" y="84" width="254" height="254"/>
                                 <constraints>
@@ -293,7 +307,7 @@
         <image name="Ativo 31" width="229.5" height="199.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d0L-uA-RXe"/>
+        <segue reference="ycR-Qk-smF"/>
         <segue reference="YAN-b0-el0"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,7 @@
 import Foundation
 
 class Events {
-    var ID = Int()
+    var ID = String()
     var title = "title of event"
     var time = "time of event"
     var day = "day of event"

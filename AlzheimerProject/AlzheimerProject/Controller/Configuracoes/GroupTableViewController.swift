@@ -22,6 +22,12 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var tableGroup: UITableView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var labelButton: UILabel!
+    @IBOutlet weak var imageButton: UIImageView!
+    
+    let sala = CoreDataRebased.shared.fetchSala()
+    let usuarioAtual = CoreDataRebased.shared.fetchUsuario()
+//    let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -30,14 +36,21 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
                 self.tableGroup.reloadData()
             }
         }
-        
-        self.shareButton.layer.cornerRadius = 11
+        if usuarioAtual.isHost == 0 {
+            self.shareButton.isHidden = true
+            self.labelButton.isHidden = true
+            self.imageButton.isHidden = true
+        } else {
+            self.shareButton.layer.cornerRadius = 11
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableGroup.reloadData()
     }
+
     
     // MARK: - Table view data source
     
@@ -48,8 +61,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let sala = CoreDataRebased.shared.fetchSala()
-        let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        let usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         return usuarios.count
     }
@@ -60,25 +72,46 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellG", for: indexPath) as! GroupCell
         
-        let sala = CoreDataRebased.shared.fetchSala()
-        let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        let usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         if ckData.count > 0 {
-            for i in 0...usuarios.count-1{
                 for j in 0...ckData.count-1{
-                    if usuarios[i] == ckData[j].0 {
+                    
+                    if usuarios[indexPath.row] == ckData[j].0 {
+                        print("ID: \(usuarios[indexPath.row]) === CKDATA: \(ckData[j].0)")
                         cell.imageGroup.image = UIImage(data: ckData[j].2)
                         cell.labelGroup.text = ckData[j].1
                     }
                 }
-            }
         }
         
         return cell
     }
     
     @IBAction func exitGroup(_ sender: Any) {
+        let alert = UIAlertController(title: "Leave Group", message: "Are you sure you want to leave the group?", preferredStyle: UIAlertController.Style.alert)
         
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+            
+            for i in 0...usuarios.count-1 {
+                if usuarios[i] == UserLoaded().idUser{
+                    Cloud.deleteTable(searchRecord: usuarios[i], searchKey: "idUsuario", searchTable: "Usuario")
+                    
+                    usuarios.remove(at: i)
+                    
+                    CoreDataRebased.shared.updateSala(idUsuarios: usuarios)
+                    print("Familia: \(self.sala.nomeFamilia!) - Sala: \(self.sala.id!) - \(usuarios) - Calendario: \(self.sala.idCalendario!) - Perfil: \(self.sala.idPerfil!) - \(self.sala.idHost!)")
+                    
+                    Cloud.updateSala(nomeFamilia: self.sala.nomeFamilia!, searchRecord: self.sala.id!, idSala: self.sala.id!, idUsuario: usuarios, idCalendario: self.sala.idCalendario!, idPerfil: self.sala.idPerfil!, idHost: self.sala.idHost!)
+                    
+                }
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -116,14 +149,29 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            let sala = CoreDataRebased.shared.fetchSala()
-            let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
-            
-            Cloud.deleteTable(searchRecord: usuarios[indexPath.row], searchKey: "idUsuario", searchTable: "Usuario")
-            
+        
+        var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        
+        
+        
+        if self.usuarioAtual.isHost == 1 {
+            if editingStyle == .delete && UserLoaded().idUser != usuarios[indexPath.row]{
+                
+                usuarios.remove(at: indexPath.row)
+                
+                print("=-=-=-=-=-fdsgfhg >>> ", usuarios.count)
+                
+                
+                CoreDataRebased.shared.updateSala(idUsuarios: usuarios)
+                
+                Cloud.updateSala(nomeFamilia: self.sala.nomeFamilia!, searchRecord: self.sala.id!, idSala: self.sala.id!, idUsuario: usuarios, idCalendario: self.sala.idCalendario!, idPerfil: self.sala.idPerfil!, idHost: self.sala.idHost!)
+                
+                print("=-=-=-=-=-=-     =p=-=-   >>> ", indexPath.row)
+                
+                Cloud.deleteTable(searchRecord: usuarios[indexPath.row], searchKey: "idUsuario", searchTable: "Usuario")
+                
+                self.tableGroup.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
     

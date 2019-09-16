@@ -33,7 +33,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, idSala: String) {
+    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, idSala: String, host: Int64) {
         let record = CKRecord(recordType: "Usuario")
         
         
@@ -41,6 +41,7 @@ class Cloud {
         record.setValue(nome, forKeyPath: "nome")
         record.setValue(foto, forKeyPath: "foto")
         record.setValue(idSala, forKeyPath: "idSala")
+        record.setValue(host, forKey: "isHost")
         
         saveRequest(record: record)
     }
@@ -228,6 +229,7 @@ class Cloud {
                 DadosUsuario.usuario.nome = record["nome"]!
                 DadosUsuario.usuario.foto = record["foto"]!
                 DadosUsuario.usuario.idSala = record["idSala"]!
+                DadosUsuario.usuario.isHost = record["isHost"]!
                 
                 found = true
                 
@@ -360,6 +362,8 @@ class Cloud {
         }
         publicDataBase.add(queryOp)
     }
+    
+    
     
     static func updateUsuario(searchRecord: String, nome: String?, foto: Data?, idSala: String) {
         let predicate = NSPredicate(value: true)
@@ -775,12 +779,15 @@ class Cloud {
          3. ESSE METODO TEM QUE SER CHAMADO QUANDO ENTRAR NA TELA DE CRIAR EVENTO
          */
         
+        
 //        Cloud.deletePessoas { (_) in
             let predicate = NSPredicate(value: true)
             let query = CKQuery(recordType: "Usuario", predicate: predicate)
             let queryOp = CKQueryOperation(query: query)
         
             ckData = []
+            var arrayUsuarios = [String]()
+        
             queryOp.recordFetchedBlock = { (record) -> Void in
                 
 //                newPeople.foto = record["foto"] as? NSData
@@ -789,6 +796,12 @@ class Cloud {
 //                newPeople.selecionado = falserefreshControl.endRefreshing()
                 let imageDefault = UIImage(named: "Remedio")
                 ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
+                
+                if userLoad.idSala == record["idSala"]! {
+                    arrayUsuarios.append(record["idUsuario"]!)
+                    CoreDataRebased.shared.updateSala(idUsuarios: arrayUsuarios)
+                }
+                
                 
                 //CoreDataRebased.shared.saveCoreData()
             }

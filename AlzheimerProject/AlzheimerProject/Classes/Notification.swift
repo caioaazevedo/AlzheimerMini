@@ -45,7 +45,7 @@ class Notification {
         content.body = corpo
         content.badge = 1
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: tempo, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: tempo + 10, repeats: false)
         let request =  UNNotificationRequest(identifier: "Task", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         

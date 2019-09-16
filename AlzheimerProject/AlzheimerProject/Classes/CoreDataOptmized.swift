@@ -141,7 +141,7 @@ class CoreDataRebased{
         
         
         Cloud.saveSala(nomeFamilia: sala.nomeFamilia!, idSala: sala.id!, idUsuario: [userLoad.idUser], idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
-        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, idSala: usuario.idSala!)
+        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, idSala: usuario.idSala!, host: usuario.isHost)
         Cloud.saveCalendario(idCalendario: calendar.id!, idEventos: nil)
         Cloud.savePerfil(idPerfil: profile.id!, nome: nil, dataNascimento: nil, telefone: nil, descricao: nil, fotoPerfil: nil, endereco: nil, remedios: nil, alergias: nil, tipoSanguineo: nil, planoSaude: nil)
     }
@@ -214,7 +214,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Usuario 😎
-    func createUsuario(fotoDoPerfil: UIImage?, Nome: String){
+    func createUsuario(fotoDoPerfil: UIImage?, Nome: String, host: Int64){
         
         let userLoad = UserLoaded()
         
@@ -223,6 +223,7 @@ class CoreDataRebased{
         user.nome = Nome
         user.idSala = nil
         user.fotoPerfil = fotoDoPerfil?.pngData()! as NSData?
+        user.isHost = host
         saveCoreData()
         
         
@@ -284,7 +285,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Usuario - GUEST 😎
-    func createUsuarioGuest(fotoDoPerfil: UIImage?, Nome: String, searchSala: String){
+    func createUsuarioGuest(fotoDoPerfil: UIImage?, Nome: String, searchSala: String, host: Int64){
         
         print("Search Sala: ", searchSala)
         
@@ -314,7 +315,7 @@ class CoreDataRebased{
                     print("=======> :", userArray)
                     
                     
-                    Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, idSala: user.idSala!)
+                    Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, idSala: user.idSala!, host: host)
                     
                     Cloud.updateSala(nomeFamilia: "",searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
                     
@@ -367,6 +368,20 @@ class CoreDataRebased{
                     Cloud.updateUsuario(searchRecord: userLoad.idUser, nome:usuario.nome , foto: photoData, idSala: usuario.idSala ?? "")
                 }
             }
+        } catch {
+            print("Error")
+        }
+        
+        saveCoreData()
+    }
+    
+    // Update Sala
+    func updateSala(idUsuarios: [String]){
+        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        do {
+            let sala = try managedObjectContext.fetch(salaFetchRequest)[0]
+            
+            sala.idUsuarios = idUsuarios as NSObject
         } catch {
             print("Error")
         }
@@ -452,13 +467,14 @@ class CoreDataRebased{
     }
     
     //✅ - Deletar Evento 🍁
-    func deleteEvento(evento: Evento){
+    func deleteEvento(eventoId: String, completion: @escaping (_ result: [String]) -> ()){
         /*
          1. Transformar o array de idEventos em [String]
          2. Procurar o evento com o mesmo id do parametro passado
          3. Remover o evento no índice "X"
          4. Sobreescrever o vetor
          */
+        
         let userLoad = UserLoaded()
         var contador = 0
         let calendarioFetchRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -470,8 +486,9 @@ class CoreDataRebased{
                 if userLoad.idSalaCalendar == calendario.id && calendario.id != nil{
                     arrayEventos = (calendario.idEventos)?.mutableCopy() as! [String]
                     for id in arrayEventos {
-                        if id == evento.id{
+                        if id == eventoId{
                             arrayEventos.remove(at: contador)
+                            completion(arrayEventos)
                         }
                         contador += 1
                     }
@@ -481,6 +498,24 @@ class CoreDataRebased{
             print("Error")
         }
         saveCoreData()
+        let eventoFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            
+            let eventos = try managedObjectContext.fetch(eventoFetchRequest)
+            
+            for e in eventos{
+                if e.id == eventoId{
+                    managedObjectContext.delete(e)
+                    saveCoreData()
+                }
+            }
+            
+            
+        } catch{
+            print("Error")
+        }
+        
+        
     }
     
     //✅ - Carregar Dados Profile 🍁
