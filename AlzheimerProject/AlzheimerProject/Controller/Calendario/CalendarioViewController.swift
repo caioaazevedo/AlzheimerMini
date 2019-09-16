@@ -130,12 +130,16 @@ class CalendarioViewController: UIViewController {
             
             for evento in eventosSalvos{
                 if evento.dia != nil{
+                    var responsaveis = [String]()
                     let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
                     let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
                     if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
                         let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
                         let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
-                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
+                        if evento.idUsuarios != nil{
+                         responsaveis = (evento.idUsuarios as! NSArray).mutableCopy() as! [String]
+                        }
+                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: responsaveis ?? [""], localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
                         
                         DailyEvents.append(evento)
                         
@@ -496,13 +500,27 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
         cell.layer.cornerRadius = 10
+        
         var categoria = DailyEvents[indexPath.row].categ
+        
+        var string: String?
+        
+        for element in DailyEvents[indexPath.row].responsavel {
+            if string == nil {
+                string = element
+            } else {
+                string = string! + ", " + element
+            }
+        }
+        
         
         cell.backgroundColor = defineColor(categoria)
 
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
-        cell.responsavel.text = DailyEvents[indexPath.row].responsavel
+        
+       
+        cell.responsavel.text = string
         cell.location.text = DailyEvents[indexPath.row].localization
         
         return cell;

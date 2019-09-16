@@ -47,7 +47,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Responsavel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7B-KN-ntq">
-                                                    <rect key="frame" x="47" y="95" width="126" height="21"/>
+                                                    <rect key="frame" x="47" y="95" width="307" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -58,7 +58,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Localizacao" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZM-8Q-EHl">
-                                                    <rect key="frame" x="47" y="61" width="153" height="21"/>
+                                                    <rect key="frame" x="47" y="61" width="307" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -319,7 +319,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ADDPerfil" translatesAutoresizingMaskIntoConstraints="NO" id="1gl-IT-9tr">
-                                                    <rect key="frame" x="25.5" y="12.5" width="24.5" height="24.5"/>
+                                                    <rect key="frame" x="25.499999999999996" y="12.5" width="24.500000000000004" height="24.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A definir" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-1F-yAO">
                                                     <rect key="frame" x="188" y="12.5" width="188" height="24.5"/>
@@ -705,8 +705,9 @@
                                                     <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqS-tX-FWl">
-                                                    <rect key="frame" x="39" y="48" width="61" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqS-tX-FWl">
+                                                    <rect key="frame" x="39" y="48" width="331" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -719,14 +720,10 @@
                                                 <constraint firstItem="V0y-fF-R7j" firstAttribute="centerX" secondItem="2WD-0K-Vtt" secondAttribute="centerX" multiplier="1.28" id="6yk-hT-aKf"/>
                                                 <constraint firstItem="ZxP-ha-3XJ" firstAttribute="width" secondItem="2WD-0K-Vtt" secondAttribute="width" multiplier="0.05" id="8gK-eg-xii"/>
                                                 <constraint firstItem="ZxP-ha-3XJ" firstAttribute="centerY" secondItem="2WD-0K-Vtt" secondAttribute="centerY" multiplier="0.82" id="DAy-qC-U1i"/>
-                                                <constraint firstItem="GqS-tX-FWl" firstAttribute="centerY" secondItem="2WD-0K-Vtt" secondAttribute="centerY" multiplier="1.6" id="ELL-qp-0nM"/>
                                                 <constraint firstItem="V0y-fF-R7j" firstAttribute="height" secondItem="2WD-0K-Vtt" secondAttribute="height" multiplier="0.28" id="Kyi-nF-XhQ"/>
                                                 <constraint firstItem="ZxP-ha-3XJ" firstAttribute="height" secondItem="2WD-0K-Vtt" secondAttribute="height" multiplier="0.28" id="Zo0-5V-FpB"/>
                                                 <constraint firstItem="V0y-fF-R7j" firstAttribute="width" secondItem="2WD-0K-Vtt" secondAttribute="width" multiplier="0.98" id="bAI-DR-0rw"/>
-                                                <constraint firstItem="GqS-tX-FWl" firstAttribute="centerX" secondItem="2WD-0K-Vtt" secondAttribute="centerX" multiplier="0.34" id="clY-98-8Td"/>
-                                                <constraint firstItem="GqS-tX-FWl" firstAttribute="width" secondItem="2WD-0K-Vtt" secondAttribute="width" multiplier="0.15" id="dV9-Hl-MeU"/>
                                                 <constraint firstItem="ZxP-ha-3XJ" firstAttribute="centerX" secondItem="2WD-0K-Vtt" secondAttribute="centerX" multiplier="0.22" id="eTb-kX-kjY"/>
-                                                <constraint firstItem="GqS-tX-FWl" firstAttribute="height" secondItem="2WD-0K-Vtt" secondAttribute="height" multiplier="0.29" id="nNn-9l-UD1"/>
                                                 <constraint firstItem="V0y-fF-R7j" firstAttribute="centerY" secondItem="2WD-0K-Vtt" secondAttribute="centerY" multiplier="0.82" id="zw8-Wk-PMF"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1473,7 +1470,7 @@
         <image name="Configuracoes" width="36" height="36"/>
         <image name="Edmondo" width="180" height="180"/>
         <image name="Hora" width="16" height="15"/>
-        <image name="Local" width="22" height="22.5"/>
+        <image name="Local" width="15" height="15"/>
         <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
         <image name="Profile" width="180" height="180"/>
         <image name="Responsável" width="24" height="22"/>

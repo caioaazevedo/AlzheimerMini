@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     var diaAux : String?
     var diaSemanaAux : String?
     var indexValue = 0
-    var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: "", localizationParameter: "",idParameter: "")
+    var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: [""], localizationParameter: "",idParameter: "")
     @IBOutlet weak var blueView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -121,7 +121,7 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
             case 1:
                 image = iconesArray[1]
                 tipo = "Responsável"
-                detalhe = event.responsavel
+                detalhe = "\(event.responsavel)"
             case 2:
                 image = iconesArray[2]
                 tipo = "Local"

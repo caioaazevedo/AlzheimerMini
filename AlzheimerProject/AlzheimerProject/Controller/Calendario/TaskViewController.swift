@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 import CircleBar
 
-class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
+class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, sendRespDelegate, removeRespDelegate {
+   
     
     
     
@@ -69,6 +70,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         
         tableController.tableView.delegate = self
         viewPresent.delegateSend = self
+        viewPresent.sendResponsavel = self
+        viewPresent.removeResponsavel = self
 
         print(pessoas)
     }
@@ -103,7 +106,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     var auxTitulo = String()
     var auxCateg = String()
     
-    
+
     var circle : SHCircleBarController {
         return self.children.first as! SHCircleBarController
     }
@@ -119,7 +122,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
         if willEditing{
             
             tableController.hora.text = event?.time
-            tableController.responsavel.text = event?.responsavel
+            var string: String?
+            for element in event!.responsavel {
+                if string == nil {
+                    string = element
+                } else {
+                    string = string! + ", " + element
+                }
+            }
+          
+            tableController.responsavel.text = string
             
             //tableController.descricao
         }
@@ -213,9 +225,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     
     var position = 0
     func sendInfo(_ view: ViewPopup, texto: String,which: String,index: Int) {
-        if which == "Responsaveis" {
-            tableController.responsavel.text = texto
-        }
+      
         if which == "Categoria"{
             tableController.categoriaLabel.text = texto
             categoria = texto
@@ -225,6 +235,35 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             
         }
     }
+    
+   
+    
+    func sendResp(_ view: ViewPopup, resp: String) {
+        responsaveis.append(resp)
+       
+        tableController.responsavel.text = "\(responsaveis[0])"
+        
+        if responsaveis.count > 1{
+                tableController.responsavel.text = "\(responsaveis[0]) + \(responsaveis.count - 1)"
+        }
+       
+       
+        
+    }
+    
+    func removeResp(_ view: ViewPopup, resp: String){
+        responsaveis.removeFirst()
+        if responsaveis.count != 0{
+        tableController.responsavel.text = "\(responsaveis[0])"
+            if responsaveis.count > 1{
+                tableController.responsavel.text = "\(responsaveis[0]) + \(responsaveis.count - 1)"
+            }
+        } else{
+            tableController.responsavel.text = ""
+        }
+    }
+    
+    
     
     func applyToDef(index: Int){
         var bola = ""
@@ -414,8 +453,14 @@ extension TaskViewController : UITableViewDelegate{
 
 protocol  ViewPopupDelegate {
     func sendInfo(_ view: ViewPopup, texto: String,which: String,index: Int)
-    
-    
+}
+
+protocol sendRespDelegate{
+    func sendResp(_ view: ViewPopup,resp: String)
+}
+
+protocol removeRespDelegate{
+    func removeResp(_ view: ViewPopup,resp: String)
 }
 
 class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
@@ -424,6 +469,8 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
     var arrayImage = [UIImage]()
     var pessoas = [Pessoas]()
     var delegateSend: ViewPopupDelegate?
+    var sendResponsavel: sendRespDelegate?
+    var removeResponsavel: removeRespDelegate?
     var aux = 0
     var which = ""
     @IBOutlet weak var tableViewPopup: UITableView!
@@ -474,14 +521,11 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         if which == "Responsaveis"{
             if cell.accessoryType == .checkmark{
                 cell.accessoryType = .none
-                
-                //  pessoas[indexPath.row].selecionado = false
+                removeResponsavel?.removeResp(self, resp: array[indexPath.row])
                 
             }else{
                 cell.accessoryType = .checkmark
-            //    pessoasResponsaveis.append(pessoas[indexPath.row])
-                //pessoas[indexPath.row].selecionado = true
-                //  array[indexPath.row] = pessoas[indexPath.row].id!
+                sendResponsavel?.sendResp(self, resp: array[indexPath.row])
             }
             
             
