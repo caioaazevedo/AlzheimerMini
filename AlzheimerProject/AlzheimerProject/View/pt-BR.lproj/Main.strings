@@ -1,0 +1,213 @@
+
+/* Class = "UILabel"; text = "None"; ObjectID = "1B2-1F-yAO"; */
+"1B2-1F-yAO.text" = "A definir";
+
+/* Class = "UILabel"; text = "ID"; ObjectID = "24H-jG-55E"; */
+"24H-jG-55E.text" = "RG";
+
+/* Class = "UILabel"; text = "Notifications"; ObjectID = "3w9-x9-sTX"; */
+"3w9-x9-sTX.text" = "Notificaçōes";
+
+/* Class = "UILabel"; text = "Family's name"; ObjectID = "4oN-4o-X4F"; */
+"4oN-4o-X4F.text" = "Nome da Família";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "6JP-m1-I9P"; */
+"6JP-m1-I9P.title" = "Editar";
+
+/* Class = "UITextField"; text = "Guilherme Dalosto"; ObjectID = "6Zr-I9-Cd5"; */
+"6Zr-I9-Cd5.text" = "Guilherme Dalosto";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "7UP-Xy-1kR"; */
+"7UP-Xy-1kR.text" = "Nome";
+
+/* Class = "UILabel"; text = "Notes"; ObjectID = "7id-Jm-Bow"; */
+"7id-Jm-Bow.text" = "Notas";
+
+/* Class = "UITextField"; text = "A+"; ObjectID = "7kK-iJ-tzv"; */
+"7kK-iJ-tzv.text" = "A+";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "7sK-zY-rqy"; */
+"7sK-zY-rqy.text" = "Categoria";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "840-TZ-VZw"; */
+"840-TZ-VZw.title" = "Perfil";
+
+/* Class = "UIViewController"; title = "My Data"; ObjectID = "9lj-96-3Ns"; */
+"9lj-96-3Ns.title" = "Meus Dados";
+
+/* Class = "UILabel"; text = "Horario"; ObjectID = "BHa-Qb-yE8"; */
+"BHa-Qb-yE8.text" = "Time";
+
+/* Class = "UILabel"; text = "Consultation"; ObjectID = "C6g-2Z-XOu"; */
+"C6g-2Z-XOu.text" = "Consulta";
+
+/* Class = "UILabel"; text = "Responsavel"; ObjectID = "C7B-KN-ntq"; */
+"C7B-KN-ntq.text" = "Responsavel";
+
+/* Class = "UILabel"; text = "Share this group's code"; ObjectID = "CXL-ci-qax"; */
+"CXL-ci-qax.text" = "Share this group's code";
+
+/* Class = "UILabel"; text = "Allergies"; ObjectID = "DfZ-OX-BrM"; */
+"DfZ-OX-BrM.text" = "Alergias";
+
+/* Class = "UITextField"; placeholder = "Título"; ObjectID = "ENO-3N-ixA"; */
+"ENO-3N-ixA.placeholder" = "Título";
+
+/* Class = "UILabel"; text = "15:00"; ObjectID = "GqS-tX-FWl"; */
+"GqS-tX-FWl.text" = "15:00";
+
+/* Class = "UILabel"; text = "Blood Type"; ObjectID = "L83-O6-ZxL"; */
+"L83-O6-ZxL.text" = "Tipo Sanguíneo";
+
+/* Class = "UITextField"; text = "Plano"; ObjectID = "Lcf-xK-6Bm"; */
+"Lcf-xK-6Bm.text" = "Plano";
+
+/* Class = "UIBarButtonItem"; title = "Calendar"; ObjectID = "LxN-49-zCX"; */
+"LxN-49-zCX.title" = "Calendário";
+
+/* Class = "UITextField"; text = "61 99507-2601"; ObjectID = "MTd-ZG-55v"; */
+"MTd-ZG-55v.text" = "61 99507-2601";
+
+/* Class = "UILabel"; text = "Health Care"; ObjectID = "NlG-GP-LXt"; */
+"NlG-GP-LXt.text" = "Plano de Saúde";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "P7r-eq-sR7"; */
+"P7r-eq-sR7.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PDf-ZC-WE2"; */
+"PDf-ZC-WE2.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Delete Event"; ObjectID = "PKu-he-YKV"; */
+"PKu-he-YKV.normalTitle" = "Apagar Evento";
+
+/* Class = "UINavigationItem"; title = "New Event"; ObjectID = "QEt-TT-OEp"; */
+"QEt-TT-OEp.title" = "Novo Evento";
+
+/* Class = "UILabel"; text = "Elder Data"; ObjectID = "RAy-XU-1Qy"; */
+"RAy-XU-1Qy.text" = "Dados do Idoso";
+
+/* Class = "UITableViewSection"; headerTitle = "Family Data"; ObjectID = "RbD-vS-EVt"; */
+"RbD-vS-EVt.headerTitle" = "Dados da Família";
+
+/* Class = "UILabel"; text = "Birth"; ObjectID = "Rtu-8T-HdA"; */
+"Rtu-8T-HdA.text" = "Data de Nascimento";
+
+/* Class = "UITextField"; text = "25/02/1999"; ObjectID = "S7l-u8-WPh"; */
+"S7l-u8-WPh.text" = "25/02/1999";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "S8W-l8-2kT"; */
+"S8W-l8-2kT.text" = "Telefone";
+
+/* Class = "UILabel"; text = "Responsable"; ObjectID = "SAy-Bs-HeK"; */
+"SAy-Bs-HeK.text" = "Responsáveis";
+
+/* Class = "UITextField"; text = "Alergias"; ObjectID = "Sk0-Za-jft"; */
+"Sk0-Za-jft.text" = "Alergias";
+
+/* Class = "UILabel"; text = "Medications"; ObjectID = "Sk8-sA-sKc"; */
+"Sk8-sA-sKc.text" = " Medicamentos";
+
+/* Class = "UILabel"; text = "Titulo"; ObjectID = "TEh-qd-Y3c"; */
+"TEh-qd-Y3c.text" = "Titulo";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "TVH-nF-pt2"; */
+"TVH-nF-pt2.normalTitle" = "Pronto";
+
+/* Class = "UITextField"; text = "Endereco"; ObjectID = "UXK-R1-a32"; */
+"UXK-R1-a32.text" = "Endereco";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "V0y-fF-R7j"; */
+"V0y-fF-R7j.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Leave the group"; ObjectID = "VsQ-JB-oQv"; */
+"VsQ-JB-oQv.normalTitle" = "Sair do grupo";
+
+/* Class = "UITextField"; placeholder = "Local"; ObjectID = "XQf-uH-8hY"; */
+"XQf-uH-8hY.placeholder" = "Local";
+
+/* Class = "UILabel"; text = "September 23"; ObjectID = "XyW-5v-OII"; */
+"XyW-5v-OII.text" = "23 de Setembro";
+
+/* Class = "UILabel"; text = "93 anos"; ObjectID = "YIl-CY-eiD"; */
+"YIl-CY-eiD.text" = "93 anos";
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "YwC-aZ-5TQ"; */
+"YwC-aZ-5TQ.text" = "Grupo";
+
+/* Class = "UIViewController"; title = "Detalhes dos Dados"; ObjectID = "Zdr-Zw-8bs"; */
+"Zdr-Zw-8bs.title" = "Detalhes dos Dados";
+
+/* Class = "UILabel"; text = "Observations"; ObjectID = "ahL-uh-EZ1"; */
+"ahL-uh-EZ1.text" = "Observaçōes";
+
+/* Class = "UINavigationItem"; title = "Notes"; ObjectID = "bJV-fr-s7j"; */
+"bJV-fr-s7j.title" = "Notas";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bKX-My-O2I"; */
+"bKX-My-O2I.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "bz1-DP-ZM0"; */
+"bz1-DP-ZM0.title" = "Adicionar";
+
+/* Class = "UINavigationItem"; title = "Remember Me"; ObjectID = "cR5-GN-q0H"; */
+"cR5-GN-q0H.title" = "Remember Me";
+
+/* Class = "UILabel"; text = "Food"; ObjectID = "d3z-Gc-0Ne"; */
+"d3z-Gc-0Ne.text" = "Alimentação";
+
+/* Class = "UILabel"; text = "Localizacao"; ObjectID = "dZM-8Q-EHl"; */
+"dZM-8Q-EHl.text" = "Localizaçāo";
+
+/* Class = "UINavigationItem"; title = "Event Detail"; ObjectID = "dfu-1c-yW0"; */
+"dfu-1c-yW0.title" = "Detalhes do evento";
+
+/* Class = "UITextField"; text = "Medicacoes"; ObjectID = "f5J-Nk-W0f"; */
+"f5J-Nk-W0f.text" = "Medicaçōes";
+
+/* Class = "UILabel"; text = "Responsáveis"; ObjectID = "fmj-hB-WsV"; */
+"fmj-hB-WsV.text" = "Responsáveis";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "ftc-fQ-Q9Y"; */
+"ftc-fQ-Q9Y.title" = "Pronto";
+
+/* Class = "UITableViewSection"; headerTitle = "My Data"; ObjectID = "huo-PI-0zG"; */
+"huo-PI-0zG.headerTitle" = "Meus dados";
+
+/* Class = "UITextField"; text = "Todas as medicacoes sao feitas a cada 12h..."; ObjectID = "jcp-7C-N1C"; */
+"jcp-7C-N1C.text" = "Todas as medicacoes sao feitas a cada 12h...";
+
+/* Class = "UILabel"; text = "My Profile"; ObjectID = "lWP-ta-RvH"; */
+"lWP-ta-RvH.text" = "Meu Perfil";
+
+/* Class = "UITextField"; text = "Amanda Congiu"; ObjectID = "ldJ-7W-xXE"; */
+"ldJ-7W-xXE.text" = "Amanda Congiu";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "m1V-wX-uUh"; */
+"m1V-wX-uUh.text" = "Horário";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "mJ8-zU-KSU"; */
+"mJ8-zU-KSU.title" = "Editar";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "mqN-tN-yyF"; */
+"mqN-tN-yyF.text" = "Notificaçōes";
+
+/* Class = "UINavigationItem"; title = "Configurations"; ObjectID = "o2t-vP-Gel"; */
+"o2t-vP-Gel.title" = "Configurações";
+
+/* Class = "UITextField"; text = "3745447"; ObjectID = "oma-YM-dBT"; */
+"oma-YM-dBT.text" = "3745447";
+
+/* Class = "UINavigationItem"; title = "Adicionar Evento"; ObjectID = "rGz-hn-gir"; */
+"rGz-hn-gir.title" = "Adicionar Evento";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "t40-9m-yib"; */
+"t40-9m-yib.title" = "Pronto";
+
+/* Class = "UILabel"; text = "Adresses"; ObjectID = "ut9-VK-lGa"; */
+"ut9-VK-lGa.text" = "Endereços";
+
+/* Class = "UILabel"; text = "15:00"; ObjectID = "vfl-J2-BY0"; */
+"vfl-J2-BY0.text" = "15:00";
+
+/* Class = "UILabel"; text = "Setember 23, Tuesday"; ObjectID = "vij-4k-5f4"; */
+"vij-4k-5f4.text" = "Terça, 23 de Setembro";

@@ -58,19 +58,19 @@ class CalendarioViewController: UIViewController {
         didSet{
             switch (auxDiaSemanaNum){
             case 1:
-                auxDiaSemana = "Domingo"
+                auxDiaSemana = "Sunday"
             case 2:
-                auxDiaSemana = "Segunda"
+                auxDiaSemana = "Monday"
             case 3:
-                auxDiaSemana = "Terça"
+                auxDiaSemana = "Tuesday"
             case 4:
-                auxDiaSemana = "Quarta"
+                auxDiaSemana = "Wednesday"
             case 5:
-                auxDiaSemana = "Quinta"
+                auxDiaSemana = "Thursday"
             case 6:
-                auxDiaSemana = "Sexta"
+                auxDiaSemana = "Friday"
             default:
-                auxDiaSemana = "Sábado"
+                auxDiaSemana = "Sunday"
             }
         }
     }
@@ -82,29 +82,29 @@ class CalendarioViewController: UIViewController {
         didSet{
             switch(auxMesNum){
             case 1:
-                auxMes = "Janeiro"
+                auxMes = "January"
             case 2:
-                auxMes = "Fevereiro"
+                auxMes = "February"
             case 3:
-                auxMes = "Março"
+                auxMes = "March"
             case 4:
-                auxMes = "Abril"
+                auxMes = "April"
             case 5:
-                auxMes = "Maio"
+                auxMes = "May"
             case 6:
-                auxMes = "Junho"
+                auxMes = "June"
             case 7:
-                auxMes = "Julho"
+                auxMes = "July"
             case 8:
-                auxMes = "Agosto"
+                auxMes = "August"
             case 9:
-                auxMes = "Setembro"
+                auxMes = "September"
             case 10:
-                auxMes = "Outubro"
+                auxMes = "October"
             case 11:
-                auxMes = "Novembro"
+                auxMes = "November"
             default:
-                auxMes = "Dezembro"
+                auxMes = "December"
             }
         }
     }
@@ -121,7 +121,7 @@ class CalendarioViewController: UIViewController {
             auxDiaSemanaNum = Calendar.current.component(.weekday, from: DiaSelecionado!)
             auxDia = Calendar.current.component(.day, from: DiaSelecionado!)
             auxMesNum = Calendar.current.component(.month, from: DiaSelecionado!)
-            diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
+            diaDeHoje.text = "\(auxDia!) of \(auxMes!)"
             
             
             let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
@@ -166,14 +166,14 @@ class CalendarioViewController: UIViewController {
         auxDia = Calendar.current.component(.day, from: calendar.today!)
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
         
-        calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
+     //   calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
         //calendar.appearance.eventDefaultColor
         
         
         
         
         
-        diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
+        diaDeHoje.text = "\(auxMes!) \(auxDia!)"
         
         fetchAll()
         //        Cloud.getPeople()
@@ -379,14 +379,14 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
                 switch(x.categoria){
                     
                     // enum apply
-                case "Saúde":
+                case "Health":
                     cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
                     
-                case "Lazer":
+                case "Recreation":
                     cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-                case "Dentista":
+                case "Dentist":
                     cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-                case "Farmácia":
+                case "Pharmacy":
                     cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
                     corOutro = cor
                 default:
@@ -473,13 +473,13 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     func defineColor(_ categoria: String) -> UIColor{
         var cor = UIColor()
         switch(categoria){
-        case "Saúde":
+        case "Health":
             cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-        case "Lazer":
+        case "Recreation":
             cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-        case "Dentista":
+        case "Dentist":
             cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-        case "Farmácia":
+        case "Pharmacy":
             cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
             cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)

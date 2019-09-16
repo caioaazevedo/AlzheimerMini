@@ -1,0 +1,62 @@
+/* 
+  Localizable.strings
+  AlzheimerProject
+
+  Created by Guilherme Martins Dalosto de Oliveira on 16/09/19.
+  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
+*/
+"Today"
+"Previously"
+
+
+// DETAILVIEWCONTROLLER
+"Health"
+"Recreation"
+"Dentist"
+"Pharmacy"
+
+
+"Time"
+"Responsable"
+"Localization"
+"Notes"
+
+// TASKVIEWCONTROLLER
+"January"
+"February"
+"March"
+"April"
+"May"
+"June"
+"July"
+"August"
+"September"
+"October"
+"November"
+"December"
+    //          ALERTA
+    "Attention"
+    "FillAll"
+    "Done"
+
+"markEvent"
+
+
+// CALENDARIOVIEWCONTROLLER
+"Sunday"
+"Monday"
+"Tuesday"
+"Wednesday"
+"Thursday"
+"Friday"
+"Sunday"
+    //          ALERTA
+    "PassedDays"
+
+
+// GROUPTABLEVIEWCONTROLLER
+"LeaveGroup"
+"ConfirmLeave"
+"Yes"
+"ConfirmPart"
+

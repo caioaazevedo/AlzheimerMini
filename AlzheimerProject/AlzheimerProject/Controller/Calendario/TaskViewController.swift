@@ -203,7 +203,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     func createCategoryPicker(){
         viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Saúde","Lazer","Dentista","Farmácia","Alimentaçāo"]
+        viewPresent.array = ["Health","Recreation","Dentist","Pharmacy","Food"]
         viewPresent.arrayImage.append(bolaAzul!)
         viewPresent.arrayImage.append(bolaRoxa!)
         viewPresent.arrayImage.append(bolaRosa!)
@@ -307,29 +307,29 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         didSet{
             switch(auxMesNum){
             case 1:
-                auxMes = "Janeiro"
+                auxMes = "January"
             case 2:
-                auxMes = "Fevereiro"
+                auxMes = "February"
             case 3:
-                auxMes = "Março"
+                auxMes = "March"
             case 4:
-                auxMes = "Abril"
+                auxMes = "April"
             case 5:
-                auxMes = "Maio"
+                auxMes = "May"
             case 6:
-                auxMes = "Junho"
+                auxMes = "June"
             case 7:
-                auxMes = "Julho"
+                auxMes = "July"
             case 8:
-                auxMes = "Agosto"
+                auxMes = "August"
             case 9:
-                auxMes = "Setembro"
+                auxMes = "September"
             case 10:
-                auxMes = "Outubro"
+                auxMes = "October"
             case 11:
-                auxMes = "Novembro"
+                auxMes = "November"
             default:
-                auxMes = "Dezembro"
+                auxMes = "December"
             }
         }
     }
@@ -338,8 +338,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
         if tableController.hora.text == "" || tituloTextField.text == ""  {
-            let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha todos os campos.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
+            let alert = UIAlertController(title: "Attention", message: "Fill all fields in order to complete.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
         }
             
@@ -357,7 +357,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 print(tempo)
                 let diaD = Calendar.current.component(.day, from: dia)
                  auxMesNum = Calendar.current.component(.month, from: dia)
-                let notification = "Um evento foi marcado para as \(hora) do dia \(diaD) de \(auxMes)"
+                let notification = "An event has been marked \(hora) of day \(diaD) of \(auxMes)"
                 userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
                 
             }

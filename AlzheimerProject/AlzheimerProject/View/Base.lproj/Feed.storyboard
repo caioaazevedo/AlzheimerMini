@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Grupo dos Congiu-->
+        <!--Remember Me-->
         <scene sceneID="XmR-bR-GSU">
             <objects>
                 <viewController id="tJk-sW-KAf" customClass="ViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ATIVIDADES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-vL-PtF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-vL-PtF">
                                 <rect key="frame" x="36" y="114" width="83" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" red="0.4392099679" green="0.43921270969999998" blue="0.43921983240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -35,8 +35,8 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ON6-st-0EH">
                                 <rect key="frame" x="36" y="146" width="342" height="29"/>
                                 <segments>
-                                    <segment title="Todas"/>
-                                    <segment title="Minhas"/>
+                                    <segment title="All"/>
+                                    <segment title="Mine"/>
                                 </segments>
                                 <color key="tintColor" red="0.90389251709999996" green="0.57948696609999995" blue="0.2391099334" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </segmentedControl>
@@ -124,7 +124,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zer-mj-rzr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Grupo dos Congiu" id="2XS-YM-dew"/>
+                    <navigationItem key="navigationItem" title="Remember Me" id="2XS-YM-dew"/>
                     <connections>
                         <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
                         <outlet property="segment" destination="ON6-st-0EH" id="yGj-ta-JOt"/>

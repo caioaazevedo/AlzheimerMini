@@ -174,9 +174,9 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
         let sectionName: String
         switch section {
         case 0:
-            sectionName = NSLocalizedString("Hoje", comment: "")
+            sectionName = NSLocalizedString("Today", comment: "")
         case 1:
-            sectionName = NSLocalizedString("Anteriores", comment: "")
+            sectionName = NSLocalizedString("Past", comment: "")
         // ...
         default:
             sectionName = ""
