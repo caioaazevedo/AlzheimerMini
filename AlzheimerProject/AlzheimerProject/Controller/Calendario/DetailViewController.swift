@@ -129,12 +129,13 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
             default:
                 image = iconesArray[3]
                 tipo = "Notas"
-                detalhe = event.desc ?? ""
+                detalhe = event.desc
         }
         
         cell.imagem.image = image
         cell.tipoDetalhe.text = tipo
         cell.labelDetail.text = detalhe
+        
         return cell
     }
     

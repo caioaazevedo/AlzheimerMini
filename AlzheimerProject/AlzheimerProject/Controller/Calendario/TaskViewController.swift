@@ -48,6 +48,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     let DatePicker = UIDatePicker()
     let ParentPicker = UIDatePicker()
     
+    var pessoasResponsaveis = [String]()
     
     var bolaAzul = UIImage(named: "bola azul")
     var bolaAmarela = UIImage(named: "bola amarela")
@@ -79,7 +80,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
 
         for user in usuarios {
 
-            for i in 0...ckData.count {
+            for i in 0...ckData.count - 1 {
                 if ckData[i].0 == user {
                     // ID
                     pessoasIds.append(ckData[i].0)
@@ -338,6 +339,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
             else{
                 let df = DateFormatter()
                 df.dateFormat = "hh:mm"
+                
                 let data = df.string(from: DatePicker.date)
                 let date = df.date(from: data)
                 
@@ -366,6 +368,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
 }
 
 extension TaskViewController : UITableViewDelegate{
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -476,6 +479,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
                 
             }else{
                 cell.accessoryType = .checkmark
+            //    pessoasResponsaveis.append(pessoas[indexPath.row])
                 //pessoas[indexPath.row].selecionado = true
                 //  array[indexPath.row] = pessoas[indexPath.row].id!
             }
