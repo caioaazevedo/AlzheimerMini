@@ -60,12 +60,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        Cloud.getPeople {
-//            DispatchQueue.main.async {
-//                self.getIds()
-//            }
-//        }
-//
         tituloTextField.setBottomBorder()
         
         tableController.tableView.delegate = self
@@ -333,6 +327,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate {
     func sendInfo(_ controller: NotasViewController, texto: String) {
         auxNotas = texto
     }
+    
+
     
     
     

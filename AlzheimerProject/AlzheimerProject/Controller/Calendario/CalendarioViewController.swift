@@ -365,7 +365,7 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
             if dia == dia2{
                 switch(x.categoria){
                     
-                    
+                    // enum apply
                 case "Saúde":
                     cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
                     
