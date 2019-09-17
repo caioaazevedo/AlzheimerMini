@@ -44,4 +44,8 @@
 "Yes" = "Yes";
 "ConfirmPart" = "ConfirmPart";
 "None" = "None";
-
+"Code doesn't exists" = "Code doesn't exists";
+"AlertCodeMenssage" = "The code that you try to search doesn't exists.";
+"Continue" = "Continue";
+"TextFieldLocal" = "Address";
+"TextFieldTitle" = "Title";
