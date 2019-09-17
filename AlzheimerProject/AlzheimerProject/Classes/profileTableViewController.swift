@@ -36,18 +36,16 @@ class profileTableViewController: UITableViewController {
         
         setUpDynamicFonts()
 //        fixDynamicTypeForStaticTableViews()
-        
-
    
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        if switchBtn.isOn{
-            Cloud.setupCloudKitNotifications()
-        } else {
-            Cloud.deleteCloudSubs()
-        }
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        if switchBtn.isOn{
+//            Cloud.setupCloudKitNotifications()
+//        } else {
+//            Cloud.deleteCloudSubs()
+//        }
+//    }
     
     func arredondaIcones(){
         
@@ -68,6 +66,13 @@ class profileTableViewController: UITableViewController {
         
         
         
+    }
+    @IBAction func tuenNot(_ sender: Any) {
+        if switchBtn.isOn{
+            Cloud.setupCloudKitNotifications()
+        } else {
+            Cloud.deleteCloudSubs()
+        }
     }
     
 //    func fixDynamicTypeForStaticTableViews() {
