@@ -102,21 +102,24 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Leave Group", message: "Are you sure you want to leave the group?", preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
             
-            for i in 0...usuarios.count-1 {
-                if usuarios[i] == UserLoaded().idUser{
-                    Cloud.deleteTable(searchRecord: usuarios[i], searchKey: "idUsuario", searchTable: "Usuario")
-                    
-                    usuarios.remove(at: i)
-                    
-                    CoreDataRebased.shared.updateSala(idUsuarios: usuarios)
-                    print("Familia: \(self.sala.nomeFamilia!) - Sala: \(self.sala.id!) - \(usuarios) - Calendario: \(self.sala.idCalendario!) - Perfil: \(self.sala.idPerfil!) - \(self.sala.idHost!)")
-                    
-                    Cloud.updateSala(nomeFamilia: self.sala.nomeFamilia!, searchRecord: self.sala.id!, idSala: self.sala.id!, idUsuario: usuarios, idCalendario: self.sala.idCalendario!, idPerfil: self.sala.idPerfil!, idHost: self.sala.idHost!)
-                    
-                }
-            }
+            /*
+             1. Procurar no cloud a sala da pessoa, gravar o vetor de usuarios em um [String] ✅
+             2. Procurar nesse vetor e remover o id do usuario ✅
+             3. Salvar no atualizar o vetor de usuarios do cloud
+             4. deletar o coreData.
+             5. voltar para a tela inicial
+             */
+            
+            Cloud.getIdUsuariosSala(completion: { (kk) in
+                
+                CoreDataRebased.shared.deleteAll()
+                
+                
+            })
+            
+            
+            
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))

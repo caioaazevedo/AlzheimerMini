@@ -93,6 +93,7 @@ class DetailViewController: UIViewController {
     let userLoad = UserLoaded()
     
     @IBAction func deleteTask(_ sender: UIButton) {
+        
         Cloud.cloudDeleteEvento(eventoId: event.ID)
       
         

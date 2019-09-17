@@ -76,6 +76,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         print(pessoas)
     }
     
+    
     func getIds(){
         let sala = CoreDataRebased.shared.fetchSala()
 
@@ -113,6 +114,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        Cloud.setupCloudKitNotifications()
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
@@ -362,7 +365,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 let data = df.string(from: DatePicker.date)
                 let date = df.date(from: data)
                 
-                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "", nomeCriador: UserLoaded().getUserName() )
             }
             
             _ = navigationController?.popViewController(animated: true)

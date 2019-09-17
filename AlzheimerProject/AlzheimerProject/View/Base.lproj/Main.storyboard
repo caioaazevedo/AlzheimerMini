@@ -1448,6 +1448,7 @@
                         <outlet property="notificacoesLabel" destination="3w9-x9-sTX" id="cV9-sl-VPX"/>
                         <outlet property="notificationImage" destination="rnp-1K-mo5" id="MY3-HE-6oh"/>
                         <outlet property="profileImage" destination="Yo6-qM-SQf" id="IHd-sl-ppa"/>
+                        <outlet property="switchBtn" destination="PiL-a7-To8" id="Npq-d9-TSI"/>
                         <segue destination="Zdr-Zw-8bs" kind="show" identifier="perfilIdoso" id="tTH-w1-Xug"/>
                         <segue destination="9lj-96-3Ns" kind="show" identifier="seguePerfil" id="Jk0-B4-Zby"/>
                         <segue destination="LZw-2D-dyq" kind="show" identifier="familia" id="fBT-GB-li3"/>
@@ -1486,8 +1487,8 @@
         <image name="ADDTag" width="23" height="15.5"/>
         <image name="Configuracoes" width="36" height="36"/>
         <image name="Edmondo" width="180" height="180"/>
-        <image name="Hora" width="23" height="22.5"/>
-        <image name="Local" width="22" height="22.5"/>
+        <image name="Hora" width="16" height="15"/>
+        <image name="Local" width="15" height="15"/>
         <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
         <image name="Profile" width="180" height="180"/>
         <image name="Responsável" width="24" height="22"/>
@@ -1502,7 +1503,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="neo-df-jYC"/>
-        <segue reference="lcM-NS-UxG"/>
+        <segue reference="WWb-rA-i4h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.9193179011" green="0.73382925990000003" blue="0.25081995130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

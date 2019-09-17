@@ -57,7 +57,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?, nomeCriador: String) {
         
         let record = CKRecord(recordType: "Evento")
         
@@ -71,6 +71,7 @@ class Cloud {
         record.setValue(idUsuario, forKeyPath: "idUsuario")
         record.setValue(idCalendario, forKeyPath: "idCalendario")
         record.setValue(localizacao, forKey: "localizacao")
+        record.setValue(nomeCriador, forKey: "nomeCriador")
         
         saveRequest(record: record)
     }
@@ -888,6 +889,67 @@ class Cloud {
 //
 //
 //    }
+    
+    
+    static func getIdUsuariosSala(completion: @escaping (_ result: Bool) -> ()){
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Sala", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        let query2 = CKQuery(recordType: "Usuario", predicate: predicate)
+        let queryOp2 = CKQueryOperation(query: query2)
+        let userLoad = UserLoaded()
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            var i = 0
+            if record["idSala"] == userLoad.idSala{
+                var arrayPeople = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
+                for per in arrayPeople{
+                    if per == userLoad.idUser{
+                        arrayPeople.remove(at: i)
+                    }
+                    i += 1
+                }
+                record["idUsuarios"] = arrayPeople
+                
+                
+                
+                
+                publicDataBase.save(record) { (record, error) in
+                    
+                    if error != nil {
+                        print("Error: ", error!)
+                    } else {
+                        print("Success!")
+                    }
+                    
+                }
+                
+                
+                completion(true)
+            }
+            
+            
+        }
+        queryOp2.recordFetchedBlock = { (record) -> Void in
+            
+            if record["idUsuario"] == userLoad.idUser{
+                
+                let delete = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [record.recordID])
+                publicDataBase.add(delete)
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+                
+            }
+        }
+        
+        publicDataBase.add(queryOp)
+        publicDataBase.add(queryOp2)
+        
+        
+    }
     
     
     

@@ -1,5 +1,5 @@
 //
-//  Evento+CoreDataClass.swift
+//  ImagensEId+CoreDataClass.swift
 //  AlzheimerProject
 //
 //  Created by Pedro Paulo Feitosa Rodrigues Carneiro on 16/09/19.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Evento)
-public class Evento: NSManagedObject {
+@objc(ImagensEId)
+public class ImagensEId: NSManagedObject {
 
 }

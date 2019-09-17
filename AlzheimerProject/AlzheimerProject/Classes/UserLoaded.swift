@@ -17,12 +17,14 @@ class UserLoaded {
     var idSalaCalendar : String?
     var idSalaProfile : String?
     var idUser = ""
+    var nomeUser : String?
     init() {
         
         idUser = recuperarId()
         idSala = getSalaID()
         idSalaCalendar = getCalendarID()
         idSalaProfile = getProfileID()
+        nomeUser = getUserName()
         
         print("ID USUARIO -> \(idUser)")
         print("ID SALA -> \(idSala)")
@@ -79,6 +81,25 @@ class UserLoaded {
         }
         
         return id
+        
+    }
+    func getUserName() -> String{
+        
+        var nome = ""
+        let userFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        
+        do {
+            let usuarios = try managedObjectContext.fetch(userFetchRequest)
+            for user in usuarios{
+                if idUser == user.id{
+                    nome = user.nome!
+                }
+            }
+        } catch {
+            print("Error")
+        }
+        
+        return nome
         
     }
     func getProfileID() -> String{
