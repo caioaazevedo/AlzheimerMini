@@ -392,6 +392,8 @@ class CoreDataRebased{
     //✅ - Criar Evento 🍁
     func createEvent(categoria: String, descricao: String?, dia: Date, horario: Date, responsaveis: [String], nome: String, localizacao: String?, nomeCriador: String){
         
+
+        
         let userLoad = UserLoaded()
         
         let event = Evento(context: managedObjectContext)
@@ -406,6 +408,7 @@ class CoreDataRebased{
         event.idCalendario = userLoad.idSalaCalendar
         event.localizacao = localizacao
         event.nomeCriador = nomeCriador
+        event.dataCriacao = Date() as NSDate
         var eventArray = [String]()
         
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -431,7 +434,7 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador)
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador, dataCriacao: event.dataCriacao as! Date)
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         
@@ -681,9 +684,9 @@ class CoreDataRebased{
                     for e in eventos{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
-                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem")
+                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date)
                         myFeed.append(z)
-                    }
+                    } //17FBCDF6-BA84-46E0-B70E-32A7E1D8743E
                 } catch{
                 }
             }
@@ -701,7 +704,7 @@ class CoreDataRebased{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
                         if e.idResponsavel == UserLoaded().idUser{
-                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem")
+                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date)
                             myFeed.append(z)
                         }
                     }
@@ -775,6 +778,7 @@ struct feedPerson{
     var dataEvento : String
     var fotoCriador: UIImage?
     var idCriador: String
+    var dataCriada: Date
 }
 
 /*

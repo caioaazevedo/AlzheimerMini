@@ -90,7 +90,7 @@ class ViewController: UIViewController {
             self.myPeople.reverse()
             for i in self.myPeople{
                 let d = "dd-MM-yyy"
-                if i.dataEvento == formate.string(from: Date()){
+                if formate.string(from: i.dataCriada) == formate.string(from: Date()){
                     self.contador += 1
                 } else {
                     self.contador2 += 1
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
     @objc func refreshTable(refreshControl: UIRefreshControl){
         //Adicionar aqui o fetch do cloud para o coreData
         
-//        Cloud.getPeople {
+        Cloud.getPeople {
             DispatchQueue.main.async {
                 CoreDataRebased.shared.recuperarDadosEventos(completion: { (myVector) in
                     self.contador = 0
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
                     self.myPeople.reverse()
                     for i in self.myPeople{
                         let d = "dd-MM-yyy"
-                        if i.dataEvento == formate.string(from: Date()){
+                        if formate.string(from: i.dataCriada) == formate.string(from: Date()){
                             self.contador += 1
                         } else {
                             self.contador2 += 1
@@ -132,10 +132,10 @@ class ViewController: UIViewController {
                     self.tableView.reloadData()
                     refreshControl.endRefreshing()
                 }, indici: self.segmentedControl.selectedSegmentIndex)
-                
-                
+
+
             }
-//        }
+        }
     }
     
     
@@ -209,7 +209,7 @@ class ViewController: UIViewController {
                 self.myPeople.reverse()
                 
                 for i in self.myPeople{
-                    if i.dataEvento == formate.string(from: Date()){
+                    if formate.string(from: i.dataCriada) == formate.string(from: Date()){
                         self.contador += 1
                     } else {
                         self.contador2 += 1
@@ -257,12 +257,12 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
             let formate = DateFormatter()
             formate.dateFormat = "dd-MM-yyyy"
             
+            print("indexpath", indexPath.row)
             
-            if formate.string(from: Date()) == myPeople[indexPath.row].dataEvento{
+             if formate.string(from: Date()) == formate.string(from: myPeople[indexPath.row].dataCriada){
                 switch segmentedControl.selectedSegmentIndex {
                 case 1:
                     print("1")
-                    
                     if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
                         cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
                         cell.bgVview.clipsToBounds = true
@@ -282,8 +282,8 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
             let formate = DateFormatter()
             formate.dateFormat = "dd-MM-yyyy"
-            
-            if formate.string(from: Date()) != myPeople[indexPath.row].dataEvento{
+            print("indexpath", indexPath.row)
+            if formate.string(from: Date()) != formate.string(from: myPeople[indexPath.row].dataCriada){
             
             switch segmentedControl.selectedSegmentIndex {
             case 1:
@@ -291,7 +291,6 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 
                 if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
                     cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
-                    
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
                     
