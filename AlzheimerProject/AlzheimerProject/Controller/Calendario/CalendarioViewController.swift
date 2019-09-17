@@ -58,19 +58,19 @@ class CalendarioViewController: UIViewController {
         didSet{
             switch (auxDiaSemanaNum){
             case 1:
-                auxDiaSemana = "Sunday"
+                auxDiaSemana = NSLocalizedString("Sunday", comment: "")
             case 2:
-                auxDiaSemana = "Monday"
+                auxDiaSemana = NSLocalizedString("Monday", comment: "")
             case 3:
-                auxDiaSemana = "Tuesday"
+                auxDiaSemana = NSLocalizedString("Tuesday", comment: "")
             case 4:
-                auxDiaSemana = "Wednesday"
+                auxDiaSemana = NSLocalizedString("Wednesday", comment: "")
             case 5:
-                auxDiaSemana = "Thursday"
+                auxDiaSemana = NSLocalizedString("Thursday", comment: "")
             case 6:
-                auxDiaSemana = "Friday"
+                auxDiaSemana = NSLocalizedString("Friday", comment: "")
             default:
-                auxDiaSemana = "Sunday"
+                auxDiaSemana = NSLocalizedString("Saturday", comment: "")
             }
         }
     }
@@ -82,29 +82,29 @@ class CalendarioViewController: UIViewController {
         didSet{
             switch(auxMesNum){
             case 1:
-                auxMes = "January"
+                auxMes = NSLocalizedString("January", comment: "")
             case 2:
-                auxMes = "February"
+                auxMes = NSLocalizedString("February", comment: "")
             case 3:
-                auxMes = "March"
+                auxMes = NSLocalizedString("March", comment: "")
             case 4:
-                auxMes = "April"
+                auxMes = NSLocalizedString("April", comment: "")
             case 5:
-                auxMes = "May"
+                auxMes = NSLocalizedString("May", comment: "")
             case 6:
-                auxMes = "June"
+                auxMes = NSLocalizedString("June", comment: "")
             case 7:
-                auxMes = "July"
+                auxMes = NSLocalizedString("July", comment: "")
             case 8:
-                auxMes = "August"
+                auxMes = NSLocalizedString("August", comment: "")
             case 9:
-                auxMes = "September"
+                auxMes = NSLocalizedString("September", comment: "")
             case 10:
-                auxMes = "October"
+                auxMes = NSLocalizedString("October", comment: "")
             case 11:
-                auxMes = "November"
+                auxMes = NSLocalizedString("November", comment: "")
             default:
-                auxMes = "December"
+                auxMes = NSLocalizedString("December", comment: "")
             }
         }
     }
@@ -134,12 +134,16 @@ class CalendarioViewController: UIViewController {
                     let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
                     let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
                     if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
-                        let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
-                        let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
+
+                        let df = DateFormatter()
+                        df.dateFormat = "hh:mm"
+                        let data = df.string(from: evento.horario! as Date)
+                        
+                        
                         if evento.idUsuarios != nil{
                          responsaveis = (evento.idUsuarios as! NSArray).mutableCopy() as! [String]
                         }
-                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: responsaveis ?? [""], localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
+                        let evento = Events(titleParameter: evento.nome!, timeParameter: data, descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: responsaveis ?? [""], localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
                         
                         DailyEvents.append(evento)
                         
@@ -241,8 +245,8 @@ class CalendarioViewController: UIViewController {
     @IBAction func createTask(_ sender: Any) {
         
         if let today = calendar.today, DiaSelecionado ?? today < today {
-            let alert = UIAlertController(title: "Atenção", message: "Não é possível adicionar tarefas a dias passados", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Attention", comment: ""), message: NSLocalizedString("PassedDays", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Done", comment: ""), style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
             
             // Deixar opcao escondida
@@ -379,14 +383,14 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
                 switch(x.categoria){
                     
                     // enum apply
-                case "Health":
+                case NSLocalizedString("Health",comment: ""):
                     cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
                     
-                case "Recreation":
+                case NSLocalizedString("Recreation" , comment: ""):
                     cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-                case "Dentist":
+                case NSLocalizedString("Dentist" , comment: ""):
                     cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-                case "Pharmacy":
+                case NSLocalizedString("Pharmacy" , comment: ""):
                     cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
                     corOutro = cor
                 default:
@@ -473,13 +477,13 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     func defineColor(_ categoria: String) -> UIColor{
         var cor = UIColor()
         switch(categoria){
-        case "Health":
+        case NSLocalizedString("Health",comment: ""):
             cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-        case "Recreation":
+        case NSLocalizedString("Recreation",comment: ""):
             cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-        case "Dentist":
+        case NSLocalizedString("Dentist",comment: ""):
             cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-        case "Pharmacy":
+        case NSLocalizedString("Pharmacy",comment: ""):
             cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
             cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
@@ -490,6 +494,8 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.separatorStyle = .none
+        
         return DailyEvents.count;
     }
     
@@ -515,7 +521,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         
         
         cell.backgroundColor = defineColor(categoria)
-
+      
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
         
@@ -536,6 +542,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
         eventoSelecionado = DailyEvents[indexPath.row]
         eventoDetail = DailyEvents[indexPath.row]
         performSegue(withIdentifier: "segueDetail", sender: self)

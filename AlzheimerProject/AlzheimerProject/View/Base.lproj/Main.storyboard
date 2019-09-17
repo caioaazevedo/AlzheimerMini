@@ -39,11 +39,11 @@
                                 <rect key="frame" x="20" y="563" width="374" height="212"/>
                                 <color key="backgroundColor" red="0.94891661405563354" green="0.94907897710800171" blue="0.94890636205673218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCalendar" rowHeight="175" id="CHU-Pm-FSc" customClass="CellCalendar" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="175"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCalendar" rowHeight="179" id="CHU-Pm-FSc" customClass="CellCalendar" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CHU-Pm-FSc" id="gsN-IK-7fg">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="174.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="178.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Responsavel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7B-KN-ntq">
@@ -87,7 +87,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Gi-sh-oeU">
-                                                    <rect key="frame" x="0.0" y="143" width="374" height="36"/>
+                                                    <rect key="frame" x="-6" y="132" width="387" height="55"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94902592897415161" green="0.9490082859992981" blue="0.94902020692825317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
@@ -158,7 +158,7 @@
                                         <color key="value" red="0.66667121648788452" green="0.66665846109390259" blue="0.66666716337203979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" red="0.94902592900000005" green="0.94900828599999998" blue="0.9490202069" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsBoundingRectWhenChangingMonths" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
@@ -664,7 +664,7 @@
         <scene sceneID="Spt-8i-zum">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VZF-ZP-w2Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="Notificacoe nao selecionado" id="g9E-qM-3hP"/>
+                    <tabBarItem key="tabBarItem" image="Notifcacoes selecionado" id="g9E-qM-3hP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EaP-8P-aSQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1469,9 +1469,9 @@
         <image name="ADDTag" width="23" height="15.5"/>
         <image name="Configuracoes" width="36" height="36"/>
         <image name="Edmondo" width="180" height="180"/>
-        <image name="Hora" width="23" height="22.5"/>
+        <image name="Hora" width="16" height="15"/>
         <image name="Local" width="15" height="15"/>
-        <image name="Notificacoe nao selecionado" width="23" height="21.5"/>
+        <image name="Notifcacoes selecionado" width="30" height="29"/>
         <image name="Profile" width="180" height="180"/>
         <image name="Responsável" width="24" height="22"/>
         <image name="Share" width="16" height="24"/>

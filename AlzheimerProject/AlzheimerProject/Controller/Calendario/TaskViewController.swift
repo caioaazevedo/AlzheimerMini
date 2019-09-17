@@ -203,7 +203,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     func createCategoryPicker(){
         viewPresent.array.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
-        viewPresent.array = ["Health","Recreation","Dentist","Pharmacy","Food"]
+        viewPresent.array = [NSLocalizedString("Health", comment: ""),NSLocalizedString("Recreation", comment: ""),NSLocalizedString("Dentist", comment: ""),NSLocalizedString("Pharmacy", comment: ""),NSLocalizedString("Food", comment: "")]
         viewPresent.arrayImage.append(bolaAzul!)
         viewPresent.arrayImage.append(bolaRoxa!)
         viewPresent.arrayImage.append(bolaRosa!)
@@ -307,29 +307,29 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         didSet{
             switch(auxMesNum){
             case 1:
-                auxMes = "January"
+                auxMes = NSLocalizedString("January", comment: "")
             case 2:
-                auxMes = "February"
+                auxMes = NSLocalizedString("February", comment: "")
             case 3:
-                auxMes = "March"
+                auxMes = NSLocalizedString("March", comment: "")
             case 4:
-                auxMes = "April"
+                auxMes = NSLocalizedString("April", comment: "")
             case 5:
-                auxMes = "May"
+                auxMes = NSLocalizedString("May", comment: "")
             case 6:
-                auxMes = "June"
+                auxMes = NSLocalizedString("June", comment: "")
             case 7:
-                auxMes = "July"
+                auxMes = NSLocalizedString("July", comment: "")
             case 8:
-                auxMes = "August"
+                auxMes = NSLocalizedString("August", comment: "")
             case 9:
-                auxMes = "September"
+                auxMes = NSLocalizedString("September", comment: "")
             case 10:
-                auxMes = "October"
+                auxMes = NSLocalizedString("October", comment: "")
             case 11:
-                auxMes = "November"
+                auxMes = NSLocalizedString("November", comment: "")
             default:
-                auxMes = "December"
+                auxMes = NSLocalizedString("December", comment: "")
             }
         }
     }
@@ -338,8 +338,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
         if tableController.hora.text == "" || tituloTextField.text == ""  {
-            let alert = UIAlertController(title: "Attention", message: "Fill all fields in order to complete.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Attention", comment: ""), message: NSLocalizedString("FillAll", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Done", comment: ""), style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
         }
             
@@ -357,11 +357,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 print(tempo)
                 let diaD = Calendar.current.component(.day, from: dia)
                  auxMesNum = Calendar.current.component(.month, from: dia)
+                // FAZER INTERNATIONALIZATION AQUI
                 let notification = "An event has been marked \(hora) of day \(diaD) of \(auxMes)"
                 userNotification.notificationTask(titulo, hora, notification,tempo: tempo)
                 
             }
-            responsaveis.append(responsavel)
+            
             
             fetchData()
             
@@ -372,8 +373,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             
             if willEditing{
                 
-                
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
+//                
+//                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
             }
             else{
                 let df = DateFormatter()
@@ -417,21 +418,15 @@ extension TaskViewController : UITableViewDelegate{
         self.viewPresent.removeFromSuperview()
         switch indexPath.row {
         case 0:
-            print("Categoria")
-            //flexible button
             createCategoryPicker()
-            
         case 1:
-            print("Hora")
             createDatePicker()
         case 2:
-            print("Responsavel")
             createParentPicker()
             
         case 3:
             print("Lembrete")
         case 4:
-            print("Descricao")
             performSegue(withIdentifier: "segueNotas", sender: self)
         default:
             view.endEditing(true)

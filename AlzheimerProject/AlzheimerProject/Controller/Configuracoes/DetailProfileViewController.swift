@@ -123,12 +123,12 @@ class DetailProfileViewController: UIViewController {
         
         if (editPressed){
             changeAll(editPressed)
-            editOutlet.title = "Done"
+            editOutlet.title = NSLocalizedString("Done" , comment: "")
             
         } else{
             changeAll(editPressed)
             cdr.updateProfile(alergias: [alergias.text!] , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: [medicacoes.text!], telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
-            editOutlet.title = "Edit"
+            editOutlet.title = NSLocalizedString("Edit" , comment: "")
         }
         
         

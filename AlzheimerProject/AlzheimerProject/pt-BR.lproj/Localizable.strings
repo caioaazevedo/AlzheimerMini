@@ -1,7 +1,46 @@
-/* 
-  Localizable.strings
-  AlzheimerProject
-
-  Created by Guilherme Martins Dalosto de Oliveira on 16/09/19.
-  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
-*/
+/*
+ Localizable.strings
+ AlzheimerProject
+ 
+ Created by Guilherme Martins Dalosto de Oliveira on 16/09/19.
+ Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
+ */
+"Today" = "Hoje";
+"Previously" = "Anteriormente";
+"Health" = "Saúde";
+"Recreation" = "Lazer";
+"Dentist" = "Dentista";
+"Pharmacy" = "Farmácia";
+"Time" = "Horário";
+"Responsable" = "Responsável";
+"Localization" = "Localizaçāo";
+"Notes" = "Notas";
+"January" = "Janeiro";
+"February" = "Fevereiro";
+"March" = "Março";
+"April" = "Abril";
+"May" = "Maio";
+"June" = "Junho";
+"July" = "Julho";
+"August" = "Agosto";
+"September" = "Setembro";
+"October" = "Outubro";
+"November" = "Novembro";
+"December" = "Dezembro";
+"Attention" = "Atenção";
+"FillAll" = "Por favor, preencha todos os campos necessários";
+"Done" = "Pronto";
+"markEvent" = "Marcar Evento";
+"Sunday" = "Domingo";
+"Monday" = "Segunda";
+"Tuesday" = "Terça";
+"Wednesday" = "Quarta";
+"Thursday" = "Quinta";
+"Friday" = "Sexta";
+"Saturday" = "Sábado";
+"PassedDays" = "Nāo é possível adicionar evento a dias passados";
+"LeaveGroup" = "Sair do Grupo";
+"ConfirmLeave" = "Você tem certeza que deseja sair do grupo?";
+"Yes" = "Sim";
+"ConfirmPart" = "ConfirmPart";
+"None" = "Ninguém"

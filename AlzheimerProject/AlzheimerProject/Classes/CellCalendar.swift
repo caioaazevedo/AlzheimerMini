@@ -16,7 +16,6 @@ class CellCalendar :  UITableViewCell {
     @IBOutlet weak var horario: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var responsavel: UILabel!
-    
   
     
 }

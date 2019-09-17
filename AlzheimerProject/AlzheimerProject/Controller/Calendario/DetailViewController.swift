@@ -11,7 +11,7 @@ import CircleBar
 
 class DetailViewController: UIViewController {
     
-    let iconesArray = [UIImage(named: "Hora"), UIImage(named: "Responsável"), UIImage(named: "Local") , UIImage(named: "Notas")]
+    let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
     var diaSemanaAux : String?
     var indexValue = 0
@@ -37,13 +37,13 @@ class DetailViewController: UIViewController {
     
     func defineColor(){
         switch(event.categ){
-        case "Health":
+        case NSLocalizedString("Health", comment: ""):
             blueView.backgroundColor = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-        case "Recreation":
+        case NSLocalizedString("Recreation", comment: ""):
             blueView.backgroundColor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-        case "Dentist":
+        case NSLocalizedString("Dentist", comment: ""):
             blueView.backgroundColor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-        case "Pharmacy":
+        case NSLocalizedString("Pharmacy", comment: ""):
             blueView.backgroundColor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
             blueView.backgroundColor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
@@ -58,6 +58,7 @@ class DetailViewController: UIViewController {
         if segue.identifier == "segueEdit"{
             if let vc = segue.destination as? TaskViewController {
                 vc.event = self.event
+                
                 vc.willEditing = true
             }
         }
@@ -115,20 +116,29 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         switch(indexPath.row){
             case 0:
                 image = iconesArray[0]
-                tipo = "Time"
+                tipo = NSLocalizedString("Time", comment: "")
                 detalhe = event.time
             
             case 1:
                 image = iconesArray[1]
-                tipo = "Responsable"
-                detalhe = "\(event.responsavel)"
+                tipo = NSLocalizedString("Responsable", comment: "")
+                var string: String?
+                for element in event.responsavel {
+                    if string == nil {
+                        string = element
+                    } else {
+                        string = string! + ", " + element
+                    }
+                }
+                
+                detalhe = string ?? NSLocalizedString("None", comment: "")
             case 2:
                 image = iconesArray[2]
-                tipo = "Localization"
+                tipo = NSLocalizedString("Localization",comment: "")
                 detalhe = event.localization
             default:
                 image = iconesArray[3]
-                tipo = "Notes"
+                tipo = NSLocalizedString("Notes",comment: "")
                 detalhe = event.desc
         }
         

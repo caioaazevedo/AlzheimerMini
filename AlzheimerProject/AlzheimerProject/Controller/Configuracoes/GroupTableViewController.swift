@@ -89,9 +89,9 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func exitGroup(_ sender: Any) {
-        let alert = UIAlertController(title: "Leave Group", message: "Are you sure you want to leave the group?", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: NSLocalizedString("LeaveGroup" , comment: ""), message: NSLocalizedString("ConfirmLeave" , comment: ""), preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes" , comment: ""), style: .default, handler: { action in
             var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
             
             for i in 0...usuarios.count-1 {
@@ -126,7 +126,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         let user = CoreDataRebased.shared.loadUserData()
 
         let url = URL(string: "login://" + "\(userload.idSala!)")
-
+        // FIX INTERPOLATION
         let text = "\(user.nome!) would like your participation in the family group. Access key: \(url!)."
 
         // set up activity view controller
