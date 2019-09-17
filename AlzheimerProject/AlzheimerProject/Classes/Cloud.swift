@@ -39,7 +39,6 @@ class Cloud {
         
         record.setValue(idUsuario, forKeyPath: "idUsuario")
         record.setValue(nome, forKeyPath: "nome")
-        print(foto)
         record.setValue(foto, forKeyPath: "foto")
         record.setValue(idSala, forKeyPath: "idSala")
         record.setValue(host, forKey: "isHost")
@@ -370,9 +369,7 @@ class Cloud {
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["nome", "foto", "idSala"]
         queryOp.queuePriority = .veryHigh
-        queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             

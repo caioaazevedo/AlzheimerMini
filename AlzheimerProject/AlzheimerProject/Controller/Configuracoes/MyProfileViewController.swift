@@ -14,13 +14,17 @@ class MyProfileViewController: UIViewController {
     var imagePicker : ImagePicker!
     
     @IBOutlet weak var imageProfile: UIImageView!
+    
     @IBOutlet weak var nomeText: UILabel!
+    
+    let user = CoreDataRebased.shared.fetchUsuario()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let user = CoreDataRebased.shared.fetchUsuario()
-        
         self.imageProfile.image = UIImage(data: user.fotoPerfil! as Data)
+        
+        self.imageProfile.layer.cornerRadius = self.imageProfile.frame.height/2
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         
@@ -50,11 +54,11 @@ class MyProfileViewController: UIViewController {
         }
         
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        cdr.updateUser(nome: nome.text ?? "", fotoPerfil: profilePhoto.image!)
-    }
     
-    @IBOutlet weak var profilePhoto: UIImageView!
+    override func viewWillDisappear(_ animated: Bool) {
+        cdr.updateUser(nome: nome.text ?? "", fotoPerfil: self.imageProfile.image!)
+        Cloud.updateUsuario(searchRecord: user.id!, nome: nome.text ?? "", foto: (self.imageProfile.image!).jpegData(compressionQuality: 0.2), idSala: user.idSala!)
+    }
     
     @IBAction func cameraButton(_ sender: UIButton) {
         self.imagePicker.present(from: sender as UIView)
@@ -63,9 +67,6 @@ class MyProfileViewController: UIViewController {
     
     @IBOutlet weak var nome: UITextField!
     
-    
-    
-    
 }
 
 extension MyProfileViewController: ImagePickerDelegate{
@@ -73,6 +74,6 @@ extension MyProfileViewController: ImagePickerDelegate{
     
     
     func didSelect(imagem: UIImage?){
-        self.profilePhoto.image = imagem
+        self.imageProfile.image = imagem
     }
 }
