@@ -10,8 +10,8 @@ import UIKit
 
 class CustomCellFeed: UITableViewCell {
     
-    @IBOutlet weak var view: UIView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var imageFoto: UIImageView!
+    @IBOutlet weak var bgVview: UIView!
     
 }

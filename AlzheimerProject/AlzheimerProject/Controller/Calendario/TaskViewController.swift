@@ -20,6 +20,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
     
+    var userLoad = UserLoaded()
+    
     var pessoas = [String]()
     var pessoasIds = [String]()
     var images = [UIImage]()
@@ -365,7 +367,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 let data = df.string(from: DatePicker.date)
                 let date = df.date(from: data)
                 
-                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "", nomeCriador: UserLoaded().getUserName() )
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "", nomeCriador: userLoad.nomeUser! )
             }
             
             _ = navigationController?.popViewController(animated: true)

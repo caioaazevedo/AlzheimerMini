@@ -180,6 +180,7 @@ class Cloud {
         
         publicDataBase.add(queryOp)
     }
+    
     static func queryArrayUsuarios(searchUsuarios: [String], completion: @escaping (_ result: Bool) -> ()) {
         var count = 0
         let predicate = NSPredicate(value: true)
@@ -212,7 +213,6 @@ class Cloud {
         }
         publicDataBase.add(queryOp)
     }
-    
     
     static func queryUsuario(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
         var found = false
@@ -364,8 +364,6 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    
-    
     static func updateUsuario(searchRecord: String, nome: String?, foto: Data?, idSala: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
@@ -423,7 +421,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updateEvento(searchRecord: String, idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String?, idCalendario: String) {
+    static func updateEvento(searchRecord: String, idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
         
@@ -551,6 +549,7 @@ class Cloud {
             
             if record["idCalendario"] == userLoad.idSalaCalendar{
                 let eventCreate = Evento(context: managedObjectContext)
+                eventCreate.nomeCriador = record["nomeCriador"]
                 eventCreate.id = record["idEvento"]
                 eventCreate.categoria = record["categoria"]
                 eventCreate.descricao = record["descricao"]
@@ -558,7 +557,7 @@ class Cloud {
                 eventCreate.horario = record["hora"] as? NSDate
                 eventCreate.idUsuarios = record["idUsuarios"] as? NSObject
                 eventCreate.idCalendario = record["idCalendario"]
-                eventCreate.idResponsavel = record["idCriador"]
+                eventCreate.idResponsavel = record["idUsuario"]
                 eventCreate.nome = record["nome"]
                 eventCreate.localizacao = record["localizacao"]
                 CoreDataRebased.shared.saveCoreData()

@@ -30,7 +30,7 @@ class UserLoaded {
         print("ID SALA -> \(idSala)")
         print("ID CALENDARIO -> \(idSalaCalendar)")
         print("ID PROFILE -> \(idSalaProfile)")
-        
+        print("NOME USUARIO -> \(nomeUser)")
     }
     
     func iCloudUserIDAsync(complete: @escaping (_ instance: CKRecord.ID?, _ error: NSError?) -> ()) {

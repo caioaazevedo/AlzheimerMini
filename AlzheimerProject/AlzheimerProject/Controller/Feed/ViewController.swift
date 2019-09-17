@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     let UserNotification = Notification()
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var feedView: UITableView!
+    @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     //    struct Evento: Hashable, Comparable {
@@ -80,6 +81,23 @@ class ViewController: UIViewController {
         //        CoreDataRebased.shared.createUsuario(email: "", fotoDoPerfil: UIImage(named: "Remedio"), Nome: "Gui")
         //        CoreDataRebased.shared.createSala()
         
+        CoreDataRebased.shared.recuperarDadosEventos(completion: { (myVector) in
+            self.contador = 0
+            self.contador2 = 0
+            let formate = DateFormatter()
+            formate.dateFormat = "dd-MM-yyyy"
+            self.myPeople = myVector
+            self.myPeople.reverse()
+            for i in self.myPeople{
+                let d = "dd-MM-yyy"
+                if i.dataEvento == formate.string(from: Date()){
+                    self.contador += 1
+                } else {
+                    self.contador2 += 1
+                }
+            }
+            self.tableView.reloadData()
+        }, indici: self.segmentedControl.selectedSegmentIndex)
         
         //Refresh
         let refreshControl = UIRefreshControl()
@@ -97,7 +115,20 @@ class ViewController: UIViewController {
 //        Cloud.getPeople {
             DispatchQueue.main.async {
                 CoreDataRebased.shared.recuperarDadosEventos(completion: { (myVector) in
+                    self.contador = 0
+                    self.contador2 = 0
+                    let formate = DateFormatter()
+                    formate.dateFormat = "dd-MM-yyyy"
                     self.myPeople = myVector
+                    self.myPeople.reverse()
+                    for i in self.myPeople{
+                        let d = "dd-MM-yyy"
+                        if i.dataEvento == formate.string(from: Date()){
+                            self.contador += 1
+                        } else {
+                            self.contador2 += 1
+                        }
+                    }
                     self.tableView.reloadData()
                     refreshControl.endRefreshing()
                 }, indici: self.segmentedControl.selectedSegmentIndex)
@@ -112,6 +143,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var navigationTitle: UINavigationItem!
     
     var pessoas = [Pessoas]()
+    var contador = 0
+    var contador2 = 0
     
     override func viewWillAppear(_ animated: Bool) {
 //        CoreDataRebased.shared.recuperarDadosEventos { (myVector) in
@@ -163,6 +196,33 @@ class ViewController: UIViewController {
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
     }
+
+
+    @IBAction func changeState(_ sender: Any) {
+        DispatchQueue.main.async {
+            CoreDataRebased.shared.recuperarDadosEventos(completion: { (myVector) in
+                self.contador = 0
+                self.contador2 = 0
+                let formate = DateFormatter()
+                formate.dateFormat = "dd-MM-yyyy"
+                self.myPeople = myVector
+                self.myPeople.reverse()
+                
+                for i in self.myPeople{
+                    if i.dataEvento == formate.string(from: Date()){
+                        self.contador += 1
+                    } else {
+                        self.contador2 += 1
+                    }
+                }
+                self.tableView.reloadData()
+            }, indici: self.segmentedControl.selectedSegmentIndex)
+        }
+        
+        
+    }
+    
+
 }
 
 extension ViewController : UITableViewDataSource , UITableViewDelegate {
@@ -170,111 +230,90 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myPeople.count
+        
+        if section == 0{
+             return contador
+        } else {
+            return contador2
+        }
+        
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
         
         
-        switch segmentedControl.selectedSegmentIndex {
-        case 1:
-            print("1")
-            if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
-                cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+        if indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed2", for: indexPath) as! CustomCellFeed
+            let formate = DateFormatter()
+            formate.dateFormat = "dd-MM-yyyy"
+            
+            
+            if formate.string(from: Date()) == myPeople[indexPath.row].dataEvento{
+                switch segmentedControl.selectedSegmentIndex {
+                case 1:
+                    print("1")
+                    
+                    if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
+                        cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                        cell.bgVview.clipsToBounds = true
+                        cell.bgVview.layer.cornerRadius = 15
+                        
+                    }
+                default:
+                    print("0")
+                    cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    cell.bgVview.clipsToBounds = true
+                    cell.bgVview.layer.cornerRadius = 15
+                }
             }
-        default:
-            print("0")
-            cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
+            let formate = DateFormatter()
+            formate.dateFormat = "dd-MM-yyyy"
+            
+            if formate.string(from: Date()) != myPeople[indexPath.row].dataEvento{
+            
+            switch segmentedControl.selectedSegmentIndex {
+            case 1:
+                print("1")
+                
+                if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
+                    cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    
+                    cell.bgVview.clipsToBounds = true
+                    cell.bgVview.layer.cornerRadius = 15
+                    
+                }
+            default:
+                print("0")
+                cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                cell.bgVview.clipsToBounds = true
+                cell.bgVview.layer.cornerRadius = 15
+            }
+            
+            }
+            return cell
         }
-        
-
-        
-        
-        
-        
-        return cell
     }
     
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Hoje"
+        } else {
+            return "Anteriormente"
+        }
+    }
     
-    
-    
-    //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    //
-    //        let sectionName: String
-    //        switch section {
-    //        case 0:
-    //            sectionName = NSLocalizedString("Hoje", comment: "")
-    //        case 1:
-    //            sectionName = NSLocalizedString("Anteriores", comment: "")
-    //        // ...
-    //        default:
-    //            sectionName = ""
-    //        }
-    //        return sectionName
-    //    }
-    //
-    //    func numberOfSections(in tableView: UITableView) -> Int {
-    //        return 1;
-    //        // return 2
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        var c = FSCalendar()
-    //
-    //        var countToday = 0
-    //        var countBefore = 0
-    //        var diaHoje = Calendar.current.component(.day, from: c.today!)
-    //        if eventosSalvos.count > 0{
-    //            if section == 0 {
-    //                for i in 0...eventosSalvos.count-1 {
-    //                    var diaAux = Calendar.current.component(.day, from: eventosSalvos[i].dia as! Date)
-    //                    if diaAux == diaHoje && eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar!{
-    //                        countToday += 1
-    //                    }
-    //                }
-    //                return countToday
-    //            } else {
-    //                for i in countToday...eventosSalvos.count-1 {
-    //                    if eventosSalvos[i].dia! == Date() as NSDate{
-    //                        countBefore += 1
-    //                    }
-    //                }
-    //                print("=-=-=-=-=-=->>>>>> \(countBefore)")
-    //                return countBefore
-    //            }
-    //        }
-    //        return 0
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
-    //
-    ////        print("=-===-=-=-> \(pessoas)")
-    //
-    //        cell.view.layer.cornerRadius = 10
-    //
-    //        if eventosSalvos.count > 0 {
-    //
-    //            for i in 0...eventosSalvos.count-1 {
-    //                if eventosSalvos[i].idCalendario == UserLoaded().idSalaCalendar! && ckData.count > 0{
-    //                    for j in 0...ckData.count-1 {
-    //                        if eventosSalvos[i].idResponsavel == ckData[j].0{
-    //                            cell.label.text = "\(eventosSalvos[i].idResponsavel!) - \(ckData[j].1)"
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //
-    //        return cell
-    //    }
-    //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }

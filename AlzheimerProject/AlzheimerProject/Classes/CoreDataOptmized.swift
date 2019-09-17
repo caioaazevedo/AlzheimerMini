@@ -431,7 +431,7 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: nil, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador)
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador)
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         
@@ -447,11 +447,7 @@ class CoreDataRebased{
         evento.idUsuarios = responsaveis as NSObject
         saveCoreData()
         
-        let a = Date(timeInterval: 20, since: Date())
-        let b = Timer(fire: a, interval: 2, repeats: false) { (Timer) in
-        }
-        
-        Cloud.updateEvento(searchRecord: evento.id!, idEvento: evento.id!, nome: nome , categoria: categoria, descricao: descricao, dia: a, hora: b, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!)
+        Cloud.updateEvento(searchRecord: evento.id!, idEvento: evento.id!, nome: nome , categoria: categoria, descricao: descricao, dia: dia, hora: horario, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!)
         
     }
     
@@ -677,6 +673,7 @@ class CoreDataRebased{
         
         if indici == 0{
             let a = DispatchQueue.global()
+            
             a.sync {
                 do{
                     let eventos = try managedObjectContext.fetch(eventosFetchRequest)
@@ -692,8 +689,10 @@ class CoreDataRebased{
             a.sync {
                 completion(myFeed)
             }
+            
         } else {
             let b = DispatchQueue.global()
+            
             b.sync {
                 do{
                     let eventos = try managedObjectContext.fetch(eventosFetchRequest)
@@ -717,6 +716,23 @@ class CoreDataRebased{
         
 
     }
+ 
+    
+    func getImages(){
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Usuarios", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.queuePriority = .veryHigh
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            if record["idSala"] == UserLoaded().getSalaID(){
+                let imgUsr = ImagensEId(context: managedObjectContext)
+                imgUsr.id = record["idUsuario"]
+                imgUsr.imagem = record["foto"] as? NSData
+                self.saveCoreData()
+            }
+        }
+    }
     
 }
 
@@ -724,19 +740,7 @@ class CoreDataRebased{
 
 
 
-func getImages(){
-    let imgUsr = ImagensEId(context: managedObjectContext)
-    let predicate = NSPredicate(value: true)
-    let query = CKQuery(recordType: "Usuarios", predicate: predicate)
-    let queryOp = CKQueryOperation(query: query)
-    queryOp.queuePriority = .veryHigh
-    queryOp.recordFetchedBlock = { (record) -> Void in
-        if record["idSala"] == UserLoaded().getSalaID(){
-            imgUsr.id = record["idUsuario"]
-            imgUsr.imagem = record["foto"] as? NSData
-        }
-    }
-}
+
 
 struct userData {
     var fotoPerfil : UIImage?
