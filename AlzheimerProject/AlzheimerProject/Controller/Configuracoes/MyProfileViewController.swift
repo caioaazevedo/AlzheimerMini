@@ -13,9 +13,14 @@ class MyProfileViewController: UIViewController {
     let cdr = CoreDataRebased.shared
     var imagePicker : ImagePicker!
     
+    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var nomeText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let user = CoreDataRebased.shared.fetchUsuario()
+        
+        self.imageProfile.image = UIImage(data: user.fotoPerfil! as Data)
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         
