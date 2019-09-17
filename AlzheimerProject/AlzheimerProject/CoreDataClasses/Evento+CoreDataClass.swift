@@ -2,7 +2,7 @@
 //  Evento+CoreDataClass.swift
 //  AlzheimerProject
 //
-//  Created by Caio Azevedo on 16/09/19.
+//  Created by Caio Azevedo on 17/09/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //

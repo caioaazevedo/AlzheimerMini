@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="08K-uJ-Hp9">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="Ri4-pb-I5f">
+            <objects>
+                <viewController id="08K-uJ-Hp9" customClass="LoginViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZmB-yY-IMG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELLO!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2q-6p-z0p">
+                                <rect key="frame" x="36" y="517" width="342" height="41"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login as" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heI-7J-xaV">
+                                <rect key="frame" x="36" y="566" width="342" height="24"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="nxP-Ie-RyA">
+                                <rect key="frame" x="36" y="620" width="342" height="137"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dar-1b-mDn" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="57"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Create group">
+                                            <color key="titleColor" red="0.98838694680000005" green="1" blue="0.95191832860000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="hostButtonAction:" destination="08K-uJ-Hp9" eventType="touchUpInside" id="9Qd-Xs-c9L"/>
+                                            <segue destination="Fg7-5o-6fC" kind="show" identifier="host" id="ycR-Qk-smF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7u-zy-Vp9" customClass="RoundButton" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="80" width="342" height="57"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Join a group">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="guestButtonAction:" destination="08K-uJ-Hp9" eventType="touchUpInside" id="eX2-E5-W45"/>
+                                            <segue destination="6RI-kf-fto" kind="show" identifier="guest" id="Xbc-t6-Cwj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ativo 31" translatesAutoresizingMaskIntoConstraints="NO" id="eca-gI-jsF">
+                                <rect key="frame" x="71" y="101" width="272" height="199.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="heI-7J-xaV" firstAttribute="top" secondItem="Q2q-6p-z0p" secondAttribute="bottom" constant="8" id="3cd-Kt-bzS"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="nxP-Ie-RyA" secondAttribute="trailing" constant="36" id="4ST-gq-DQS"/>
+                            <constraint firstItem="heI-7J-xaV" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="36" id="9Rx-iR-RyB"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="Q2q-6p-z0p" secondAttribute="trailing" constant="36" id="IH7-Vi-cIg"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="eca-gI-jsF" secondAttribute="trailing" constant="71" id="IwN-eg-oTX"/>
+                            <constraint firstItem="eca-gI-jsF" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="71" id="PQD-ap-8GE"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="trailing" secondItem="heI-7J-xaV" secondAttribute="trailing" constant="36" id="T11-rr-6cz"/>
+                            <constraint firstItem="nxP-Ie-RyA" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="36" id="W9o-tj-dQx"/>
+                            <constraint firstItem="eca-gI-jsF" firstAttribute="top" secondItem="3hs-O2-144" secondAttribute="top" constant="57" id="Yms-UV-OZO"/>
+                            <constraint firstAttribute="bottom" secondItem="Q2q-6p-z0p" secondAttribute="bottom" constant="338" id="i93-CA-B3F"/>
+                            <constraint firstItem="Q2q-6p-z0p" firstAttribute="leading" secondItem="nxP-Ie-RyA" secondAttribute="leading" id="ldD-4P-2Uw"/>
+                            <constraint firstItem="Q2q-6p-z0p" firstAttribute="leading" secondItem="3hs-O2-144" secondAttribute="leading" constant="36" id="rtd-L0-H3n"/>
+                            <constraint firstItem="3hs-O2-144" firstAttribute="bottom" secondItem="nxP-Ie-RyA" secondAttribute="bottom" constant="105" id="suz-28-4mF"/>
+                            <constraint firstItem="nxP-Ie-RyA" firstAttribute="top" secondItem="heI-7J-xaV" secondAttribute="bottom" constant="30" id="vTE-oR-as1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3hs-O2-144"/>
+                    </view>
+                    <connections>
+                        <outlet property="guestButton" destination="B7u-zy-Vp9" id="SV6-jb-jBP"/>
+                        <outlet property="hostButton" destination="dar-1b-mDn" id="g86-lT-nIc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fn-EM-AJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1194.2028985507247" y="187.5"/>
+        </scene>
+        <!--Guest View Controller-->
+        <scene sceneID="g8b-63-Cjn">
+            <objects>
+                <viewController id="Fg7-5o-6fC" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Ft-7c-AZC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
+                                <rect key="frame" x="36" y="499" width="342" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
+                                <rect key="frame" x="36" y="678" width="342" height="60"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="uFX-jQ-4Lh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="Enter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="G24-z5-puF"/>
+                                    <segue destination="TQi-Lw-Dua" kind="show" id="Qd5-fh-e5L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
+                                <rect key="frame" x="36" y="774" width="342" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="08K-uJ-Hp9" kind="show" id="YAN-b0-el0"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Family Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
+                                <rect key="frame" x="36" y="555" width="342" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress" textContentType="email"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
+                                <rect key="frame" x="80" y="89" width="254" height="254"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="254" id="Mvo-xg-b0O"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Ativo 31"/>
+                                <connections>
+                                    <action selector="fotoPerfil:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="RQ6-9p-0jj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="DDd-uA-LvB" secondAttribute="trailing" constant="36" id="1CW-lu-RED"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="top" secondItem="nhj-PJ-lsX" secondAttribute="top" constant="45" id="1VV-4t-xqz"/>
+                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="AlI-TZ-0rr" secondAttribute="trailing" constant="36" id="8UR-ys-YrR"/>
+                            <constraint firstItem="Bea-tg-5ko" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="9dY-fL-p8w"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="centerX" secondItem="Bea-tg-5ko" secondAttribute="centerX" id="Cq3-JX-lV8"/>
+                            <constraint firstItem="2Fm-br-BBE" firstAttribute="trailing" secondItem="DDd-uA-LvB" secondAttribute="trailing" id="Nba-vH-by0"/>
+                            <constraint firstItem="AlI-TZ-0rr" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="TpL-RV-I08"/>
+                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="342" id="VPi-Kp-KPp"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="80" id="VoY-3x-wFA"/>
+                            <constraint firstItem="DDd-uA-LvB" firstAttribute="top" secondItem="2Fm-br-BBE" secondAttribute="bottom" constant="36" id="Zsb-Qh-8sX"/>
+                            <constraint firstItem="DDd-uA-LvB" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="dBJ-FP-2Ip"/>
+                            <constraint firstItem="2Fm-br-BBE" firstAttribute="leading" secondItem="DDd-uA-LvB" secondAttribute="leading" id="eSc-eD-6Ug"/>
+                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="DDd-uA-LvB" secondAttribute="bottom" constant="55" id="n2i-sn-NDa"/>
+                            <constraint firstItem="AlI-TZ-0rr" firstAttribute="top" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="35" id="toR-SJ-4nK"/>
+                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="Bea-tg-5ko" secondAttribute="trailing" constant="36" id="v1w-D6-xu4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nhj-PJ-lsX"/>
+                    </view>
+                    <connections>
+                        <outlet property="familyName" destination="AlI-TZ-0rr" id="Wln-Vx-Qo2"/>
+                        <outlet property="homeButton" destination="2Fm-br-BBE" id="27d-G5-Cua"/>
+                        <outlet property="imageButton" destination="2x2-Ti-HNh" id="tfN-hh-hLQ"/>
+                        <outlet property="userName" destination="Bea-tg-5ko" id="WH1-u4-odm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfq-l6-kXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034.7826086956522" y="187.5"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="9Wx-Q0-JTo">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="inicialStoryboard" storyboardName="Main" referencedIdentifier="inicialStoryboard" id="TQi-Lw-Dua" userLabel="Home" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uHe-LX-rGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831" y="140"/>
+        </scene>
+        <!--Guest View Controller-->
+        <scene sceneID="PhC-ub-23K">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="6RI-kf-fto" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RVR-23-l1n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-eI-ErX">
+                                <rect key="frame" x="36" y="558" width="342" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the code given by your group host" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-fX-XiC">
+                                <rect key="frame" x="36" y="496" width="257" height="41"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ativo 31" translatesAutoresizingMaskIntoConstraints="NO" id="I84-9h-me0">
+                                <rect key="frame" x="71" y="101" width="272" height="199.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-wY-kXm" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
+                                <rect key="frame" x="36" y="679" width="342" height="59"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="bAD-PA-T8z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="Join">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterCode:" destination="6RI-kf-fto" eventType="touchUpInside" id="lRw-4D-H08"/>
+                                    <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="4ds-Nu-58j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfi-M6-z9L">
+                                <rect key="frame" x="36" y="774" width="342" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.93725490196078431" green="0.6588235294117647" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="08K-uJ-Hp9" kind="show" id="AZV-of-5Wc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JOg-Bq-nob" firstAttribute="trailing" secondItem="5hu-fX-XiC" secondAttribute="trailing" constant="121" id="1oC-ki-DgZ"/>
+                            <constraint firstItem="2Wi-eI-ErX" firstAttribute="leading" secondItem="JOg-Bq-nob" secondAttribute="leading" constant="36" id="3wZ-pq-LqA"/>
+                            <constraint firstItem="5hu-fX-XiC" firstAttribute="leading" secondItem="JOg-Bq-nob" secondAttribute="leading" constant="36" id="EBz-WR-gpv"/>
+                            <constraint firstItem="Xfi-M6-z9L" firstAttribute="leading" secondItem="JOg-Bq-nob" secondAttribute="leading" constant="36" id="GL3-z9-lAz"/>
+                            <constraint firstItem="JOg-Bq-nob" firstAttribute="trailing" secondItem="Xfi-M6-z9L" secondAttribute="trailing" constant="36" id="S86-bL-g2N"/>
+                            <constraint firstItem="JOg-Bq-nob" firstAttribute="trailing" secondItem="2Wi-eI-ErX" secondAttribute="trailing" constant="36" id="Ug0-UX-PBr"/>
+                            <constraint firstItem="JOg-Bq-nob" firstAttribute="bottom" secondItem="Xfi-M6-z9L" secondAttribute="bottom" constant="55" id="Wsw-3G-3IR"/>
+                            <constraint firstItem="I84-9h-me0" firstAttribute="top" secondItem="JOg-Bq-nob" secondAttribute="top" constant="57" id="Zzu-Ig-i9W"/>
+                            <constraint firstItem="I84-9h-me0" firstAttribute="leading" secondItem="JOg-Bq-nob" secondAttribute="leading" constant="71" id="a4W-iW-CeV"/>
+                            <constraint firstItem="2Wi-eI-ErX" firstAttribute="top" secondItem="5hu-fX-XiC" secondAttribute="bottom" constant="21" id="bPt-lZ-dVt"/>
+                            <constraint firstItem="JOg-Bq-nob" firstAttribute="trailing" secondItem="yrL-wY-kXm" secondAttribute="trailing" constant="36" id="dDQ-Dg-FX4"/>
+                            <constraint firstItem="JOg-Bq-nob" firstAttribute="trailing" secondItem="I84-9h-me0" secondAttribute="trailing" constant="71" id="dFJ-xU-LSy"/>
+                            <constraint firstItem="Xfi-M6-z9L" firstAttribute="top" secondItem="yrL-wY-kXm" secondAttribute="bottom" constant="36" id="jM8-Pk-er9"/>
+                            <constraint firstItem="JOg-Bq-nob" firstAttribute="bottom" secondItem="5hu-fX-XiC" secondAttribute="bottom" constant="325" id="lry-YP-cOG"/>
+                            <constraint firstItem="yrL-wY-kXm" firstAttribute="leading" secondItem="JOg-Bq-nob" secondAttribute="leading" constant="36" id="vCg-KF-0hn"/>
+                            <constraint firstItem="2Wi-eI-ErX" firstAttribute="top" secondItem="5hu-fX-XiC" secondAttribute="bottom" constant="21" id="zKJ-s8-jQn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JOg-Bq-nob"/>
+                    </view>
+                    <connections>
+                        <outlet property="familyCode" destination="2Wi-eI-ErX" id="q6U-Qb-6vQ"/>
+                        <segue destination="Fg7-5o-6fC" kind="show" identifier="sugueCadastro" id="d0L-uA-RXe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cY-QM-WhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108.69565217391305" y="187.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Ativo 31" width="229.5" height="199.5"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ycR-Qk-smF"/>
+        <segue reference="YAN-b0-el0"/>
+    </inferredMetricsTieBreakers>
+</document>

@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //                Cloud.getPeople()
         
+        CoreDataRebased.shared.getImages()
+        
         return true
     }
 

@@ -2,7 +2,7 @@
 //  Evento+CoreDataProperties.swift
 //  AlzheimerProject
 //
-//  Created by Caio Azevedo on 16/09/19.
+//  Created by Caio Azevedo on 17/09/19.
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 //
@@ -18,6 +18,7 @@ extension Evento {
     }
 
     @NSManaged public var categoria: String?
+    @NSManaged public var dataCriacao: NSDate?
     @NSManaged public var descricao: String?
     @NSManaged public var dia: NSDate?
     @NSManaged public var horario: NSDate?
@@ -27,7 +28,7 @@ extension Evento {
     @NSManaged public var idUsuarios: NSObject?
     @NSManaged public var localizacao: String?
     @NSManaged public var nome: String?
-    @NSManaged public var creationDate: NSDate?
+    @NSManaged public var nomeCriador: String?
     @NSManaged public var ofCalendar: Calendario?
 
 }

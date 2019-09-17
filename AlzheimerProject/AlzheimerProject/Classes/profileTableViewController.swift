@@ -27,39 +27,60 @@ class profileTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var notificationImage: UIImageView!
     
+    @IBOutlet weak var switchBtn: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arredondaIcones()
+        //arredondaIcones()
         tableView.tableFooterView = UIView()
         
         setUpDynamicFonts()
 //        fixDynamicTypeForStaticTableViews()
-        
-
    
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        if switchBtn.isOn{
+//            Cloud.setupCloudKitNotifications()
+//        } else {
+//            Cloud.deleteCloudSubs()
+//        }
+//    }
     
-    func arredondaIcones(){
+//    func arredondaIcones(){
+//
+//        idosoImage.clipsToBounds = true
+//        idosoImage.layer.cornerRadius = 20
+//
+//        grupoImage.clipsToBounds = true
+//        grupoImage.layer.cornerRadius = 20
+//
+//        familiaImage.clipsToBounds = true
+//        familiaImage.layer.cornerRadius = 20
+//
+//        profileImage.clipsToBounds = true
+//        profileImage.layer.cornerRadius = 20
+//
+//        notificationImage.clipsToBounds = true
+//        notificationImage.layer.cornerRadius = 20
+//
+//
+//
+//    }
+//
         
-        idosoImage.clipsToBounds = true
-        idosoImage.layer.cornerRadius = 20
-        
-        grupoImage.clipsToBounds = true
-        grupoImage.layer.cornerRadius = 20
-        
-        familiaImage.clipsToBounds = true
-        familiaImage.layer.cornerRadius = 20
-        
-        profileImage.clipsToBounds = true
-        profileImage.layer.cornerRadius = 20
-        
-        notificationImage.clipsToBounds = true
-        notificationImage.layer.cornerRadius = 20
         
         
         
+        
+        
+        
+    @IBAction func tuenNot(_ sender: Any) {
+        if switchBtn.isOn{
+            Cloud.setupCloudKitNotifications()
+        } else {
+            Cloud.deleteCloudSubs()
+        }
     }
     
 //    func fixDynamicTypeForStaticTableViews() {

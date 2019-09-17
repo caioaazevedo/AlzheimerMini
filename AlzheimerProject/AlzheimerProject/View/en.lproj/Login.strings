@@ -1,0 +1,36 @@
+
+/* Class = "UIButton"; normalTitle = "Enter"; ObjectID = "2Fm-br-BBE"; */
+"2Fm-br-BBE.normalTitle" = "Enter";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "2Wi-eI-ErX"; */
+"2Wi-eI-ErX.placeholder" = "Code";
+
+/* Class = "UILabel"; text = "Enter the code given by your group host"; ObjectID = "5hu-fX-XiC"; */
+"5hu-fX-XiC.text" = "Enter the code given by your group host";
+
+/* Class = "UITextField"; placeholder = "Family Name"; ObjectID = "AlI-TZ-0rr"; */
+"AlI-TZ-0rr.placeholder" = "Family Name";
+
+/* Class = "UIButton"; normalTitle = "Join a group"; ObjectID = "B7u-zy-Vp9"; */
+"B7u-zy-Vp9.normalTitle" = "Join a group";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "Bea-tg-5ko"; */
+"Bea-tg-5ko.placeholder" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "DDd-uA-LvB"; */
+"DDd-uA-LvB.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "HELLO!"; ObjectID = "Q2q-6p-z0p"; */
+"Q2q-6p-z0p.text" = "HELLO!";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "Xfi-M6-z9L"; */
+"Xfi-M6-z9L.normalTitle" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Create group"; ObjectID = "dar-1b-mDn"; */
+"dar-1b-mDn.normalTitle" = "Create group";
+
+/* Class = "UILabel"; text = "Login as"; ObjectID = "heI-7J-xaV"; */
+"heI-7J-xaV.text" = "Login as";
+
+/* Class = "UIButton"; normalTitle = "Join"; ObjectID = "yrL-wY-kXm"; */
+"yrL-wY-kXm.normalTitle" = "Join";

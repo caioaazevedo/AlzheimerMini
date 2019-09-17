@@ -11,11 +11,11 @@ import CircleBar
 
 class DetailViewController: UIViewController {
     
-    let iconesArray = [UIImage(named: "Hora"), UIImage(named: "Responsável"), UIImage(named: "Local") , UIImage(named: "Notas")]
+    let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
     var diaSemanaAux : String?
     var indexValue = 0
-    var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: "", localizationParameter: "")
+    var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: [""], localizationParameter: "",idParameter: "")
     @IBOutlet weak var blueView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,19 +31,33 @@ class DetailViewController: UIViewController {
         blueView.clipsToBounds = true
         setShadowBlueView()
         defineColor()
+        defineDynamicType()
         
         
     }
     
+    func defineDynamicType(){
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        
+        diaSemana.font = scaledFont.font(forTextStyle: .body)
+        diaSemana.adjustsFontForContentSizeCategory = true
+    }
+    
+    
     func defineColor(){
         switch(event.categ){
-        case "Saúde":
+        case NSLocalizedString("Health", comment: ""):
             blueView.backgroundColor = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-        case "Lazer":
+        case NSLocalizedString("Recreation", comment: ""):
             blueView.backgroundColor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-        case "Dentista":
+        case NSLocalizedString("Dentist", comment: ""):
             blueView.backgroundColor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-        case "Farmácia":
+        case NSLocalizedString("Pharmacy", comment: ""):
             blueView.backgroundColor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
             blueView.backgroundColor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
@@ -58,6 +72,7 @@ class DetailViewController: UIViewController {
         if segue.identifier == "segueEdit"{
             if let vc = segue.destination as? TaskViewController {
                 vc.event = self.event
+                
                 vc.willEditing = true
             }
         }
@@ -76,10 +91,19 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titulo: UILabel!
     
     
+    let userLoad = UserLoaded()
     
     @IBAction func deleteTask(_ sender: UIButton) {
-        CoreDataRebased.shared.deleteEvent(eventID: event.ID)
-        self.dismiss(animated: true, completion: nil)
+        
+        Cloud.cloudDeleteEvento(eventoId: event.ID)
+      
+        
+        CoreDataRebased.shared.deleteEvento(eventoId: event.ID) { (nome) in
+            Cloud.updateCalendario(searchRecord: self.userLoad.idSalaCalendar!, idEventos: nome)
+        }
+        
+        
+        _ = navigationController?.popViewController(animated: true)
         
     }
     
@@ -98,6 +122,13 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellDetail", for: indexPath) as! CellDetail
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         var image = UIImage(named: "")
@@ -107,26 +138,42 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         switch(indexPath.row){
             case 0:
                 image = iconesArray[0]
-                tipo = "Hora"
+                tipo = NSLocalizedString("Time", comment: "")
                 detalhe = event.time
             
             case 1:
                 image = iconesArray[1]
-                tipo = "Responsável"
-                detalhe = event.responsavel
+                tipo = NSLocalizedString("Responsable", comment: "")
+                var string: String?
+                for element in event.responsavel {
+                    if string == nil {
+                        string = element
+                    } else {
+                        string = string! + ", " + element
+                    }
+                }
+                
+                detalhe = string ?? NSLocalizedString("None", comment: "")
             case 2:
                 image = iconesArray[2]
-                tipo = "Local"
+                tipo = NSLocalizedString("Localization",comment: "")
                 detalhe = event.localization
             default:
                 image = iconesArray[3]
-                tipo = "Notas"
-                detalhe = event.desc ?? ""
+                tipo = NSLocalizedString("Notes",comment: "")
+                detalhe = event.desc
         }
         
         cell.imagem.image = image
         cell.tipoDetalhe.text = tipo
         cell.labelDetail.text = detalhe
+        
+        cell.tipoDetalhe.font = scaledFont.font(forTextStyle: .body)
+        cell.tipoDetalhe.adjustsFontForContentSizeCategory = true
+        
+        cell.labelDetail.font = scaledFont.font(forTextStyle: .body)
+        cell.labelDetail.adjustsFontForContentSizeCategory = true
+        
         return cell
     }
     
