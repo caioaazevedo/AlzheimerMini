@@ -425,7 +425,7 @@ class Cloud {
     static func updateEvento(searchRecord: String, idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String,localizacao: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
-        
+        let data = Date()
         let queryOp = CKQueryOperation(query: query)
         queryOp.queuePriority = .veryHigh
         
@@ -440,6 +440,7 @@ class Cloud {
                 record.setValue(hora, forKeyPath: "hora")
                 record.setValue(idUsuario, forKeyPath: "idUsuario")
                 record.setValue(localizacao, forKeyPath: "localizacao")
+                record.setValue(data,forKeyPath: "dataCriacao")
                 
                 publicDataBase.save(record, completionHandler: { (record, error) in
                     if error != nil{
@@ -562,6 +563,7 @@ class Cloud {
                 eventCreate.idResponsavel = record["idUsuario"]
                 eventCreate.nome = record["nome"]
                 eventCreate.localizacao = record["localizacao"]
+                eventCreate.dataCriacao = record["dataCriacao"] as? NSDate
                 CoreDataRebased.shared.saveCoreData()
             }
         }

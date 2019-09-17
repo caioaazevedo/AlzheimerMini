@@ -109,7 +109,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     var auxTitulo = String()
     var auxCateg = String()
     
-
+    var auxdataEdit = Date()
+    
     var circle : SHCircleBarController {
         return self.children.first as! SHCircleBarController
     }
@@ -137,8 +138,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 }
             }
             tituloTextField.text = event?.title ?? ""
-            localTextField.text = event?.title ?? ""
+            localTextField.text = event?.localization ?? ""
             tableController.responsavel.text = string
+            
             
             
             //tableController.descricao
@@ -412,7 +414,13 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             if willEditing{
                 fetchEvent(ID: event!.ID)
                 
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
+                let df = DateFormatter()
+                df.dateFormat = "hh:mm"
+                
+                let data = df.string(from: DatePicker.date)
+                let date = df.date(from: data)
+                auxdataEdit = eventEntity?.dia as! Date
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxdataEdit , horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
             }
             else{
                 let df = DateFormatter()

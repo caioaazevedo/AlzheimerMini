@@ -30,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="September 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyW-5v-OII">
-                                <rect key="frame" x="20" y="534" width="140" height="21"/>
+                                <rect key="frame" x="20" y="534" width="188" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.4392187595" green="0.43921005730000001" blue="0.4392159283" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1312,7 +1312,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="neo-df-jYC"/>
-        <segue reference="lcM-NS-UxG"/>
+        <segue reference="WWb-rA-i4h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98773747682571411" green="0.64160817861557007" blue="0.27023616433143616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
