@@ -20,6 +20,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
     
+    var userLoad = UserLoaded()
+    
     var pessoas = [String]()
     var pessoasIds = [String]()
     var images = [UIImage]()
@@ -76,6 +78,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         print(pessoas)
     }
     
+    
     func getIds(){
         let sala = CoreDataRebased.shared.fetchSala()
 
@@ -113,6 +116,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        Cloud.setupCloudKitNotifications()
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
@@ -268,6 +273,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     
     
+    
     func applyToDef(index: Int){
         var bola = ""
         switch (index){
@@ -287,7 +293,22 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     }
     
     
-    
+    func fetchEvent(ID: String){
+
+            let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+            do{
+                let eventos = try managedObjectContext.fetch(fetchRequest)
+                
+                for evento in eventos{
+                    if evento.id == ID{
+                    eventEntity = evento
+                    }
+                }
+            }catch{
+                
+            }
+        
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -389,9 +410,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             
             
             if willEditing{
-                fetchEvento(nome: tituloTextField.text!)
+                fetchEvent(ID: event!.ID)
                 
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
             }
             else{
                 let df = DateFormatter()
@@ -400,7 +421,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 let data = df.string(from: DatePicker.date)
                 let date = df.date(from: data)
                 
-                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "", nomeCriador: userLoad.nomeUser! )
             }
             
             _ = navigationController?.popViewController(animated: true)

@@ -27,6 +27,7 @@ class profileTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var notificationImage: UIImageView!
     
+    @IBOutlet weak var switchBtn: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,16 @@ class profileTableViewController: UITableViewController {
         
         setUpDynamicFonts()
 //        fixDynamicTypeForStaticTableViews()
-        
-
    
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        if switchBtn.isOn{
+//            Cloud.setupCloudKitNotifications()
+//        } else {
+//            Cloud.deleteCloudSubs()
+//        }
+//    }
     
 //    func arredondaIcones(){
 //
@@ -62,6 +68,21 @@ class profileTableViewController: UITableViewController {
 //
 //    }
 //
+        
+        
+        
+        
+        
+        
+        
+    @IBAction func tuenNot(_ sender: Any) {
+        if switchBtn.isOn{
+            Cloud.setupCloudKitNotifications()
+        } else {
+            Cloud.deleteCloudSubs()
+        }
+    }
+    
 //    func fixDynamicTypeForStaticTableViews() {
 //        // Remove the observer from the table view to prevent it from blanking out the cells
 //        NotificationCenter.default.removeObserver(tableView!, name: UIContentSizeCategory.didChangeNotification, object: nil)

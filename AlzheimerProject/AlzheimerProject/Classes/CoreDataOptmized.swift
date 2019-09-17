@@ -390,7 +390,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Evento 🍁
-    func createEvent(categoria: String, descricao: String?, dia: Date, horario: Date, responsaveis: [String], nome: String, localizacao: String?){
+    func createEvent(categoria: String, descricao: String?, dia: Date, horario: Date, responsaveis: [String], nome: String, localizacao: String?, nomeCriador: String){
         
         let userLoad = UserLoaded()
         
@@ -405,6 +405,7 @@ class CoreDataRebased{
         event.idUsuarios = responsaveis as NSObject
         event.idCalendario = userLoad.idSalaCalendar
         event.localizacao = localizacao
+        event.nomeCriador = nomeCriador
         var eventArray = [String]()
         
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -430,27 +431,24 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: nil, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "")
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador)
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         
     }
     
     //✅ - Alterar Evento (Atualizaçao no usuarios participantes) 😎 ****
-    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String, responsaveis: [String]){
+    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String, responsaveis: [String],localizacao: String){
         let userLoad = UserLoaded()
         evento.categoria = categoria
         evento.descricao = descricao
         evento.dia = dia as NSDate
         evento.horario = horario as NSDate
         evento.idUsuarios = responsaveis as NSObject
+        evento.localizacao = localizacao
         saveCoreData()
         
-        let a = Date(timeInterval: 20, since: Date())
-        let b = Timer(fire: a, interval: 2, repeats: false) { (Timer) in
-        }
-        
-        Cloud.updateEvento(searchRecord: evento.id!, idEvento: evento.id!, nome: nome , categoria: categoria, descricao: descricao, dia: a, hora: b, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!)
+        Cloud.updateEvento(searchRecord: evento.id!, idEvento: evento.id!, nome: nome , categoria: categoria, descricao: descricao, dia: dia, hora: horario, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!,localizacao: localizacao)
         
     }
     
@@ -598,6 +596,60 @@ class CoreDataRebased{
         
     }
     
+    func deleteAll(){
+        
+        let eventFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        let usuarioFetchRequest = NSFetchRequest<Usuario>.init(entityName: "Usuario")
+        let calendarioFetchRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
+        let perfilUsuarioFetchRequest = NSFetchRequest<PerfilUsuario>.init(entityName: "PerfilUsuario")
+        let FeedFetchRequest = NSFetchRequest<Feed>.init(entityName: "Feed")
+        
+        
+        
+        do{
+            
+            let eventos = try  managedObjectContext.fetch(eventFetchRequest)
+            
+            for i in eventos{
+                managedObjectContext.delete(i)
+                saveCoreData()
+            }
+            let salas = try managedObjectContext.fetch(salaFetchRequest)
+            for i in salas{
+                managedObjectContext.delete(i)
+                saveCoreData()
+            }
+            let usuarios = try managedObjectContext.fetch(usuarioFetchRequest)
+            for i in usuarios{
+                managedObjectContext.delete(i)
+                saveCoreData()
+            }
+            let calendarios = try managedObjectContext.fetch(calendarioFetchRequest)
+            for i in calendarios{
+                managedObjectContext.delete(i)
+                saveCoreData()
+            }
+            let perfis = try managedObjectContext.fetch(perfilUsuarioFetchRequest)
+            for i in perfis{
+                managedObjectContext.delete(i)
+                saveCoreData()
+            }
+            let feeds = try managedObjectContext.fetch(FeedFetchRequest)
+            for i in feeds{
+                managedObjectContext.delete(i)
+                saveCoreData()
+            }
+            
+        } catch{
+            
+            print("error")
+            
+            
+        }
+        
+    }
+    
     
     //***TESTES***
     
@@ -615,7 +667,82 @@ class CoreDataRebased{
         }
         
     }
+    // ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+    func recuperarDadosEventos(completion: @escaping (_ result: [feedPerson]) -> (), indici: Int){
+        var myFeed : [feedPerson] = []
+        let eventosFetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        
+        if indici == 0{
+            let a = DispatchQueue.global()
+            
+            a.sync {
+                do{
+                    let eventos = try managedObjectContext.fetch(eventosFetchRequest)
+                    for e in eventos{
+                        let formate = DateFormatter()
+                        formate.dateFormat = "dd-MM-yyyy"
+                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem")
+                        myFeed.append(z)
+                    }
+                } catch{
+                }
+            }
+            a.sync {
+                completion(myFeed)
+            }
+            
+        } else {
+            let b = DispatchQueue.global()
+            
+            b.sync {
+                do{
+                    let eventos = try managedObjectContext.fetch(eventosFetchRequest)
+                    for e in eventos{
+                        let formate = DateFormatter()
+                        formate.dateFormat = "dd-MM-yyyy"
+                        if e.idResponsavel == UserLoaded().idUser{
+                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem")
+                            myFeed.append(z)
+                        }
+                    }
+                } catch{
+                }
+            }
+            b.sync {
+                completion(myFeed)
+            }
+            
+            
+        }
+        
+
+    }
+ 
+    
+    func getImages(){
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Usuarios", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        queryOp.queuePriority = .veryHigh
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            if record["idSala"] == UserLoaded().getSalaID(){
+                let imgUsr = ImagensEId(context: managedObjectContext)
+                imgUsr.id = record["idUsuario"]
+                imgUsr.imagem = record["foto"] as? NSData
+                self.saveCoreData()
+            }
+        }
+    }
+    
 }
+
+
+
+
+
+
+
 struct userData {
     var fotoPerfil : UIImage?
     var id : String!
@@ -642,6 +769,13 @@ struct profileData {
     var tipoSanguineo : String?
 }
 
+struct feedPerson{
+    var nomeEvento: String
+    var nomeCriador: String
+    var dataEvento : String
+    var fotoCriador: UIImage?
+    var idCriador: String
+}
 
 /*
  1 -> ORDEM PARA CRIAR A SALA DO HOST

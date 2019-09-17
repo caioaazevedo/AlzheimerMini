@@ -39,6 +39,9 @@
                                     <segment title="Mine"/>
                                 </segments>
                                 <color key="tintColor" red="0.90389251709999996" green="0.57948696609999995" blue="0.2391099334" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="changeState:" destination="tJk-sW-KAf" eventType="valueChanged" id="dtX-cK-Zlm"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-iE-Kh1">
                                 <rect key="frame" x="20" y="182" width="374" height="580"/>
@@ -58,7 +61,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogB-wl-hXr">
                                                     <rect key="frame" x="0.0" y="11" width="366" height="113"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KFa-Ja-RYq">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="KFa-Ja-RYq">
                                                             <rect key="frame" x="25" y="25" width="37" height="37"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="37" id="Nkq-jT-RPm"/>
@@ -94,10 +97,60 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="bgVview" destination="ogB-wl-hXr" id="85j-A6-bbc"/>
                                             <outlet property="imageFoto" destination="KFa-Ja-RYq" id="kAl-N7-TLx"/>
-                                            <outlet property="imageView" destination="KFa-Ja-RYq" id="mgZ-a5-32a"/>
                                             <outlet property="label" destination="ZYn-yC-uWa" id="7xQ-ah-H48"/>
-                                            <outlet property="view" destination="ogB-wl-hXr" id="Z0p-kY-FeH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellFeed2" rowHeight="135" id="ttb-6c-YwA" customClass="CustomCellFeed" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="190.5" width="374" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ttb-6c-YwA" id="xXI-HJ-oWl">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-ys-2x7">
+                                                    <rect key="frame" x="0.0" y="11" width="366" height="113"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="2r2-DN-kKE">
+                                                            <rect key="frame" x="25" y="25" width="37" height="37"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="37" id="OYB-Co-Wdg"/>
+                                                                <constraint firstAttribute="height" constant="37" id="fyw-0T-jkb"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiK-k2-2Tk">
+                                                            <rect key="frame" x="85" y="17" width="281" height="79"/>
+                                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.99606639149999998" green="0.9960722327" blue="0.99608725310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstItem="2r2-DN-kKE" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="25" id="1uT-Uq-SIa"/>
+                                                        <constraint firstItem="HiK-k2-2Tk" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="17" id="D2A-P1-ez9"/>
+                                                        <constraint firstItem="2r2-DN-kKE" firstAttribute="leading" secondItem="SzG-ys-2x7" secondAttribute="leading" constant="25" id="ECh-ew-V3d"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2r2-DN-kKE" secondAttribute="bottom" constant="51" id="GvJ-B1-5fd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" id="SE4-7c-gWA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" id="cq1-Fl-XE5"/>
+                                                        <constraint firstItem="HiK-k2-2Tk" firstAttribute="leading" secondItem="SzG-ys-2x7" secondAttribute="leading" constant="85" id="hZJ-6W-QKU"/>
+                                                        <constraint firstAttribute="centerY" secondItem="HiK-k2-2Tk" secondAttribute="centerY" id="mhd-dm-77A"/>
+                                                        <constraint firstAttribute="bottom" secondItem="HiK-k2-2Tk" secondAttribute="bottom" constant="17" id="oSb-Sm-n8r"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SzG-ys-2x7" firstAttribute="leading" secondItem="xXI-HJ-oWl" secondAttribute="leading" id="OSL-HT-IlT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SzG-ys-2x7" secondAttribute="trailing" constant="-12" id="edk-Pa-jo5"/>
+                                                <constraint firstItem="SzG-ys-2x7" firstAttribute="bottom" secondItem="xXI-HJ-oWl" secondAttribute="bottomMargin" id="vXn-lb-Kgo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="bgVview" destination="SzG-ys-2x7" id="6qg-cz-xFD"/>
+                                            <outlet property="imageFoto" destination="2r2-DN-kKE" id="qSo-cW-QFx"/>
+                                            <outlet property="label" destination="HiK-k2-2Tk" id="uVs-1G-vNC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -127,7 +180,7 @@
                     <navigationItem key="navigationItem" title="Remember Me" id="2XS-YM-dew"/>
                     <connections>
                         <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
-                        <outlet property="segment" destination="ON6-st-0EH" id="yGj-ta-JOt"/>
+                        <outlet property="segmentedControl" destination="ON6-st-0EH" id="jcc-0J-Suz"/>
                         <outlet property="tableView" destination="YuF-iE-Kh1" id="YOd-WI-RIu"/>
                     </connections>
                 </viewController>
@@ -136,4 +189,7 @@
             <point key="canvasLocation" x="337.68115942028987" y="-65.625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Remedio" width="192" height="192"/>
+    </resources>
 </document>
