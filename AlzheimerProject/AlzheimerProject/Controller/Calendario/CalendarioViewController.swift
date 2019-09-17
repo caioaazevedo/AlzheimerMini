@@ -385,7 +385,7 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
                     // enum apply
                 case NSLocalizedString("Health",comment: ""):
                     cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-                    
+                    corOutro = cor
                 case NSLocalizedString("Recreation" , comment: ""):
                     cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
                 case NSLocalizedString("Dentist" , comment: ""):

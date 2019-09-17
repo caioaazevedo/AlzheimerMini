@@ -30,7 +30,7 @@ class profileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arredondaIcones()
+        //arredondaIcones()
         tableView.tableFooterView = UIView()
         
         setUpDynamicFonts()
@@ -41,27 +41,27 @@ class profileTableViewController: UITableViewController {
     }
     
     
-    func arredondaIcones(){
-        
-        idosoImage.clipsToBounds = true
-        idosoImage.layer.cornerRadius = 20
-        
-        grupoImage.clipsToBounds = true
-        grupoImage.layer.cornerRadius = 20
-        
-        familiaImage.clipsToBounds = true
-        familiaImage.layer.cornerRadius = 20
-        
-        profileImage.clipsToBounds = true
-        profileImage.layer.cornerRadius = 20
-        
-        notificationImage.clipsToBounds = true
-        notificationImage.layer.cornerRadius = 20
-        
-        
-        
-    }
-    
+//    func arredondaIcones(){
+//
+//        idosoImage.clipsToBounds = true
+//        idosoImage.layer.cornerRadius = 20
+//
+//        grupoImage.clipsToBounds = true
+//        grupoImage.layer.cornerRadius = 20
+//
+//        familiaImage.clipsToBounds = true
+//        familiaImage.layer.cornerRadius = 20
+//
+//        profileImage.clipsToBounds = true
+//        profileImage.layer.cornerRadius = 20
+//
+//        notificationImage.clipsToBounds = true
+//        notificationImage.layer.cornerRadius = 20
+//
+//
+//
+//    }
+//
 //    func fixDynamicTypeForStaticTableViews() {
 //        // Remove the observer from the table view to prevent it from blanking out the cells
 //        NotificationCenter.default.removeObserver(tableView!, name: UIContentSizeCategory.didChangeNotification, object: nil)

@@ -121,6 +121,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         
         if willEditing{
             
+            
             tableController.hora.text = event?.time
             var string: String?
             for element in event!.responsavel {
@@ -130,8 +131,10 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                     string = string! + ", " + element
                 }
             }
-          
+            tituloTextField.text = event?.title ?? ""
+            localTextField.text = event?.title ?? ""
             tableController.responsavel.text = string
+            
             
             //tableController.descricao
         }
@@ -292,6 +295,20 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         self.DatePicker.removeFromSuperview()
     }
     
+    func fetchEvento(nome: String){
+        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            let eventos = try managedObjectContext.fetch(fetchRequest)
+            for evento in eventos{
+                if evento.nome == nome{
+                    eventEntity = evento
+                }
+            }
+        }catch{
+            
+        }
+    }
+    
     
     func fetchData(){
         DatePicker.datePickerMode = .time
@@ -372,9 +389,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             
             
             if willEditing{
+                fetchEvento(nome: tituloTextField.text!)
                 
-//                
-//                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
             }
             else{
                 let df = DateFormatter()
