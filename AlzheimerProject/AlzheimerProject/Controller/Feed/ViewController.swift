@@ -222,28 +222,19 @@ class ViewController: UIViewController {
         
     }
     
-
+   
 }
 
 extension ViewController : UITableViewDataSource , UITableViewDelegate {
     
-<<<<<<< HEAD
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        let sectionName: String
-        switch section {
-        case 0:
-            sectionName = NSLocalizedString("Today", comment: "")
-        case 1:
-            sectionName = NSLocalizedString("Past", comment: "")
-        // ...
-        default:
-            sectionName = ""
+        if section == 0{
+            return NSLocalizedString("Today", comment: "")
         }
-        return sectionName
+        
+        return NSLocalizedString("Previously", comment: "")
     }
-=======
->>>>>>> premerge
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -323,14 +314,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0{
-            return "Hoje"
-        } else {
-            return "Anteriormente"
-        }
-    }
-    
+   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }

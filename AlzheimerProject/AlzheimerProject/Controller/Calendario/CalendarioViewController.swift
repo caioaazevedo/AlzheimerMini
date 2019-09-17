@@ -518,6 +518,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
+        cell.clipsToBounds = true
         cell.layer.cornerRadius = 10
         
         var categoria = DailyEvents[indexPath.row].categ
@@ -558,7 +559,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 175
+        return 100
     }
     
     

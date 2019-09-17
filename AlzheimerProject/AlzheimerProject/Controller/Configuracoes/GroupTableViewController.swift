@@ -101,12 +101,8 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func exitGroup(_ sender: Any) {
         let alert = UIAlertController(title: NSLocalizedString("LeaveGroup" , comment: ""), message: NSLocalizedString("ConfirmLeave" , comment: ""), preferredStyle: UIAlertController.Style.alert)
         
-<<<<<<< HEAD
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes" , comment: ""), style: .default, handler: { action in
             var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
-=======
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
->>>>>>> premerge
             
             /*
              1. Procurar no cloud a sala da pessoa, gravar o vetor de usuarios em um [String] ✅
