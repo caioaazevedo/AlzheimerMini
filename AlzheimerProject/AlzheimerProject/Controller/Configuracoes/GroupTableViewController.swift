@@ -86,6 +86,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
                     if usuarios[indexPath.row] == ckData[j].0 {
                         print("ID: \(usuarios[indexPath.row]) === CKDATA: \(ckData[j].0)")
                         cell.imageGroup.image = UIImage(data: ckData[j].2)
+                        cell.imageGroup.layer.cornerRadius = cell.imageGroup.frame.size.height/2
                         cell.labelGroup.text = ckData[j].1
                         
                         cell.labelGroup.font = scaledFont.font(forTextStyle: .body)
