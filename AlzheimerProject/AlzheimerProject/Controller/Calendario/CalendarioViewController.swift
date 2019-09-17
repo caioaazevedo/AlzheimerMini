@@ -121,7 +121,8 @@ class CalendarioViewController: UIViewController {
             auxDiaSemanaNum = Calendar.current.component(.weekday, from: DiaSelecionado!)
             auxDia = Calendar.current.component(.day, from: DiaSelecionado!)
             auxMesNum = Calendar.current.component(.month, from: DiaSelecionado!)
-            diaDeHoje.text = "\(auxDia!) of \(auxMes!)"
+            
+            diaDeHoje.text = String("\(auxDia!) of \(auxMes!)").uppercased()
             
             
             let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
@@ -401,7 +402,7 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
                     cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
                     corOutro = cor
                 default:
-                    cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+                   cor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
                 }
                 return [cor,corOutro]
                 
@@ -493,7 +494,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         case NSLocalizedString("Pharmacy",comment: ""):
             cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-            cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+                   cor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
         }
         return cor
     }
@@ -559,7 +560,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 155
     }
     
     

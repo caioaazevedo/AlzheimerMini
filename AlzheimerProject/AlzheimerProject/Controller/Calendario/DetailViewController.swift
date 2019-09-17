@@ -60,7 +60,7 @@ class DetailViewController: UIViewController {
         case NSLocalizedString("Pharmacy", comment: ""):
             blueView.backgroundColor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-            blueView.backgroundColor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+            blueView.backgroundColor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
         }
     }
     
