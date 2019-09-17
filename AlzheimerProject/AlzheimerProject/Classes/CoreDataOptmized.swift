@@ -438,16 +438,17 @@ class CoreDataRebased{
     }
     
     //✅ - Alterar Evento (Atualizaçao no usuarios participantes) 😎 ****
-    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String, responsaveis: [String]){
+    func updateEvent(evento: Evento,categoria: String, descricao: String, dia: Date, horario: Date, nome: String, responsaveis: [String],localizacao: String){
         let userLoad = UserLoaded()
         evento.categoria = categoria
         evento.descricao = descricao
         evento.dia = dia as NSDate
         evento.horario = horario as NSDate
         evento.idUsuarios = responsaveis as NSObject
+        evento.localizacao = localizacao
         saveCoreData()
         
-        Cloud.updateEvento(searchRecord: evento.id!, idEvento: evento.id!, nome: nome , categoria: categoria, descricao: descricao, dia: dia, hora: horario, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!)
+        Cloud.updateEvento(searchRecord: evento.id!, idEvento: evento.id!, nome: nome , categoria: categoria, descricao: descricao, dia: dia, hora: horario, idUsuario: userLoad.idUser, idCalendario: userLoad.idSalaCalendar!,localizacao: localizacao)
         
     }
     

@@ -421,7 +421,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updateEvento(searchRecord: String, idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String) {
+    static func updateEvento(searchRecord: String, idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String,localizacao: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
         
@@ -438,6 +438,7 @@ class Cloud {
                 record.setValue(dia, forKeyPath: "dia")
                 record.setValue(hora, forKeyPath: "hora")
                 record.setValue(idUsuario, forKeyPath: "idUsuario")
+                record.setValue(localizacao, forKeyPath: "localizacao")
                 
                 publicDataBase.save(record, completionHandler: { (record, error) in
                     if error != nil{

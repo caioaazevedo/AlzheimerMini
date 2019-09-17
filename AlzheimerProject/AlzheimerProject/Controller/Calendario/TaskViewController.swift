@@ -269,7 +269,22 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     }
     
     
-    
+    func fetchEvent(ID: String){
+
+            let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+            do{
+                let eventos = try managedObjectContext.fetch(fetchRequest)
+                
+                for evento in eventos{
+                    if evento.id == ID{
+                    eventEntity = evento
+                    }
+                }
+            }catch{
+                
+            }
+        
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -356,9 +371,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             
             
             if willEditing{
+                fetchEvent(ID: event!.ID)
                 
-                
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
             }
             else{
                 let df = DateFormatter()
