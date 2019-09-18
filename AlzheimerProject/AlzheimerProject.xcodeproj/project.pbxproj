@@ -12,6 +12,11 @@
 		1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1B232046CF00718CC6 /* GuestViewController.swift */; };
 		1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1C232046D000718CC6 /* LoginViewController.swift */; };
 		115CADF323268F420057B1E0 /* CellDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CADF223268F420057B1E0 /* CellDetail.swift */; };
+		11C6248D23301D54006A8EB4 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6248C23301D54006A8EB4 /* Onboard.swift */; };
+		11C6248F23301EE6006A8EB4 /* OnbordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6248E23301EE6006A8EB4 /* OnbordingView.swift */; };
+		11C6249123301F60006A8EB4 /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C6249023301F60006A8EB4 /* Onboard.storyboard */; };
+		3A1F07CB23304C53000A3562 /* Evento+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F07C923304C53000A3562 /* Evento+CoreDataClass.swift */; };
+		3A1F07CC23304C53000A3562 /* Evento+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F07CA23304C53000A3562 /* Evento+CoreDataProperties.swift */; };
 		3A1F07CF23305277000A3562 /* ImagensEId+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F07CD23305277000A3562 /* ImagensEId+CoreDataClass.swift */; };
 		3A1F07D023305277000A3562 /* ImagensEId+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1F07CE23305277000A3562 /* ImagensEId+CoreDataProperties.swift */; };
 		3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */; };
@@ -129,6 +134,9 @@
 		115CAE2123269A130057B1E0 /* SF-Pro-Text-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Thin.otf"; sourceTree = "<group>"; };
 		115CAE2223269A130057B1E0 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		115CAE2323269A130057B1E0 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
+		11C6248C23301D54006A8EB4 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
+		11C6248E23301EE6006A8EB4 /* OnbordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbordingView.swift; sourceTree = "<group>"; };
+		11C6249023301F60006A8EB4 /* Onboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboard.storyboard; sourceTree = "<group>"; };
 		2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.release.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.release.xcconfig"; sourceTree = "<group>"; };
 		3A1F07CD23305277000A3562 /* ImagensEId+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagensEId+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A1F07CE23305277000A3562 /* ImagensEId+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagensEId+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -276,6 +284,16 @@
 			path = Fonte;
 			sourceTree = "<group>";
 		};
+		11C6248B23301C3A006A8EB4 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				11C6248C23301D54006A8EB4 /* Onboard.swift */,
+				11C6248E23301EE6006A8EB4 /* OnbordingView.swift */,
+				11C6249023301F60006A8EB4 /* Onboard.storyboard */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
 		3A8646A12315E6A90091BD0C /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +403,7 @@
 				3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */,
 				3AA3BA87232D894200CC1AC4 /* SFProText.plist */,
 				3AA3BA89232D895C00CC1AC4 /* DynamicFont.swift */,
+				11C6248B23301C3A006A8EB4 /* Onboard */,
 				AC96E75A2330202300FB10BA /* Localizable.strings */,
 			);
 			path = AlzheimerProject;
@@ -532,6 +551,7 @@
 				AC9EE90D23071D02004FA292 /* LaunchScreen.storyboard in Resources */,
 				AC9EE90A23071D02004FA292 /* Assets.xcassets in Resources */,
 				AC9EE90823071D01004FA292 /* Main.storyboard in Resources */,
+				11C6249123301F60006A8EB4 /* Onboard.storyboard in Resources */,
 				AC96E7582330202300FB10BA /* Localizable.strings in Resources */,
 				3AA3BA8D232D985400CC1AC4 /* SF-Pro-Text-Regular.otf in Resources */,
 				AC96E74A23301DBD00FB10BA /* Login.storyboard in Resources */,
@@ -609,6 +629,8 @@
 				AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */,
 				E227F3FC232C280400C25C75 /* GroupTableViewController.swift in Sources */,
 				AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */,
+				11C6248D23301D54006A8EB4 /* Onboard.swift in Sources */,
+				3AD3354923315D8B0006B44D /* Evento+CoreDataClass.swift in Sources */,
 				E261616F232FC2C700F492B8 /* Usuario+CoreDataClass.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
 				1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */,
@@ -628,6 +650,7 @@
 				3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
 				E2C4BE2C2331820C001B5871 /* Evento+CoreDataClass.swift in Sources */,
+				11C6248F23301EE6006A8EB4 /* OnbordingView.swift in Sources */,
 				1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */,
 				E2616176233021E700F492B8 /* CellAnteriores.swift in Sources */,
 				3A54EC9A2320573D004BB09C /* Feed+CoreDataProperties.swift in Sources */,

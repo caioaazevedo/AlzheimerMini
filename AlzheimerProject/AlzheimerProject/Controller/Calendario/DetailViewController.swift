@@ -9,7 +9,20 @@
 import UIKit
 import CircleBar
 
-class DetailViewController: UIViewController {
+protocol DetailViewControllerDelegate{
+    func updateEvent(_ event: Events)
+}
+
+class DetailViewController: UIViewController , DetailViewControllerDelegate {
+    
+    
+    func updateEvent(_ event: Events) {
+        self.event = event
+        self.titulo.text = event.title
+        
+        self.tableView.reloadData()
+    }
+    
     
     let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
@@ -19,14 +32,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var blueView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
         titulo.text = event.title ?? ""
-        
+    //    taskViewController.delegateDetail = self
         blueView.layer.cornerRadius = 50
         blueView.clipsToBounds = true
         setShadowBlueView()
@@ -35,6 +48,10 @@ class DetailViewController: UIViewController {
         
         
     }
+    
+//    func eventUpdated(event: Events) {
+//        titulo.text = event.title
+//    }
     
     func defineDynamicType(){
         let fontName = "SFProText-Regular"
@@ -60,7 +77,7 @@ class DetailViewController: UIViewController {
         case NSLocalizedString("Pharmacy", comment: ""):
             blueView.backgroundColor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-            blueView.backgroundColor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+            blueView.backgroundColor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
         }
     }
     
@@ -72,12 +89,20 @@ class DetailViewController: UIViewController {
         if segue.identifier == "segueEdit"{
             if let vc = segue.destination as? TaskViewController {
                 vc.event = self.event
+                vc.detailViewControllerDelegate = self
+
+//              //  vc.eventUpdatedCallback = { eventos in
+//                    self.event = eventos
+//                    self.titulo.text = eventos.title
+//
+//                    self.tableView.reloadData()
+//               // }
                 
                 vc.willEditing = true
             }
         }
     }
-    
+
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,7 +165,6 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
                 image = iconesArray[0]
                 tipo = NSLocalizedString("Time", comment: "")
                 detalhe = event.time
-            
             case 1:
                 image = iconesArray[1]
                 tipo = NSLocalizedString("Responsable", comment: "")
@@ -181,7 +205,6 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         return 75
     }
     
-    
     func setShadowBlueView() {
         blueView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         blueView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
@@ -190,6 +213,7 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         blueView.clipsToBounds = true
         blueView.layer.masksToBounds = false
     }
+
     
     
 }

@@ -11,11 +11,11 @@ import CoreData
 import UIKit
 import CloudKit
 
+
 class CoreDataBase {
     var userID = ""
     init(){
     }
-    
     static var shared = CoreDataBase()
     
     func createUsuario(fotoDoPerfil: UIImage?, id: UUID, idSala: UUID?, Nome: String){

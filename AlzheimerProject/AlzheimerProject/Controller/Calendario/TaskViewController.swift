@@ -10,15 +10,23 @@ import UIKit
 import CoreData
 import CircleBar
 
+protocol sendDetailDelegate{
+    func sendMessageDetail(_ controller: TaskViewController, evento: Events)
+}
+
+//protocol PreviousTaskViewController {
+//    func eventUpdated(event: Events)
+//}
+
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, sendRespDelegate, removeRespDelegate {
    
-    
-    
-    
-    
     @IBOutlet weak var titulo2: UILabel!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
+    
+   // var previousController: PreviousTaskViewController?
+    var detailViewControllerDelegate : DetailViewControllerDelegate?
+  //  var eventUpdatedCallback: ((Events) -> Void)?
     
     var userLoad = UserLoaded()
     
@@ -29,6 +37,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
+    
     let cdr = CoreDataRebased.shared
     // updateSala -> arrayUsuariospresentes -> nuvem pessoas -> pegar dados pessoas -> armazenar
     
@@ -52,7 +61,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     let ParentPicker = UIDatePicker()
     
     var pessoasResponsaveis = [String]()
-    
+    var delegateDetail: sendDetailDelegate?
     var bolaAzul = UIImage(named: "bola azul")
     var bolaAmarela = UIImage(named: "bola amarela")
     var bolaRosa = UIImage(named: "bola rosa")
@@ -119,6 +128,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     override func viewWillAppear(_ animated: Bool) {
         
         Cloud.setupCloudKitNotifications()
+        
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
@@ -413,14 +423,20 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             
             if willEditing{
                 fetchEvent(ID: event!.ID)
-                
                 let df = DateFormatter()
                 df.dateFormat = "hh:mm"
                 
-                let data = df.string(from: DatePicker.date)
+                let data = df.string(from: Date())
                 let date = df.date(from: data)
-                auxdataEdit = eventEntity?.dia as! Date
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxdataEdit , horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
+                let auxDataEdit = eventEntity?.dia as! Date
+                let eventoEnviar = Events(titleParameter: tituloTextField.text ?? "", timeParameter: data, descParameter: descricao, categParameter: categoria, responsavelParameter: responsaveis, localizationParameter: localTextField.text!, idParameter: "")
+                
+               // delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
+                // previousController?.eventUpdated(event: eventoEnviar)
+              //  eventUpdatedCallback?(eventoEnviar)
+                detailViewControllerDelegate?.updateEvent(eventoEnviar)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxDataEdit, horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
+                
             }
             else{
                 let df = DateFormatter()
@@ -437,6 +453,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     }
     
     var auxNotas = ""
+    
     func sendInfo(_ controller: NotasViewController, texto: String) {
         auxNotas = texto
     }

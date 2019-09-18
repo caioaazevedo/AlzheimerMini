@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AQA-Rk-Wc7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboard-->
+        <scene sceneID="Ys0-O4-fx1">
+            <objects>
+                <viewController storyboardIdentifier="Onbording" id="AQA-Rk-Wc7" customClass="Onboard" customModule="AlzheimerProject" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WVO-09-erA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5m-g1-Koi" customClass="OnbordingView" customModule="AlzheimerProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-24" width="375" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEQ-1I-470">
+                                <rect key="frame" x="53" y="497" width="269" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1Rf-rL-38F"/>
+                                </constraints>
+                                <state key="normal" title="COMEÇAR">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.59999999999999998" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonAction:" destination="AQA-Rk-Wc7" eventType="touchUpInside" id="LXp-4a-nKi"/>
+                                    <segue destination="MoY-XH-uZv" kind="show" id="2bg-RX-Kc5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VZS-YO-Viq" firstAttribute="bottom" secondItem="xEQ-1I-470" secondAttribute="bottom" constant="120" id="21L-91-Oug"/>
+                            <constraint firstItem="z5m-g1-Koi" firstAttribute="trailing" secondItem="VZS-YO-Viq" secondAttribute="trailing" id="BUm-gV-Qwv"/>
+                            <constraint firstItem="z5m-g1-Koi" firstAttribute="leading" secondItem="VZS-YO-Viq" secondAttribute="leading" id="Nuw-DO-bAy"/>
+                            <constraint firstItem="z5m-g1-Koi" firstAttribute="leading" secondItem="VZS-YO-Viq" secondAttribute="leading" id="Q74-cY-HpT"/>
+                            <constraint firstItem="VZS-YO-Viq" firstAttribute="trailing" secondItem="z5m-g1-Koi" secondAttribute="trailing" id="RUt-Av-2J1"/>
+                            <constraint firstItem="z5m-g1-Koi" firstAttribute="top" secondItem="VZS-YO-Viq" secondAttribute="top" constant="-44" id="SVl-0e-KYD"/>
+                            <constraint firstItem="VZS-YO-Viq" firstAttribute="bottom" secondItem="z5m-g1-Koi" secondAttribute="bottom" constant="-34" id="Vx5-rJ-vjf"/>
+                            <constraint firstItem="z5m-g1-Koi" firstAttribute="top" secondItem="WVO-09-erA" secondAttribute="top" id="cCe-ha-6Ee"/>
+                            <constraint firstItem="xEQ-1I-470" firstAttribute="leading" secondItem="VZS-YO-Viq" secondAttribute="leading" constant="53" id="guD-YQ-pXA"/>
+                            <constraint firstItem="VZS-YO-Viq" firstAttribute="trailing" secondItem="xEQ-1I-470" secondAttribute="trailing" constant="53" id="k6Y-T2-oZo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VZS-YO-Viq"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorView" destination="z5m-g1-Koi" id="9lc-f5-k3a"/>
+                        <outlet property="startButton" destination="xEQ-1I-470" id="QcB-k5-m0q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncl-eJ-HTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-61.600000000000001" y="137.18140929535232"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="KcO-Sn-8N0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="MoY-XH-uZv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTm-mE-oXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="762" y="245"/>
+        </scene>
+    </scenes>
+</document>

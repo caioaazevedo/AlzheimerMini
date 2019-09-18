@@ -57,7 +57,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?, nomeCriador: String, dataCriacao: Date) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?, nomeCriador: String,dataCriacao: Date) {
         
         let record = CKRecord(recordType: "Evento")
         
