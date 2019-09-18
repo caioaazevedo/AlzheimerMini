@@ -27,39 +27,60 @@ class profileTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var notificationImage: UIImageView!
     
+    @IBOutlet weak var switchBtn: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arredondaIcones()
+        //arredondaIcones()
         tableView.tableFooterView = UIView()
         
         setUpDynamicFonts()
 //        fixDynamicTypeForStaticTableViews()
-        
-
    
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        if switchBtn.isOn{
+//            Cloud.setupCloudKitNotifications()
+//        } else {
+//            Cloud.deleteCloudSubs()
+//        }
+//    }
     
-    func arredondaIcones(){
+//    func arredondaIcones(){
+//
+//        idosoImage.clipsToBounds = true
+//        idosoImage.layer.cornerRadius = 20
+//
+//        grupoImage.clipsToBounds = true
+//        grupoImage.layer.cornerRadius = 20
+//
+//        familiaImage.clipsToBounds = true
+//        familiaImage.layer.cornerRadius = 20
+//
+//        profileImage.clipsToBounds = true
+//        profileImage.layer.cornerRadius = 20
+//
+//        notificationImage.clipsToBounds = true
+//        notificationImage.layer.cornerRadius = 20
+//
+//
+//
+//    }
+//
         
-        idosoImage.clipsToBounds = true
-        idosoImage.layer.cornerRadius = 20
-        
-        grupoImage.clipsToBounds = true
-        grupoImage.layer.cornerRadius = 20
-        
-        familiaImage.clipsToBounds = true
-        familiaImage.layer.cornerRadius = 20
-        
-        profileImage.clipsToBounds = true
-        profileImage.layer.cornerRadius = 20
-        
-        notificationImage.clipsToBounds = true
-        notificationImage.layer.cornerRadius = 20
         
         
         
+        
+        
+        
+    @IBAction func tuenNot(_ sender: Any) {
+        if switchBtn.isOn{
+            Cloud.setupCloudKitNotifications()
+        } else {
+            Cloud.deleteCloudSubs()
+        }
     }
     
 //    func fixDynamicTypeForStaticTableViews() {
@@ -109,23 +130,21 @@ class profileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section) - \(indexPath.row)")
         if indexPath.section == 0{
-        switch(indexPath.row){
-        case 0:
-            performSegue(withIdentifier: "perfilIdoso", sender: self)
-            
-        case 1:
-            performSegue(withIdentifier: "grupo", sender: self)
-        case 2:
-            performSegue(withIdentifier: "familia", sender: self)
-        default:
-            print()
-        }
+            switch(indexPath.row){
+            case 0:
+                performSegue(withIdentifier: "perfilIdoso", sender: self)
+                
+            case 1:
+                performSegue(withIdentifier: "grupo", sender: self)
+            case 2:
+                performSegue(withIdentifier: "familia", sender: self)
+            default:
+                print()
+            }
         }else{
             if indexPath.row == 0{
                 performSegue(withIdentifier: "seguePerfil", sender: self)
             }
-        
-            
         }
     }
     

@@ -33,7 +33,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, idSala: String, host: Int64) {
+    static func saveUsuario(idUsuario: String, nome: String?, foto: Data?, idSala: String, host: Int64) {
         let record = CKRecord(recordType: "Usuario")
         
         
@@ -57,7 +57,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?, nomeCriador: String) {
         
         let record = CKRecord(recordType: "Evento")
         
@@ -71,6 +71,7 @@ class Cloud {
         record.setValue(idUsuario, forKeyPath: "idUsuario")
         record.setValue(idCalendario, forKeyPath: "idCalendario")
         record.setValue(localizacao, forKey: "localizacao")
+        record.setValue(nomeCriador, forKey: "nomeCriador")
         
         saveRequest(record: record)
     }
@@ -179,6 +180,7 @@ class Cloud {
         
         publicDataBase.add(queryOp)
     }
+    
     static func queryArrayUsuarios(searchUsuarios: [String], completion: @escaping (_ result: Bool) -> ()) {
         var count = 0
         let predicate = NSPredicate(value: true)
@@ -211,7 +213,6 @@ class Cloud {
         }
         publicDataBase.add(queryOp)
     }
-    
     
     static func queryUsuario(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
         var found = false
@@ -363,16 +364,12 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    
-    
     static func updateUsuario(searchRecord: String, nome: String?, foto: Data?, idSala: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["nome", "foto", "idSala"]
         queryOp.queuePriority = .veryHigh
-        queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
@@ -422,7 +419,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updateEvento(searchRecord: String, idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Timer, idUsuario: String?, idCalendario: String) {
+    static func updateEvento(searchRecord: String, idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String,localizacao: String) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Evento", predicate: predicate)
         
@@ -439,6 +436,7 @@ class Cloud {
                 record.setValue(dia, forKeyPath: "dia")
                 record.setValue(hora, forKeyPath: "hora")
                 record.setValue(idUsuario, forKeyPath: "idUsuario")
+                record.setValue(localizacao, forKeyPath: "localizacao")
                 
                 publicDataBase.save(record, completionHandler: { (record, error) in
                     if error != nil{
@@ -550,6 +548,7 @@ class Cloud {
             
             if record["idCalendario"] == userLoad.idSalaCalendar{
                 let eventCreate = Evento(context: managedObjectContext)
+                eventCreate.nomeCriador = record["nomeCriador"]
                 eventCreate.id = record["idEvento"]
                 eventCreate.categoria = record["categoria"]
                 eventCreate.descricao = record["descricao"]
@@ -557,7 +556,7 @@ class Cloud {
                 eventCreate.horario = record["hora"] as? NSDate
                 eventCreate.idUsuarios = record["idUsuarios"] as? NSObject
                 eventCreate.idCalendario = record["idCalendario"]
-                eventCreate.idResponsavel = record["idCriador"]
+                eventCreate.idResponsavel = record["idUsuario"]
                 eventCreate.nome = record["nome"]
                 eventCreate.localizacao = record["localizacao"]
                 CoreDataRebased.shared.saveCoreData()
@@ -721,6 +720,48 @@ class Cloud {
         }
     }
     
+    static func cloudUpdateCalendarioEventos(array: [String]){
+        let userLoad = UserLoaded()
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Calendario", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            if record["idCalendario"] == userLoad.idSalaCalendar{
+                record["idEvetos"] = array
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+            }
+        }
+        publicDataBase.add(queryOp)
+        
+    }
+    
+    static func cloudDeleteEvento(eventoId: String){
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Evento", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            
+            if record["idEvento"] == eventoId{
+                let delete = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [record.recordID])
+                publicDataBase.add(delete)
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+            }
+            
+        }
+        
+        publicDataBase.add(queryOp)
+    }
     
     //Cloud Push-Up notifications ⚡️
     static func setupCloudKitNotifications(){
@@ -794,7 +835,7 @@ class Cloud {
 //                newPeople.id = record["idUsuario"]
 //                newPeople.nome = record["nome"]
 //                newPeople.selecionado = falserefreshControl.endRefreshing()
-                let imageDefault = UIImage(named: "Remedio")
+                let imageDefault = UIImage(named: "ProfilePicture")
                 ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
                 
                 if userLoad.idSala == record["idSala"]! {
@@ -846,6 +887,67 @@ class Cloud {
 //
 //
 //    }
+    
+    
+    static func getIdUsuariosSala(completion: @escaping (_ result: Bool) -> ()){
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Sala", predicate: predicate)
+        let queryOp = CKQueryOperation(query: query)
+        let query2 = CKQuery(recordType: "Usuario", predicate: predicate)
+        let queryOp2 = CKQueryOperation(query: query2)
+        let userLoad = UserLoaded()
+        
+        queryOp.recordFetchedBlock = { (record) -> Void in
+            var i = 0
+            if record["idSala"] == userLoad.idSala{
+                var arrayPeople = (record["idUsuarios"] as! NSArray).mutableCopy() as! [String]
+                for per in arrayPeople{
+                    if per == userLoad.idUser{
+                        arrayPeople.remove(at: i)
+                    }
+                    i += 1
+                }
+                record["idUsuarios"] = arrayPeople
+                
+                
+                
+                
+                publicDataBase.save(record) { (record, error) in
+                    
+                    if error != nil {
+                        print("Error: ", error!)
+                    } else {
+                        print("Success!")
+                    }
+                    
+                }
+                
+                
+                completion(true)
+            }
+            
+            
+        }
+        queryOp2.recordFetchedBlock = { (record) -> Void in
+            
+            if record["idUsuario"] == userLoad.idUser{
+                
+                let delete = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [record.recordID])
+                publicDataBase.add(delete)
+                publicDataBase.save(record, completionHandler: { (record, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                })
+                
+            }
+        }
+        
+        publicDataBase.add(queryOp)
+        publicDataBase.add(queryOp2)
+        
+        
+    }
     
     
     

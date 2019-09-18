@@ -58,19 +58,19 @@ class CalendarioViewController: UIViewController {
         didSet{
             switch (auxDiaSemanaNum){
             case 1:
-                auxDiaSemana = "Domingo"
+                auxDiaSemana = NSLocalizedString("Sunday", comment: "")
             case 2:
-                auxDiaSemana = "Segunda"
+                auxDiaSemana = NSLocalizedString("Monday", comment: "")
             case 3:
-                auxDiaSemana = "Terça"
+                auxDiaSemana = NSLocalizedString("Tuesday", comment: "")
             case 4:
-                auxDiaSemana = "Quarta"
+                auxDiaSemana = NSLocalizedString("Wednesday", comment: "")
             case 5:
-                auxDiaSemana = "Quinta"
+                auxDiaSemana = NSLocalizedString("Thursday", comment: "")
             case 6:
-                auxDiaSemana = "Sexta"
+                auxDiaSemana = NSLocalizedString("Friday", comment: "")
             default:
-                auxDiaSemana = "Sábado"
+                auxDiaSemana = NSLocalizedString("Saturday", comment: "")
             }
         }
     }
@@ -82,29 +82,29 @@ class CalendarioViewController: UIViewController {
         didSet{
             switch(auxMesNum){
             case 1:
-                auxMes = "Janeiro"
+                auxMes = NSLocalizedString("January", comment: "")
             case 2:
-                auxMes = "Fevereiro"
+                auxMes = NSLocalizedString("February", comment: "")
             case 3:
-                auxMes = "Março"
+                auxMes = NSLocalizedString("March", comment: "")
             case 4:
-                auxMes = "Abril"
+                auxMes = NSLocalizedString("April", comment: "")
             case 5:
-                auxMes = "Maio"
+                auxMes = NSLocalizedString("May", comment: "")
             case 6:
-                auxMes = "Junho"
+                auxMes = NSLocalizedString("June", comment: "")
             case 7:
-                auxMes = "Julho"
+                auxMes = NSLocalizedString("July", comment: "")
             case 8:
-                auxMes = "Agosto"
+                auxMes = NSLocalizedString("August", comment: "")
             case 9:
-                auxMes = "Setembro"
+                auxMes = NSLocalizedString("September", comment: "")
             case 10:
-                auxMes = "Outubro"
+                auxMes = NSLocalizedString("October", comment: "")
             case 11:
-                auxMes = "Novembro"
+                auxMes = NSLocalizedString("November", comment: "")
             default:
-                auxMes = "Dezembro"
+                auxMes = NSLocalizedString("December", comment: "")
             }
         }
     }
@@ -121,7 +121,8 @@ class CalendarioViewController: UIViewController {
             auxDiaSemanaNum = Calendar.current.component(.weekday, from: DiaSelecionado!)
             auxDia = Calendar.current.component(.day, from: DiaSelecionado!)
             auxMesNum = Calendar.current.component(.month, from: DiaSelecionado!)
-            diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
+            
+            diaDeHoje.text = String("\(auxDia!) of \(auxMes!)").uppercased()
             
             
             let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
@@ -130,12 +131,20 @@ class CalendarioViewController: UIViewController {
             
             for evento in eventosSalvos{
                 if evento.dia != nil{
+                    var responsaveis = [String]()
                     let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
                     let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
                     if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
-                        let hour = Calendar.current.component(.hour, from: evento.horario! as Date)
-                        let minute = Calendar.current.component(.minute, from: evento.horario! as Date)
-                        let evento = Events(titleParameter: evento.nome!, timeParameter: "\(hour):\(minute)", descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: evento.idResponsavel ?? "", localizationParameter: evento.localizacao ?? "")
+
+                        let df = DateFormatter()
+                        df.dateFormat = "hh:mm"
+                        let data = df.string(from: evento.horario! as Date)
+                        
+                        
+                        if evento.idUsuarios != nil{
+                         responsaveis = (evento.idUsuarios as! NSArray).mutableCopy() as! [String]
+                        }
+                        let evento = Events(titleParameter: evento.nome!, timeParameter: data, descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: responsaveis ?? [""], localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
                         
                         DailyEvents.append(evento)
                         
@@ -162,14 +171,21 @@ class CalendarioViewController: UIViewController {
         auxDia = Calendar.current.component(.day, from: calendar.today!)
         auxMesNum = Calendar.current.component(.month, from: calendar.today!)
         
-        calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
+     //   calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
         //calendar.appearance.eventDefaultColor
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
         
         
+        diaDeHoje.font = scaledFont.font(forTextStyle: .body)
+        diaDeHoje.adjustsFontForContentSizeCategory = true
         
         
-        diaDeHoje.text = "\(auxDia!) de \(auxMes!)"
+        diaDeHoje.text = "\(auxMes!) \(auxDia!)"
         
         fetchAll()
         //        Cloud.getPeople()
@@ -180,10 +196,23 @@ class CalendarioViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        //Refresh
         
+        //Refresh
+        CoreDataRebased.shared.deleteAllEvents()
+        Cloud.updateCalendario { (result) in
+            Cloud.updateAllEvents(completion: { (t) in
+                self.fetchAll()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.calendar.reloadData()
+                    refreshControl.endRefreshing()
+                    self.selectedDay = self.DiaSelecionado
+                }
+                
+            })
         
         //        Cloud.getPeople()
+    }
     }
     
     @objc func refreshTable(refreshControl: UIRefreshControl){
@@ -199,6 +228,15 @@ class CalendarioViewController: UIViewController {
                 }
                 
             })
+            DispatchQueue.main.async {
+                
+                UIView.animate(withDuration: 2, animations: {
+                    refreshControl.endRefreshing()
+                }, completion: { (k) in
+                    self.tableView.reloadData()
+                })
+            }
+           
         }
         
         
@@ -228,8 +266,8 @@ class CalendarioViewController: UIViewController {
     @IBAction func createTask(_ sender: Any) {
         
         if let today = calendar.today, DiaSelecionado ?? today < today {
-            let alert = UIAlertController(title: "Atenção", message: "Não é possível adicionar tarefas a dias passados", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Attention", comment: ""), message: NSLocalizedString("PassedDays", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Done", comment: ""), style: .default, handler: nil))
             self.present(alert,animated: true,completion: nil)
             
             // Deixar opcao escondida
@@ -366,18 +404,18 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
                 switch(x.categoria){
                     
                     // enum apply
-                case "Saúde":
+                case NSLocalizedString("Health",comment: ""):
                     cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-                    
-                case "Lazer":
+                    corOutro = cor
+                case NSLocalizedString("Recreation" , comment: ""):
                     cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-                case "Dentista":
+                case NSLocalizedString("Dentist" , comment: ""):
                     cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-                case "Farmácia":
+                case NSLocalizedString("Pharmacy" , comment: ""):
                     cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
                     corOutro = cor
                 default:
-                    cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+                   cor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
                 }
                 return [cor,corOutro]
                 
@@ -460,16 +498,16 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     func defineColor(_ categoria: String) -> UIColor{
         var cor = UIColor()
         switch(categoria){
-        case "Saúde":
+        case NSLocalizedString("Health",comment: ""):
             cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-        case "Lazer":
+        case NSLocalizedString("Recreation",comment: ""):
             cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
-        case "Dentista":
+        case NSLocalizedString("Dentist",comment: ""):
             cor = .init(red: 0.87, green: 0.62, blue: 0.77, alpha: 1)
-        case "Farmácia":
+        case NSLocalizedString("Pharmacy",comment: ""):
             cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-            cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+                   cor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
         }
         return cor
     }
@@ -477,6 +515,8 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.separatorStyle = .none
+        
         return DailyEvents.count;
     }
     
@@ -484,23 +524,56 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
+        cell.clipsToBounds = true
         cell.layer.cornerRadius = 10
+        
         var categoria = DailyEvents[indexPath.row].categ
         
+        var string: String?
+        
+        for element in DailyEvents[indexPath.row].responsavel {
+            if string == nil {
+                string = element
+            } else {
+                string = string! + ", " + element
+            }
+        }
+        
+        
         cell.backgroundColor = defineColor(categoria)
-
+      
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
-        cell.responsavel.text = DailyEvents[indexPath.row].responsavel
+        
+       
+        cell.responsavel.text = string
         cell.location.text = DailyEvents[indexPath.row].localization
+        
+        cell.horario.font = scaledFont.font(forTextStyle: .body)
+        cell.horario.adjustsFontForContentSizeCategory = true
+        
+        cell.responsavel.font = scaledFont.font(forTextStyle: .body)
+        cell.responsavel.adjustsFontForContentSizeCategory = true
+        
+        cell.location.font = scaledFont.font(forTextStyle: .body)
+        cell.location.adjustsFontForContentSizeCategory = true
+        
+        cell.titulo.font = scaledFont.font(forTextStyle: .body)
+        cell.titulo.adjustsFontForContentSizeCategory = true
         
         return cell;
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 175
+        return 155
     }
     
     
@@ -509,6 +582,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
         eventoSelecionado = DailyEvents[indexPath.row]
         eventoDetail = DailyEvents[indexPath.row]
         performSegue(withIdentifier: "segueDetail", sender: self)

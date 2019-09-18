@@ -1,0 +1,47 @@
+/* 
+ Localizable.strings
+ AlzheimerProject
+ 
+ Created by Guilherme Martins Dalosto de Oliveira on 16/09/19.
+ Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
+ */
+"Today" = "Today";
+"Previously" = "Previously";
+"Health" = "Health";
+"Recreation" = "Recreation";
+"Dentist" = "Dentist";
+"Pharmacy" = "Pharmacy";
+"Time" = "Time";
+"Responsable" = "Responsable";
+"Localization" = "Localization";
+"Notes" = "Notes";
+"January" = "January";
+"February" = "February";
+"March" = "March";
+"April" = "April";
+"May" = "May";
+"June" = "June";
+"July" = "July";
+"August" = "August";
+"September" = "September";
+"October" = "October";
+"November" = "November";
+"December" = "December";
+"Attention" = "Attention";
+"FillAll" = "Please, fill all necessary fields";
+"Done" = "Done";
+"markEvent" = "Mark Event";
+"Sunday" = "Sunday";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"PassedDays" = "You can't add events to passed days";
+"LeaveGroup" = "Leave Group";
+"ConfirmLeave" = "Are you sure you want to leave the group?";
+"Yes" = "Yes";
+"ConfirmPart" = "ConfirmPart";
+"None" = "None";
+

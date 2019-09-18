@@ -1,0 +1,15 @@
+
+/* Class = "UINavigationItem"; title = "Remember Me"; ObjectID = "2XS-YM-dew"; */
+"2XS-YM-dew.title" = "Remember Me";
+
+/* Class = "UISegmentedControl"; ON6-st-0EH.segmentTitles[0] = "All"; ObjectID = "ON6-st-0EH"; */
+"ON6-st-0EH.segmentTitles[0]" = "All";
+
+/* Class = "UISegmentedControl"; ON6-st-0EH.segmentTitles[1] = "Mine"; ObjectID = "ON6-st-0EH"; */
+"ON6-st-0EH.segmentTitles[1]" = "Mine";
+
+/* Class = "UILabel"; text = "Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro."; ObjectID = "ZYn-yC-uWa"; */
+"ZYn-yC-uWa.text" = "Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro.";
+
+/* Class = "UILabel"; text = "Activities"; ObjectID = "mcp-vL-PtF"; */
+"mcp-vL-PtF.text" = "Activities";
