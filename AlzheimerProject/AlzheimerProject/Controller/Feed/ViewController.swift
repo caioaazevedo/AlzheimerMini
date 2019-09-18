@@ -267,6 +267,8 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                         cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
                         cell.bgVview.clipsToBounds = true
                         cell.bgVview.layer.cornerRadius = 15
+                        cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                        cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                         
                     }
                 default:
@@ -274,6 +276,8 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                     cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
+                    cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                    cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 }
             
             }
@@ -294,6 +298,8 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                     cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
+                    cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                    cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                     
                 }
             default:
@@ -301,6 +307,8 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
                 cell.bgVview.clipsToBounds = true
                 cell.bgVview.layer.cornerRadius = 15
+                cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
             }
             
             }
@@ -317,6 +325,16 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+    func getFotoCriador(idCriador: String) ->UIImage {
+        for ck in ckData {
+            if ck.0 == idCriador {
+                return UIImage(data: ck.2)!
+            }
+        }
+        
+        return UIImage(named: "ProfilePicture")!
     }
     
     
