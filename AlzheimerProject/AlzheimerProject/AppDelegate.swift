@@ -20,7 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let sb = UIStoryboard(name: "Onboard", bundle: nil)
+        var inicialViewController = sb.instantiateViewController(withIdentifier: "Onbording")
+        
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.bool(forKey: "onbordingComplete") {
+            let sb = UIStoryboard(name: "Login", bundle: nil)
+            inicialViewController = sb.instantiateViewController(withIdentifier: "MainApp")
+        }
+        
+        window?.rootViewController = inicialViewController
+        window?.makeKeyAndVisible()
         
         //Cloud Push-Up notifications ⚡️
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (result, error) in
@@ -37,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Cloud Push-Up notifications ⚡️
         
 //                Cloud.getPeople()
+        
         
         return true
     }

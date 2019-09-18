@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="08K-uJ-Hp9">
-    <device id="ipad11_0rounded" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -21,28 +21,28 @@
         <!--Login View Controller-->
         <scene sceneID="Ri4-pb-I5f">
             <objects>
-                <viewController id="08K-uJ-Hp9" customClass="LoginViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainApp" id="08K-uJ-Hp9" customClass="LoginViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZmB-yY-IMG">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OLÁ!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2q-6p-z0p">
-                                <rect key="frame" x="36" y="815" width="762" height="41"/>
+                                <rect key="frame" x="36" y="517" width="342" height="41"/>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entrar como" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heI-7J-xaV">
-                                <rect key="frame" x="36" y="864" width="762" height="24"/>
+                                <rect key="frame" x="36" y="566" width="342" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="nxP-Ie-RyA">
-                                <rect key="frame" x="36" y="918" width="762" height="151"/>
+                                <rect key="frame" x="36" y="620" width="342" height="137"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dar-1b-mDn" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="762" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="57"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <state key="normal" title="CRIAR GRUPO">
@@ -54,7 +54,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7u-zy-Vp9" customClass="RoundButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="87" width="762" height="64"/>
+                                        <rect key="frame" x="0.0" y="80" width="342" height="57"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,7 +80,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ativo 31" translatesAutoresizingMaskIntoConstraints="NO" id="eca-gI-jsF">
-                                <rect key="frame" x="71" y="81" width="692" height="199.5"/>
+                                <rect key="frame" x="71" y="101" width="272" height="199.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -116,18 +116,18 @@
             <objects>
                 <viewController id="Fg7-5o-6fC" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ft-7c-AZC">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
-                                <rect key="frame" x="36" y="834" width="762" height="21"/>
+                                <rect key="frame" x="36" y="522" width="342" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                <rect key="frame" x="36" y="990" width="762" height="60"/>
+                                <rect key="frame" x="36" y="678" width="342" height="60"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="uFX-jQ-4Lh"/>
@@ -142,7 +142,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
-                                <rect key="frame" x="36" y="1086" width="762" height="33"/>
+                                <rect key="frame" x="36" y="774" width="342" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Voltar">
                                     <color key="titleColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -152,15 +152,15 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome da Família" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
-                                <rect key="frame" x="36" y="890" width="762" height="21"/>
+                                <rect key="frame" x="36" y="578" width="342" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
-                                <rect key="frame" x="80" y="69" width="674" height="586"/>
-                                <state key="normal" backgroundImage="Ativo 31"/>
+                                <rect key="frame" x="80" y="89" width="254" height="254"/>
+                                <state key="normal" backgroundImage="perfil"/>
                                 <connections>
                                     <action selector="fotoPerfil:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="RQ6-9p-0jj"/>
                                 </connections>
@@ -211,27 +211,27 @@
             <objects>
                 <viewController storyboardIdentifier="Login" id="6RI-kf-fto" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RVR-23-l1n">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Código" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-eI-ErX">
-                                <rect key="frame" x="36" y="870" width="762" height="21"/>
+                                <rect key="frame" x="36" y="558" width="342" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informe o código dado pelo host do seu grupo:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-fX-XiC">
-                                <rect key="frame" x="36" y="828.5" width="677" height="20.5"/>
+                                <rect key="frame" x="36" y="496" width="257" height="41"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ativo 31" translatesAutoresizingMaskIntoConstraints="NO" id="I84-9h-me0">
-                                <rect key="frame" x="71" y="81" width="692" height="199.5"/>
+                                <rect key="frame" x="71" y="101" width="272" height="199.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-wY-kXm" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                <rect key="frame" x="36" y="991" width="762" height="59"/>
+                                <rect key="frame" x="36" y="679" width="342" height="59"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="bAD-PA-T8z"/>
@@ -246,7 +246,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfi-M6-z9L">
-                                <rect key="frame" x="36" y="1086" width="762" height="33"/>
+                                <rect key="frame" x="36" y="774" width="342" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Voltar">
                                     <color key="titleColor" red="0.93725490196078431" green="0.6588235294117647" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -289,9 +289,10 @@
     </scenes>
     <resources>
         <image name="Ativo 31" width="229.5" height="199.5"/>
+        <image name="perfil" width="260.5" height="260.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d0L-uA-RXe"/>
-        <segue reference="AZV-of-5Wc"/>
+        <segue reference="ycR-Qk-smF"/>
+        <segue reference="YAN-b0-el0"/>
     </inferredMetricsTieBreakers>
 </document>

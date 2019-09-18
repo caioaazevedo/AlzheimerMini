@@ -13,6 +13,9 @@
 		1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1B232046CF00718CC6 /* GuestViewController.swift */; };
 		1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1C232046D000718CC6 /* LoginViewController.swift */; };
 		115CADF323268F420057B1E0 /* CellDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CADF223268F420057B1E0 /* CellDetail.swift */; };
+		11C6248D23301D54006A8EB4 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6248C23301D54006A8EB4 /* Onboard.swift */; };
+		11C6248F23301EE6006A8EB4 /* OnbordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6248E23301EE6006A8EB4 /* OnbordingView.swift */; };
+		11C6249123301F60006A8EB4 /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C6249023301F60006A8EB4 /* Onboard.storyboard */; };
 		3A54EC992320573D004BB09C /* Feed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */; };
 		3A54EC9A2320573D004BB09C /* Feed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */; };
 		3A54EC9B2320573D004BB09C /* Calendario+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC8F2320573D004BB09C /* Calendario+CoreDataClass.swift */; };
@@ -126,6 +129,9 @@
 		115CAE2123269A130057B1E0 /* SF-Pro-Text-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Thin.otf"; sourceTree = "<group>"; };
 		115CAE2223269A130057B1E0 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		115CAE2323269A130057B1E0 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
+		11C6248C23301D54006A8EB4 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
+		11C6248E23301EE6006A8EB4 /* OnbordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbordingView.swift; sourceTree = "<group>"; };
+		11C6249023301F60006A8EB4 /* Onboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboard.storyboard; sourceTree = "<group>"; };
 		2F7C12E70EE4623B2C3907C5 /* Pods-AlzheimerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.release.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.release.xcconfig"; sourceTree = "<group>"; };
 		3A54EC8D2320573D004BB09C /* Feed+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A54EC8E2320573D004BB09C /* Feed+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -260,6 +266,16 @@
 			path = Fonte;
 			sourceTree = "<group>";
 		};
+		11C6248B23301C3A006A8EB4 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				11C6248C23301D54006A8EB4 /* Onboard.swift */,
+				11C6248E23301EE6006A8EB4 /* OnbordingView.swift */,
+				11C6249023301F60006A8EB4 /* Onboard.storyboard */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
 		3A8646A12315E6A90091BD0C /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +383,7 @@
 				3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */,
 				3AA3BA87232D894200CC1AC4 /* SFProText.plist */,
 				3AA3BA89232D895C00CC1AC4 /* DynamicFont.swift */,
+				11C6248B23301C3A006A8EB4 /* Onboard */,
 			);
 			path = AlzheimerProject;
 			sourceTree = "<group>";
@@ -511,6 +528,7 @@
 				AC9EE90D23071D02004FA292 /* LaunchScreen.storyboard in Resources */,
 				AC9EE90A23071D02004FA292 /* Assets.xcassets in Resources */,
 				AC9EE90823071D01004FA292 /* Main.storyboard in Resources */,
+				11C6249123301F60006A8EB4 /* Onboard.storyboard in Resources */,
 				3AA3BA8D232D985400CC1AC4 /* SF-Pro-Text-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +603,7 @@
 				AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */,
 				E227F3FC232C280400C25C75 /* GroupTableViewController.swift in Sources */,
 				AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */,
+				11C6248D23301D54006A8EB4 /* Onboard.swift in Sources */,
 				E261616F232FC2C700F492B8 /* Usuario+CoreDataClass.swift in Sources */,
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
 				1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */,
@@ -603,6 +622,7 @@
 				E2616170232FC2C700F492B8 /* Usuario+CoreDataProperties.swift in Sources */,
 				3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */,
 				AC9EE92C230F1A88004FA292 /* Days.swift in Sources */,
+				11C6248F23301EE6006A8EB4 /* OnbordingView.swift in Sources */,
 				1144AF1E232046D000718CC6 /* LoginViewController.swift in Sources */,
 				3A54EC9A2320573D004BB09C /* Feed+CoreDataProperties.swift in Sources */,
 				3A54EC9E2320573D004BB09C /* PerfilUsuario+CoreDataProperties.swift in Sources */,
