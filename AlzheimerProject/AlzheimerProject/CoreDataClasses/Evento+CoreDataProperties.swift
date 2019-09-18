@@ -29,5 +29,5 @@ extension Evento {
     @NSManaged public var nome: String?
     @NSManaged public var nomeCriador: String?
     @NSManaged public var ofCalendar: Calendario?
-
+    @NSManaged public var dataCriacao: NSDate?
 }

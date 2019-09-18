@@ -406,6 +406,7 @@ class CoreDataRebased{
         event.idCalendario = userLoad.idSalaCalendar
         event.localizacao = localizacao
         event.nomeCriador = nomeCriador
+        event.dataCriacao = Date() as NSDate
         var eventArray = [String]()
         
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
@@ -431,7 +432,7 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador)
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador,dataCriacao: event.dataCriacao as! Date)
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         

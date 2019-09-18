@@ -1321,6 +1321,7 @@
         <image name="Hora" width="16" height="15"/>
         <image name="LOCALIZACAO" width="22.5" height="22.5"/>
         <image name="Profile" width="180" height="180"/>
+        <image name="ProfilePicture" width="260.5" height="260.5"/>
         <image name="RESPONSAVEL" width="24.5" height="20.5"/>
         <image name="Share" width="16" height="24"/>
         <image name="bola vermelha" width="21" height="21"/>

@@ -9,8 +9,7 @@
 import UIKit
 import CircleBar
 
-class DetailViewController: UIViewController , sendDetailDelegate {
-   
+class DetailViewController: UIViewController , PreviousTaskViewController {
     
     let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
@@ -20,14 +19,14 @@ class DetailViewController: UIViewController , sendDetailDelegate {
     @IBOutlet weak var blueView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
         titulo.text = event.title ?? ""
-        
+    //    taskViewController.delegateDetail = self
         blueView.layer.cornerRadius = 50
         blueView.clipsToBounds = true
         setShadowBlueView()
@@ -35,6 +34,10 @@ class DetailViewController: UIViewController , sendDetailDelegate {
         defineDynamicType()
         
         
+    }
+    
+    func eventUpdated(event: Events) {
+        titulo.text = event.title
     }
     
     func defineDynamicType(){
@@ -73,16 +76,19 @@ class DetailViewController: UIViewController , sendDetailDelegate {
         if segue.identifier == "segueEdit"{
             if let vc = segue.destination as? TaskViewController {
                 vc.event = self.event
+
+                vc.eventUpdatedCallback = { eventos in
+                    self.event = eventos
+                    self.titulo.text = eventos.title
+
+                    self.tableView.reloadData()
+                }
                 
                 vc.willEditing = true
             }
         }
     }
-    
-//    func sendMessageDetail(_ controller: TaskViewController, evento: Events) {
-//        <#code#>
-//    }
-//    
+
     
     
     override func viewWillAppear(_ animated: Bool) {
