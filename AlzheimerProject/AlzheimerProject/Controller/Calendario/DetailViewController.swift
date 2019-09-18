@@ -168,7 +168,7 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
             
             case 1:
                 image = iconesArray[1]
-                tipo = NSLocalizedString("Responsable", comment: "")
+                tipo = NSLocalizedString("Responsible", comment: "")
                 var string: String?
                 for element in event.responsavel {
                     if string == nil {

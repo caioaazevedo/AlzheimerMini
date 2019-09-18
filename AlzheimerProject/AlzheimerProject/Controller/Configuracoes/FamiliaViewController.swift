@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleBar
 
 class FamiliaViewController: UIViewController {
 
@@ -14,6 +15,13 @@ class FamiliaViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        }
     }
     
     @IBOutlet weak var fotoFamilia: UIImageView!

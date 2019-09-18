@@ -435,7 +435,7 @@ class CoreDataRebased{
         }
         saveCoreData()
         
-        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador,dataCriacao: event.dataCriacao as! Date)
+        Cloud.saveEvento(idEvento: event.id!, nome: event.nome, categoria: event.categoria!, descricao: event.descricao ?? "", dia: event.dia as! Date, hora: event.horario as! Date, idUsuario: event.idResponsavel, idCalendario: userLoad.idSalaCalendar!, localizacao: event.localizacao ?? "",nomeCriador: nomeCriador,dataCriacao: event.dataCriacao as! Date, responsaveis: responsaveis)
         Cloud.updateCalendario(searchRecord: userLoad.idSalaCalendar!, idEventos: eventArray)
         
         

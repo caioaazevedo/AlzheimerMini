@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Remember Me-->
+        <!--Dalosto Family-->
         <scene sceneID="XmR-bR-GSU">
             <objects>
                 <viewController id="tJk-sW-KAf" customClass="ViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -177,7 +177,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zer-mj-rzr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Remember Me" id="2XS-YM-dew"/>
+                    <navigationItem key="navigationItem" title="Dalosto Family" id="2XS-YM-dew"/>
                     <connections>
                         <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
                         <outlet property="segmentedControl" destination="ON6-st-0EH" id="jcc-0J-Suz"/>

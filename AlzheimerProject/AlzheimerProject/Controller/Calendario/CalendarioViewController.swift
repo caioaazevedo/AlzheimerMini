@@ -135,7 +135,7 @@ class CalendarioViewController: UIViewController {
                     let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
                     let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
                     if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
-
+                        
                         let df = DateFormatter()
                         df.dateFormat = "hh:mm"
                         let data = df.string(from: evento.horario! as Date)
@@ -143,6 +143,7 @@ class CalendarioViewController: UIViewController {
                         
                         if evento.idUsuarios != nil{
                          responsaveis = (evento.idUsuarios as! NSArray).mutableCopy() as! [String]
+                    
                         }
                         let evento = Events(titleParameter: evento.nome!, timeParameter: data, descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: responsaveis ?? [""], localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
                         

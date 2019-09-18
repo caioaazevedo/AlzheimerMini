@@ -10,9 +10,7 @@ import UIKit
 import CoreData
 import CircleBar
 
-protocol sendDetailDelegate{
-    func sendMessageDetail(_ controller: TaskViewController, evento: Events)
-}
+
 
 //protocol PreviousTaskViewController {
 //    func eventUpdated(event: Events)
@@ -61,7 +59,6 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     let ParentPicker = UIDatePicker()
     
     var pessoasResponsaveis = [String]()
-    var delegateDetail: sendDetailDelegate?
     var bolaAzul = UIImage(named: "bola azul")
     var bolaAmarela = UIImage(named: "bola amarela")
     var bolaRosa = UIImage(named: "bola rosa")
@@ -149,9 +146,23 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             }
             tituloTextField.text = event?.title ?? ""
             localTextField.text = event?.localization ?? ""
-            tableController.responsavel.text = string
-            
-            
+         //   tableController.responsavel.text = string
+            tableController.descricao.text = event?.desc
+            tableController.categoriaLabel.text = event?.categ
+            var bola = ""
+            switch(categoria){
+            case NSLocalizedString("Health", comment: ""):
+                bola = "bola azul"
+            case NSLocalizedString("Recreation",comment: ""):
+                bola = "bola roxa"
+            case NSLocalizedString("Dentist", comment: ""):
+                bola = "bola rosa"
+            case NSLocalizedString("Pharmacy", comment: ""):
+                bola = "bola amarela"
+            default:
+                bola = "bola vermelha"
+            }
+            tableController.bolinha.image = UIImage(named: bola)
             
             //tableController.descricao
         }
@@ -185,7 +196,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         DatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         DatePicker.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         self.view.addSubview(DatePicker)
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.7) {
             self.DatePicker.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
@@ -214,7 +225,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         // COLOCAR FOTO DOS INTEGRANTES
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.7) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
@@ -235,7 +246,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         
         
         
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.7) {
             self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
@@ -589,8 +600,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
             
         }
         
-        
-        
+
         
         
         delegateSend?.sendInfo(self, texto: array[indexPath.row],which : which,index: indexPath.row)
@@ -599,6 +609,9 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         
         
         
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
 }
