@@ -23,6 +23,7 @@ class CalendarioViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaDeHoje: UILabel!
     @IBOutlet weak var createTaskOutlet: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationItem!
     
     
     fileprivate lazy var dateFormatter : DateFormatter =  {
@@ -161,6 +162,11 @@ class CalendarioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        Cloud.getPeople()
+        
+        let sala = CoreDataRebased.shared.fetchSala()
+        
+        self.navBar.title = sala.nomeFamilia
+        
         createCalendar()
         
         tableView.reloadData()

@@ -179,6 +179,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Remember Me" id="2XS-YM-dew"/>
                     <connections>
+                        <outlet property="navBar" destination="2XS-YM-dew" id="E8f-Za-yTs"/>
                         <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
                         <outlet property="segmentedControl" destination="ON6-st-0EH" id="jcc-0J-Suz"/>
                         <outlet property="tableView" destination="YuF-iE-Kh1" id="YOd-WI-RIu"/>

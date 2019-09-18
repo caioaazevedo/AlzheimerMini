@@ -197,6 +197,7 @@
                     <connections>
                         <outlet property="calendar" destination="u3L-DL-KFu" id="FGj-N0-qEr"/>
                         <outlet property="diaDeHoje" destination="XyW-5v-OII" id="q3v-da-HDI"/>
+                        <outlet property="navBar" destination="cR5-GN-q0H" id="QhT-k5-qUh"/>
                         <outlet property="tableView" destination="cDx-bj-IP3" id="FMO-vP-0xd"/>
                         <segue destination="3Gb-qu-pJF" kind="show" identifier="segueTask" id="lcM-NS-UxG"/>
                         <segue destination="XBg-G5-9HL" kind="show" identifier="segueDetail" id="u7s-jP-JOn"/>
@@ -1385,7 +1386,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="neo-df-jYC"/>
-        <segue reference="WWb-rA-i4h"/>
+        <segue reference="lcM-NS-UxG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98773747682571411" green="0.64160817861557007" blue="0.27023616433143616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

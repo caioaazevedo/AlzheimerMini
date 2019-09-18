@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     //    struct Evento: Hashable, Comparable {
     //        var titulo = ""
     //        var horario = ""
@@ -72,6 +74,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sala = CoreDataRebased.shared.fetchSala()
+        
+        self.navBar.title = sala.nomeFamilia
         
         //        feedView.delegate = self
         //        feedView.dataSource = self
