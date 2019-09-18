@@ -10,7 +10,6 @@ import UIKit
 import CircleBar
 
 class DetailViewController: UIViewController , sendDetailDelegate {
-   
     
     let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
@@ -79,10 +78,10 @@ class DetailViewController: UIViewController , sendDetailDelegate {
         }
     }
     
-//    func sendMessageDetail(_ controller: TaskViewController, evento: Events) {
-//        <#code#>
-//    }
-//    
+    func sendMessageDetail(_ controller: TaskViewController, evento: Events) {
+        
+    }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -185,7 +184,14 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         return 75
     }
     
-    
+    func setShadowBlueView() {
+        blueView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        blueView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        blueView.layer.shadowRadius = 5
+        blueView.layer.shadowOpacity = 0.5
+        blueView.clipsToBounds = true
+        blueView.layer.masksToBounds = false
+    }
 
     
     
