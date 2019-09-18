@@ -14,9 +14,9 @@ protocol sendDetailDelegate{
     func sendMessageDetail(_ controller: TaskViewController, evento: Events)
 }
 
-protocol PreviousTaskViewController {
-    func eventUpdated(event: Events)
-}
+//protocol PreviousTaskViewController {
+//    func eventUpdated(event: Events)
+//}
 
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, sendRespDelegate, removeRespDelegate {
    
@@ -24,9 +24,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
     
-    var previousController: PreviousTaskViewController?
-    
-    var eventUpdatedCallback: ((Events) -> Void)?
+   // var previousController: PreviousTaskViewController?
+    var detailViewControllerDelegate : DetailViewControllerDelegate?
+  //  var eventUpdatedCallback: ((Events) -> Void)?
     
     var userLoad = UserLoaded()
     
@@ -429,9 +429,10 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 let auxDataEdit = eventEntity?.dia as! Date
                 let eventoEnviar = Events(titleParameter: tituloTextField.text ?? "", timeParameter: data, descParameter: descricao, categParameter: categoria, responsavelParameter: responsaveis, localizationParameter: localTextField.text!, idParameter: "")
                 
-                delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
+               // delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
                 // previousController?.eventUpdated(event: eventoEnviar)
-                eventUpdatedCallback?(eventoEnviar)
+              //  eventUpdatedCallback?(eventoEnviar)
+                detailViewControllerDelegate?.updateEvent(eventoEnviar)
                 CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxDataEdit, horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
             }
             else{

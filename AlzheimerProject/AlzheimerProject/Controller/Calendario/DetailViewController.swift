@@ -9,7 +9,20 @@
 import UIKit
 import CircleBar
 
-class DetailViewController: UIViewController , PreviousTaskViewController {
+protocol DetailViewControllerDelegate{
+    func updateEvent(_ event: Events)
+}
+
+class DetailViewController: UIViewController , DetailViewControllerDelegate {
+    
+    
+    func updateEvent(_ event: Events) {
+        self.event = event
+        self.titulo.text = event.title
+        
+        self.tableView.reloadData()
+    }
+    
     
     let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
@@ -36,9 +49,9 @@ class DetailViewController: UIViewController , PreviousTaskViewController {
         
     }
     
-    func eventUpdated(event: Events) {
-        titulo.text = event.title
-    }
+//    func eventUpdated(event: Events) {
+//        titulo.text = event.title
+//    }
     
     func defineDynamicType(){
         let fontName = "SFProText-Regular"
@@ -76,13 +89,14 @@ class DetailViewController: UIViewController , PreviousTaskViewController {
         if segue.identifier == "segueEdit"{
             if let vc = segue.destination as? TaskViewController {
                 vc.event = self.event
+                vc.detailViewControllerDelegate = self
 
-                vc.eventUpdatedCallback = { eventos in
-                    self.event = eventos
-                    self.titulo.text = eventos.title
-
-                    self.tableView.reloadData()
-                }
+//              //  vc.eventUpdatedCallback = { eventos in
+//                    self.event = eventos
+//                    self.titulo.text = eventos.title
+//
+//                    self.tableView.reloadData()
+//               // }
                 
                 vc.willEditing = true
             }
