@@ -130,23 +130,21 @@ class profileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section) - \(indexPath.row)")
         if indexPath.section == 0{
-        switch(indexPath.row){
-        case 0:
-            performSegue(withIdentifier: "perfilIdoso", sender: self)
-            
-        case 1:
-            performSegue(withIdentifier: "grupo", sender: self)
-        case 2:
-            performSegue(withIdentifier: "familia", sender: self)
-        default:
-            print()
-        }
+            switch(indexPath.row){
+            case 0:
+                performSegue(withIdentifier: "perfilIdoso", sender: self)
+                
+            case 1:
+                performSegue(withIdentifier: "grupo", sender: self)
+            case 2:
+                performSegue(withIdentifier: "familia", sender: self)
+            default:
+                print()
+            }
         }else{
             if indexPath.row == 0{
                 performSegue(withIdentifier: "seguePerfil", sender: self)
             }
-        
-            
         }
     }
     

@@ -10,12 +10,15 @@ import UIKit
 import CoreData
 import CircleBar
 
+protocol sendDetailDelegate{
+    func sendMessageDetail(_ controller: TaskViewController, evento: Events)
+}
+
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, sendRespDelegate, removeRespDelegate {
    
     
     
-    
-    
+   
     @IBOutlet weak var titulo2: UILabel!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
@@ -52,7 +55,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     let ParentPicker = UIDatePicker()
     
     var pessoasResponsaveis = [String]()
-    
+    var delegateDetail: sendDetailDelegate?
     var bolaAzul = UIImage(named: "bola azul")
     var bolaAmarela = UIImage(named: "bola amarela")
     var bolaRosa = UIImage(named: "bola rosa")
@@ -412,7 +415,13 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             
             if willEditing{
                 fetchEvent(ID: event!.ID)
+                let df = DateFormatter()
+                df.dateFormat = "hh:mm"
                 
+                let data = df.string(from: DatePicker.date)
+                let eventoEnviar = Events(titleParameter: tituloTextField.text ?? "", timeParameter: data, descParameter: descricao, categParameter: categoria, responsavelParameter: responsaveis, localizationParameter: localTextField.text!, idParameter: "")
+                
+                delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
                 CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
             }
             else{

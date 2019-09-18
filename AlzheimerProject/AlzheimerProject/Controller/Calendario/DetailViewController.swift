@@ -9,7 +9,8 @@
 import UIKit
 import CircleBar
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController , sendDetailDelegate {
+   
     
     let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
@@ -78,6 +79,10 @@ class DetailViewController: UIViewController {
         }
     }
     
+//    func sendMessageDetail(_ controller: TaskViewController, evento: Events) {
+//        <#code#>
+//    }
+//    
     
     
     override func viewWillAppear(_ animated: Bool) {

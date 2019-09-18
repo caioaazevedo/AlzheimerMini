@@ -141,7 +141,7 @@ class CoreDataRebased{
         
         
         Cloud.saveSala(nomeFamilia: sala.nomeFamilia!, idSala: sala.id!, idUsuario: [userLoad.idUser], idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
-        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: nil, idSala: usuario.idSala!, host: usuario.isHost)
+        Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: usuario.fotoPerfil as! Data, idSala: usuario.idSala!, host: usuario.isHost)
         Cloud.saveCalendario(idCalendario: calendar.id!, idEventos: nil)
         Cloud.savePerfil(idPerfil: profile.id!, nome: nil, dataNascimento: nil, telefone: nil, descricao: nil, fotoPerfil: nil, endereco: nil, remedios: nil, alergias: nil, tipoSanguineo: nil, planoSaude: nil)
     }
@@ -222,7 +222,7 @@ class CoreDataRebased{
         user.id = userLoad.idUser
         user.nome = Nome
         user.idSala = nil
-        user.fotoPerfil = fotoDoPerfil?.pngData()! as NSData?
+        user.fotoPerfil = fotoDoPerfil?.jpegData(compressionQuality: 0.2) as NSData?
         user.isHost = host
         saveCoreData()
         

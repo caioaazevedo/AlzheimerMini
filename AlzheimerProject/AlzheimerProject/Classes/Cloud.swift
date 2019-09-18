@@ -33,7 +33,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveUsuario(idUsuario: String, nome: String?, foto: CKAsset?, idSala: String, host: Int64) {
+    static func saveUsuario(idUsuario: String, nome: String?, foto: Data?, idSala: String, host: Int64) {
         let record = CKRecord(recordType: "Usuario")
         
         
@@ -369,9 +369,7 @@ class Cloud {
         let query = CKQuery(recordType: "Usuario", predicate: predicate)
         
         let queryOp = CKQueryOperation(query: query)
-        queryOp.desiredKeys = ["nome", "foto", "idSala"]
         queryOp.queuePriority = .veryHigh
-        queryOp.resultsLimit = 10
         
         queryOp.recordFetchedBlock = { (record) -> Void in
             
@@ -837,7 +835,7 @@ class Cloud {
 //                newPeople.id = record["idUsuario"]
 //                newPeople.nome = record["nome"]
 //                newPeople.selecionado = falserefreshControl.endRefreshing()
-                let imageDefault = UIImage(named: "Remedio")
+                let imageDefault = UIImage(named: "ProfilePicture")
                 ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
                 
                 if userLoad.idSala == record["idSala"]! {

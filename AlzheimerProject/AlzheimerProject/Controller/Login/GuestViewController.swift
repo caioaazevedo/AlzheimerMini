@@ -25,6 +25,7 @@ class GuestViewController: UIViewController{
     
     var codFamily = String()
     var familyExists = false
+    var imageProfile = UIImage(named: "ProfilePicture")
     
     
     override func viewDidLoad() {
@@ -70,12 +71,12 @@ class GuestViewController: UIViewController{
         
         if realHost {
             // Para Usuarios com valor host = 1 - Indicam que são Administradores
-            CoreDataRebased.shared.createUsuario(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, host: 1)
+            CoreDataRebased.shared.createUsuario(fotoDoPerfil: self.imageProfile, Nome: userName.text!, host: 1)
             CoreDataRebased.shared.createSala(nomeFamilia: familyName.text!)
 
         } else {
             // Para Usuarios com valor host = 0 - Indicam que são Administradores
-            CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: UIImage(named: "Remedio"), Nome: userName.text!, searchSala: self.codFamily, host: 0)
+            CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: self.imageProfile, Nome: userName.text!, searchSala: self.codFamily, host: 0)
         }
     }
     
@@ -147,6 +148,8 @@ extension GuestViewController: ImagePickerDelegate {
     
     func didSelect(imagem: UIImage?) {
         self.imageButton.setBackgroundImage(imagem, for: .normal)
+        guard let img = imagem else { return }
+        self.imageProfile = img
     }
     
 }
