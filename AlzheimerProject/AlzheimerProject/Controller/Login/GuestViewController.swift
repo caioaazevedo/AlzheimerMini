@@ -89,9 +89,8 @@ class GuestViewController: UIViewController{
     }
     
     @IBAction func enterCode(_ sender: Any) {
-        //self.verifyFamilyCode()
-        self.performSegue(withIdentifier: "sugueCadastro", sender: nil)
-        
+        self.verifyFamilyCode()
+//        self.performSegue(withIdentifier: "sugueCadastro", sender: nil)
     }
     
     func verifyFamilyCode() {
@@ -102,9 +101,9 @@ class GuestViewController: UIViewController{
                 self.performSegue(withIdentifier: "sugueCadastro", sender: nil)
                 
             } else {
-                let alert = UIAlertController(title: "Code doesn't exists", message: "The code that yoou try to search doesn't exists.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: NSLocalizedString("Code doesn't exists", comment: ""), message: NSLocalizedString("AlertCodeMenssage", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 
-                alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: UIAlertAction.Style.default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
             }
