@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     //        var responsavel = ""
     //
     //        // Operator Overloading (Sobrecarga de Operadores)
-    //        static func < (lhs: Evento, rhs: Evento) -> Bool {
+    //        static func < (lhs: Evento, rhs: Evento)git   -> Bool {
     //            return lhs.horario < rhs.horario
     //        }
     //
