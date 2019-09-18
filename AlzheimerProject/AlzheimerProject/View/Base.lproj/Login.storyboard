@@ -159,10 +159,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="family-name"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
-                                <rect key="frame" x="80" y="89" width="272" height="233"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="233" id="RnT-lt-3Zs"/>
-                                </constraints>
+                                <rect key="frame" x="80" y="89" width="272" height="260.5"/>
                                 <state key="normal" backgroundImage="ProfilePicture"/>
                                 <connections>
                                     <action selector="fotoPerfil:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="RQ6-9p-0jj"/>
@@ -230,7 +227,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ativo 31" translatesAutoresizingMaskIntoConstraints="NO" id="I84-9h-me0">
-                                <rect key="frame" x="71" y="101" width="272" height="199.5"/>
+                                <rect key="frame" x="71" y="101" width="272" height="199.50000000000006"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-wY-kXm" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
                                 <rect key="frame" x="36" y="679" width="342" height="59"/>

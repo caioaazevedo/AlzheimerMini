@@ -69,7 +69,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYn-yC-uWa">
-                                                            <rect key="frame" x="85" y="17" width="273" height="79"/>
+                                                            <rect key="frame" x="85" y="17" width="267" height="79"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -82,10 +82,10 @@
                                                         <constraint firstItem="KFa-Ja-RYq" firstAttribute="top" secondItem="ogB-wl-hXr" secondAttribute="top" constant="25" id="F0T-d9-HTc"/>
                                                         <constraint firstAttribute="bottom" secondItem="KFa-Ja-RYq" secondAttribute="bottom" constant="51" id="I1E-PB-Nw6"/>
                                                         <constraint firstItem="ZYn-yC-uWa" firstAttribute="top" secondItem="ogB-wl-hXr" secondAttribute="top" constant="17" id="Ucr-9f-MjJ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ZYn-yC-uWa" secondAttribute="trailing" constant="8" id="Uge-FB-2Cz"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZYn-yC-uWa" secondAttribute="trailing" constant="14" id="Uge-FB-2Cz"/>
                                                         <constraint firstAttribute="centerY" secondItem="ZYn-yC-uWa" secondAttribute="centerY" id="Yai-Fk-ubl"/>
                                                         <constraint firstItem="ZYn-yC-uWa" firstAttribute="leading" secondItem="ogB-wl-hXr" secondAttribute="leading" constant="85" id="b9f-K9-Qm6"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ZYn-yC-uWa" secondAttribute="trailing" constant="8" id="m3j-F9-pZp"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZYn-yC-uWa" secondAttribute="trailing" constant="14" id="m3j-F9-pZp"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -120,7 +120,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiK-k2-2Tk">
-                                                            <rect key="frame" x="85" y="17" width="273" height="79"/>
+                                                            <rect key="frame" x="85" y="17" width="268" height="79"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -132,8 +132,8 @@
                                                         <constraint firstItem="HiK-k2-2Tk" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="17" id="D2A-P1-ez9"/>
                                                         <constraint firstItem="2r2-DN-kKE" firstAttribute="leading" secondItem="SzG-ys-2x7" secondAttribute="leading" constant="25" id="ECh-ew-V3d"/>
                                                         <constraint firstAttribute="bottom" secondItem="2r2-DN-kKE" secondAttribute="bottom" constant="51" id="GvJ-B1-5fd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" constant="8" id="SE4-7c-gWA"/>
-                                                        <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" constant="8" id="cq1-Fl-XE5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" constant="13" id="SE4-7c-gWA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" constant="13" id="cq1-Fl-XE5"/>
                                                         <constraint firstItem="HiK-k2-2Tk" firstAttribute="leading" secondItem="SzG-ys-2x7" secondAttribute="leading" constant="85" id="hZJ-6W-QKU"/>
                                                         <constraint firstAttribute="centerY" secondItem="HiK-k2-2Tk" secondAttribute="centerY" id="mhd-dm-77A"/>
                                                         <constraint firstAttribute="bottom" secondItem="HiK-k2-2Tk" secondAttribute="bottom" constant="17" id="oSb-Sm-n8r"/>
