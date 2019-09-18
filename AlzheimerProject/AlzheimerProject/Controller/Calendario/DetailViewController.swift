@@ -9,7 +9,20 @@
 import UIKit
 import CircleBar
 
-class DetailViewController: UIViewController {
+protocol DetailViewControllerDelegate{
+    func updateEvent(_ event: Events)
+}
+
+class DetailViewController: UIViewController , DetailViewControllerDelegate {
+    
+    
+    func updateEvent(_ event: Events) {
+        self.event = event
+        self.titulo.text = event.title
+        
+        self.tableView.reloadData()
+    }
+    
     
     let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
@@ -19,21 +32,39 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var blueView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
         diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
         titulo.text = event.title ?? ""
-        
+    //    taskViewController.delegateDetail = self
         blueView.layer.cornerRadius = 50
         blueView.clipsToBounds = true
         setShadowBlueView()
         defineColor()
+        defineDynamicType()
         
         
     }
+    
+//    func eventUpdated(event: Events) {
+//        titulo.text = event.title
+//    }
+    
+    func defineDynamicType(){
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        
+        diaSemana.font = scaledFont.font(forTextStyle: .body)
+        diaSemana.adjustsFontForContentSizeCategory = true
+    }
+    
     
     func defineColor(){
         switch(event.categ){
@@ -46,7 +77,7 @@ class DetailViewController: UIViewController {
         case NSLocalizedString("Pharmacy", comment: ""):
             blueView.backgroundColor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-            blueView.backgroundColor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+            blueView.backgroundColor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
         }
     }
     
@@ -58,12 +89,20 @@ class DetailViewController: UIViewController {
         if segue.identifier == "segueEdit"{
             if let vc = segue.destination as? TaskViewController {
                 vc.event = self.event
+                vc.detailViewControllerDelegate = self
+
+//              //  vc.eventUpdatedCallback = { eventos in
+//                    self.event = eventos
+//                    self.titulo.text = eventos.title
+//
+//                    self.tableView.reloadData()
+//               // }
                 
                 vc.willEditing = true
             }
         }
     }
-    
+
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +119,7 @@ class DetailViewController: UIViewController {
     let userLoad = UserLoaded()
     
     @IBAction func deleteTask(_ sender: UIButton) {
+        
         Cloud.cloudDeleteEvento(eventoId: event.ID)
       
         
@@ -107,6 +147,13 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellDetail", for: indexPath) as! CellDetail
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         var image = UIImage(named: "")
@@ -118,7 +165,6 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
                 image = iconesArray[0]
                 tipo = NSLocalizedString("Time", comment: "")
                 detalhe = event.time
-            
             case 1:
                 image = iconesArray[1]
                 tipo = NSLocalizedString("Responsable", comment: "")
@@ -146,13 +192,18 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         cell.tipoDetalhe.text = tipo
         cell.labelDetail.text = detalhe
         
+        cell.tipoDetalhe.font = scaledFont.font(forTextStyle: .body)
+        cell.tipoDetalhe.adjustsFontForContentSizeCategory = true
+        
+        cell.labelDetail.font = scaledFont.font(forTextStyle: .body)
+        cell.labelDetail.adjustsFontForContentSizeCategory = true
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-    
     
     func setShadowBlueView() {
         blueView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -162,6 +213,7 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         blueView.clipsToBounds = true
         blueView.layer.masksToBounds = false
     }
+
     
     
 }

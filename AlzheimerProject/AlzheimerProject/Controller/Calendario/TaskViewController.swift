@@ -10,15 +10,25 @@ import UIKit
 import CoreData
 import CircleBar
 
+protocol sendDetailDelegate{
+    func sendMessageDetail(_ controller: TaskViewController, evento: Events)
+}
+
+//protocol PreviousTaskViewController {
+//    func eventUpdated(event: Events)
+//}
+
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, sendRespDelegate, removeRespDelegate {
    
-    
-    
-    
-    
     @IBOutlet weak var titulo2: UILabel!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
+    
+   // var previousController: PreviousTaskViewController?
+    var detailViewControllerDelegate : DetailViewControllerDelegate?
+  //  var eventUpdatedCallback: ((Events) -> Void)?
+    
+    var userLoad = UserLoaded()
     
     var pessoas = [String]()
     var pessoasIds = [String]()
@@ -27,6 +37,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
+    
     let cdr = CoreDataRebased.shared
     // updateSala -> arrayUsuariospresentes -> nuvem pessoas -> pegar dados pessoas -> armazenar
     
@@ -50,7 +61,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     let ParentPicker = UIDatePicker()
     
     var pessoasResponsaveis = [String]()
-    
+    var delegateDetail: sendDetailDelegate?
     var bolaAzul = UIImage(named: "bola azul")
     var bolaAmarela = UIImage(named: "bola amarela")
     var bolaRosa = UIImage(named: "bola rosa")
@@ -76,6 +87,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
 
         print(pessoas)
     }
+    
     
     func getIds(){
         let sala = CoreDataRebased.shared.fetchSala()
@@ -107,7 +119,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     var auxTitulo = String()
     var auxCateg = String()
     
-
+    var auxdataEdit = Date()
+    
     var circle : SHCircleBarController {
         return self.children.first as! SHCircleBarController
     }
@@ -116,15 +129,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     override func viewWillAppear(_ animated: Bool) {
         
         self.localTextField.placeholder = NSLocalizedString("TextFieldLocal", comment: "")
-        
         self.tituloTextField.placeholder = NSLocalizedString("TextFieldTitle", comment: "")
         
+        Cloud.setupCloudKitNotifications()
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
             vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         }
         
         if willEditing{
+            
             
             tableController.hora.text = event?.time
             var string: String?
@@ -135,8 +149,11 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                     string = string! + ", " + element
                 }
             }
-          
+            tituloTextField.text = event?.title ?? ""
+            localTextField.text = event?.localization ?? ""
             tableController.responsavel.text = string
+            
+            
             
             //tableController.descricao
         }
@@ -270,6 +287,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     
     
+    
     func applyToDef(index: Int){
         var bola = ""
         switch (index){
@@ -289,12 +307,41 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     }
     
     
-    
+    func fetchEvent(ID: String){
+
+            let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+            do{
+                let eventos = try managedObjectContext.fetch(fetchRequest)
+                
+                for evento in eventos{
+                    if evento.id == ID{
+                    eventEntity = evento
+                    }
+                }
+            }catch{
+                
+            }
+        
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         self.DatePicker.removeFromSuperview()
+    }
+    
+    func fetchEvento(nome: String){
+        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            let eventos = try managedObjectContext.fetch(fetchRequest)
+            for evento in eventos{
+                if evento.nome == nome{
+                    eventEntity = evento
+                }
+            }
+        }catch{
+            
+        }
     }
     
     
@@ -377,9 +424,21 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             
             
             if willEditing{
+                fetchEvent(ID: event!.ID)
+                let df = DateFormatter()
+                df.dateFormat = "hh:mm"
                 
-//                
-//                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis)
+                let data = df.string(from: Date())
+                let date = df.date(from: data)
+                let auxDataEdit = eventEntity?.dia as! Date
+                let eventoEnviar = Events(titleParameter: tituloTextField.text ?? "", timeParameter: data, descParameter: descricao, categParameter: categoria, responsavelParameter: responsaveis, localizationParameter: localTextField.text!, idParameter: "")
+                
+               // delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
+                // previousController?.eventUpdated(event: eventoEnviar)
+              //  eventUpdatedCallback?(eventoEnviar)
+                detailViewControllerDelegate?.updateEvent(eventoEnviar)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxDataEdit, horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
+                
             }
             else{
                 let df = DateFormatter()
@@ -388,7 +447,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 let data = df.string(from: DatePicker.date)
                 let date = df.date(from: data)
                 
-                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "" )
+                CoreDataRebased.shared.createEvent(categoria: categoria, descricao: auxNotas, dia: dia, horario: date ?? DatePicker.date, responsaveis: responsaveis, nome:tituloTextField.text ?? "" , localizacao: localTextField.text ?? "", nomeCriador: userLoad.nomeUser! )
             }
             
             _ = navigationController?.popViewController(animated: true)
@@ -396,6 +455,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     }
     
     var auxNotas = ""
+    
     func sendInfo(_ controller: NotasViewController, texto: String) {
         auxNotas = texto
     }

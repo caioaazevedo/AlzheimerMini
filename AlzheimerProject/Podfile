@@ -2,4 +2,5 @@ use_frameworks!
 target 'AlzheimerProject' do  
  	pod 'CircleBar'
 	pod 'FSCalendar'
+	pod 'paper-onboarding'
 end

@@ -67,7 +67,13 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let fontName = "SFProText-Regular"
         
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellG", for: indexPath) as! GroupCell
@@ -80,7 +86,12 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
                     if usuarios[indexPath.row] == ckData[j].0 {
                         print("ID: \(usuarios[indexPath.row]) === CKDATA: \(ckData[j].0)")
                         cell.imageGroup.image = UIImage(data: ckData[j].2)
+                        cell.imageGroup.layer.cornerRadius = cell.imageGroup.frame.size.height/2
                         cell.labelGroup.text = ckData[j].1
+                        
+                        cell.labelGroup.font = scaledFont.font(forTextStyle: .body)
+                        cell.labelGroup.adjustsFontForContentSizeCategory = true
+                        
                     }
                 }
         }
@@ -94,19 +105,23 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes" , comment: ""), style: .default, handler: { action in
             var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
             
-            for i in 0...usuarios.count-1 {
-                if usuarios[i] == UserLoaded().idUser{
-                    Cloud.deleteTable(searchRecord: usuarios[i], searchKey: "idUsuario", searchTable: "Usuario")
-                    
-                    usuarios.remove(at: i)
-                    
-                    CoreDataRebased.shared.updateSala(idUsuarios: usuarios)
-                    print("Familia: \(self.sala.nomeFamilia!) - Sala: \(self.sala.id!) - \(usuarios) - Calendario: \(self.sala.idCalendario!) - Perfil: \(self.sala.idPerfil!) - \(self.sala.idHost!)")
-                    
-                    Cloud.updateSala(nomeFamilia: self.sala.nomeFamilia!, searchRecord: self.sala.id!, idSala: self.sala.id!, idUsuario: usuarios, idCalendario: self.sala.idCalendario!, idPerfil: self.sala.idPerfil!, idHost: self.sala.idHost!)
-                    
-                }
-            }
+            /*
+             1. Procurar no cloud a sala da pessoa, gravar o vetor de usuarios em um [String] ✅
+             2. Procurar nesse vetor e remover o id do usuario ✅
+             3. Salvar no atualizar o vetor de usuarios do cloud
+             4. deletar o coreData.
+             5. voltar para a tela inicial
+             */
+            
+            Cloud.getIdUsuariosSala(completion: { (kk) in
+                
+                CoreDataRebased.shared.deleteAll()
+                
+                
+            })
+            
+            
+            
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))

@@ -23,6 +23,7 @@ class CalendarioViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaDeHoje: UILabel!
     @IBOutlet weak var createTaskOutlet: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationItem!
     
     
     fileprivate lazy var dateFormatter : DateFormatter =  {
@@ -121,7 +122,8 @@ class CalendarioViewController: UIViewController {
             auxDiaSemanaNum = Calendar.current.component(.weekday, from: DiaSelecionado!)
             auxDia = Calendar.current.component(.day, from: DiaSelecionado!)
             auxMesNum = Calendar.current.component(.month, from: DiaSelecionado!)
-            diaDeHoje.text = "\(auxDia!) of \(auxMes!)"
+            
+            diaDeHoje.text = String("\(auxDia!) of \(auxMes!)").uppercased()
             
             
             let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)
@@ -160,6 +162,11 @@ class CalendarioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        Cloud.getPeople()
+        
+        let sala = CoreDataRebased.shared.fetchSala()
+        
+        self.navBar.title = sala.nomeFamilia
+        
         createCalendar()
         
         tableView.reloadData()
@@ -173,8 +180,15 @@ class CalendarioViewController: UIViewController {
      //   calendar.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
         //calendar.appearance.eventDefaultColor
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
         
         
+        diaDeHoje.font = scaledFont.font(forTextStyle: .body)
+        diaDeHoje.adjustsFontForContentSizeCategory = true
         
         
         diaDeHoje.text = "\(auxMes!) \(auxDia!)"
@@ -188,10 +202,23 @@ class CalendarioViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        //Refresh
         
+        //Refresh
+        CoreDataRebased.shared.deleteAllEvents()
+        Cloud.updateCalendario { (result) in
+            Cloud.updateAllEvents(completion: { (t) in
+                self.fetchAll()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.calendar.reloadData()
+                    refreshControl.endRefreshing()
+                    self.selectedDay = self.DiaSelecionado
+                }
+                
+            })
         
         //        Cloud.getPeople()
+    }
     }
     
     @objc func refreshTable(refreshControl: UIRefreshControl){
@@ -385,7 +412,7 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
                     // enum apply
                 case NSLocalizedString("Health",comment: ""):
                     cor  = .init(red: 0.68, green: 0.84, blue: 0.89, alpha: 1)
-                    
+                    corOutro = cor
                 case NSLocalizedString("Recreation" , comment: ""):
                     cor = .init(red: 0.70, green: 0.72, blue: 0.89, alpha: 1)
                 case NSLocalizedString("Dentist" , comment: ""):
@@ -394,7 +421,7 @@ extension CalendarioViewController :    FSCalendarDelegateAppearance{
                     cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
                     corOutro = cor
                 default:
-                    cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+                   cor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
                 }
                 return [cor,corOutro]
                 
@@ -486,7 +513,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         case NSLocalizedString("Pharmacy",comment: ""):
             cor = .init(red: 0.93, green: 0.65, blue: 0.34, alpha: 1)
         default:
-            cor = .init(red: 0.90, green: 0.42, blue: 0.35, alpha: 1)
+                   cor = .init(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
         }
         return cor
     }
@@ -503,8 +530,15 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
+        cell.clipsToBounds = true
         cell.layer.cornerRadius = 10
         
         var categoria = DailyEvents[indexPath.row].categ
@@ -523,17 +557,30 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         cell.backgroundColor = defineColor(categoria)
       
         cell.titulo.text = DailyEvents[indexPath.row].title
+
         cell.horario.text = DailyEvents[indexPath.row].time
         
        
         cell.responsavel.text = string
         cell.location.text = DailyEvents[indexPath.row].localization
         
+        cell.horario.font = scaledFont.font(forTextStyle: .body)
+        cell.horario.adjustsFontForContentSizeCategory = true
+        
+        cell.responsavel.font = scaledFont.font(forTextStyle: .body)
+        cell.responsavel.adjustsFontForContentSizeCategory = true
+        
+        cell.location.font = scaledFont.font(forTextStyle: .body)
+        cell.location.adjustsFontForContentSizeCategory = true
+        
+        cell.titulo.font = scaledFont.font(forTextStyle: .body)
+        cell.titulo.adjustsFontForContentSizeCategory = true
+        
         return cell;
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 175
+        return 155
     }
     
     

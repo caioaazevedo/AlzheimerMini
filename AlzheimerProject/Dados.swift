@@ -59,8 +59,8 @@ class DadosPerfil {
     var descricao = String()
     var fotoPerfil: Data?
     var endereco = String()
-    var remedios = [String]()
-    var alergias = [String]()
+    var remedios = String()
+    var alergias = String()
     var tipoSanguineo = String()
     var planoSaude = String()
     
