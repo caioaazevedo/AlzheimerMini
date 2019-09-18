@@ -411,6 +411,7 @@ class CoreDataRebased{
         event.dataCriacao = Date() as NSDate
         var eventArray = [String]()
         
+        
         let calendarioRequest = NSFetchRequest<Calendario>.init(entityName: "Calendario")
         do{
             
