@@ -315,12 +315,8 @@ class Cloud {
                 DadosPerfil.perfil.descricao = record["descricao"] ?? ""
                 DadosPerfil.perfil.fotoPerfil = record["fotoPerfil"] 
                 DadosPerfil.perfil.endereco = record["endereco"] ?? ""
-                if record["remedios"] != nil {
-                    DadosPerfil.perfil.remedios = (record["remedios"] as! NSArray).mutableCopy() as! [String]
-                }
-                if record["alergias"] != nil {
-                    DadosPerfil.perfil.remedios = (record["alergias"] as! NSArray).mutableCopy() as! [String]
-                }
+                DadosPerfil.perfil.remedios = record["remedios"] ?? ""
+                DadosPerfil.perfil.remedios = record["alergias"] ?? ""
                 DadosPerfil.perfil.tipoSanguineo = record["tipoSanguineo"] ?? ""
                 DadosPerfil.perfil.planoSaude = record["planoSaude"] ?? ""
                 
@@ -454,7 +450,7 @@ class Cloud {
         publicDataBase.add(queryOp)
     }
     
-    static func updatePerfil(searchRecord: String, idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: Data?, endereco: String?, remedios: [String]?, alergias: [String]?, tipoSanguineo: String?, planoSaude: String?) {
+    static func updatePerfil(searchRecord: String, idPerfil: String, nome: String, dataNascimento: Date, telefone: String?, descricao: String?, fotoPerfil: Data?, endereco: String?, remedios: String?, alergias: String?, tipoSanguineo: String?, planoSaude: String?, rg: String?) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Perfil", predicate: predicate)
         
@@ -475,6 +471,7 @@ class Cloud {
                 record.setValue(alergias, forKeyPath: "alergias")
                 record.setValue(tipoSanguineo, forKeyPath: "tipoSanguineo")
                 record.setValue(planoSaude, forKeyPath: "planoSaude")
+                record.setValue(rg, forKey: "rg")
                 
                 publicDataBase.save(record, completionHandler: { (record, error) in
                     if error != nil{
@@ -605,7 +602,7 @@ class Cloud {
                     for profile in perfis{
                         
                         if profile.id == userLoad.idSalaProfile{
-                            profile.alergias = record["alergias"] as? NSObject
+                            profile.alergias = record["alergias"]
                             profile.dataDeNascimento = record["dataNascimento"]
                             profile.descricao = record["descricao"]
                             profile.endereco = record["endereco"]
@@ -613,8 +610,9 @@ class Cloud {
                             profile.id = record["idPerfil"]
                             profile.nome = record["nome"]
                             profile.planoDeSaude = record["planoSaude"]
-                            profile.remedios = record["remedios"] as? NSObject
+                            profile.remedios = record["remedios"]
                             profile.tipoSanguineo = record["tipoSanguineo"]
+                            profile.rg = record["rg"]
                             CoreDataRebased.shared.saveCoreData()
                         }
                         

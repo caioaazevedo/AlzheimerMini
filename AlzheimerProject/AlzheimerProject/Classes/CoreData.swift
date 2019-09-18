@@ -283,16 +283,17 @@ class CoreDataBase {
     }
     
     //Update perfil e do calendario
-    func updatePerfilIdoso(perfil: PerfilUsuario, alergia: String, dataNasc: NSDate, descricao: String, endereco: String, nome: String, planoSaude: String, remedeios: String, telefone: String, tipoSanguinie: String) {
+    func updatePerfilIdoso(perfil: PerfilUsuario, alergia: String, dataNasc: NSDate, descricao: String, endereco: String, nome: String, planoSaude: String, remedeios: String, telefone: String, tipoSanguinie: String, rg: String) {
         
-        perfil.alergias = alergia as NSObject
+        perfil.alergias = alergia as! String
         perfil.dataDeNascimento = dataNasc
         perfil.descricao = descricao
         perfil.endereco = endereco
         perfil.nome = nome
         perfil.planoDeSaude = planoSaude
-        perfil.remedios = remedeios as NSObject
+        perfil.remedios = remedeios as! String
         perfil.telefone = telefone
+        perfil.rg = rg
         
         saveCoreData()
     }
