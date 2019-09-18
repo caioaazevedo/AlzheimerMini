@@ -250,13 +250,13 @@ class CoreDataRebased{
         perfil.id = DadosSala.sala.idPerfil
         
         perfil.nome = DadosPerfil.perfil.nome
-        perfil.alergias = DadosPerfil.perfil.alergias as NSObject
+        perfil.alergias = DadosPerfil.perfil.alergias
         perfil.dataDeNascimento = DadosPerfil.perfil.dataNascimento as NSDate?
         perfil.descricao = DadosPerfil.perfil.descricao
         perfil.endereco = DadosPerfil.perfil.endereco
         perfil.fotoDePerfil = DadosPerfil.perfil.fotoPerfil as NSData?
         perfil.planoDeSaude = DadosPerfil.perfil.planoSaude
-        perfil.remedios = DadosPerfil.perfil.remedios as NSObject
+        perfil.remedios = DadosPerfil.perfil.remedios
         perfil.tipoSanguineo = DadosPerfil.perfil.tipoSanguineo
         perfil.telefone = DadosPerfil.perfil.telefone
         
@@ -530,14 +530,14 @@ class CoreDataRebased{
             let profiles = try managedObjectContext.fetch(profileFetchRequest)
             for profile in profiles {
                 if userLoad.idSalaProfile == profile.id && profile.id != nil {
-                    prof.alergias = profile.alergias as? [String]
+                    prof.alergias = profile.alergias ?? ""
                     prof.Descricao = profile.descricao  ?? ""
                     prof.nome = profile.nome ?? ""
                     prof.endereco = profile.endereco ?? ""
                     prof.telefone = profile.telefone ?? ""
                 //    prof.fotoDePerfil = UIImage(data: profile.fotoDePerfil! as Data)
                     prof.planoDeSaude = profile.planoDeSaude ?? ""
-                    prof.remedios = profile.remedios as? [String]
+                    prof.remedios = profile.remedios ?? ""
                     prof.tipoSanguineo = profile.tipoSanguineo ?? ""
                     
                 }
@@ -550,7 +550,7 @@ class CoreDataRebased{
     }
     
     //✅ - Alterar Dados Profile 🍁
-    func updateProfile(alergias: [String]?, dataDeNascimento: Date?, descricao: String?, endereco: String?, fotoDePerfil: UIImage?, nome: String?, planoDeSaude: String?, remedios: [String]?, telefone: String?, tipoSanguineo: String?){
+    func updateProfile(alergias: String?, dataDeNascimento: Date?, descricao: String?, endereco: String?, fotoDePerfil: UIImage?, nome: String?, planoDeSaude: String?, remedios: String?, telefone: String?, tipoSanguineo: String?, rg: String?){
         let userLoad = UserLoaded()
         let profileFetchRequest = NSFetchRequest<PerfilUsuario>.init(entityName: "PerfilUsuario")
         
@@ -558,7 +558,7 @@ class CoreDataRebased{
             let profiles = try managedObjectContext.fetch(profileFetchRequest)
             for prof in profiles{
                 if userLoad.idSalaProfile == prof.id && prof.id != nil{
-                    prof.alergias = alergias as NSObject?
+                    prof.alergias = alergias ?? ""
                     prof.dataDeNascimento = dataDeNascimento as NSDate?
                     prof.descricao = descricao ?? ""
                     prof.endereco = endereco ?? ""
@@ -566,10 +566,10 @@ class CoreDataRebased{
                     prof.nome = nome ?? ""
                     prof.telefone = telefone ?? ""
                     prof.tipoSanguineo = tipoSanguineo ?? ""
-                    prof.remedios = remedios as NSObject?
+                    prof.remedios = remedios ?? ""
                     
                     
-                    Cloud.updatePerfil(searchRecord: userLoad.idSalaProfile!, idPerfil: userLoad.idSalaProfile!, nome: nome ?? "", dataNascimento: dataDeNascimento ?? Date(), telefone: telefone ?? "", descricao: descricao ?? "", fotoPerfil: fotoDePerfil?.pngData()!, endereco: endereco ?? "", remedios: remedios, alergias: alergias, tipoSanguineo: tipoSanguineo ?? "", planoSaude: planoDeSaude ?? "")
+                    Cloud.updatePerfil(searchRecord: userLoad.idSalaProfile!, idPerfil: userLoad.idSalaProfile!, nome: nome ?? "", dataNascimento: dataDeNascimento ?? Date(), telefone: telefone ?? "", descricao: descricao ?? "", fotoPerfil: fotoDePerfil?.pngData()!, endereco: endereco ?? "", remedios: remedios, alergias: alergias, tipoSanguineo: tipoSanguineo ?? "", planoSaude: planoDeSaude ?? "", rg: rg)
                     
                 }
             }
@@ -761,16 +761,17 @@ struct eventData {
     var nome : String?
 }
 struct profileData {
-    var alergias : [String]?
+    var alergias : String?
     var dataDeNascimento : Date?
     var Descricao : String?
     var endereco : String?
     var fotoDePerfil : UIImage?
     var nome : String?
     var planoDeSaude : String?
-    var remedios : [String]?
+    var remedios : String?
     var telefone : String?
     var tipoSanguineo : String?
+    var rg: String?
 }
 
 struct feedPerson{

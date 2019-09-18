@@ -174,7 +174,7 @@ class DetailProfileViewController: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        cdr.updateProfile(alergias: [alergias.text!] , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: [medicacoes.text!], telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
+        cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
     }
     
     
@@ -192,6 +192,7 @@ class DetailProfileViewController: UIViewController {
         plano.text = a.planoDeSaude
 //        medicacoes.text = a.remedios?[0]
         telefone.text = a.telefone
+
         tipoSanguineo.text = a.tipoSanguineo
     }
     
@@ -209,7 +210,7 @@ class DetailProfileViewController: UIViewController {
             
         } else{
             changeAll(editPressed)
-            cdr.updateProfile(alergias: [alergias.text!] , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: [medicacoes.text!], telefone: telefone.text, tipoSanguineo: tipoSanguineo.text)
+            cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
             editOutlet.title = NSLocalizedString("Edit" , comment: "")
         }
         
