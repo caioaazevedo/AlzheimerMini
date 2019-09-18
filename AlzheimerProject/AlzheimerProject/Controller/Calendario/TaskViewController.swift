@@ -118,7 +118,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     var auxTitulo = String()
     var auxCateg = String()
     
-
+    var auxdataEdit = Date()
+    
     var circle : SHCircleBarController {
         return self.children.first as! SHCircleBarController
     }
@@ -147,8 +148,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 }
             }
             tituloTextField.text = event?.title ?? ""
-            localTextField.text = event?.title ?? ""
+            localTextField.text = event?.localization ?? ""
             tableController.responsavel.text = string
+            
             
             
             //tableController.descricao
@@ -434,6 +436,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
               //  eventUpdatedCallback?(eventoEnviar)
                 detailViewControllerDelegate?.updateEvent(eventoEnviar)
                 CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxDataEdit, horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
+                
             }
             else{
                 let df = DateFormatter()
