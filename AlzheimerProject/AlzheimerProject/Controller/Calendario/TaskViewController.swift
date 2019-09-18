@@ -14,14 +14,19 @@ protocol sendDetailDelegate{
     func sendMessageDetail(_ controller: TaskViewController, evento: Events)
 }
 
+//protocol PreviousTaskViewController {
+//    func eventUpdated(event: Events)
+//}
+
 class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, sendRespDelegate, removeRespDelegate {
-   
-    
-    
    
     @IBOutlet weak var titulo2: UILabel!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var localTextField: UITextField!
+    
+   // var previousController: PreviousTaskViewController?
+    var detailViewControllerDelegate : DetailViewControllerDelegate?
+  //  var eventUpdatedCallback: ((Events) -> Void)?
     
     var userLoad = UserLoaded()
     
@@ -32,6 +37,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     var tableController : TableViewTaskViewController {
         return self.children.first as! TableViewTaskViewController
     }
+    
     let cdr = CoreDataRebased.shared
     // updateSala -> arrayUsuariospresentes -> nuvem pessoas -> pegar dados pessoas -> armazenar
     
@@ -112,7 +118,8 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     var auxTitulo = String()
     var auxCateg = String()
     
-
+    var auxdataEdit = Date()
+    
     var circle : SHCircleBarController {
         return self.children.first as! SHCircleBarController
     }
@@ -141,8 +148,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 }
             }
             tituloTextField.text = event?.title ?? ""
-            localTextField.text = event?.title ?? ""
+            localTextField.text = event?.localization ?? ""
             tableController.responsavel.text = string
+            
             
             
             //tableController.descricao
@@ -418,11 +426,17 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                 let df = DateFormatter()
                 df.dateFormat = "hh:mm"
                 
-                let data = df.string(from: DatePicker.date)
+                let data = df.string(from: Date())
+                let date = df.date(from: data)
+                let auxDataEdit = eventEntity?.dia as! Date
                 let eventoEnviar = Events(titleParameter: tituloTextField.text ?? "", timeParameter: data, descParameter: descricao, categParameter: categoria, responsavelParameter: responsaveis, localizationParameter: localTextField.text!, idParameter: "")
                 
-                delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
-                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: dia, horario: DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
+               // delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
+                // previousController?.eventUpdated(event: eventoEnviar)
+              //  eventUpdatedCallback?(eventoEnviar)
+                detailViewControllerDelegate?.updateEvent(eventoEnviar)
+                CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxDataEdit, horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
+                
             }
             else{
                 let df = DateFormatter()
@@ -439,6 +453,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     }
     
     var auxNotas = ""
+    
     func sendInfo(_ controller: NotasViewController, texto: String) {
         auxNotas = texto
     }
