@@ -10,17 +10,21 @@ import UIKit
 
 class ConfigNormalViewController: UIViewController {
     let cdr = CoreDataRebased.shared.fetchSala()
+    
+    @IBOutlet weak var nomeFamilia: UILabel!
+    
+    @IBOutlet weak var nomeIdoso: UILabel!
+    
+    @IBOutlet weak var fotoIdoso: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        fotoIdoso.clipsToBounds = true
+        self.fotoIdoso.layer.cornerRadius = self.fotoIdoso.frame.height/2
         if cdr.nomeFamilia == ""{
             nomeFamilia.text = "Nome da Familia"
             
@@ -36,17 +40,12 @@ class ConfigNormalViewController: UIViewController {
         
         
         if CoreDataRebased.shared.loadProfileData().fotoDePerfil == nil{
-            fotoIdoso.image = UIImage(named: "sample")
+            fotoIdoso.image = UIImage(named: "ProfileElder")
         } else{
             fotoIdoso.image =  CoreDataRebased.shared.loadProfileData().fotoDePerfil
         }
     }
     
-    @IBOutlet weak var nomeFamilia: UILabel!
-    
-    @IBOutlet weak var nomeIdoso: UILabel!
-    
-    @IBOutlet weak var fotoIdoso: UIImageView!
     /*
     // MARK: - Navigation
 
