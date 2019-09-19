@@ -123,7 +123,7 @@ class CalendarioViewController: UIViewController {
             auxDia = Calendar.current.component(.day, from: DiaSelecionado!)
             auxMesNum = Calendar.current.component(.month, from: DiaSelecionado!)
             
-            diaDeHoje.text = String("\(auxDia!) of \(auxMes!)").uppercased()
+            diaDeHoje.text = String("\(auxDia!) \(NSLocalizedString("of", comment: "")) \(auxMes!)").uppercased()
             
             
             let diaSelecionadoEvento = Calendar.current.component(.day, from: DiaSelecionado!)

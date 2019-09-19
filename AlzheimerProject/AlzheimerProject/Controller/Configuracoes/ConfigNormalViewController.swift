@@ -37,6 +37,8 @@ class ConfigNormalViewController: UIViewController {
         
         if CoreDataRebased.shared.loadProfileData().fotoDePerfil == nil{
             fotoIdoso.image = UIImage(named: "sample")
+            fotoIdoso.clipsToBounds = true
+            fotoIdoso.layer.cornerRadius = 20
         } else{
             fotoIdoso.image =  CoreDataRebased.shared.loadProfileData().fotoDePerfil
         }

@@ -87,7 +87,7 @@
 "RAy-XU-1Qy.text" = "Elder Info";
 
 /* Class = "UITableViewSection"; headerTitle = "Family Data"; ObjectID = "RbD-vS-EVt"; */
-"RbD-vS-EVt.headerTitle" = "Family Info";
+"RbD-vS-EVt.headerTitle" = "FAMILY INFO";
 
 /* Class = "UILabel"; text = "Birth"; ObjectID = "Rtu-8T-HdA"; */
 "Rtu-8T-HdA.text" = "Birth Date";
@@ -171,7 +171,7 @@
 "ftc-fQ-Q9Y.title" = "Done";
 
 /* Class = "UITableViewSection"; headerTitle = "My Data"; ObjectID = "huo-PI-0zG"; */
-"huo-PI-0zG.headerTitle" = "My Data";
+"huo-PI-0zG.headerTitle" = "MY INFO";
 
 /* Class = "UITextField"; text = "Todas as medicacoes sao feitas a cada 12h..."; ObjectID = "jcp-7C-N1C"; */
 "jcp-7C-N1C.text" = "Todas as medicacoes sao feitas a cada 12h...";

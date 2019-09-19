@@ -228,7 +228,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
         UIView.animate(withDuration: 0.7) {
-            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
+            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/3,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
     }
@@ -249,7 +249,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         
         
         UIView.animate(withDuration: 0.7) {
-            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
+            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/3,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
         
@@ -513,6 +513,7 @@ extension TaskViewController : UITableViewDelegate{
         if segue.identifier == "segueNotas"{
             if let dest = segue.destination as? NotasViewController{
                 dest.delegate = self
+                dest.notas.text = auxNotas
             }
         }
     }

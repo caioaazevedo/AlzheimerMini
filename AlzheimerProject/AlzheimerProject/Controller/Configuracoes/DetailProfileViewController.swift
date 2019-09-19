@@ -190,7 +190,12 @@ class DetailProfileViewController: UIViewController {
         } else{
             fotoIdoso.image = fotoIdosoAux
         }
-        idosoNome.text = a.nome
+        if idosoNome.text == ""{
+            idosoNome.text = "Elder Name"
+        }
+        else {
+            idosoNome.text = a.nome
+        }
         plano.text = a.planoDeSaude
         medicacoes.text = a.remedios
         telefone.text = a.telefone

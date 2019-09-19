@@ -24,7 +24,7 @@ class DetailViewController: UIViewController , DetailViewControllerDelegate {
     }
     
     
-    let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "Camada 2"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
+    let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "resp"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
     var diaAux : String?
     var diaSemanaAux : String?
     var indexValue = 0

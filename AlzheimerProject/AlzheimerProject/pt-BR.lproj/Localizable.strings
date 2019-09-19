@@ -43,9 +43,10 @@
 "ConfirmLeave" = "Você tem certeza que deseja sair do grupo?";
 "Yes" = "Sim";
 "ConfirmPart" = "ConfirmPart";
-"None" = "À definir";
+"None" = "A definir";
 "Code doesn't exists" = "O código não existe";
 "AlertCodeMenssage" = "O código que você está procurando não existe.";
 "Continue" = "Continue";
 "TextFieldLocal" = "Local";
 "TextFieldTitle" = "Título";
+"of" = "de";

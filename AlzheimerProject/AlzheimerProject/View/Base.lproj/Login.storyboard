@@ -119,19 +119,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
-                                <rect key="frame" x="36" y="499" width="342" height="21"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
+                                <rect key="frame" x="36" y="524" width="342" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
                                 <rect key="frame" x="36" y="678" width="342" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="uFX-jQ-4Lh"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                 <state key="normal" title="Enter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,8 +140,9 @@
                                     <segue destination="TQi-Lw-Dua" kind="show" id="Qd5-fh-e5L"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
                                 <rect key="frame" x="36" y="774" width="342" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,15 +151,17 @@
                                     <segue destination="08K-uJ-Hp9" kind="show" id="YAN-b0-el0"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the Family Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
-                                <rect key="frame" x="36" y="555" width="342" height="21"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the Family Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
+                                <rect key="frame" x="36" y="580" width="342" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="family-name"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
-                                <rect key="frame" x="80" y="89" width="272" height="260.5"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
+                                <rect key="frame" x="80" y="89" width="272" height="284"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="ProfilePicture"/>
                                 <connections>
                                     <action selector="fotoPerfil:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="RQ6-9p-0jj"/>
@@ -167,23 +169,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="DDd-uA-LvB" secondAttribute="trailing" constant="36" id="1CW-lu-RED"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="top" secondItem="nhj-PJ-lsX" secondAttribute="top" constant="45" id="49h-wa-7Ei"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="AlI-TZ-0rr" secondAttribute="trailing" constant="36" id="8UR-ys-YrR"/>
-                            <constraint firstItem="Bea-tg-5ko" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="9dY-fL-p8w"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="2x2-Ti-HNh" secondAttribute="trailing" constant="62" id="JYG-rq-g0i"/>
-                            <constraint firstItem="2Fm-br-BBE" firstAttribute="trailing" secondItem="DDd-uA-LvB" secondAttribute="trailing" id="Nba-vH-by0"/>
-                            <constraint firstItem="AlI-TZ-0rr" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="TpL-RV-I08"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="317" id="VPi-Kp-KPp"/>
-                            <constraint firstItem="DDd-uA-LvB" firstAttribute="top" secondItem="2Fm-br-BBE" secondAttribute="bottom" constant="36" id="Zsb-Qh-8sX"/>
-                            <constraint firstItem="DDd-uA-LvB" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="36" id="dBJ-FP-2Ip"/>
-                            <constraint firstItem="2Fm-br-BBE" firstAttribute="leading" secondItem="DDd-uA-LvB" secondAttribute="leading" id="eSc-eD-6Ug"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="DDd-uA-LvB" secondAttribute="bottom" constant="55" id="n2i-sn-NDa"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="80" id="tnz-pU-mig"/>
-                            <constraint firstItem="AlI-TZ-0rr" firstAttribute="top" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="35" id="toR-SJ-4nK"/>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="Bea-tg-5ko" secondAttribute="trailing" constant="36" id="v1w-D6-xu4"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nhj-PJ-lsX"/>
                     </view>
                     <connections>
@@ -195,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfq-l6-kXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032.8" y="185.75712143928038"/>
+            <point key="canvasLocation" x="1031.8840579710145" y="185.49107142857142"/>
         </scene>
         <!--Home-->
         <scene sceneID="9Wx-Q0-JTo">
@@ -227,7 +212,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ativo 31" translatesAutoresizingMaskIntoConstraints="NO" id="I84-9h-me0">
-                                <rect key="frame" x="71" y="101" width="272" height="199.50000000000006"/>
+                                <rect key="frame" x="71" y="101" width="272" height="16"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-wY-kXm" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
                                 <rect key="frame" x="36" y="679" width="342" height="59"/>
