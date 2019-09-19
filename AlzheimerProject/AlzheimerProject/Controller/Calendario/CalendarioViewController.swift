@@ -165,6 +165,7 @@ class CalendarioViewController: UIViewController {
         createCalendar()
         
         tableView.reloadData()
+        tableView.backgroundColor = view.backgroundColor
         
         if DiaSelecionado == nil{
             DiaSelecionado = calendar.today!
@@ -533,8 +534,8 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
-        cell.clipsToBounds = true
-        cell.layer.cornerRadius = 10
+//        cell.clipsToBounds = true
+//        cell.layer.cornerRadius = 10
         
         var categoria = DailyEvents[indexPath.row].categ
         
@@ -548,8 +549,13 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
             }
         }
         
+        cell.bgCalendarCellView.clipsToBounds = true
+        cell.bgCalendarCellView.layer.cornerRadius = 10
+        cell.bgCalendarCellView.backgroundColor = defineColor(categoria)
+        cell.backgroundColor = view.backgroundColor
         
-        cell.backgroundColor = defineColor(categoria)
+        
+//        cell.backgroundColor = defineColor(categoria)
       
         cell.titulo.text = DailyEvents[indexPath.row].title
         cell.horario.text = DailyEvents[indexPath.row].time
