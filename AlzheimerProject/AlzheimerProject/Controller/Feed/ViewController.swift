@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationItem!
     
+    
     //    struct Evento: Hashable, Comparable {
     //        var titulo = ""
     //        var horario = ""
