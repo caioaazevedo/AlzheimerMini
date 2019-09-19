@@ -447,7 +447,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                // delegateDetail?.sendMessageDetail(self, evento: eventoEnviar)
                 // previousController?.eventUpdated(event: eventoEnviar)
               //  eventUpdatedCallback?(eventoEnviar)
-g                detailViewControllerDelegate?.updateEvent(eventoEnviar)
+                detailViewControllerDelegate?.updateEvent(eventoEnviar)
                 CoreDataRebased.shared.updateEvent(evento: eventEntity!, categoria: categoria, descricao: auxNotas, dia: auxDataEdit, horario: date ?? DatePicker.date, nome: tituloTextField.text ?? "", responsaveis: responsaveis,localizacao: localTextField.text!)
                 
             }
