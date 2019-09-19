@@ -136,7 +136,7 @@ class CalendarioViewController: UIViewController {
                     let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date)
                     let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date)
                     if diaSelecionadoEvento == diaEvento && mesEvento == mesSelecionadoEvento{
-
+                        
                         let df = DateFormatter()
                         df.dateFormat = "hh:mm"
                         let data = df.string(from: evento.horario! as Date)
@@ -144,6 +144,7 @@ class CalendarioViewController: UIViewController {
                         
                         if evento.idUsuarios != nil{
                          responsaveis = (evento.idUsuarios as! NSArray).mutableCopy() as! [String]
+                    
                         }
                         let evento = Events(titleParameter: evento.nome!, timeParameter: data, descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: responsaveis ?? [""], localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
                         
@@ -170,6 +171,7 @@ class CalendarioViewController: UIViewController {
         createCalendar()
         
         tableView.reloadData()
+        tableView.backgroundColor = view.backgroundColor
         
         if DiaSelecionado == nil{
             DiaSelecionado = calendar.today!
@@ -538,8 +540,8 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         
         indexPathAux = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCalendar", for: indexPath) as! CellCalendar
-        cell.clipsToBounds = true
-        cell.layer.cornerRadius = 10
+//        cell.clipsToBounds = true
+//        cell.layer.cornerRadius = 10
         
         var categoria = DailyEvents[indexPath.row].categ
         
@@ -553,8 +555,13 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
             }
         }
         
+        cell.bgCalendarCellView.clipsToBounds = true
+        cell.bgCalendarCellView.layer.cornerRadius = 10
+        cell.bgCalendarCellView.backgroundColor = defineColor(categoria)
+        cell.backgroundColor = view.backgroundColor
         
-        cell.backgroundColor = defineColor(categoria)
+        
+//        cell.backgroundColor = defineColor(categoria)
       
         cell.titulo.text = DailyEvents[indexPath.row].title
 

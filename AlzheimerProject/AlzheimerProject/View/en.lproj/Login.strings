@@ -9,13 +9,13 @@
 "5hu-fX-XiC.text" = "Enter the code given by your group host";
 
 /* Class = "UITextField"; placeholder = "Family Name"; ObjectID = "AlI-TZ-0rr"; */
-"AlI-TZ-0rr.placeholder" = "Family Name";
+"AlI-TZ-0rr.placeholder" = "Enter your Family Name";
 
 /* Class = "UIButton"; normalTitle = "Join a group"; ObjectID = "B7u-zy-Vp9"; */
 "B7u-zy-Vp9.normalTitle" = "Join a group";
 
 /* Class = "UITextField"; placeholder = "Name"; ObjectID = "Bea-tg-5ko"; */
-"Bea-tg-5ko.placeholder" = "Name";
+"Bea-tg-5ko.placeholder" = "Enter your name";
 
 /* Class = "UIButton"; normalTitle = "Back"; ObjectID = "DDd-uA-LvB"; */
 "DDd-uA-LvB.normalTitle" = "Back";
@@ -30,7 +30,7 @@
 "dar-1b-mDn.normalTitle" = "Create group";
 
 /* Class = "UILabel"; text = "Login as"; ObjectID = "heI-7J-xaV"; */
-"heI-7J-xaV.text" = "Login as";
+"heI-7J-xaV.text" = "What do you want to do?";
 
 /* Class = "UIButton"; normalTitle = "Join"; ObjectID = "yrL-wY-kXm"; */
 "yrL-wY-kXm.normalTitle" = "Join";

@@ -63,6 +63,7 @@ class DadosPerfil {
     var alergias = String()
     var tipoSanguineo = String()
     var planoSaude = String()
+    var rg = String()
     
     private init(){
         

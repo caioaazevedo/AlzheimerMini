@@ -57,7 +57,7 @@ class Cloud {
         saveRequest(record: record)
     }
     
-    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?, nomeCriador: String,dataCriacao: Date) {
+    static func saveEvento(idEvento: String, nome: String?, categoria: String, descricao: String?, dia: Date, hora: Date, idUsuario: String?, idCalendario: String, localizacao: String?, nomeCriador: String,dataCriacao: Date, responsaveis: [String]) {
         
         let record = CKRecord(recordType: "Evento")
         
@@ -73,6 +73,8 @@ class Cloud {
         record.setValue(localizacao, forKey: "localizacao")
         record.setValue(nomeCriador, forKey: "nomeCriador")
         record.setValue(dataCriacao, forKey: "dataCriacao")
+        record.setValue(responsaveis, forKey: "idUsuarios")
+        
         
         saveRequest(record: record)
     }
@@ -319,6 +321,7 @@ class Cloud {
                 DadosPerfil.perfil.remedios = record["alergias"] ?? ""
                 DadosPerfil.perfil.tipoSanguineo = record["tipoSanguineo"] ?? ""
                 DadosPerfil.perfil.planoSaude = record["planoSaude"] ?? ""
+                DadosPerfil.perfil.rg = record["rg"] ?? ""
                 
                 //            print("DADOS: ", record["idPerfil"]!, record["nome"]!, record["dataNascimento"]!,
                 //                  record["telefone"]!, record["descricao"]!, record["fotoPerfil"]!, record["endereco"]!, record["remedios"]!, record["alergias"]!, record["tipoSanguineo"]!, record["planoSaude"]!)
@@ -558,6 +561,7 @@ class Cloud {
                 eventCreate.idResponsavel = record["idUsuario"]
                 eventCreate.nome = record["nome"]
                 eventCreate.localizacao = record["localizacao"]
+                
                 eventCreate.dataCriacao = record["dataCriacao"] as? NSDate
                 CoreDataRebased.shared.saveCoreData()
             }

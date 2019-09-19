@@ -150,10 +150,10 @@
 "bz1-DP-ZM0.title" = "Adicionar";
 
 /* Class = "UINavigationItem"; title = "Remember Me"; ObjectID = "cR5-GN-q0H"; */
-"cR5-GN-q0H.title" = "Remember Me";
+"cR5-GN-q0H.title" = "Dalosto Family";
 
 /* Class = "UILabel"; text = "Food"; ObjectID = "d3z-Gc-0Ne"; */
-"d3z-Gc-0Ne.text" = "Alimentação";
+"d3z-Gc-0Ne.text" = "Nenhum";
 
 /* Class = "UILabel"; text = "Localizacao"; ObjectID = "dZM-8Q-EHl"; */
 "dZM-8Q-EHl.text" = "Localizaçāo";

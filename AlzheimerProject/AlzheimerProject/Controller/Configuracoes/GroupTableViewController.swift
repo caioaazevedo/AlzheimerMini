@@ -17,7 +17,7 @@
 
 
 import UIKit
-
+import CircleBar
 class GroupTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableGroup: UITableView!
@@ -42,6 +42,10 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
             self.imageButton.isHidden = true
         } else {
             self.shareButton.layer.cornerRadius = 11
+        }
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = true
+            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         }
     }
     
@@ -163,6 +167,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+  
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]

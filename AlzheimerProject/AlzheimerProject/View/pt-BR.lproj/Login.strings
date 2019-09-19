@@ -30,7 +30,7 @@
 "dar-1b-mDn.normalTitle" = "Criar um grupo";
 
 /* Class = "UILabel"; text = "Login as"; ObjectID = "heI-7J-xaV"; */
-"heI-7J-xaV.text" = "Entrar como";
+"heI-7J-xaV.text" = "O que você quer fazer?";
 
 /* Class = "UIButton"; normalTitle = "Join"; ObjectID = "yrL-wY-kXm"; */
 "yrL-wY-kXm.normalTitle" = "Entrar";

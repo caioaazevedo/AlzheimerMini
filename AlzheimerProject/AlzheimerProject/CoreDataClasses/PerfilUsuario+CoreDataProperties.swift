@@ -30,5 +30,5 @@ extension PerfilUsuario {
     @NSManaged public var tipoSanguineo: String?
     @NSManaged public var rg: String?
     @NSManaged public var ofSala: Sala?
-
+    @NSManaged public var rg: String?
 }

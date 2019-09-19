@@ -84,13 +84,13 @@
 "QEt-TT-OEp.title" = "New Event";
 
 /* Class = "UILabel"; text = "Elder Data"; ObjectID = "RAy-XU-1Qy"; */
-"RAy-XU-1Qy.text" = "Elder Data";
+"RAy-XU-1Qy.text" = "Elder Info";
 
 /* Class = "UITableViewSection"; headerTitle = "Family Data"; ObjectID = "RbD-vS-EVt"; */
-"RbD-vS-EVt.headerTitle" = "Family Data";
+"RbD-vS-EVt.headerTitle" = "Family Info";
 
 /* Class = "UILabel"; text = "Birth"; ObjectID = "Rtu-8T-HdA"; */
-"Rtu-8T-HdA.text" = "Birth";
+"Rtu-8T-HdA.text" = "Birth Date";
 
 /* Class = "UITextField"; text = "25/02/1999"; ObjectID = "S7l-u8-WPh"; */
 "S7l-u8-WPh.text" = "25/02/1999";
@@ -99,7 +99,7 @@
 "S8W-l8-2kT.text" = "Phone Number";
 
 /* Class = "UILabel"; text = "Responsable"; ObjectID = "SAy-Bs-HeK"; */
-"SAy-Bs-HeK.text" = "Responsable";
+"SAy-Bs-HeK.text" = "Responsible";
 
 /* Class = "UITextField"; text = "Alergias"; ObjectID = "Sk0-Za-jft"; */
 "Sk0-Za-jft.text" = "Alergias";
@@ -150,10 +150,10 @@
 "bz1-DP-ZM0.title" = "Add";
 
 /* Class = "UINavigationItem"; title = "Remember Me"; ObjectID = "cR5-GN-q0H"; */
-"cR5-GN-q0H.title" = "Remember Me";
+"cR5-GN-q0H.title" = "Dalosto Family";
 
 /* Class = "UILabel"; text = "Food"; ObjectID = "d3z-Gc-0Ne"; */
-"d3z-Gc-0Ne.text" = "Food";
+"d3z-Gc-0Ne.text" = "None";
 
 /* Class = "UILabel"; text = "Localizacao"; ObjectID = "dZM-8Q-EHl"; */
 "dZM-8Q-EHl.text" = "Localizacao";
