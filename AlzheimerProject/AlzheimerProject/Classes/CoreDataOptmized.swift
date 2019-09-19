@@ -570,7 +570,6 @@ class CoreDataRebased{
                     prof.remedios = remedios ?? ""
                     prof.rg = rg ?? ""
                     
-                    
                     Cloud.updatePerfil(searchRecord: userLoad.idSalaProfile!, idPerfil: userLoad.idSalaProfile!, nome: nome ?? "", dataNascimento: dataDeNascimento ?? Date(), telefone: telefone ?? "", descricao: descricao ?? "", fotoPerfil: fotoDePerfil?.pngData()!, endereco: endereco ?? "", remedios: remedios, alergias: alergias, tipoSanguineo: tipoSanguineo ?? "", planoSaude: planoDeSaude ?? "", rg: rg ?? "")
                     
                 }
