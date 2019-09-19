@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     let UserNotification = Notification()
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var feedView: UITableView!
+    @IBOutlet weak var activitiesLabel: UILabel!
     @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -151,6 +152,16 @@ class ViewController: UIViewController {
 //            self.myPeople = myVector
 //        }
         
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        activitiesLabel.font = scaledFont.font(forTextStyle: .body)
+        activitiesLabel.adjustsFontForContentSizeCategory = true
+        
+        
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = false
             vc.viewDidLayoutSubviews()
@@ -257,6 +268,10 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
             let formate = DateFormatter()
             formate.dateFormat = "dd-MM-yyyy"
             
+         
+            
+            
+            
             print("indexpath", indexPath.row)
             
              if formate.string(from: Date()) == formate.string(from: myPeople[indexPath.row].dataCriada){
@@ -265,6 +280,17 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                     print("1")
                     if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
                         cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                        
+                        let fontName = "SFProText-Regular"
+                        
+                        let scaledFont: ScaledFont = {
+                            return ScaledFont(fontName: fontName)
+                        }()
+                        
+                        cell.label.font = scaledFont.font(forTextStyle: .body)
+                        cell.label.adjustsFontForContentSizeCategory = true
+                        
+                        
                         cell.bgVview.clipsToBounds = true
                         cell.bgVview.layer.cornerRadius = 15
                         
@@ -272,6 +298,15 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 default:
                     print("0")
                     cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    
+                    let fontName = "SFProText-Regular"
+                    
+                    let scaledFont: ScaledFont = {
+                        return ScaledFont(fontName: fontName)
+                    }()
+                    
+                    cell.label.font = scaledFont.font(forTextStyle: .body)
+                    cell.label.adjustsFontForContentSizeCategory = true
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
                 }
@@ -291,6 +326,15 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 
                 if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
                     cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    
+                    let fontName = "SFProText-Regular"
+                    
+                    let scaledFont: ScaledFont = {
+                        return ScaledFont(fontName: fontName)
+                    }()
+                    
+                    cell.label.font = scaledFont.font(forTextStyle: .body)
+                    cell.label.adjustsFontForContentSizeCategory = true
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
                     
@@ -298,6 +342,15 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
             default:
                 print("0")
                 cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                
+                let fontName = "SFProText-Regular"
+                
+                let scaledFont: ScaledFont = {
+                    return ScaledFont(fontName: fontName)
+                }()
+                
+                cell.label.font = scaledFont.font(forTextStyle: .body)
+                cell.label.adjustsFontForContentSizeCategory = true
                 cell.bgVview.clipsToBounds = true
                 cell.bgVview.layer.cornerRadius = 15
             }

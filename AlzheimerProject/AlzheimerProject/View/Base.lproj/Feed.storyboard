@@ -179,6 +179,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dalosto Family" id="2XS-YM-dew"/>
                     <connections>
+                        <outlet property="activitiesLabel" destination="mcp-vL-PtF" id="KwQ-5W-7G2"/>
                         <outlet property="navigationTitle" destination="2XS-YM-dew" id="fAJ-6h-PbN"/>
                         <outlet property="segmentedControl" destination="ON6-st-0EH" id="jcc-0J-Suz"/>
                         <outlet property="tableView" destination="YuF-iE-Kh1" id="YOd-WI-RIu"/>
