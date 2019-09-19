@@ -819,13 +819,6 @@
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="21 anos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSD-YD-N59">
-                                        <rect key="frame" x="161" y="115" width="93" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                        <color key="textColor" red="0.43921875953674316" green="0.43921005725860596" blue="0.43921592831611633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8W-l8-2kT">
                                         <rect key="frame" x="212" y="250" width="123" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1425,6 +1418,11 @@
                         <viewLayoutGuide key="safeArea" id="OeQ-xk-KiF"/>
                     </view>
                     <navigationItem key="navigationItem" id="a5w-eM-J04"/>
+                    <connections>
+                        <outlet property="fotoIdoso" destination="Fys-AG-5Be" id="NHc-Ya-SGr"/>
+                        <outlet property="nomeFamilia" destination="HVH-2e-3Si" id="Oiv-cs-V92"/>
+                        <outlet property="nomeIdoso" destination="qob-kW-TjA" id="Lg7-eO-saO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uu8-jA-4uS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

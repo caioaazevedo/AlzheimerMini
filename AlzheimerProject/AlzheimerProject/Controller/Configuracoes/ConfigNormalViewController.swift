@@ -9,14 +9,44 @@
 import UIKit
 
 class ConfigNormalViewController: UIViewController {
-
+    let cdr = CoreDataRebased.shared.fetchSala()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        if cdr.nomeFamilia == ""{
+            nomeFamilia.text = "Nome da Familia"
+            
+        } else{
+            nomeFamilia.text = cdr.nomeFamilia
+        }
+        
+        if CoreDataRebased.shared.loadProfileData().nome == "" {
+            nomeIdoso.text = "Nome do Idoso"
+        }else {
+             nomeIdoso.text = CoreDataRebased.shared.loadProfileData().nome
+        }
+        
+        
+        if CoreDataRebased.shared.loadProfileData().fotoDePerfil == nil{
+            fotoIdoso.image = UIImage(named: "sample")
+        } else{
+            fotoIdoso.image =  CoreDataRebased.shared.loadProfileData().fotoDePerfil
+        }
+    }
+    
+    @IBOutlet weak var nomeFamilia: UILabel!
+    
+    @IBOutlet weak var nomeIdoso: UILabel!
+    
+    @IBOutlet weak var fotoIdoso: UIImageView!
     /*
     // MARK: - Navigation
 
