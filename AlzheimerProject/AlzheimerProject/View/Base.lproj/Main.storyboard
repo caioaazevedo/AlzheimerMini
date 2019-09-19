@@ -528,19 +528,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FKb-Iu-nUX">
-                                                <rect key="frame" x="20.5" y="6.5" width="41.5" height="30.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKb-Iu-nUX">
+                                                <rect key="frame" x="20" y="4" width="35" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="bKX-My-O2I" firstAttribute="centerY" secondItem="arl-zH-Il6" secondAttribute="centerY" id="8QR-dp-XfC"/>
-                                            <constraint firstItem="FKb-Iu-nUX" firstAttribute="height" secondItem="arl-zH-Il6" secondAttribute="height" multiplier="0.7" id="Cut-5o-NzU"/>
-                                            <constraint firstItem="FKb-Iu-nUX" firstAttribute="centerY" secondItem="arl-zH-Il6" secondAttribute="centerY" id="Ovp-Cv-8IZ"/>
-                                            <constraint firstItem="FKb-Iu-nUX" firstAttribute="centerX" secondItem="arl-zH-Il6" secondAttribute="centerX" multiplier="0.2" id="S5k-je-ANL"/>
                                             <constraint firstItem="bKX-My-O2I" firstAttribute="width" secondItem="arl-zH-Il6" secondAttribute="width" multiplier="0.5" id="Wxh-WI-kMJ"/>
                                             <constraint firstItem="bKX-My-O2I" firstAttribute="height" secondItem="arl-zH-Il6" secondAttribute="height" multiplier="0.5" id="Yql-Cb-cNn"/>
                                             <constraint firstItem="bKX-My-O2I" firstAttribute="centerX" secondItem="arl-zH-Il6" secondAttribute="centerX" multiplier="0.83" id="gZS-i4-9oy"/>
-                                            <constraint firstItem="FKb-Iu-nUX" firstAttribute="width" secondItem="arl-zH-Il6" secondAttribute="width" multiplier="0.1" id="hXs-xh-9N2"/>
                                         </constraints>
                                     </tableViewCellContentView>
                                     <connections>
@@ -1386,13 +1383,6 @@
                                     <segue destination="GI7-1d-cuI" kind="embed" id="qow-5O-W4H"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome da Família" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVH-2e-3Si">
-                                <rect key="frame" x="54" y="102" width="127" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wd8-y5-TbG">
                                 <rect key="frame" x="0.0" y="810" width="414" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1420,7 +1410,7 @@
                     <navigationItem key="navigationItem" id="a5w-eM-J04"/>
                     <connections>
                         <outlet property="fotoIdoso" destination="93G-Aw-bYl" id="V9U-3L-qKa"/>
-                        <outlet property="nomeFamilia" destination="HVH-2e-3Si" id="Oiv-cs-V92"/>
+                        <outlet property="navBar" destination="a5w-eM-J04" id="Qjq-h7-HEG"/>
                         <outlet property="nomeIdoso" destination="qob-kW-TjA" id="Lg7-eO-saO"/>
                     </connections>
                 </viewController>
