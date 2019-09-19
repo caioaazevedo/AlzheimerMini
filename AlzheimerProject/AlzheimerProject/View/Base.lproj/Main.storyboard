@@ -999,7 +999,7 @@
         <!--Familia View Controller-->
         <scene sceneID="6kh-oD-VH6">
             <objects>
-                <viewController id="LZw-2D-dyq" customClass="FamiliaViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="LZw-2D-dyq" customClass="FamiliaViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R9d-Ra-zAs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1040,7 +1040,7 @@
         <!--Group Table View Controller-->
         <scene sceneID="Rt2-Xr-cok">
             <objects>
-                <viewController id="azh-kI-igM" customClass="GroupTableViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="azh-kI-igM" customClass="GroupTableViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZHc-qw-I5J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1307,7 +1307,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhd-JA-pz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3715.9420289855075" y="1177.2321428571429"/>
+            <point key="canvasLocation" x="2339" y="1177"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9pr-Wg-wic">
+            <objects>
+                <viewController id="Zw5-Cb-vSH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Nf-cR-JbX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OeQ-xk-KiF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uu8-jA-4uS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3447" y="1135"/>
         </scene>
     </scenes>
     <resources>

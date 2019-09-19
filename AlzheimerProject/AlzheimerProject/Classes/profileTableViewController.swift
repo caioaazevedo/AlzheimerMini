@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CircleBar
 class profileTableViewController: UITableViewController {
     
     
@@ -39,14 +39,13 @@ class profileTableViewController: UITableViewController {
    
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        if switchBtn.isOn{
-//            Cloud.setupCloudKitNotifications()
-//        } else {
-//            Cloud.deleteCloudSubs()
-//        }
-//    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        if let vc = self.tabBarController as! SHCircleBarController?{
+            vc.circleView.isHidden = false
+            
+            
+        }
+    }
 //    func arredondaIcones(){
 //
 //        idosoImage.clipsToBounds = true

@@ -191,7 +191,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         
         
         
-        print(DatePicker.date)
+        
         
         DatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         DatePicker.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
