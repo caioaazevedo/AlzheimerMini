@@ -17,8 +17,12 @@ class ViewController: UIViewController {
     let UserNotification = Notification()
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var feedView: UITableView!
+    @IBOutlet weak var activitiesLabel: UILabel!
     @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     
     //    struct Evento: Hashable, Comparable {
     //        var titulo = ""
@@ -72,6 +76,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sala = CoreDataRebased.shared.fetchSala()
+        
+        self.navBar.title = sala.nomeFamilia
         
         //        feedView.delegate = self
         //        feedView.dataSource = self
@@ -150,6 +158,16 @@ class ViewController: UIViewController {
 //        CoreDataRebased.shared.recuperarDadosEventos { (myVector) in
 //            self.myPeople = myVector
 //        }
+        
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        activitiesLabel.font = scaledFont.font(forTextStyle: .body)
+        activitiesLabel.adjustsFontForContentSizeCategory = true
+        
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = false
@@ -257,6 +275,10 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
             let formate = DateFormatter()
             formate.dateFormat = "dd-MM-yyyy"
             
+         
+            
+            
+            
             print("indexpath", indexPath.row)
             
              if formate.string(from: Date()) == formate.string(from: myPeople[indexPath.row].dataCriada){
@@ -265,16 +287,41 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                     print("1")
                     if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
                         cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                        
+                        let fontName = "SFProText-Regular"
+                        
+                        let scaledFont: ScaledFont = {
+                            return ScaledFont(fontName: fontName)
+                        }()
+                        
+                        cell.label.font = scaledFont.font(forTextStyle: .body)
+                        cell.label.adjustsFontForContentSizeCategory = true
+                        
+                        
                         cell.bgVview.clipsToBounds = true
                         cell.bgVview.layer.cornerRadius = 15
+                        cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                        cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                         
                     }
                 default:
                     print("0")
                     cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    
+                    let fontName = "SFProText-Regular"
+                    
+                    let scaledFont: ScaledFont = {
+                        return ScaledFont(fontName: fontName)
+                    }()
+                    
+                    cell.label.font = scaledFont.font(forTextStyle: .body)
+                    cell.label.adjustsFontForContentSizeCategory = true
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
+                    cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                    cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 }
+            
             }
             return cell
             
@@ -291,15 +338,37 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 
                 if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
                     cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    
+                    let fontName = "SFProText-Regular"
+                    
+                    let scaledFont: ScaledFont = {
+                        return ScaledFont(fontName: fontName)
+                    }()
+                    
+                    cell.label.font = scaledFont.font(forTextStyle: .body)
+                    cell.label.adjustsFontForContentSizeCategory = true
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
+                    cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                    cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                     
                 }
             default:
                 print("0")
                 cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                
+                let fontName = "SFProText-Regular"
+                
+                let scaledFont: ScaledFont = {
+                    return ScaledFont(fontName: fontName)
+                }()
+                
+                cell.label.font = scaledFont.font(forTextStyle: .body)
+                cell.label.adjustsFontForContentSizeCategory = true
                 cell.bgVview.clipsToBounds = true
                 cell.bgVview.layer.cornerRadius = 15
+                cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+                cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
             }
             
             }
@@ -316,6 +385,16 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+    func getFotoCriador(idCriador: String) ->UIImage {
+        for ck in ckData {
+            if ck.0 == idCriador {
+                return UIImage(data: ck.2)!
+            }
+        }
+        
+        return UIImage(named: "ProfilePicture")!
     }
     
     

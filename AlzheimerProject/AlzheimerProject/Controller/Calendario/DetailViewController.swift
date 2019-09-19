@@ -165,7 +165,6 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
                 image = iconesArray[0]
                 tipo = NSLocalizedString("Time", comment: "")
                 detalhe = event.time
-            
             case 1:
                 image = iconesArray[1]
                 tipo = NSLocalizedString("Responsible", comment: "")
@@ -206,7 +205,6 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         return 75
     }
     
-    
     func setShadowBlueView() {
         blueView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         blueView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
@@ -215,6 +213,7 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate{
         blueView.clipsToBounds = true
         blueView.layer.masksToBounds = false
     }
+
     
     
 }

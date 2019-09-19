@@ -67,6 +67,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     @IBOutlet var viewPresent: ViewPopup!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,9 +125,10 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     override func viewWillAppear(_ animated: Bool) {
         
+        self.localTextField.placeholder = NSLocalizedString("TextFieldLocal", comment: "")
+        self.tituloTextField.placeholder = NSLocalizedString("TextFieldTitle", comment: "")
+        
         Cloud.setupCloudKitNotifications()
-        
-        
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
             vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)

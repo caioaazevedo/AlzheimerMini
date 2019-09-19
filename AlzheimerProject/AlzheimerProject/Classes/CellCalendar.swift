@@ -17,5 +17,6 @@ class CellCalendar :  UITableViewCell {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var responsavel: UILabel!
   
+    @IBOutlet weak var bgCalendarCellView: UIView!
     
 }
