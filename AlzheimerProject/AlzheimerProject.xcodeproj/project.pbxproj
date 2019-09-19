@@ -52,6 +52,7 @@
 		AC68B4622326CF86002963C0 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B4612326CF86002963C0 /* UsersViewController.swift */; };
 		AC68B4642326CFE6002963C0 /* CellUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B4632326CFE6002963C0 /* CellUsers.swift */; };
 		AC68B46823282AB6002963C0 /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B46723282AB6002963C0 /* NotasViewController.swift */; };
+		AC81E82D2333F4CC004A009C /* ConfigNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81E82C2333F4CC004A009C /* ConfigNormalViewController.swift */; };
 		AC96E73423301B9B00FB10BA /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC96E73623301B9B00FB10BA /* Feed.storyboard */; };
 		AC96E74A23301DBD00FB10BA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC96E74C23301DBD00FB10BA /* Login.storyboard */; };
 		AC96E7582330202300FB10BA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC96E75A2330202300FB10BA /* Localizable.strings */; };
@@ -169,6 +170,7 @@
 		AC68B4612326CF86002963C0 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		AC68B4632326CFE6002963C0 /* CellUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUsers.swift; sourceTree = "<group>"; };
 		AC68B46723282AB6002963C0 /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
+		AC81E82C2333F4CC004A009C /* ConfigNormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNormalViewController.swift; sourceTree = "<group>"; };
 		AC96E72E2330197A00FB10BA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		AC96E72F2330197A00FB10BA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		AC96E7312330198400FB10BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				AC68B4612326CF86002963C0 /* UsersViewController.swift */,
 				ACF39C60232A78630049D38D /* FamiliaViewController.swift */,
 				E227F3FB232C280400C25C75 /* GroupTableViewController.swift */,
+				AC81E82C2333F4CC004A009C /* ConfigNormalViewController.swift */,
 			);
 			path = Configuracoes;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */,
 				3A54EC9B2320573D004BB09C /* Calendario+CoreDataClass.swift in Sources */,
 				ACA91FC92329657B005EB127 /* CustomCellFeed.swift in Sources */,
+				AC81E82D2333F4CC004A009C /* ConfigNormalViewController.swift in Sources */,
 				AC9EE91523072645004FA292 /* Notification.swift in Sources */,
 				3AAF5964231D8D210073D65D /* UserLoaded.swift in Sources */,
 				3A54EC9C2320573D004BB09C /* Calendario+CoreDataProperties.swift in Sources */,

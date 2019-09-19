@@ -17,13 +17,19 @@ class FamiliaViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
+  
     override func viewWillAppear(_ animated: Bool) {
+        
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
-            vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            vc.tabBar.frame = CGRect(x: 500, y: 500, width: 0, height: 0)
+            vc.viewDidLayoutSubviews()
+            vc.self.selectedIndex = 2
+            
+            
         }
     }
-    
     @IBOutlet weak var fotoFamilia: UIImageView!
     
     @IBAction func nomeFamilia(_ sender: UITextField) {
