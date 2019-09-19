@@ -530,14 +530,19 @@ class CoreDataRebased{
             let profiles = try managedObjectContext.fetch(profileFetchRequest)
             for profile in profiles {
                 if userLoad.idSalaProfile == profile.id && profile.id != nil {
-                    prof.alergias = profile.alergias as! String ?? ""
+                    prof.alergias = profile.alergias ?? ""
                     prof.Descricao = profile.descricao  ?? ""
                     prof.nome = profile.nome ?? ""
                     prof.endereco = profile.endereco ?? ""
                     prof.telefone = profile.telefone ?? ""
-                //    prof.fotoDePerfil = UIImage(data: profile.fotoDePerfil! as Data)
+                    if profile.fotoDePerfil != nil{
+                        prof.fotoDePerfil = UIImage(data: (profile.fotoDePerfil) as! Data)
+                    } else{
+                            prof.fotoDePerfil = UIImage(named: "sample")
+                    }
+                    
                     prof.planoDeSaude = profile.planoDeSaude ?? ""
-                    prof.remedios = profile.remedios as! String ?? ""
+                    prof.remedios = profile.remedios ?? ""
                     prof.tipoSanguineo = profile.tipoSanguineo ?? ""
                     prof.rg = profile.rg ?? ""
                     
@@ -563,15 +568,17 @@ class CoreDataRebased{
                     prof.dataDeNascimento = dataDeNascimento as NSDate?
                     prof.descricao = descricao ?? ""
                     prof.endereco = endereco ?? ""
-                    prof.fotoDePerfil = fotoDePerfil?.pngData()! as NSData?
+                    prof.fotoDePerfil = fotoDePerfil?.jpegData(compressionQuality: 0.2) as NSData?
                     prof.nome = nome ?? ""
                     prof.telefone = telefone ?? ""
                     prof.tipoSanguineo = tipoSanguineo ?? ""
                     prof.remedios = remedios ?? ""
+                    prof.planoDeSaude = planoDeSaude ?? ""
                     prof.rg = rg ?? ""
                     
                     
                     Cloud.updatePerfil(searchRecord: userLoad.idSalaProfile!, idPerfil: userLoad.idSalaProfile!, nome: nome ?? "", dataNascimento: dataDeNascimento ?? Date(), telefone: telefone ?? "", descricao: descricao ?? "", fotoPerfil: fotoDePerfil?.pngData()!, endereco: endereco ?? "", remedios: remedios, alergias: alergias, tipoSanguineo: tipoSanguineo ?? "", planoSaude: planoDeSaude ?? "", rg: rg ?? "")
+                    saveCoreData()
                     
                 }
             }
@@ -580,7 +587,7 @@ class CoreDataRebased{
         }
         
         
-        saveCoreData()
+        
     }
     
     

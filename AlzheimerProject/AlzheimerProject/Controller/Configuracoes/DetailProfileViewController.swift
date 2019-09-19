@@ -173,9 +173,7 @@ class DetailProfileViewController: UIViewController {
     
     
     
-    override func viewWillDisappear(_ animated: Bool) {
-        cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
-    }
+   
     
     
     func setAll(){
@@ -187,16 +185,26 @@ class DetailProfileViewController: UIViewController {
         dataNascimento.text = "\(day)/\(month)/\(year)"
         observacoes.text = a.Descricao
         endereco.text = a.endereco
-        //  fotoIdoso.image = a.fotoDePerfil
+        if flag == 0{
+            fotoIdoso.image = a.fotoDePerfil
+        } else{
+            fotoIdoso.image = fotoIdosoAux
+        }
         idosoNome.text = a.nome
         plano.text = a.planoDeSaude
-//        medicacoes.text = a.remedios?[0]
+        medicacoes.text = a.remedios
         telefone.text = a.telefone
         tipoSanguineo.text = a.tipoSanguineo
+        rg.text = a.rg
+        alergias.text = a.alergias
+        
+       // fotoIdoso.image = fotoIdosoAux
     }
     
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+         cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
+    }
     
     
     
@@ -209,7 +217,7 @@ class DetailProfileViewController: UIViewController {
             
         } else{
             changeAll(editPressed)
-            cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
+           
             editOutlet.title = NSLocalizedString("Edit" , comment: "")
         }
         
@@ -230,7 +238,8 @@ class DetailProfileViewController: UIViewController {
         observacoes.isUserInteractionEnabled = bo
     }
     
-    
+    var fotoIdosoAux = UIImage(named: "Remedio")
+    var flag = 0
     
     
     
@@ -243,6 +252,8 @@ extension DetailProfileViewController: ImagePickerDelegate{
     
     func didSelect(imagem: UIImage?) {
         self.fotoIdoso.image = imagem
+        fotoIdosoAux = imagem
+        flag = 1
     }
     
 }
