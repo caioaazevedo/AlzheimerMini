@@ -254,6 +254,7 @@ extension DetailProfileViewController: ImagePickerDelegate{
         self.fotoIdoso.image = imagem
         fotoIdosoAux = imagem
         flag = 1
+        
     }
     
 }
