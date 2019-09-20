@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         print("ENTROU AQUII")
+        Cloud.updateUsuarioProfile()
         CoreDataRebased.shared.deleteAllEvents()
         Cloud.updateCalendario { (result) in
             Cloud.updateAllEvents(completion: { (t) in
