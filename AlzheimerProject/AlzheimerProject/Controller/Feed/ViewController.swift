@@ -77,6 +77,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Cloud.setupCloudKitNotifications()
+        
         print("ENTROU AQUII")
         Cloud.updateUsuarioProfile()
         CoreDataRebased.shared.deleteAllEvents()

@@ -120,6 +120,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
             Cloud.getIdUsuariosSala(completion: { (kk) in
                 
                 CoreDataRebased.shared.deleteAll()
+                Cloud.deleteCloudSubs()
                 
                 
             })
