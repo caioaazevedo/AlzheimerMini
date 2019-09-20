@@ -694,7 +694,7 @@ class CoreDataRebased{
                     for e in eventos{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
-                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date)
+                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date)
                         myFeed.append(z)
                     } //17FBCDF6-BA84-46E0-B70E-32A7E1D8743E
                 } catch{
@@ -714,7 +714,7 @@ class CoreDataRebased{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
                         if e.idResponsavel == UserLoaded().idUser{
-                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date)
+                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date)
                             myFeed.append(z)
                         }
                     }
@@ -790,6 +790,7 @@ struct feedPerson{
     var fotoCriador: UIImage?
     var idCriador: String
     var dataCriada: Date
+    var horarioEvento : Date
 }
 
 /*
