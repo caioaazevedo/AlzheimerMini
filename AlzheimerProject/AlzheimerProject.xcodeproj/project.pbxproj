@@ -46,6 +46,7 @@
 		3AD49DE5231621EC00904457 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3AD49DE7231621EC00904457 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3AFEAC1A233556430043CB6D /* SFProTextBold.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AFEAC19233556420043CB6D /* SFProTextBold.plist */; };
+		AC1954C1233582BF007BE605 /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1954C3233582BF007BE605 /* Onboard.storyboard */; };
 		AC39EE192318638B00DC590C /* CellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39EE182318638B00DC590C /* CellFeed.swift */; };
 		AC52965B231D4CE200EACF44 /* TableViewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */; };
 		AC52965D231EED1300EACF44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52965C231EED1300EACF44 /* DetailViewController.swift */; };
@@ -166,6 +167,9 @@
 		3AFEAC19233556420043CB6D /* SFProTextBold.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SFProTextBold.plist; sourceTree = SOURCE_ROOT; };
 		3FAA1ACF3D0FB7238CA892E8 /* Pods-AlzheimerProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlzheimerProject.debug.xcconfig"; path = "Target Support Files/Pods-AlzheimerProject/Pods-AlzheimerProject.debug.xcconfig"; sourceTree = "<group>"; };
 		64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlzheimerProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1954C2233582BF007BE605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboard.storyboard; sourceTree = "<group>"; };
+		AC1954C5233582CB007BE605 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Onboard.strings"; sourceTree = "<group>"; };
+		AC1954C7233582CF007BE605 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Onboard.strings; sourceTree = "<group>"; };
 		AC39EE182318638B00DC590C /* CellFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFeed.swift; sourceTree = "<group>"; };
 		AC52965A231D4CE200EACF44 /* TableViewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTaskViewController.swift; sourceTree = "<group>"; };
 		AC52965C231EED1300EACF44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 		AC9EE918230728E9004FA292 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AC1954C3233582BF007BE605 /* Onboard.storyboard */,
 				AC96E74C23301DBD00FB10BA /* Login.storyboard */,
 				AC9EE90623071D01004FA292 /* Main.storyboard */,
 				AC96E73623301B9B00FB10BA /* Feed.storyboard */,
@@ -563,6 +568,7 @@
 				AC96E7582330202300FB10BA /* Localizable.strings in Resources */,
 				3AA3BA8D232D985400CC1AC4 /* SF-Pro-Text-Regular.otf in Resources */,
 				AC96E74A23301DBD00FB10BA /* Login.storyboard in Resources */,
+				AC1954C1233582BF007BE605 /* Onboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +691,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		AC1954C3233582BF007BE605 /* Onboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC1954C2233582BF007BE605 /* Base */,
+				AC1954C5233582CB007BE605 /* pt-BR */,
+				AC1954C7233582CF007BE605 /* en */,
+			);
+			name = Onboard.storyboard;
+			sourceTree = "<group>";
+		};
 		AC96E73623301B9B00FB10BA /* Feed.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
