@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OsX-6X-H7K">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Launch Screen-->
+        <scene sceneID="Ed4-W2-yI6">
+            <objects>
+                <viewController storyboardIdentifier="launchScreen" id="OsX-6X-H7K" customClass="LaunchScreen" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TzK-C0-yTp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading Screen" translatesAutoresizingMaskIntoConstraints="NO" id="3Fa-fl-umx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ilustração Inicial Real" translatesAutoresizingMaskIntoConstraints="NO" id="g01-6U-AfA">
+                                <rect key="frame" x="37" y="346.5" width="341" height="203"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="341" id="V5P-ID-5jA"/>
+                                    <constraint firstAttribute="height" constant="203" id="VVt-mQ-0eu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g01-6U-AfA" firstAttribute="leading" secondItem="M6l-Ty-PLK" secondAttribute="leading" constant="37" id="IXY-gO-9P1"/>
+                            <constraint firstItem="M6l-Ty-PLK" firstAttribute="trailing" secondItem="g01-6U-AfA" secondAttribute="trailing" constant="36" id="LGY-xS-iZQ"/>
+                            <constraint firstItem="3Fa-fl-umx" firstAttribute="leading" secondItem="M6l-Ty-PLK" secondAttribute="leading" id="OD2-1z-der"/>
+                            <constraint firstItem="g01-6U-AfA" firstAttribute="centerY" secondItem="3Fa-fl-umx" secondAttribute="centerY" id="Y98-ND-K2V"/>
+                            <constraint firstItem="3Fa-fl-umx" firstAttribute="trailing" secondItem="M6l-Ty-PLK" secondAttribute="trailing" id="jiy-DN-Dwx"/>
+                            <constraint firstItem="3Fa-fl-umx" firstAttribute="top" secondItem="TzK-C0-yTp" secondAttribute="top" id="lXi-fl-BrT"/>
+                            <constraint firstAttribute="bottom" secondItem="3Fa-fl-umx" secondAttribute="bottom" id="mjA-uT-goU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M6l-Ty-PLK"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="g01-6U-AfA" id="9Ik-NY-x9C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HmI-62-sGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Ilustração Inicial Real" width="431" height="265"/>
+        <image name="Loading Screen" width="414" height="896"/>
+    </resources>
+</document>

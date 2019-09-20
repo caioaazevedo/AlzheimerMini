@@ -286,7 +286,7 @@ class CoreDataRebased{
     }
     
     //✅ - Criar Usuario - GUEST 😎
-    func createUsuarioGuest(fotoDoPerfil: UIImage?, Nome: String, searchSala: String, host: Int64){
+    func createUsuarioGuest(fotoDoPerfil: UIImage?, Nome: String, searchSala: String, host: Int64,  completion: @escaping (_ result: Bool) -> ()){
         
         print("Search Sala: ", searchSala)
         
@@ -298,11 +298,17 @@ class CoreDataRebased{
         user.nome = Nome
         
         
-        Cloud.querySala(searchRecord: searchSala) { (_) in
+//        Cloud.querySala(searchRecord: searchSala) { (_) in
             print(DadosSala.sala.idCalendario)
+        
+        
+//        Cloud.queryCalendario(searchRecord: DadosSala.sala.idCalendario) { (vei) in
+//            print("ALOU ")
+//        }
+        
             
             Cloud.queryCalendario(searchRecord: DadosSala.sala.idCalendario, completion: { (_) in
-                
+
                 Cloud.queryPerfil(searchRecord: DadosSala.sala.idPerfil, completion: { (_) in
                     self.createSalaGuest()
                     user.idSala = searchSala
@@ -314,16 +320,22 @@ class CoreDataRebased{
                     CoreDataRebased.shared.saveCoreData()
                     print("=======> :", user.idSala!)
                     print("=======> :", userArray)
+
+                    self.saveCoreData()
+                    
                     
                     
                     Cloud.saveUsuario(idUsuario: user.id!, nome: user.nome, foto: nil, idSala: user.idSala!, host: host)
-                    
+
                     Cloud.updateSala(nomeFamilia: "",searchRecord: searchSala, idSala: DadosSala.sala.idSala, idUsuario: userArray, idCalendario: DadosSala.sala.idCalendario, idPerfil: DadosSala.sala.idPerfil, idHost: DadosSala.sala.idHost)
                     
+                    
+                    completion(true)
+
                 })
             })
-            
-        }
+        
+//        }
         
         
     }
@@ -694,7 +706,7 @@ class CoreDataRebased{
                     for e in eventos{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
-                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date)
+                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date)
                         myFeed.append(z)
                     } //17FBCDF6-BA84-46E0-B70E-32A7E1D8743E
                 } catch{
@@ -714,7 +726,7 @@ class CoreDataRebased{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
                         if e.idResponsavel == UserLoaded().idUser{
-                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date)
+                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date)
                             myFeed.append(z)
                         }
                     }
@@ -790,6 +802,7 @@ struct feedPerson{
     var fotoCriador: UIImage?
     var idCriador: String
     var dataCriada: Date
+    var horarioEvento : Date
 }
 
 /*

@@ -22,17 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        
+
         let sb = UIStoryboard(name: "Onboard", bundle: nil)
         var inicialViewController = sb.instantiateViewController(withIdentifier: "Onbording")
-        
+
         let userDefaults = UserDefaults.standard
-        
+
         if userDefaults.bool(forKey: "onbordingComplete") {
-            let sb = UIStoryboard(name: "Login", bundle: nil)
-            inicialViewController = sb.instantiateViewController(withIdentifier: "MainApp")
+            let sb = UIStoryboard(name: "LauchScreenAnimation", bundle: nil)
+            inicialViewController = sb.instantiateViewController(withIdentifier: "launchScreen")
         }
-        
+
         window?.rootViewController = inicialViewController
         window?.makeKeyAndVisible()
         
