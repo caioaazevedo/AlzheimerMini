@@ -628,7 +628,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 0
+        return 42
     }
     
 }
