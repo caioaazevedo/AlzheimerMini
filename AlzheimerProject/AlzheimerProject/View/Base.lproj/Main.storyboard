@@ -503,19 +503,19 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OpY-1K-MXb">
-                            <rect key="frame" x="0.0" y="44" width="414" height="256"/>
+                            <rect key="frame" x="0.0" y="44" width="414" height="272"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <prototypes>
-                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellRes" id="U0V-vl-djD" customClass="CellClass" customModule="AlzheimerProject" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellRes" rowHeight="38" id="U0V-vl-djD" customClass="CellClass" customModule="AlzheimerProject" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="28" width="414" height="38"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U0V-vl-djD" id="arl-zH-Il6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="37.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKX-My-O2I">
-                                                <rect key="frame" x="68.5" y="11" width="207" height="21.5"/>
+                                                <rect key="frame" x="68.5" y="9.5" width="207" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -770,23 +770,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="93 anos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIl-CY-eiD">
-                                <rect key="frame" x="180" y="289" width="55" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.43921875953674316" green="0.43921005725860596" blue="0.43921592831611633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldq-PV-pGw">
                                 <rect key="frame" x="0.0" y="244" width="414" height="596"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome do idoso" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xf5-j8-IOF">
-                                        <rect key="frame" x="131" y="91" width="151" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDf-ZC-WE2">
                                         <rect key="frame" x="260" y="41" width="25" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -859,7 +846,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="25/02/1999" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S7l-u8-WPh">
-                                        <rect key="frame" x="27" y="190" width="140" height="21"/>
+                                        <rect key="frame" x="27" y="151" width="140" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -911,7 +898,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textField>
-                               
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3745447" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oma-YM-dBT">
                                         <rect key="frame" x="20" y="231" width="129" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -934,6 +920,13 @@
                                         <rect key="frame" x="114" y="-103" width="186" height="186"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nome do Idoso" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCJ-nZ-2Fc">
+                                        <rect key="frame" x="83" y="91" width="248" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -957,7 +950,7 @@
                         <outlet property="endereco" destination="UXK-R1-a32" id="Jas-IB-UGx"/>
                         <outlet property="enderecoGray" destination="ut9-VK-lGa" id="H9X-Ap-N7W"/>
                         <outlet property="fotoIdoso" destination="XNb-b5-Ef8" id="ed6-No-cso"/>
-                        <outlet property="idosoNome" destination="6Zr-I9-Cd5" id="TTJ-eK-m4s"/>
+                        <outlet property="idosoNome" destination="DCJ-nZ-2Fc" id="z1z-Yn-e8l"/>
                         <outlet property="medicacoes" destination="f5J-Nk-W0f" id="no7-gW-NXA"/>
                         <outlet property="medicamentoGray" destination="Sk8-sA-sKc" id="fDO-h6-LUf"/>
                         <outlet property="nascimentoGray" destination="Rtu-8T-HdA" id="yWo-gl-FwT"/>
@@ -1414,6 +1407,7 @@
         <image name="ADDRelogio" width="20.5" height="20.5"/>
         <image name="ADDTag" width="23" height="15.5"/>
         <image name="Borda" width="187" height="187"/>
+        <image name="Edmondo" width="180" height="180"/>
         <image name="HORA" width="20.5" height="20.5"/>
         <image name="Hora" width="16" height="15"/>
         <image name="LOCALIZACAO" width="22.5" height="22.5"/>
@@ -1434,7 +1428,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2q4-f6-V2s"/>
-        <segue reference="lcM-NS-UxG"/>
+        <segue reference="WWb-rA-i4h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98773747682571411" green="0.64160817861557007" blue="0.27023616433143616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

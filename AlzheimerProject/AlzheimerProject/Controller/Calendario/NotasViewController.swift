@@ -18,9 +18,10 @@ class NotasViewController: UIViewController {
     
     
     var delegate: notasDelegate?
+    var notasTexto = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        notas.text = notasTexto
         // Do any additional setup after loading the view.
     }
     

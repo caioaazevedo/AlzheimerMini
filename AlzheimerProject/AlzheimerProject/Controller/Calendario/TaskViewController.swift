@@ -523,7 +523,7 @@ extension TaskViewController : UITableViewDelegate{
         if segue.identifier == "segueNotas"{
             if let dest = segue.destination as? NotasViewController{
                 dest.delegate = self
-                dest.notas.text = auxNotas
+                dest.notasTexto = auxNotas
             }
         }
     }
@@ -628,7 +628,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 45
     }
     
 }
