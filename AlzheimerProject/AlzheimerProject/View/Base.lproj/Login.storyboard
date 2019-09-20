@@ -151,7 +151,6 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the Family Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
-                                <rect key="frame" x="36" y="580" width="342" height="21"/>
                                 <rect key="frame" x="36" y="529" width="303" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
@@ -303,11 +302,11 @@
     </scenes>
     <resources>
         <image name="Ilustração Inicial Real" width="431" height="265"/>
-        <image name="ProfilePicture" width="260.33334350585938" height="260.33334350585938"/>
+        <image name="ProfilePicture" width="260" height="266.33334350585938"/>
         <image name="camera" width="23" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d0L-uA-RXe"/>
-        <segue reference="YAN-b0-el0"/>
+        <segue reference="AZV-of-5Wc"/>
     </inferredMetricsTieBreakers>
 </document>
