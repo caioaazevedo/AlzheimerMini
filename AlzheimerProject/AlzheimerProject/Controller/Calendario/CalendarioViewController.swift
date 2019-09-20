@@ -520,6 +520,27 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         return cor
     }
     
+    func defineColor2(_ categoria: String) -> UIColor{
+        var cor = UIColor()
+        switch(categoria){
+        case NSLocalizedString("Health",comment: ""):
+            cor  = .init(red: 0.28, green: 0.54, blue: 0.62, alpha: 1)
+        case NSLocalizedString("Recreation",comment: ""):
+            cor = .init(red: 0.30, green: 0.35, blue: 0.61, alpha: 1)
+        case NSLocalizedString("Dentist",comment: ""):
+            cor = .init(red: 0.57, green: 0.23, blue: 0.43, alpha: 1)
+        case NSLocalizedString("Pharmacy",comment: ""):
+            cor = .init(red: 0.54, green: 0.39, blue: 0.23, alpha: 1)
+        default:
+            cor = .init(red: 0.09, green: 0.46, blue: 0.30, alpha: 1)
+        }
+        return cor
+        
+        
+        
+        
+    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -558,13 +579,17 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         cell.bgCalendarCellView.clipsToBounds = true
         cell.bgCalendarCellView.layer.cornerRadius = 10
         cell.bgCalendarCellView.backgroundColor = defineColor(categoria)
+        
         cell.backgroundColor = view.backgroundColor
         
         
 //        cell.backgroundColor = defineColor(categoria)
       
         cell.titulo.text = DailyEvents[indexPath.row].title
-
+        cell.titulo.textColor = defineColor2(categoria)
+        cell.horario.textColor = defineColor2(categoria)
+        cell.responsavel.textColor = defineColor2(categoria)
+        cell.location.textColor = defineColor2(categoria)
         cell.horario.text = DailyEvents[indexPath.row].time
         
        

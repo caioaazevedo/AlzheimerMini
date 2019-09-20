@@ -91,7 +91,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEh-qd-Y3c">
                                                             <rect key="frame" x="19" y="11" width="209" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="19"/>
+                                                            <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -373,7 +373,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bolinha" destination="gRu-3F-GDZ" id="kdh-TI-0NX"/>
-                        <outlet property="categoria" destination="d3z-Gc-0Ne" id="nde-5i-9Ae"/>
+                        <outlet property="categoria" destination="d3z-Gc-0Ne" id="ZEy-gb-OhA"/>
                         <outlet property="categoriaLabel" destination="7sK-zY-rqy" id="Py3-8Q-V5i"/>
                         <outlet property="descricao" destination="LFP-RW-Vue" id="jei-87-xYC"/>
                         <outlet property="hora" destination="vfl-J2-BY0" id="t47-hA-a1k"/>
@@ -1431,7 +1431,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2q4-f6-V2s"/>
-        <segue reference="WWb-rA-i4h"/>
+        <segue reference="lcM-NS-UxG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98773747682571411" green="0.64160817861557007" blue="0.27023616433143616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

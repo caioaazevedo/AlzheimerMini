@@ -146,11 +146,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                     string = string! + ", " + element
                 }
             }
+            
             tituloTextField.text = event?.title ?? ""
             localTextField.text = event?.localization ?? ""
          //   tableController.responsavel.text = string
             tableController.descricao.text = event?.desc
-            tableController.categoriaLabel.text = event?.categ
+            tableController.categoria.text = event?.categ
             var bola = ""
             switch(categoria){
             case NSLocalizedString("Health", comment: ""):
@@ -260,7 +261,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     func sendInfo(_ view: ViewPopup, texto: String,which: String,index: Int) {
       
         if which == "Categoria"{
-            tableController.categoriaLabel.text = texto
+            tableController.categoria.text = texto
             categoria = texto
             
             applyToDef(index: index)
