@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110D0D462333FF78006B3098 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110D0D452333FF78006B3098 /* LaunchScreen.swift */; };
+		110D0D4823340FEB006B3098 /* LauchScreenAnimation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110D0D4723340FEB006B3098 /* LauchScreenAnimation.storyboard */; };
 		11320D44232999EE002C7F7F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11320D43232999EE002C7F7F /* ImagePicker.swift */; };
 		1144AF192320467C00718CC6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF182320467C00718CC6 /* CustomButton.swift */; };
 		1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144AF1B232046CF00718CC6 /* GuestViewController.swift */; };
@@ -82,6 +84,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		110D0D452333FF78006B3098 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		110D0D4723340FEB006B3098 /* LauchScreenAnimation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LauchScreenAnimation.storyboard; sourceTree = "<group>"; };
 		11320D43232999EE002C7F7F /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1144AF182320467C00718CC6 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1144AF1B232046CF00718CC6 /* GuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
@@ -287,7 +291,6 @@
 			children = (
 				11C6248C23301D54006A8EB4 /* Onboard.swift */,
 				11C6248E23301EE6006A8EB4 /* OnbordingView.swift */,
-				11C6249023301F60006A8EB4 /* Onboard.storyboard */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				3ABD18D823282A00001B1DFA /* ProfileTableViewCell.swift */,
 				E227F3F9232C24BB00C25C75 /* GroupCell.swift */,
 				E2616175233021E700F492B8 /* CellAnteriores.swift */,
+				110D0D452333FF78006B3098 /* LaunchScreen.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -448,6 +452,8 @@
 				AC9EE90623071D01004FA292 /* Main.storyboard */,
 				AC96E73623301B9B00FB10BA /* Feed.storyboard */,
 				AC9EE90B23071D02004FA292 /* LaunchScreen.storyboard */,
+				11C6249023301F60006A8EB4 /* Onboard.storyboard */,
+				110D0D4723340FEB006B3098 /* LauchScreenAnimation.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -549,6 +555,7 @@
 				AC9EE90D23071D02004FA292 /* LaunchScreen.storyboard in Resources */,
 				AC9EE90A23071D02004FA292 /* Assets.xcassets in Resources */,
 				AC9EE90823071D01004FA292 /* Main.storyboard in Resources */,
+				110D0D4823340FEB006B3098 /* LauchScreenAnimation.storyboard in Resources */,
 				11C6249123301F60006A8EB4 /* Onboard.storyboard in Resources */,
 				AC96E7582330202300FB10BA /* Localizable.strings in Resources */,
 				3AA3BA8D232D985400CC1AC4 /* SF-Pro-Text-Regular.otf in Resources */,
@@ -661,6 +668,7 @@
 				AC9EE928230F0D8D004FA292 /* CellCalendar.swift in Sources */,
 				AC9EE93023144937004FA292 /* TaskViewController.swift in Sources */,
 				3A54EC9F2320573D004BB09C /* Sala+CoreDataClass.swift in Sources */,
+				110D0D462333FF78006B3098 /* LaunchScreen.swift in Sources */,
 				3AD49DE7231621EC00904457 /* (null) in Sources */,
 				AC68B4642326CFE6002963C0 /* CellUsers.swift in Sources */,
 				AC68B45E2326CF09002963C0 /* DetailProfileViewController.swift in Sources */,

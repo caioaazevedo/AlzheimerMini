@@ -397,6 +397,25 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
         return UIImage(named: "ProfilePicture")!
     }
     
+    func colorWithGradient(colors: [UIColor]) -> UIColor {
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.locations = [0.1, 0.9]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        
+        let cgColors = colors.map({$0.cgColor})
+        
+        gradientLayer.colors = cgColors
+        
+        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        let backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return UIColor(patternImage: backgroundColorImage!)
+    }
     
     
 }

@@ -32,7 +32,7 @@
                                 <color key="textColor" red="0.4392099679" green="0.43921270969999998" blue="0.43921983240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ON6-st-0EH">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ON6-st-0EH">
                                 <rect key="frame" x="36" y="146" width="342" height="29"/>
                                 <segments>
                                     <segment title="All"/>

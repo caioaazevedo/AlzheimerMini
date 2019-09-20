@@ -12,11 +12,13 @@ class GuestViewController: UIViewController{
     var isHost = false
     var realHost = false
     
+  
     var imagePicker: ImagePicker!
 
     @IBOutlet weak var familyCode: UITextField!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var homeButton: CustomButton!
+    @IBOutlet weak var cameraButton: UIButton!
     
 //    @IBOutlet weak var textNome: UITextField!
     
@@ -63,6 +65,10 @@ class GuestViewController: UIViewController{
     }
     
     @IBAction func fotoPerfil(_ sender: Any) {
+        self.imagePicker.present(from: sender as! UIView)
+    }
+    
+    @IBAction func fotoPerfilCamera(_ sender: Any) {
         self.imagePicker.present(from: sender as! UIView)
     }
     
