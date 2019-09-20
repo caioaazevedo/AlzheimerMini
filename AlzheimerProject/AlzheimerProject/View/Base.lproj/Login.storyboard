@@ -138,7 +138,6 @@
                                 </state>
                                 <connections>
                                     <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="G24-z5-puF"/>
-                                    <segue destination="TQi-Lw-Dua" kind="show" id="Qd5-fh-e5L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
