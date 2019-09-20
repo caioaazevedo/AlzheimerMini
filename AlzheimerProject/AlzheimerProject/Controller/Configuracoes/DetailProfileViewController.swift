@@ -26,8 +26,8 @@ class DetailProfileViewController: UIViewController {
     @IBOutlet weak var telefoneGray: UILabel!
     @IBOutlet weak var planoGray: UILabel!
     
-    
     @IBOutlet weak var fotoIdoso: UIImageView!
+    
     @IBOutlet weak var idosoNome: UITextField!
     @IBOutlet weak var dataNascimento: UITextField!
     @IBOutlet weak var tipoSanguineo: UITextField!
@@ -46,6 +46,8 @@ class DetailProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.fotoIdoso.image = UIImage(named: "ProfileElder")
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         self.setUpView()
@@ -130,7 +132,9 @@ class DetailProfileViewController: UIViewController {
         UserLoaded()
         setAll()
         self.fotoIdoso.clipsToBounds = true
-        self.fotoIdoso.layer.cornerRadius = 20
+        self.fotoIdoso.layer.cornerRadius = self.fotoIdoso.frame.height/2
+      
+        
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = true
@@ -190,7 +194,7 @@ class DetailProfileViewController: UIViewController {
         } else{
             fotoIdoso.image = fotoIdosoAux
         }
-        if idosoNome.text == ""{
+        if idosoNome.text == nil {
             idosoNome.text = "Elder Name"
         }
         else {
@@ -244,7 +248,7 @@ class DetailProfileViewController: UIViewController {
         observacoes.isUserInteractionEnabled = bo
     }
     
-    var fotoIdosoAux = UIImage(named: "Remedio")
+    var fotoIdosoAux = UIImage(named: "ProfileElder")
     var flag = 0
     
     
