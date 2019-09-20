@@ -146,11 +146,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
                     string = string! + ", " + element
                 }
             }
+            
             tituloTextField.text = event?.title ?? ""
             localTextField.text = event?.localization ?? ""
          //   tableController.responsavel.text = string
             tableController.descricao.text = event?.desc
-            tableController.categoriaLabel.text = event?.categ
+            tableController.categoria.text = event?.categ
             var bola = ""
             switch(categoria){
             case NSLocalizedString("Health", comment: ""):
@@ -237,7 +238,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
         UIView.animate(withDuration: 0.7) {
-            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
+            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/3,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
     }
@@ -258,7 +259,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         
         
         UIView.animate(withDuration: 0.7) {
-            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
+            self.viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIScreen.main.bounds.height/3,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
             self.view.layoutIfNeeded()
         }
         
@@ -269,7 +270,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     func sendInfo(_ view: ViewPopup, texto: String,which: String,index: Int) {
       
         if which == "Categoria"{
-            tableController.categoriaLabel.text = texto
+            tableController.categoria.text = texto
             categoria = texto
             
             applyToDef(index: index)
@@ -522,6 +523,7 @@ extension TaskViewController : UITableViewDelegate{
         if segue.identifier == "segueNotas"{
             if let dest = segue.destination as? NotasViewController{
                 dest.delegate = self
+                dest.notas.text = auxNotas
             }
         }
     }

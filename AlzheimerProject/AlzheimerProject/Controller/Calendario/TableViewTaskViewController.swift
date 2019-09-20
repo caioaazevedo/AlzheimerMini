@@ -34,7 +34,8 @@ class TableViewTaskViewController: UITableViewController {
     @IBOutlet weak var notasLabel: UILabel!
     
     @IBOutlet weak var notas: UIView!
-    @IBOutlet weak var categoria: UIImageView!
+    
+    @IBOutlet weak var categoria: UILabel!
     @IBOutlet weak var hora: UILabel!
     @IBOutlet weak var responsavel: UILabel!
     @IBOutlet weak var lembrete: UISwitch!
