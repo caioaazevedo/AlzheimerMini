@@ -554,7 +554,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let fontName = "SFProText-Regular"
+        let fontName = "SFProText-Bold"
         
         let scaledFont: ScaledFont = {
             return ScaledFont(fontName: fontName)
