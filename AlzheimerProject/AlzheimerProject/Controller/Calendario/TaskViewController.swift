@@ -181,6 +181,10 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
             vc.circleView.isHidden = true
             vc.tabBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         }
+        
+        Cloud.getPeople {
+            self.tableController.reloadInputViews()
+        }
     }
     
     
@@ -193,7 +197,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         
         
         
-        print(DatePicker.date)
+        
         
         DatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         DatePicker.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
@@ -219,11 +223,16 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
         viewPresent.array = pessoas// ADD IMAGES OF USERS
-        viewPresent.arrayImage.append(bolaAzul!)
-        viewPresent.arrayImage.append(bolaRoxa!)
-        viewPresent.arrayImage.append(bolaRosa!)
-        viewPresent.arrayImage.append(bolaAmarela!)
-        viewPresent.arrayImage.append(bolaVermelha!)
+        
+        
+        for i in 0...ckData.count-1{
+            for pessoa in pessoas {
+                if ckData[i].1 == pessoa {
+                    viewPresent.arrayImage.append(UIImage(data: ckData[i].2)!)
+                }
+            }
+        }
+        
         // COLOCAR FOTO DOS INTEGRANTES
         view.addSubview(viewPresent)
         titulo2.text = "Responsável"
@@ -575,7 +584,11 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
         
-        cell.imagemResponsavel.image = arrayImage[indexPath.row]
+        if arrayImage.count > 0 {
+            cell.imagemResponsavel.image = arrayImage[indexPath.row]
+            cell.imagemResponsavel.layer.cornerRadius = cell.imagemResponsavel.frame.width/2
+        }
+        
         
         
         

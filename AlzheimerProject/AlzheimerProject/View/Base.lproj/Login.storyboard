@@ -120,6 +120,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
+                                <rect key="frame" x="36" y="524" width="342" height="21"/>
                                 <rect key="frame" x="36" y="473" width="303" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
@@ -138,7 +139,6 @@
                                 </state>
                                 <connections>
                                     <action selector="homeButton:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="G24-z5-puF"/>
-                                    <segue destination="TQi-Lw-Dua" kind="show" id="Qd5-fh-e5L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
@@ -152,6 +152,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the Family Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
+                                <rect key="frame" x="36" y="580" width="342" height="21"/>
                                 <rect key="frame" x="36" y="529" width="303" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>

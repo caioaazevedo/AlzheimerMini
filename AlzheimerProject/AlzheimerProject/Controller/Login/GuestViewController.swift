@@ -74,8 +74,8 @@ class GuestViewController: UIViewController{
     
     @IBAction func homeButton(_ sender: Any) {
         homeButton.pulsate()
-        
-        if userName.text != "" && familyName.text != "" {
+// && familyName.text != ""
+        if userName.text != ""{
             if realHost {
                 // Para Usuarios com valor host = 1 - Indicam que são Administradores
                 CoreDataRebased.shared.createUsuario(fotoDoPerfil: self.imageProfile, Nome: userName.text!, host: 1)
@@ -83,7 +83,14 @@ class GuestViewController: UIViewController{
                 
             } else {
                 // Para Usuarios com valor host = 0 - Indicam que são Administradores
-                CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: self.imageProfile, Nome: userName.text!, searchSala: self.codFamily, host: 0)
+                CoreDataRebased.shared.createUsuarioGuest(fotoDoPerfil: self.imageProfile, Nome: userName.text!, searchSala: self.codFamily, host: 0) { (value) in
+                    let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "inicialStoryboard")
+                    self.present(viewController, animated: true, completion: nil)
+                }
+                
+                
+                
             }
         } else {
             let alert = UIAlertController(title: "Fields are empty", message: "You cannot advance while fields are empty.", preferredStyle: UIAlertController.Style.alert)

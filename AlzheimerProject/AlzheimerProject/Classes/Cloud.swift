@@ -258,29 +258,34 @@ class Cloud {
     }
     
     static func queryCalendario(searchRecord: String, completion: @escaping (_ result: Bool) -> ()){
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Calendario", predicate: predicate)
         
-        let queryOp = CKQueryOperation(query: query)
-        queryOp.queuePriority = .veryHigh
+        let queryOpCalendar = CKQueryOperation(query: query)
+        queryOpCalendar.queuePriority = .veryHigh
         
-        queryOp.recordFetchedBlock = { (record) -> Void in
+        queryOpCalendar.recordFetchedBlock = { (record) -> Void in
             
             if record["idCalendario"] == searchRecord {
                 
                 DadosClendario.calendario.idCalendario = record["idCalendario"]!
                 if let rec = record["idEventos"] {
                     DadosClendario.calendario.idEventos = ((rec as! NSArray).mutableCopy() as? [String])!
+                    completion(true)
                     
                 }
                 //                print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
                 
-                completion(true)
+                
                 
             }
             
         }
-        publicDataBase.add(queryOp)
+        
+        
+        
+        publicDataBase.add(queryOpCalendar)
     }
     
     static func queryEventos(){
