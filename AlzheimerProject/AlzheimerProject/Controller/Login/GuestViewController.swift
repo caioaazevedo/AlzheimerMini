@@ -80,6 +80,9 @@ class GuestViewController: UIViewController{
                 // Para Usuarios com valor host = 1 - Indicam que são Administradores
                 CoreDataRebased.shared.createUsuario(fotoDoPerfil: self.imageProfile, Nome: userName.text!, host: 1)
                 CoreDataRebased.shared.createSala(nomeFamilia: familyName.text!)
+                let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "inicialStoryboard")
+                self.present(viewController, animated: true, completion: nil)
                 
             } else {
                 // Para Usuarios com valor host = 0 - Indicam que são Administradores
