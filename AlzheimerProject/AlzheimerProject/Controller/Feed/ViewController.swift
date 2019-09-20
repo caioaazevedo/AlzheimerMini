@@ -286,7 +286,24 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 case 1:
                     print("1")
                     if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
-                        cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+
+                        
+                        let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+                        let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+                        let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+                        let boldData = NSMutableAttributedString(string:formate.string(from: myPeople[indexPath.row].dataCriada) , attributes: att)
+                        
+                        var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
+                        var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+                        var bodyText3 = NSMutableAttributedString(string: " as ")
+                        let combination = NSMutableAttributedString()
+                        
+                        combination.append(boldEvento)
+                        combination.append(bodyText1)
+                        combination.append(boldCriador)
+                        combination.append(bodyText2)
+                        combination.append(boldData)
+                    
                         
                         let fontName = "SFProText-Regular"
                         
@@ -297,6 +314,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                         cell.label.font = scaledFont.font(forTextStyle: .body)
                         cell.label.adjustsFontForContentSizeCategory = true
                         
+                         cell.label.attributedText = combination
                         
                         cell.bgVview.clipsToBounds = true
                         cell.bgVview.layer.cornerRadius = 15
@@ -306,7 +324,23 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                     }
                 default:
                     print("0")
-                    cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+//                    cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    
+                    let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+                    let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+                    let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+                    let boldData = NSMutableAttributedString(string:formate.string(from: myPeople[indexPath.row].dataCriada) , attributes: att)
+                    
+                    var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
+                    var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+                    var bodyText3 = NSMutableAttributedString(string: " as ")
+                    let combination = NSMutableAttributedString()
+                    
+                    combination.append(boldEvento)
+                    combination.append(bodyText1)
+                    combination.append(boldCriador)
+                    combination.append(bodyText2)
+                    combination.append(boldData)
                     
                     let fontName = "SFProText-Regular"
                     
@@ -314,8 +348,13 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                         return ScaledFont(fontName: fontName)
                     }()
                     
+                    
+                    
                     cell.label.font = scaledFont.font(forTextStyle: .body)
                     cell.label.adjustsFontForContentSizeCategory = true
+                    
+                    cell.label.attributedText = combination
+                    
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
                     cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
@@ -337,7 +376,24 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 print("1")
                 
                 if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
-                    cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+//                    cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                    
+                    let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+                    let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+                    let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+                    let boldData = NSMutableAttributedString(string:formate.string(from: myPeople[indexPath.row].dataCriada) , attributes: att)
+                    
+                    var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
+                    var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+                    var bodyText3 = NSMutableAttributedString(string: " as ")
+                    let combination = NSMutableAttributedString()
+                    
+                    combination.append(boldEvento)
+                    combination.append(bodyText1)
+                    combination.append(boldCriador)
+                    combination.append(bodyText2)
+                    combination.append(boldData)
+                    
                     
                     let fontName = "SFProText-Regular"
                     
@@ -345,8 +401,12 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                         return ScaledFont(fontName: fontName)
                     }()
                     
+                    
                     cell.label.font = scaledFont.font(forTextStyle: .body)
                     cell.label.adjustsFontForContentSizeCategory = true
+                    
+                    cell.label.attributedText = combination
+                    
                     cell.bgVview.clipsToBounds = true
                     cell.bgVview.layer.cornerRadius = 15
                     cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
@@ -355,7 +415,23 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 }
             default:
                 print("0")
-                cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+//                cell.label.text = "\(myPeople[indexPath.row].nomeEvento) foi marcado por \(myPeople[indexPath.row].nomeCriador) para o dia \(myPeople[indexPath.row].dataEvento)"
+                
+                let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+                let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+                let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+                let boldData = NSMutableAttributedString(string:formate.string(from: myPeople[indexPath.row].dataCriada) , attributes: att)
+                
+                var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
+                var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+                var bodyText3 = NSMutableAttributedString(string: " as ")
+                let combination = NSMutableAttributedString()
+                
+                combination.append(boldEvento)
+                combination.append(bodyText1)
+                combination.append(boldCriador)
+                combination.append(bodyText2)
+                combination.append(boldData)
                 
                 let fontName = "SFProText-Regular"
                 
@@ -363,8 +439,12 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                     return ScaledFont(fontName: fontName)
                 }()
                 
+                
                 cell.label.font = scaledFont.font(forTextStyle: .body)
                 cell.label.adjustsFontForContentSizeCategory = true
+                
+                cell.label.attributedText = combination
+                
                 cell.bgVview.clipsToBounds = true
                 cell.bgVview.layer.cornerRadius = 15
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
