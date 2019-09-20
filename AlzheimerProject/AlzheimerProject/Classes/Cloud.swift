@@ -598,7 +598,7 @@ class Cloud {
         let userLoad = UserLoaded()
         let profileFetchRequest = NSFetchRequest<PerfilUsuario>.init(entityName: "PerfilUsuario")
         let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: "PerfilUsuario", predicate: predicate)
+        let query = CKQuery(recordType: "Perfil", predicate: predicate)
         let queryOp = CKQueryOperation(query: query)
         queryOp.queuePriority = .veryHigh
         
