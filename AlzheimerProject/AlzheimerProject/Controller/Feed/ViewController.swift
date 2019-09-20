@@ -336,9 +336,9 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                         
                         let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
                     let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
-                        
-                        var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                        var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+                   
+                        var bodyText1 = NSMutableAttributedString(string: NSLocalizedString("was set by", comment: ""))
+                        var bodyText2 = NSMutableAttributedString(string: NSLocalizedString("to day", comment: ""))
                         var bodyText3 = NSMutableAttributedString(string: " as ")
                         let combination = NSMutableAttributedString()
                         
