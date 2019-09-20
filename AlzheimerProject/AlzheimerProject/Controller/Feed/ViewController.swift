@@ -82,12 +82,35 @@ class ViewController: UIViewController {
         Cloud.updateCalendario { (result) in
             Cloud.updateAllEvents(completion: { (t) in
                 self.fetchAll()
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                DispatchQueue.main.async {
+                    CoreDataRebased.shared.recuperarDadosEventos(completion: { (myVector) in
+                        self.contador = 0
+                        self.contador2 = 0
+                        let formate = DateFormatter()
+                        formate.dateFormat = "dd-MM-yyyy"
+                        self.myPeople = myVector
+                        self.myPeople.reverse()
+                        for i in self.myPeople{
+                            let d = "dd-MM-yyy"
+                            if formate.string(from: i.dataCriada) == formate.string(from: Date()){
+                                self.contador += 1
+                            } else {
+                                self.contador2 += 1
+                            }
+                        }
+                        self.tableView.reloadData()
+                    }, indici: self.segmentedControl.selectedSegmentIndex)
+                }
+                
+                        
+                    
+                
+                
             })
         }
-        
-        
-        
         let sala = CoreDataRebased.shared.fetchSala()
         
         self.navBar.title = sala.nomeFamilia
@@ -301,15 +324,19 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                     print("1")
                     if myPeople[indexPath.row].nomeCriador == UserLoaded().getUserName(){
                         
+                        let fontNameBold = "SFProText-Bold"
+                        
+                        let scaledFontBold: ScaledFont = {
+                            return ScaledFont(fontName: fontNameBold)
+                        }()
+                        
                         
                         let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
                         let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
                         let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
-                        
-                        
-                        
                         let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
-                    let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
+                        let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
+                        
                         
                         var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
                         var bodyText2 = NSMutableAttributedString(string: " para o dia ")
@@ -325,16 +352,21 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                         //                        combination.append(boldTime)
                         
                         
+                        
+                        
                         let fontName = "SFProText-Regular"
+                       
+                        
                         
                         let scaledFont: ScaledFont = {
                             return ScaledFont(fontName: fontName)
                         }()
                         
                         cell.label.font = scaledFont.font(forTextStyle: .body)
-                        cell.label.adjustsFontForContentSizeCategory = true
+                        
                         
                         cell.label.attributedText = combination
+                        cell.label.adjustsFontForContentSizeCategory = true
                         
                         cell.bgVview.clipsToBounds = true
                         cell.bgVview.layer.cornerRadius = 15
