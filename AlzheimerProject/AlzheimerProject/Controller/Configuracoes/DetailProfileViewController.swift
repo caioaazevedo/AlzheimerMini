@@ -194,7 +194,7 @@ class DetailProfileViewController: UIViewController {
         } else{
             fotoIdoso.image = fotoIdosoAux
         }
-        if idosoNome.text == nil {
+        if idosoNome.text == nil || idosoNome.text == "" {
             idosoNome.text = "Elder Name"
         }
         else {
