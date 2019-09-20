@@ -166,6 +166,7 @@ class CalendarioViewController: UIViewController {
         
         let sala = CoreDataRebased.shared.fetchSala()
         
+        
         self.navBar.title = sala.nomeFamilia
         
         createCalendar()
@@ -205,22 +206,22 @@ class CalendarioViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
         
-        //Refresh
-        CoreDataRebased.shared.deleteAllEvents()
-        Cloud.updateCalendario { (result) in
-            Cloud.updateAllEvents(completion: { (t) in
-                self.fetchAll()
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.calendar.reloadData()
-                    refreshControl.endRefreshing()
-                    self.selectedDay = self.DiaSelecionado
-                }
-                
-            })
-        
-        //        Cloud.getPeople()
-    }
+//        Refresh
+//        CoreDataRebased.shared.deleteAllEvents()
+//        Cloud.updateCalendario { (result) in
+//            Cloud.updateAllEvents(completion: { (t) in
+//                self.fetchAll()
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                    self.calendar.reloadData()
+//                    refreshControl.endRefreshing()
+//                    self.selectedDay = self.DiaSelecionado
+//                }
+//
+//            })
+//
+//        //        Cloud.getPeople()
+//    }
     }
     
     @objc func refreshTable(refreshControl: UIRefreshControl){

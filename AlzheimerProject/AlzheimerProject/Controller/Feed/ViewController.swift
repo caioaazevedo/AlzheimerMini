@@ -77,6 +77,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        Cloud.getPeople {
+            DispatchQueue.main.async {
+                CoreDataRebased.shared.recuperarDadosEventos(completion: { (myVector) in
+                    self.contador = 0
+                    self.contador2 = 0
+                    let formate = DateFormatter()
+                    formate.dateFormat = "dd-MM-yyyy"
+                    self.myPeople = myVector
+                    self.myPeople.reverse()
+                    for i in self.myPeople{
+                        let d = "dd-MM-yyy"
+                        if formate.string(from: i.dataCriada) == formate.string(from: Date()){
+                            self.contador += 1
+                        } else {
+                            self.contador2 += 1
+                        }
+                    }
+                    self.tableView.reloadData()
+                }, indici: self.segmentedControl.selectedSegmentIndex)
+                
+                
+            }
+        }
+        
         print("ENTROU AQUII")
         
         let sala = CoreDataRebased.shared.fetchSala()
