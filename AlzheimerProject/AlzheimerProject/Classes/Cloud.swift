@@ -274,6 +274,8 @@ class Cloud {
                     DadosClendario.calendario.idEventos = ((rec as! NSArray).mutableCopy() as? [String])!
                     completion(true)
                     
+                }else{
+                    completion(false)
                 }
                 //                print("DADOS: ", record["idCalendario"]!, record["idEventos"]!)
                 
