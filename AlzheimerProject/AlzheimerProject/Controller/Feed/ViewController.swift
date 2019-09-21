@@ -334,6 +334,7 @@ class ViewController: UIViewController {
                 let formate = DateFormatter()
                 formate.dateFormat = "dd-MM-yyyy"
                 self.myPeople = myVector
+                
                 self.myPeople.reverse()
                 
                 self.allPreviously.removeAll()
