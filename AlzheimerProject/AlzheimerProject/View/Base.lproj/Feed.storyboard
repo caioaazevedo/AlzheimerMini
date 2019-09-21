@@ -26,9 +26,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ACTIVIVITIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-vL-PtF">
-                                <rect key="frame" x="36" y="120" width="328" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTIVIVITIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-vL-PtF">
+                                <rect key="frame" x="36" y="120" width="342" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" red="0.4392099679" green="0.43921270969999998" blue="0.43921983240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -44,9 +43,8 @@
                                     <action selector="changeState:" destination="tJk-sW-KAf" eventType="valueChanged" id="dtX-cK-Zlm"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-iE-Kh1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-iE-Kh1">
                                 <rect key="frame" x="20" y="182" width="374" height="580"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" red="0.43920996785163879" green="0.43921270966529846" blue="0.43921983242034912" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -60,25 +58,39 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogB-wl-hXr">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogB-wl-hXr">
                                                     <rect key="frame" x="0.0" y="11" width="366" height="113"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="KFa-Ja-RYq">
-                                                            <rect key="frame" x="25" y="28" width="37" height="37"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYn-yC-uWa">
-                                                            <rect key="frame" x="85" y="25" width="267" height="62"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYn-yC-uWa">
+                                                            <rect key="frame" x="85" y="25" width="266" height="61"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="KFa-Ja-RYq">
+                                                            <rect key="frame" x="25" y="37" width="37" height="37"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="37" id="0O1-bz-mgB"/>
+                                                                <constraint firstAttribute="height" constant="37" id="n9m-KU-2Sh"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.9960663914680481" green="0.99607223272323608" blue="0.99608725309371948" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstItem="ZYn-yC-uWa" firstAttribute="leading" secondItem="KFa-Ja-RYq" secondAttribute="trailing" constant="23" id="5Ty-Tw-clR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZYn-yC-uWa" secondAttribute="trailing" constant="15" id="6OL-Vs-0dM"/>
+                                                        <constraint firstItem="KFa-Ja-RYq" firstAttribute="leading" secondItem="ogB-wl-hXr" secondAttribute="leading" constant="25" id="JFF-m9-Y4S"/>
+                                                        <constraint firstItem="KFa-Ja-RYq" firstAttribute="top" secondItem="ogB-wl-hXr" secondAttribute="top" constant="37" id="RWS-dU-mv1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KFa-Ja-RYq" secondAttribute="bottom" constant="39" id="Vu8-aH-zov"/>
+                                                        <constraint firstItem="ZYn-yC-uWa" firstAttribute="centerY" secondItem="KFa-Ja-RYq" secondAttribute="centerY" id="di2-YD-Y9N"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ogB-wl-hXr" firstAttribute="leading" secondItem="O61-8z-Bnd" secondAttribute="leading" id="3xW-qW-hcy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ogB-wl-hXr" secondAttribute="trailing" constant="-12" id="A3H-uy-tA5"/>
+                                                <constraint firstItem="ogB-wl-hXr" firstAttribute="bottom" secondItem="O61-8z-Bnd" secondAttribute="bottomMargin" id="MUs-B9-dtP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -94,25 +106,41 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-ys-2x7">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-ys-2x7">
                                                     <rect key="frame" x="0.0" y="11" width="366" height="113"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="2r2-DN-kKE">
-                                                            <rect key="frame" x="25" y="25" width="37" height="37"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiK-k2-2Tk">
-                                                            <rect key="frame" x="85" y="17" width="268" height="79"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passeio no parque foi marcado por Amanda para as 17:00 do dia 26 de Setembro." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiK-k2-2Tk">
+                                                            <rect key="frame" x="78" y="17" width="273" height="79"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="273" id="Ml6-Ra-ibU"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="2r2-DN-kKE">
+                                                            <rect key="frame" x="24" y="38" width="37" height="37"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="37" id="jsr-CF-3pT"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.99606639149999998" green="0.9960722327" blue="0.99608725310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstItem="HiK-k2-2Tk" firstAttribute="leading" secondItem="2r2-DN-kKE" secondAttribute="trailing" constant="17" id="238-Hh-3nb"/>
+                                                        <constraint firstItem="2r2-DN-kKE" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="38" id="NXv-JU-dZe"/>
+                                                        <constraint firstItem="HiK-k2-2Tk" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="17" id="QN4-Z8-6p6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" constant="15" id="TWy-oi-sMQ"/>
+                                                        <constraint firstItem="HiK-k2-2Tk" firstAttribute="centerY" secondItem="SzG-ys-2x7" secondAttribute="centerY" id="yo0-pH-gAZ"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SzG-ys-2x7" firstAttribute="bottom" secondItem="xXI-HJ-oWl" secondAttribute="bottomMargin" id="DaU-b0-bYY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SzG-ys-2x7" secondAttribute="trailing" constant="-12" id="gcC-dw-0Ji"/>
+                                                <constraint firstItem="SzG-ys-2x7" firstAttribute="top" secondItem="xXI-HJ-oWl" secondAttribute="topMargin" id="jTR-QP-7Uj"/>
+                                                <constraint firstItem="SzG-ys-2x7" firstAttribute="leading" secondItem="xXI-HJ-oWl" secondAttribute="leading" id="nIi-L4-xr5"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -129,6 +157,18 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.94900804760000002" green="0.94901365039999996" blue="0.94902819400000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Zer-mj-rzr" firstAttribute="bottom" secondItem="YuF-iE-Kh1" secondAttribute="bottom" constant="100" id="5ot-o7-0tt"/>
+                            <constraint firstItem="YuF-iE-Kh1" firstAttribute="leading" secondItem="Zer-mj-rzr" secondAttribute="leading" constant="20" id="Cik-ET-mjI"/>
+                            <constraint firstItem="ON6-st-0EH" firstAttribute="leading" secondItem="Zer-mj-rzr" secondAttribute="leading" constant="36" id="ZtH-of-ZnD"/>
+                            <constraint firstItem="Zer-mj-rzr" firstAttribute="trailing" secondItem="mcp-vL-PtF" secondAttribute="trailing" constant="36" id="eu4-o3-uJc"/>
+                            <constraint firstItem="mcp-vL-PtF" firstAttribute="leading" secondItem="Zer-mj-rzr" secondAttribute="leading" constant="36" id="hha-Nx-5Yx"/>
+                            <constraint firstItem="Zer-mj-rzr" firstAttribute="trailing" secondItem="YuF-iE-Kh1" secondAttribute="trailing" constant="20" id="id0-A9-Msa"/>
+                            <constraint firstItem="mcp-vL-PtF" firstAttribute="top" secondItem="Zer-mj-rzr" secondAttribute="top" constant="76" id="jEl-6S-sjB"/>
+                            <constraint firstItem="YuF-iE-Kh1" firstAttribute="top" secondItem="ON6-st-0EH" secondAttribute="bottom" constant="8" id="ltW-KC-7bX"/>
+                            <constraint firstItem="ON6-st-0EH" firstAttribute="top" secondItem="mcp-vL-PtF" secondAttribute="bottom" constant="9" id="nx0-cx-4ZR"/>
+                            <constraint firstItem="Zer-mj-rzr" firstAttribute="trailing" secondItem="ON6-st-0EH" secondAttribute="trailing" constant="36" id="urd-Lz-a8J"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Zer-mj-rzr"/>
                     </view>
                     <navigationItem key="navigationItem" id="2XS-YM-dew"/>
