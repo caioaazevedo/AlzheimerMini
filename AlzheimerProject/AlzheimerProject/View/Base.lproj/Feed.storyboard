@@ -118,17 +118,20 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="2r2-DN-kKE">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Remedio" translatesAutoresizingMaskIntoConstraints="NO" id="2r2-DN-kKE">
                                                             <rect key="frame" x="24" y="38" width="37" height="37"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="37" id="jsr-CF-3pT"/>
+                                                                <constraint firstAttribute="height" constant="37" id="O4x-1O-1mW"/>
+                                                                <constraint firstAttribute="width" constant="37" id="wm4-zY-UjI"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.99606639149999998" green="0.9960722327" blue="0.99608725310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstItem="HiK-k2-2Tk" firstAttribute="leading" secondItem="2r2-DN-kKE" secondAttribute="trailing" constant="17" id="238-Hh-3nb"/>
-                                                        <constraint firstItem="2r2-DN-kKE" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="38" id="NXv-JU-dZe"/>
+                                                        <constraint firstItem="2r2-DN-kKE" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="38" id="3bk-I1-CaV"/>
+                                                        <constraint firstAttribute="trailing" secondItem="2r2-DN-kKE" secondAttribute="trailing" constant="305" id="EJK-en-eaY"/>
+                                                        <constraint firstItem="2r2-DN-kKE" firstAttribute="leading" secondItem="SzG-ys-2x7" secondAttribute="leading" constant="24" id="ExW-HQ-5X6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2r2-DN-kKE" secondAttribute="bottom" constant="38" id="Lpa-PL-LhZ"/>
                                                         <constraint firstItem="HiK-k2-2Tk" firstAttribute="top" secondItem="SzG-ys-2x7" secondAttribute="top" constant="17" id="QN4-Z8-6p6"/>
                                                         <constraint firstAttribute="trailing" secondItem="HiK-k2-2Tk" secondAttribute="trailing" constant="15" id="TWy-oi-sMQ"/>
                                                         <constraint firstItem="HiK-k2-2Tk" firstAttribute="centerY" secondItem="SzG-ys-2x7" secondAttribute="centerY" id="yo0-pH-gAZ"/>
