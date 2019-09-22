@@ -706,7 +706,7 @@ class CoreDataRebased{
                     for e in eventos{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
-                        var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date)
+                        var z = feedPerson(idEvento: e.id!, nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date, reponsaveis: (e.idUsuarios as! NSArray).mutableCopy() as! [String])
                         myFeed.append(z)
                     } //17FBCDF6-BA84-46E0-B70E-32A7E1D8743E
                 } catch{
@@ -725,10 +725,13 @@ class CoreDataRebased{
                     for e in eventos{
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
-                        if e.idResponsavel == UserLoaded().idUser{
-                            var z = feedPerson(nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date)
+                        
+//                        if ((e.idUsuarios as! NSArray).mutableCopy() as! [String]).contains(UserLoaded().idUser){
+                            var z = feedPerson(idEvento: e.id!, nomeEvento: e.nome ?? "nao tem nome", nomeCriador: e.nomeCriador ?? "nao tem criador", dataEvento: formate.string(from: e.dia! as Date), fotoCriador: nil, idCriador: e.idResponsavel ?? "nao tem", dataCriada: e.dataCriacao as! Date, horarioEvento: e.dia as! Date, reponsaveis: (e.idUsuarios as! NSArray).mutableCopy() as! [String])
                             myFeed.append(z)
-                        }
+//                        }
+                        
+                        
                     }
                 } catch{
                 }
@@ -796,6 +799,7 @@ struct profileData {
 }
 
 struct feedPerson{
+    var idEvento : String
     var nomeEvento: String
     var nomeCriador: String
     var dataEvento : String
@@ -803,6 +807,7 @@ struct feedPerson{
     var idCriador: String
     var dataCriada: Date
     var horarioEvento : Date
+    var reponsaveis: [String]
 }
 
 /*
