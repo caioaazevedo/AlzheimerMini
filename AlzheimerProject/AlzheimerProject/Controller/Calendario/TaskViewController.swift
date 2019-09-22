@@ -221,11 +221,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     func createParentPicker(){
         viewPresent.array.removeAll()
+        viewPresent.arrayImage.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         viewPresent.which = "Responsaveis"
         viewPresent.array = pessoas// ADD IMAGES OF USERS
         
-        
+//
 //        for i in 0...ckData.count-1{
 //            for pessoa in pessoas {
 //                if ckData[i].1 == pessoa {
@@ -234,13 +235,9 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
 //            }
 //        }
         
-        for x in ckData{
-            for pessoa in pessoas{
-                if x.1 == pessoa{
-                    viewPresent.arrayImage.append(UIImage(data: x.2)!)
-                }
-            }
-        }
+        
+        
+  
         
         // COLOCAR FOTO DOS INTEGRANTES
         view.addSubview(viewPresent)
@@ -253,6 +250,7 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     
     func createCategoryPicker(){
         viewPresent.array.removeAll()
+        viewPresent.arrayImage.removeAll()
         viewPresent.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
         viewPresent.array = [NSLocalizedString("Health", comment: ""),NSLocalizedString("Recreation", comment: ""),NSLocalizedString("Dentist", comment: ""),NSLocalizedString("Pharmacy", comment: ""),NSLocalizedString("Food", comment: "")]
         viewPresent.arrayImage.append(bolaAzul!)
@@ -595,10 +593,14 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         cell.textTable.text = array[indexPath.row]
         
         if which == "Responsaveis"{
-            if arrayImage.count > 0 {
-                cell.imagemResponsavel.image = arrayImage[indexPath.row]
+            if ckData.count != 0{
+                cell.imageView?.image = UIImage(named: "")
+                cell.imagemResponsavel.image = UIImage(data: ckData[indexPath.row].2)
                 cell.imagemResponsavel.layer.cornerRadius = cell.imagemResponsavel.frame.width/2
             }
+        } else{
+            cell.imagemResponsavel.image = UIImage(named: "")
+            cell.imageView?.image = arrayImage[indexPath.row]
         }
         
         

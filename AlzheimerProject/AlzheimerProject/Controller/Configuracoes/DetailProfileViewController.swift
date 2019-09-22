@@ -15,7 +15,7 @@ class DetailProfileViewController: UIViewController {
     var cdr = CoreDataRebased.shared
     
     
-
+    
     @IBOutlet weak var nascimentoGray: UILabel!
     @IBOutlet weak var tgGray: UILabel!
     @IBOutlet weak var alergiasGray: UILabel!
@@ -47,7 +47,7 @@ class DetailProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fotoIdoso.image = UIImage(named: "ProfileElder")
+        self.fotoIdoso.image = UIImage(named: "Borda")
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         self.setUpView()
@@ -133,7 +133,7 @@ class DetailProfileViewController: UIViewController {
         setAll()
         self.fotoIdoso.clipsToBounds = true
         self.fotoIdoso.layer.cornerRadius = self.fotoIdoso.frame.height/2
-      
+        
         
         
         if let vc = self.tabBarController as! SHCircleBarController?{
@@ -177,7 +177,7 @@ class DetailProfileViewController: UIViewController {
     
     
     
-   
+    
     
     
     func setAll(){
@@ -200,20 +200,44 @@ class DetailProfileViewController: UIViewController {
         else {
             idosoNome.text = a.nome
         }
-        plano.text = a.planoDeSaude
-        medicacoes.text = a.remedios
-        telefone.text = a.telefone
-
-        tipoSanguineo.text = a.tipoSanguineo
-        rg.text = a.rg
-        alergias.text = a.alergias
+        if plano.text == nil || plano.text == ""{
+            plano.text = "Health Plan"
+        }else{
+            plano.text = a.planoDeSaude
+        }
         
-       // fotoIdoso.image = fotoIdosoAux
+        if medicacoes.text == nil || medicacoes.text == ""{
+            medicacoes.text = "Medications"
+        }else{
+            medicacoes.text = a.remedios
+        }
+        
+        if telefone.text == nil || telefone.text == ""{
+            telefone.text = "555 1234-567"
+        }else{
+            telefone.text = a.telefone
+        }
+        
+        if rg.text == nil || rg.text == ""{
+            rg.text = "123"
+        }else{
+            rg.text = a.rg
+        }
+        
+        if alergias.text == nil || alergias.text == ""{
+            alergias.text = "Allergies"
+        }else{
+            alergias.text = a.alergias
+        }
+      
+        
+        
+        // fotoIdoso.image = fotoIdosoAux
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
-         cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
+        cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
     }
     
     
@@ -227,7 +251,7 @@ class DetailProfileViewController: UIViewController {
             
         } else{
             changeAll(editPressed)
-           
+            
             editOutlet.title = NSLocalizedString("Edit" , comment: "")
         }
         
@@ -248,7 +272,7 @@ class DetailProfileViewController: UIViewController {
         observacoes.isUserInteractionEnabled = bo
     }
     
-    var fotoIdosoAux = UIImage(named: "ProfileElder")
+    var fotoIdosoAux = UIImage(named: "Borda")
     var flag = 0
     
     

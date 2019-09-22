@@ -579,7 +579,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         
         cell.bgCalendarCellView.clipsToBounds = true
         cell.bgCalendarCellView.layer.cornerRadius = 10
-        cell.bgCalendarCellView.backgroundColor = defineColor(categoria)
+        
         
         cell.backgroundColor = view.backgroundColor
         
@@ -592,7 +592,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         cell.responsavel.textColor = defineColor2(categoria)
         cell.location.textColor = defineColor2(categoria)
         cell.horario.text = DailyEvents[indexPath.row].time
-        
+        cell.bgCalendarCellView.backgroundColor = defineColor(categoria)
        
         cell.responsavel.text = string
         cell.location.text = DailyEvents[indexPath.row].localization
