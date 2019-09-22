@@ -89,16 +89,12 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     func getIds(){
         let sala = CoreDataRebased.shared.fetchSala()
         
-        let usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
         
         for user in usuarios {
             
-            print("-=-=-=-=-=- USER> ", user)
-            
             for i in 0...ckData.count - 1 {
-                print("-=-=-=-=-=- ckdata> ", ckData[i].0)
                 if ckData[i].0 == user {
-                    print("Result CKDATA: ", ckData[i].0)
                     // ID
                     pessoasIds.append(ckData[i].0)
                     // Nome
@@ -603,6 +599,7 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         if which == "Responsaveis"{
             if ckData.count != 0{
                 for i in 0...ckData.count - 1 {
+                    print("indexPath", indexPath.row)
                     if ckData[i].0 == usuarios[indexPath.row] {
                         cell.imageView?.image = UIImage(named: "")
                         cell.imagemResponsavel.image = UIImage(data: ckData[i].2)

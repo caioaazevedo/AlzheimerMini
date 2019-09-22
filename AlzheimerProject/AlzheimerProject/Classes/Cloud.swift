@@ -839,7 +839,6 @@ class Cloud {
             let queryOp = CKQueryOperation(query: query)
         
             ckData = []
-        
             var arrayUsuarios = [String]()
         
             queryOp.recordFetchedBlock = { (record) -> Void in
@@ -851,13 +850,10 @@ class Cloud {
                 let imageDefault = UIImage(named: "ProfilePicture")
                 ckData.append((record["idUsuario"]!, record["nome"]!, record["foto"] ?? ((imageDefault?.pngData()!)!)))
                 
-                print(record["idUsuario"]!, record["nome"]!)
-                
                 if userLoad.idSala == record["idSala"]! {
                     arrayUsuarios.append(record["idUsuario"]!)
                     CoreDataRebased.shared.updateSala(idUsuarios: arrayUsuarios)
                 }
-                
                 
                 
                 //CoreDataRebased.shared.saveCoreData()
