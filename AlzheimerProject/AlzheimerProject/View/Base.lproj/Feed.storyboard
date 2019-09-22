@@ -51,7 +51,7 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellFeed" rowHeight="135" id="q3x-3X-Jzn" customClass="CustomCellFeed" customModule="AlzheimerProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="tableCellFeed" rowHeight="135" id="q3x-3X-Jzn" customClass="CustomCellFeed" customModule="AlzheimerProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="374" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3x-3X-Jzn" id="O61-8z-Bnd">
@@ -99,7 +99,7 @@
                                             <outlet property="label" destination="ZYn-yC-uWa" id="7xQ-ah-H48"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellFeed2" rowHeight="135" id="ttb-6c-YwA" customClass="CustomCellFeed" customModule="AlzheimerProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="tableCellFeed2" rowHeight="135" id="ttb-6c-YwA" customClass="CustomCellFeed" customModule="AlzheimerProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="190.5" width="374" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ttb-6c-YwA" id="xXI-HJ-oWl">

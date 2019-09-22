@@ -609,6 +609,8 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         cell.titulo.font = scaledFont.font(forTextStyle: .body)
         cell.titulo.adjustsFontForContentSizeCategory = true
         
+        
+        
         return cell;
     }
     

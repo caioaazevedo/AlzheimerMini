@@ -540,10 +540,10 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
                 cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 
-                cell.bgVview.layer.shadowColor = UIColor.black.cgColor
-                cell.bgVview.layer.shadowOpacity = 1
-                cell.bgVview.layer.shadowOffset = CGSize.zero
-                cell.bgVview.layer.shadowRadius = 5
+                cell.layer.shadowColor = UIColor.black.cgColor
+                cell.layer.shadowOpacity = 0.3
+                cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+                cell.layer.shadowRadius = 1
                 
                 
             default:
@@ -596,10 +596,10 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
                 cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 
-                cell.bgVview.layer.shadowColor = UIColor.black.cgColor
-                cell.bgVview.layer.shadowOpacity = 1
-                cell.bgVview.layer.shadowOffset = CGSize.zero
-                cell.bgVview.layer.shadowRadius = 5
+                cell.layer.shadowColor = UIColor.black.cgColor
+                cell.layer.shadowOpacity = 0.3
+                cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+                cell.layer.shadowRadius = 1
                 
                 
             }
@@ -665,6 +665,11 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
                 cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 
+                cell.layer.shadowColor = UIColor.black.cgColor
+                cell.layer.shadowOpacity = 0.3
+                cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+                cell.layer.shadowRadius = 1
+                
                 
                 
                 
@@ -718,10 +723,10 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
                 cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 
-                cell.bgVview.layer.shadowColor = UIColor.black.cgColor
-                cell.bgVview.layer.shadowOpacity = 1
-                cell.bgVview.layer.shadowOffset = CGSize.zero
-                cell.bgVview.layer.shadowRadius = 5
+                cell.layer.shadowColor = UIColor.black.cgColor
+                cell.layer.shadowOpacity = 0.3
+                cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+                cell.layer.shadowRadius = 1
                 
                 
             }
