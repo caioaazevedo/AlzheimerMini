@@ -592,11 +592,20 @@ class ViewPopup : UIView, UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRes", for: indexPath) as! CellClass
         cell.textTable.text = array[indexPath.row]
         
+        let sala = CoreDataRebased.shared.fetchSala()
+        
+        var usuarios = (sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+        
         if which == "Responsaveis"{
             if ckData.count != 0{
-                cell.imageView?.image = UIImage(named: "")
-                cell.imagemResponsavel.image = UIImage(data: ckData[indexPath.row].2)
-                cell.imagemResponsavel.layer.cornerRadius = cell.imagemResponsavel.frame.width/2
+                for i in 0...ckData.count - 1 {
+                    print("indexPath", indexPath.row)
+                    if ckData[i].0 == usuarios[indexPath.row] {
+                        cell.imageView?.image = UIImage(named: "")
+                        cell.imagemResponsavel.image = UIImage(data: ckData[i].2)
+                        cell.imagemResponsavel.layer.cornerRadius = cell.imagemResponsavel.frame.width/2
+                    }
+                }
             }
         } else{
             cell.imagemResponsavel.image = UIImage(named: "")
