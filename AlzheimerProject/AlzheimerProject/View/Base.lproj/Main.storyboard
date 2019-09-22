@@ -685,10 +685,10 @@
             </objects>
             <point key="canvasLocation" x="1969.5652173913045" y="270.53571428571428"/>
         </scene>
-        <!--Event Detail-->
+        <!--DetailViewController-->
         <scene sceneID="Iv6-Bj-uKb">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="XBg-G5-9HL" customClass="DetailViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" title="DetailViewController" hidesBottomBarWhenPushed="YES" id="XBg-G5-9HL" customClass="DetailViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pH2-FO-Aqz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

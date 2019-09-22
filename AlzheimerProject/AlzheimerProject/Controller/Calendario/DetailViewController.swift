@@ -25,7 +25,7 @@ class DetailViewController: UIViewController , DetailViewControllerDelegate {
     
     
     let iconesArray = [UIImage(named: "Camada 2-1"), UIImage(named: "resp"), UIImage(named: "Camada 2-2") , UIImage(named: "Camada 2-3")]
-    var diaAux : String?
+    var diaAux = ""
     var diaSemanaAux : String?
     var indexValue = 0
     var event = Events(titleParameter: "", timeParameter: "", descParameter: "", categParameter: "", responsavelParameter: [""], localizationParameter: "",idParameter: "")
@@ -37,7 +37,7 @@ class DetailViewController: UIViewController , DetailViewControllerDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
-        diaSemana.text = ("\(diaAux!), \(diaSemanaAux!)")
+        diaSemana.text = ("\(diaAux), \(diaSemanaAux!)")
         titulo.text = event.title ?? ""
     //    taskViewController.delegateDetail = self
         blueView.layer.cornerRadius = 50

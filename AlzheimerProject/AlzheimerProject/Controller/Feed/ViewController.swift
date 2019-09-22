@@ -83,6 +83,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         Cloud.setupCloudKitNotifications()
         
         print("ENTROU AQUII")
@@ -101,7 +102,7 @@ class ViewController: UIViewController {
                         let formate = DateFormatter()
                         formate.dateFormat = "dd-MM-yyyy"
                         self.myPeople = myVector
-                        self.myPeople.reverse()
+                        //self.myPeople.reverse()
                         
                         self.allPreviously.removeAll()
                         self.allToday.removeAll()
@@ -134,8 +135,8 @@ class ViewController: UIViewController {
                     }, indici: self.segmentedControl.selectedSegmentIndex)
                 }
                 
-                        
-                    
+                
+                
                 
                 
             })
@@ -158,7 +159,7 @@ class ViewController: UIViewController {
             let formate = DateFormatter()
             formate.dateFormat = "dd-MM-yyyy"
             self.myPeople = myVector
-            self.myPeople.reverse()
+            //self.myPeople.reverse()
             
             
             self.allPreviously.removeAll()
@@ -213,7 +214,7 @@ class ViewController: UIViewController {
                     let formate = DateFormatter()
                     formate.dateFormat = "dd-MM-yyyy"
                     self.myPeople = myVector
-                    self.myPeople.reverse()
+                  //  self.myPeople.reverse()
                     
                     self.allPreviously.removeAll()
                     self.allToday.removeAll()
@@ -257,7 +258,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
     
-
+    
     
     
     var pessoas = [Pessoas]()
@@ -270,7 +271,7 @@ class ViewController: UIViewController {
         //        }
         
         let fontName = "SFProText-Regular"
-        
+        self.fetchAll()
         let scaledFont: ScaledFont = {
             return ScaledFont(fontName: fontName)
         }()
@@ -286,18 +287,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func fetchAll(){
-        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
-        do{
-            let eventos = try managedObjectContext.fetch(fetchRequest)
-            eventosSalvos.removeAll()
-            for evento in eventos{
-                eventosSalvos.append(evento)
-            }
-        }catch{
-            
-        }
-    }
+    
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         feedView.reloadData()
@@ -335,7 +325,7 @@ class ViewController: UIViewController {
                 formate.dateFormat = "dd-MM-yyyy"
                 self.myPeople = myVector
                 
-                self.myPeople.reverse()
+             //   self.myPeople.reverse()
                 
                 self.allPreviously.removeAll()
                 self.allToday.removeAll()
@@ -367,7 +357,7 @@ class ViewController: UIViewController {
                 
                 
                 
-
+                
                 
                 
                 
@@ -377,7 +367,79 @@ class ViewController: UIViewController {
         
         
     }
+    func fetchAll(){
+        let fetchRequest = NSFetchRequest<Evento>.init(entityName: "Evento")
+        do{
+            let eventos = try managedObjectContext.fetch(fetchRequest)
+            eventosSalvos.removeAll()
+            for evento in eventos{
+                eventosSalvos.append(evento)
+            }
+        }catch{
+            
+        }
+    }
     
+    var auxDiaSemanaNum : Int? {
+        didSet{
+            switch (auxDiaSemanaNum){
+            case 1:
+                auxDiaSemana = NSLocalizedString("Sunday", comment: "")
+            case 2:
+                auxDiaSemana = NSLocalizedString("Monday", comment: "")
+            case 3:
+                auxDiaSemana = NSLocalizedString("Tuesday", comment: "")
+            case 4:
+                auxDiaSemana = NSLocalizedString("Wednesday", comment: "")
+            case 5:
+                auxDiaSemana = NSLocalizedString("Thursday", comment: "")
+            case 6:
+                auxDiaSemana = NSLocalizedString("Friday", comment: "")
+            default:
+                auxDiaSemana = NSLocalizedString("Saturday", comment: "")
+            }
+        }
+    }
+    
+    var auxDiaSemana : String?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueFeedDetail" {
+            
+             let vc = segue.destination as! DetailViewController
+            let evento = eventosSalvos[auxiliarSegue]
+            let responsaveis = [String]()
+            
+            let diaEvento = Calendar.current.component(.day,from: evento.dia! as Date ?? Date())
+            let mesEvento = Calendar.current.component(.month,from: evento.dia! as Date ?? Date())
+            auxDiaSemanaNum = Calendar.current.component(.weekday, from: evento.dia! as Date ?? Date())
+            let auxDia = Calendar.current.component(.day, from: evento.dia as! Date ?? Date())
+            let auxMesNum = Calendar.current.component(.month, from: evento.dia as! Date ?? Date())
+            
+            let df = DateFormatter()
+            df.dateFormat = "hh:mm"
+            let data = df.string(from: evento.horario! as Date)
+            
+            
+            if evento.idUsuarios != nil{
+                let responsaveis = (evento.idUsuarios as! NSArray).mutableCopy() as! [String]
+                
+            }
+            
+            
+            
+            let eventoS = Events(titleParameter: evento.nome!, timeParameter: data, descParameter: evento.descricao ?? "", categParameter: evento.categoria ?? "", responsavelParameter: responsaveis ?? [""], localizationParameter: evento.localizacao ?? "",idParameter: evento.id!)
+    
+            // myPeople[indexPath.row
+            
+            vc.event = eventoS
+            vc.diaAux = "\(auxDia) de \(auxMes)"
+            vc.diaSemanaAux = "\(auxDiaSemana!)"
+        }
+    
+    }
+    
+    var auxiliarSegue = 0
     
 }
 
@@ -404,10 +466,16 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
         
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print(myPeople[indexPath.row])
+    
+        auxiliarSegue = indexPath.row
+        performSegue(withIdentifier: "segueFeedDetail", sender: self)
+
         //myPeople[indexPath.row].nomeEvento
+       
+        
         
     }
     
@@ -424,7 +492,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
             switch segmentedControl.selectedSegmentIndex{
             case 0:
                 print("0")
-//                allToday[indexPath.row]
+                //                allToday[indexPath.row]
                 let fontNameBold = "SFProText-Bold"
                 
                 let scaledFontBold: ScaledFont = {
@@ -478,7 +546,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 
             default:
                 print("1")
-//                mineToday[indexPath.row]
+                //                mineToday[indexPath.row]
                 let fontNameBold = "SFProText-Bold"
                 
                 let scaledFontBold: ScaledFont = {
@@ -543,7 +611,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 
             case 0:
                 print("0")
-//                allPreviously[indexPath.row]
+                //                allPreviously[indexPath.row]
                 let fontNameBold = "SFProText-Bold"
                 
                 let scaledFontBold: ScaledFont = {
@@ -596,7 +664,7 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 
             default:
                 print("1")
-//                minePreviously[indexPath.row]
+                //                minePreviously[indexPath.row]
                 let fontNameBold = "SFProText-Bold"
                 
                 let scaledFontBold: ScaledFont = {
@@ -652,218 +720,218 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
         
         
         /*
-        if indexPath.section == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed2", for: indexPath) as! CustomCellFeed
-            let formate = DateFormatter()
-            formate.dateFormat = "dd-MM-yyyy"
-            
-            let formateTime = DateFormatter()
-            formateTime.dateFormat = "HH:mm"
-            
-            print("indexpath", indexPath.row)
-            
-            if formate.string(from: Date()) == myPeople[indexPath.row].dataEvento{
-                switch segmentedControl.selectedSegmentIndex {
-                case 1:
-                    print("1")
-                    if myPeople[indexPath.row].reponsaveis.contains(UserLoaded().getUserName()){
-                        
-                        let fontNameBold = "SFProText-Bold"
-                        
-                        let scaledFontBold: ScaledFont = {
-                            return ScaledFont(fontName: fontNameBold)
-                        }()
-                        
-                        
-                        let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
-                        let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
-                        let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
-                        let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
-
-                    let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
-                   
-                        var bodyText1 = NSMutableAttributedString(string: NSLocalizedString("was set by", comment: ""))
-                        var bodyText2 = NSMutableAttributedString(string: NSLocalizedString("to day", comment: ""))
-                        var bodyText3 = NSMutableAttributedString(string: " as ")
-                        let combination = NSMutableAttributedString()
-                        
-                        combination.append(boldEvento)
-                        combination.append(bodyText1)
-                        combination.append(boldCriador)
-                        combination.append(bodyText2)
-                        combination.append(boldData)
-                        //                        combination.append(bodyText3)
-                        //                        combination.append(boldTime)
-                        
-                        
-                        
-                        
-                        let fontName = "SFProText-Regular"
-                       
-                        
-                        
-                        let scaledFont: ScaledFont = {
-                            return ScaledFont(fontName: fontName)
-                        }()
-                        
-                        cell.label.font = scaledFont.font(forTextStyle: .body)
-                        
-                        
-                        cell.label.attributedText = combination
-                        cell.label.adjustsFontForContentSizeCategory = true
-                        
-                        cell.bgVview.clipsToBounds = true
-                        cell.bgVview.layer.cornerRadius = 15
-                        cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
-                        cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
-                        
-                    }
-                    
-                default:
-                    print("0")
-                    
-                    let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
-                    let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
-                    let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
-                        let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
-                    let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
-                    
-                    var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                    var bodyText2 = NSMutableAttributedString(string: " para o dia ")
-                    var bodyText3 = NSMutableAttributedString(string: " as ")
-                    let combination = NSMutableAttributedString()
-                    
-                    combination.append(boldEvento)
-                    combination.append(bodyText1)
-                    combination.append(boldCriador)
-                    combination.append(bodyText2)
-                    combination.append(boldData)
-//                    combination.append(bodyText3)
-//                    combination.append(boldTime)
-                    
-                    let fontName = "SFProText-Regular"
-                    
-                    let scaledFont: ScaledFont = {
-                        return ScaledFont(fontName: fontName)
-                    }()
-                    
-                    
-                    
-                    cell.label.font = scaledFont.font(forTextStyle: .body)
-                    cell.label.adjustsFontForContentSizeCategory = true
-                    
-                    cell.label.attributedText = combination
-                    
-                    cell.bgVview.clipsToBounds = true
-                    cell.bgVview.layer.cornerRadius = 15
-                    cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
-                    cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
-                }
-                
-            }
-            
-            return cell
-            
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
-            let formate = DateFormatter()
-            formate.dateFormat = "dd-MM-yyyy"
-            
-            let formateTime = DateFormatter()
-            formateTime.dateFormat = "HH:mm"
-            
-            print("indexpath", indexPath.row)
-            
-            if formate.string(from: Date()) == myPeople[indexPath.row].dataEvento{
-                
-                switch segmentedControl.selectedSegmentIndex {
-                case 1:
-                    print("1")
-                    
-                    if myPeople[indexPath.row].reponsaveis.contains(UserLoaded().getUserName()){
-                        
-                        let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
-                        let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
-                        let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
-                        let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
-                    let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
-                        
-                        var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                        var bodyText2 = NSMutableAttributedString(string: " para o dia ")
-                        var bodyText3 = NSMutableAttributedString(string: " as ")
-                        let combination = NSMutableAttributedString()
-                        
-                        combination.append(boldEvento)
-                        combination.append(bodyText1)
-                        combination.append(boldCriador)
-                        combination.append(bodyText2)
-                        combination.append(boldData)
-//                        combination.append(bodyText3)
-//                        combination.append(boldTime)
-                        
-                        
-                        let fontName = "SFProText-Regular"
-                        
-                        let scaledFont: ScaledFont = {
-                            return ScaledFont(fontName: fontName)
-                        }()
-                        
-                        
-                        cell.label.font = scaledFont.font(forTextStyle: .body)
-                        cell.label.adjustsFontForContentSizeCategory = true
-                        
-                        cell.label.attributedText = combination
-                        
-                        cell.bgVview.clipsToBounds = true
-                        cell.bgVview.layer.cornerRadius = 15
-                        cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
-                        cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
-                        
-                    }
-                default:
-                    print("0")
-                    
-                    let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
-                    let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
-                    let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
-                        let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
-                    let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
-                    
-                    var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                    var bodyText2 = NSMutableAttributedString(string: " para o dia ")
-                    var bodyText3 = NSMutableAttributedString(string: " as ")
-                    let combination = NSMutableAttributedString()
-                    
-                    combination.append(boldEvento)
-                    combination.append(bodyText1)
-                    combination.append(boldCriador)
-                    combination.append(bodyText2)
-                    combination.append(boldData)
-//                    combination.append(bodyText3)
-//                    combination.append(boldTime)
-                    
-                    let fontName = "SFProText-Regular"
-                    
-                    let scaledFont: ScaledFont = {
-                        return ScaledFont(fontName: fontName)
-                    }()
-                    
-                    
-                    cell.label.font = scaledFont.font(forTextStyle: .body)
-                    cell.label.adjustsFontForContentSizeCategory = true
-                    
-                    cell.label.attributedText = combination
-                    
-                    cell.bgVview.clipsToBounds = true
-                    cell.bgVview.layer.cornerRadius = 15
-                    cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
-                    cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
-                }
-                
-            }
-            return cell
-        }
-        */
+         if indexPath.section == 0{
+         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed2", for: indexPath) as! CustomCellFeed
+         let formate = DateFormatter()
+         formate.dateFormat = "dd-MM-yyyy"
+         
+         let formateTime = DateFormatter()
+         formateTime.dateFormat = "HH:mm"
+         
+         print("indexpath", indexPath.row)
+         
+         if formate.string(from: Date()) == myPeople[indexPath.row].dataEvento{
+         switch segmentedControl.selectedSegmentIndex {
+         case 1:
+         print("1")
+         if myPeople[indexPath.row].reponsaveis.contains(UserLoaded().getUserName()){
+         
+         let fontNameBold = "SFProText-Bold"
+         
+         let scaledFontBold: ScaledFont = {
+         return ScaledFont(fontName: fontNameBold)
+         }()
+         
+         
+         let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+         let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+         let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+         let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
+         
+         let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
+         
+         var bodyText1 = NSMutableAttributedString(string: NSLocalizedString("was set by", comment: ""))
+         var bodyText2 = NSMutableAttributedString(string: NSLocalizedString("to day", comment: ""))
+         var bodyText3 = NSMutableAttributedString(string: " as ")
+         let combination = NSMutableAttributedString()
+         
+         combination.append(boldEvento)
+         combination.append(bodyText1)
+         combination.append(boldCriador)
+         combination.append(bodyText2)
+         combination.append(boldData)
+         //                        combination.append(bodyText3)
+         //                        combination.append(boldTime)
+         
+         
+         
+         
+         let fontName = "SFProText-Regular"
+         
+         
+         
+         let scaledFont: ScaledFont = {
+         return ScaledFont(fontName: fontName)
+         }()
+         
+         cell.label.font = scaledFont.font(forTextStyle: .body)
+         
+         
+         cell.label.attributedText = combination
+         cell.label.adjustsFontForContentSizeCategory = true
+         
+         cell.bgVview.clipsToBounds = true
+         cell.bgVview.layer.cornerRadius = 15
+         cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+         cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
+         
+         }
+         
+         default:
+         print("0")
+         
+         let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+         let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+         let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+         let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
+         let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
+         
+         var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
+         var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+         var bodyText3 = NSMutableAttributedString(string: " as ")
+         let combination = NSMutableAttributedString()
+         
+         combination.append(boldEvento)
+         combination.append(bodyText1)
+         combination.append(boldCriador)
+         combination.append(bodyText2)
+         combination.append(boldData)
+         //                    combination.append(bodyText3)
+         //                    combination.append(boldTime)
+         
+         let fontName = "SFProText-Regular"
+         
+         let scaledFont: ScaledFont = {
+         return ScaledFont(fontName: fontName)
+         }()
+         
+         
+         
+         cell.label.font = scaledFont.font(forTextStyle: .body)
+         cell.label.adjustsFontForContentSizeCategory = true
+         
+         cell.label.attributedText = combination
+         
+         cell.bgVview.clipsToBounds = true
+         cell.bgVview.layer.cornerRadius = 15
+         cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+         cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
+         }
+         
+         }
+         
+         return cell
+         
+         } else {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellFeed", for: indexPath) as! CustomCellFeed
+         let formate = DateFormatter()
+         formate.dateFormat = "dd-MM-yyyy"
+         
+         let formateTime = DateFormatter()
+         formateTime.dateFormat = "HH:mm"
+         
+         print("indexpath", indexPath.row)
+         
+         if formate.string(from: Date()) == myPeople[indexPath.row].dataEvento{
+         
+         switch segmentedControl.selectedSegmentIndex {
+         case 1:
+         print("1")
+         
+         if myPeople[indexPath.row].reponsaveis.contains(UserLoaded().getUserName()){
+         
+         let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+         let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+         let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+         let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
+         let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
+         
+         var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
+         var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+         var bodyText3 = NSMutableAttributedString(string: " as ")
+         let combination = NSMutableAttributedString()
+         
+         combination.append(boldEvento)
+         combination.append(bodyText1)
+         combination.append(boldCriador)
+         combination.append(bodyText2)
+         combination.append(boldData)
+         //                        combination.append(bodyText3)
+         //                        combination.append(boldTime)
+         
+         
+         let fontName = "SFProText-Regular"
+         
+         let scaledFont: ScaledFont = {
+         return ScaledFont(fontName: fontName)
+         }()
+         
+         
+         cell.label.font = scaledFont.font(forTextStyle: .body)
+         cell.label.adjustsFontForContentSizeCategory = true
+         
+         cell.label.attributedText = combination
+         
+         cell.bgVview.clipsToBounds = true
+         cell.bgVview.layer.cornerRadius = 15
+         cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+         cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
+         
+         }
+         default:
+         print("0")
+         
+         let att = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+         let boldEvento = NSMutableAttributedString(string: myPeople[indexPath.row].nomeEvento, attributes: att)
+         let boldCriador = NSMutableAttributedString(string: myPeople[indexPath.row].nomeCriador, attributes: att)
+         let boldData = NSMutableAttributedString(string: myPeople[indexPath.row].dataEvento, attributes: att)
+         let boldTime = NSMutableAttributedString(string: formateTime.string(from: myPeople[indexPath.row].horarioEvento), attributes: att)
+         
+         var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
+         var bodyText2 = NSMutableAttributedString(string: " para o dia ")
+         var bodyText3 = NSMutableAttributedString(string: " as ")
+         let combination = NSMutableAttributedString()
+         
+         combination.append(boldEvento)
+         combination.append(bodyText1)
+         combination.append(boldCriador)
+         combination.append(bodyText2)
+         combination.append(boldData)
+         //                    combination.append(bodyText3)
+         //                    combination.append(boldTime)
+         
+         let fontName = "SFProText-Regular"
+         
+         let scaledFont: ScaledFont = {
+         return ScaledFont(fontName: fontName)
+         }()
+         
+         
+         cell.label.font = scaledFont.font(forTextStyle: .body)
+         cell.label.adjustsFontForContentSizeCategory = true
+         
+         cell.label.attributedText = combination
+         
+         cell.bgVview.clipsToBounds = true
+         cell.bgVview.layer.cornerRadius = 15
+         cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
+         cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
+         }
+         
+         }
+         return cell
+         }
+         */
     }
     
     

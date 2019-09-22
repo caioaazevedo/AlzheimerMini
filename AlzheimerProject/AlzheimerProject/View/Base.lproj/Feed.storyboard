@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--ViewController-->
         <scene sceneID="XmR-bR-GSU">
             <objects>
-                <viewController id="tJk-sW-KAf" customClass="ViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="ViewController" id="tJk-sW-KAf" customClass="ViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CLn-4c-Pv2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,11 +180,20 @@
                         <outlet property="navBar" destination="2XS-YM-dew" id="vI5-D5-xLH"/>
                         <outlet property="segmentedControl" destination="ON6-st-0EH" id="jcc-0J-Suz"/>
                         <outlet property="tableView" destination="YuF-iE-Kh1" id="YOd-WI-RIu"/>
+                        <segue destination="3gf-AQ-nQ4" kind="show" identifier="segueFeedDetail" id="MS1-h1-J6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXI-dI-kDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="337.68115942028987" y="-65.625"/>
+        </scene>
+        <!--DetailViewController-->
+        <scene sceneID="WFK-3L-2Ea">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="DetailViewController" id="3gf-AQ-nQ4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJ0-OI-Rlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="-74"/>
         </scene>
     </scenes>
     <resources>
