@@ -51,3 +51,14 @@
 "TextFieldTitle" = "Title";
 "of" = "of";
 "Food" = "Food";
+"was set by" = "was setted by";
+"to day" = "to day";
+
+"boardtitle" = "Family";
+"boardevent" = "Events";
+"boardInfo" = "Information";
+
+
+"onboard1" = "Create a group with your family or friends to share events and info about the elder.";
+"onboard2" = "Create events and everyone in the group will be notified.";
+"onboard3" = "Get all the Elder's info whenever you want.";

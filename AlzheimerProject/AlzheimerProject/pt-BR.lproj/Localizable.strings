@@ -51,3 +51,14 @@
 "TextFieldTitle" = "Título";
 "of" = "de";
 "Food" = "Comida";
+"was set by" = "foi marcado por";
+"to day" = "para o dia";
+
+"boardtitle" = "Família";
+"boardevent" = "Eventos";
+"boardInfo" = "Informação";
+
+
+"onboard1" = "Crie um grupo com amigos ou família para compartilhar os eventos e dados do idoso.";
+"onboard2" = "Marque eventos e todos do grupo serão notificados.";
+"onboard3" = "Tenha em mãos os dados do idoso sempre que preciso.";

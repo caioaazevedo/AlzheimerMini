@@ -33,14 +33,15 @@ class Onboard: UIViewController, PaperOnboardingDataSource, PaperOnboardingDeleg
 
         
         return [
-            OnboardingItemInfo(informationImage: UIImage(named: "Camada 2")!, title: "Família", description: "Crie um grupo com amigos ou família para compartilhar os eventos e dados do idoso.", pageIcon: UIImage(named: "n1")!, color: colorWithGradient(colors: [#colorLiteral(red: 0.9294117647, green: 0.462745098, blue: 0.368627451, alpha: 1),#colorLiteral(red: 0.937254902, green: 0.6588235294, blue: 0.3450980392, alpha: 1)]), titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
-            OnboardingItemInfo(informationImage: UIImage(named: "Onboarding_Calendar")!, title: "Eventos", description: "Marque eventos e todos do grupo serão notificados.", pageIcon: UIImage(named: "n2")!, color: colorWithGradient(colors: [#colorLiteral(red: 0.9294117647, green: 0.462745098, blue: 0.368627451, alpha: 1),#colorLiteral(red: 0.937254902, green: 0.6588235294, blue: 0.3450980392, alpha: 1)]), titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
-            OnboardingItemInfo(informationImage: UIImage(named: "Dados do Idoso")!, title: "Informações", description: "Tenha em mãos os dados do idoso sempre que preciso.", pageIcon: UIImage(named: "n3")!, color: colorWithGradient(colors: [#colorLiteral(red: 0.9294117647, green: 0.462745098, blue: 0.368627451, alpha: 1),#colorLiteral(red: 0.937254902, green: 0.6588235294, blue: 0.3450980392, alpha: 1)]), titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont)
+            OnboardingItemInfo(informationImage: UIImage(named: "Camada 2")!, title: NSLocalizedString("boardtitle", comment: ""), description: NSLocalizedString("onboard1", comment: ""), pageIcon: UIImage(named: "n1")!, color: colorWithGradient(colors: [#colorLiteral(red: 0.9294117647, green: 0.462745098, blue: 0.368627451, alpha: 1),#colorLiteral(red: 0.937254902, green: 0.6588235294, blue: 0.3450980392, alpha: 1)]), titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
+            OnboardingItemInfo(informationImage: UIImage(named: "Onboarding_Calendar")!, title: NSLocalizedString("boardevent", comment: ""), description:NSLocalizedString("onboard2", comment:""), pageIcon: UIImage(named: "n2")!, color: colorWithGradient(colors: [#colorLiteral(red: 0.9294117647, green: 0.462745098, blue: 0.368627451, alpha: 1),#colorLiteral(red: 0.937254902, green: 0.6588235294, blue: 0.3450980392, alpha: 1)]), titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
+            OnboardingItemInfo(informationImage: UIImage(named: "Dados do Idoso")!, title: NSLocalizedString("boardInfo", comment: ""), description: NSLocalizedString("onboard3", comment: ""), pageIcon: UIImage(named: "n3")!, color: colorWithGradient(colors: [#colorLiteral(red: 0.9294117647, green: 0.462745098, blue: 0.368627451, alpha: 1),#colorLiteral(red: 0.937254902, green: 0.6588235294, blue: 0.3450980392, alpha: 1)]), titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont)
         ][index]
         
         
     }
     
+    //     Crie um gropo
     func onboardingItemsCount() -> Int {
         return 3
     }
