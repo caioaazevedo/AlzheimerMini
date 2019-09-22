@@ -540,8 +540,10 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
                 cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 
-                
-                
+                cell.bgVview.layer.shadowColor = UIColor.black.cgColor
+                cell.bgVview.layer.shadowOpacity = 1
+                cell.bgVview.layer.shadowOffset = CGSize.zero
+                cell.bgVview.layer.shadowRadius = 5
                 
                 
             default:
@@ -594,6 +596,10 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
                 cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
                 
+                cell.bgVview.layer.shadowColor = UIColor.black.cgColor
+                cell.bgVview.layer.shadowOpacity = 1
+                cell.bgVview.layer.shadowOffset = CGSize.zero
+                cell.bgVview.layer.shadowRadius = 5
                 
                 
             }
@@ -711,6 +717,13 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 cell.bgVview.layer.cornerRadius = 15
                 cell.imageFoto.image = self.getFotoCriador(idCriador: myPeople[indexPath.row].idCriador)
                 cell.imageFoto.layer.cornerRadius = cell.imageFoto.frame.height/2
+                
+                cell.bgVview.layer.shadowColor = UIColor.black.cgColor
+                cell.bgVview.layer.shadowOpacity = 1
+                cell.bgVview.layer.shadowOffset = CGSize.zero
+                cell.bgVview.layer.shadowRadius = 5
+                
+                
             }
             
             return cell

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Guilherme Martins Dalosto de Oliveira. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 class ConfigNormalViewController: UIViewController {
@@ -19,6 +20,27 @@ class ConfigNormalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+    }
+    
+    func getIdosoName() -> String{
+        var nome = String()
+        
+        let fetch = NSFetchRequest<PerfilUsuario>.init(entityName: "PerfilUsuario")
+        
+        do{
+            
+            let perfis = try managedObjectContext.fetch(fetch)
+            
+            for i in perfis{
+                nome = i.nome!
+            }
+            
+        } catch{
+            
+        }
+        
+        return nome
     }
     
     override func viewWillAppear(_ animated: Bool) {
