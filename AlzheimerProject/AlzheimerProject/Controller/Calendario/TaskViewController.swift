@@ -226,10 +226,18 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
         viewPresent.array = pessoas// ADD IMAGES OF USERS
         
         
-        for i in 0...ckData.count-1{
-            for pessoa in pessoas {
-                if ckData[i].1 == pessoa {
-                    viewPresent.arrayImage.append(UIImage(data: ckData[i].2)!)
+//        for i in 0...ckData.count-1{
+//            for pessoa in pessoas {
+//                if ckData[i].1 == pessoa {
+//                    viewPresent.arrayImage.append(UIImage(data: ckData[i].2)!)
+//                }
+//            }
+//        }
+        
+        for x in ckData{
+            for pessoa in pessoas{
+                if x.1 == pessoa{
+                    viewPresent.arrayImage.append(UIImage(data: x.2)!)
                 }
             }
         }

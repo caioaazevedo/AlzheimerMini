@@ -565,7 +565,7 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
 //        cell.clipsToBounds = true
 //        cell.layer.cornerRadius = 10
         
-        var categoria = DailyEvents[indexPath.row].categ
+        let categoria = DailyEvents[indexPath.row].categ
         
         var string: String?
         
