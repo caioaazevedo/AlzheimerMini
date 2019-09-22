@@ -47,7 +47,7 @@ class DetailProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fotoIdoso.image = UIImage(named: "ProfileElder")
+        self.fotoIdoso.image = UIImage(named: "Borda")
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         self.setUpView()
@@ -248,7 +248,7 @@ class DetailProfileViewController: UIViewController {
         observacoes.isUserInteractionEnabled = bo
     }
     
-    var fotoIdosoAux = UIImage(named: "ProfileElder")
+    var fotoIdosoAux = UIImage(named: "Borda")
     var flag = 0
     
     
