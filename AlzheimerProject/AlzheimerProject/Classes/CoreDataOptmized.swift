@@ -388,6 +388,19 @@ class CoreDataRebased{
         saveCoreData()
     }
     
+    // acabo
+    func updateSalaReworked(idUsuarios: [String]){
+        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        do {
+            let sala = try managedObjectContext.fetch(salaFetchRequest)[0]
+            
+            sala.idUsuarios = idUsuarios as NSObject
+        } catch {
+            print("Error")
+        }
+    }
+    
+    
     // Update Sala
     func updateSala(idUsuarios: [String]){
         let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")

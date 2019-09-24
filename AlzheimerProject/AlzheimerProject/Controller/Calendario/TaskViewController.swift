@@ -71,9 +71,14 @@ class TaskViewController: UIViewController, ViewPopupDelegate , notasDelegate, s
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Cloud.getPeople {
+        
+        Cloud.getPeopleReworked { (a) in
             self.getIds()
         }
+        
+//        Cloud.getPeople {
+//            self.getIds()
+//        }
         
         tituloTextField.setBottomBorder()
         
