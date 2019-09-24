@@ -17,6 +17,10 @@ class MyProfileViewController: UIViewController {
     
     @IBOutlet weak var nomeText: UILabel!
     
+    @IBOutlet weak var familyName: UITextField!
+    
+    @IBOutlet weak var labelFamilyName: UILabel!
+    
     let user = CoreDataRebased.shared.fetchUsuario()
     
     
@@ -24,6 +28,13 @@ class MyProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if user.isHost == 0 {
+            self.labelFamilyName.isHidden = true
+            self.familyName.isHidden = true
+        } else {
+            self.familyName.text = cdr.fetchSala().nomeFamilia
+        }
         
         self.imageProfile.image = UIImage(data: user.fotoPerfil! as Data)
         
@@ -59,8 +70,14 @@ class MyProfileViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        let sala = cdr.fetchSala()
         cdr.updateUser(nome: nome.text ?? "", fotoPerfil: self.imageProfile.image!)
         Cloud.updateUsuario(searchRecord: user.id!, nome: nome.text ?? "", foto: (self.imageProfile.image!).jpegData(compressionQuality: 0.2), idSala: user.idSala!)
+        
+        
+        Cloud.updateSala(nomeFamilia: self.familyName.text! , searchRecord: sala.id!, idSala: sala.id!, idUsuario: sala.idUsuarios as! [String], idCalendario: sala.idCalendario!, idPerfil: sala.idPerfil!, idHost: sala.idHost!)
+        
+        cdr.updateSalafamilyName(familyName: self.familyName.text!)
     }
     
     @IBAction func cameraButton(_ sender: UIButton) {

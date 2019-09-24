@@ -270,6 +270,8 @@ class ViewController: UIViewController {
         //            self.myPeople = myVector
         //        }
         
+        let nomeFamilia = CoreDataRebased.shared.fetchSala().nomeFamilia
+        
         let fontName = "SFProText-Regular"
         self.fetchAll()
         let scaledFont: ScaledFont = {
@@ -279,6 +281,7 @@ class ViewController: UIViewController {
         activitiesLabel.font = scaledFont.font(forTextStyle: .body)
         activitiesLabel.adjustsFontForContentSizeCategory = true
         
+        navBar.title = nomeFamilia
         
         if let vc = self.tabBarController as! SHCircleBarController?{
             vc.circleView.isHidden = false
