@@ -26,6 +26,8 @@
 		3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC942320573D004BB09C /* Sala+CoreDataProperties.swift */; };
 		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
 		3A60BD3C233AF24E00DE5CF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A60BD3A233AF24E00DE5CF4 /* Main.storyboard */; };
+		3A60BD3E233AFA3700DE5CF4 /* IdosoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60BD3D233AFA3700DE5CF4 /* IdosoCollectionViewCell.swift */; };
+		3A60BD44233AFAE300DE5CF4 /* IdosoCollecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60BD43233AFAE300DE5CF4 /* IdosoCollecViewController.swift */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
 		3AA3BA88232D894200CC1AC4 /* SFProText.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA3BA87232D894200CC1AC4 /* SFProText.plist */; };
@@ -150,6 +152,8 @@
 		3A54EC942320573D004BB09C /* Sala+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sala+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		3A60BD3B233AF24E00DE5CF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A60BD3D233AFA3700DE5CF4 /* IdosoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IdosoCollectionViewCell.swift; path = ../../Classes/IdosoCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A60BD43233AFAE300DE5CF4 /* IdosoCollecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdosoCollecViewController.swift; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3AA3BA87232D894200CC1AC4 /* SFProText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SFProText.plist; sourceTree = SOURCE_ROOT; };
@@ -295,6 +299,15 @@
 				11C6248E23301EE6006A8EB4 /* OnbordingView.swift */,
 			);
 			path = Onboard;
+			sourceTree = "<group>";
+		};
+		3A60BD40233AFA8C00DE5CF4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				3A60BD3D233AFA3700DE5CF4 /* IdosoCollectionViewCell.swift */,
+				3A60BD43233AFAE300DE5CF4 /* IdosoCollecViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		3A8646A12315E6A90091BD0C /* CoreDataClasses */ = {
@@ -464,6 +477,7 @@
 		AC9EE919230728F4004FA292 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3A60BD40233AFA8C00DE5CF4 /* New Group */,
 				1144AF1A232046BD00718CC6 /* Login */,
 				AC529664231F104B00EACF44 /* Feed */,
 				AC529663231F101E00EACF44 /* Calendario */,
@@ -619,6 +633,7 @@
 				3ABF2BA72318761700486A68 /* ClasseTemp.swift in Sources */,
 				3ABD18DD23282A00001B1DFA /* ProfileTableViewCell.swift in Sources */,
 				3AD49DE3231621EC00904457 /* (null) in Sources */,
+				3A60BD44233AFAE300DE5CF4 /* IdosoCollecViewController.swift in Sources */,
 				AC39EE192318638B00DC590C /* CellFeed.swift in Sources */,
 				3AD49DE5231621EC00904457 /* (null) in Sources */,
 				3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */,
@@ -645,6 +660,7 @@
 				AC9EE92A230F175D004FA292 /* Events.swift in Sources */,
 				1144AF1D232046D000718CC6 /* GuestViewController.swift in Sources */,
 				3A1F07D023305277000A3562 /* ImagensEId+CoreDataProperties.swift in Sources */,
+				3A60BD3E233AFA3700DE5CF4 /* IdosoCollectionViewCell.swift in Sources */,
 				3AAF5965231D8D210073D65D /* CoreDataOptmized.swift in Sources */,
 				3ABF2BA82318761700486A68 /* PersistenceManager.swift in Sources */,
 				3AD49DDF231621EC00904457 /* (null) in Sources */,
