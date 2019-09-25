@@ -25,6 +25,7 @@
 		3A54EC9F2320573D004BB09C /* Sala+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC932320573D004BB09C /* Sala+CoreDataClass.swift */; };
 		3A54ECA02320573D004BB09C /* Sala+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54EC942320573D004BB09C /* Sala+CoreDataProperties.swift */; };
 		3A5F8F78231746BC00A8B05C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F8F77231746BC00A8B05C /* Cloud.swift */; };
+		3A60BD3C233AF24E00DE5CF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A60BD3A233AF24E00DE5CF4 /* Main.storyboard */; };
 		3A86469E2315C03A0091BD0C /* AlzheimerProject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */; };
 		3A8646A02315C0490091BD0C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86469F2315C0490091BD0C /* CoreData.swift */; };
 		3AA3BA88232D894200CC1AC4 /* SFProText.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA3BA87232D894200CC1AC4 /* SFProText.plist */; };
@@ -61,7 +62,6 @@
 		AC96E7582330202300FB10BA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC96E75A2330202300FB10BA /* Localizable.strings */; };
 		AC9EE90323071D01004FA292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90223071D01004FA292 /* AppDelegate.swift */; };
 		AC9EE90523071D01004FA292 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE90423071D01004FA292 /* ViewController.swift */; };
-		AC9EE90823071D01004FA292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9EE90623071D01004FA292 /* Main.storyboard */; };
 		AC9EE90A23071D02004FA292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9EE90923071D02004FA292 /* Assets.xcassets */; };
 		AC9EE90D23071D02004FA292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9EE90B23071D02004FA292 /* LaunchScreen.storyboard */; };
 		AC9EE91523072645004FA292 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EE91423072645004FA292 /* Notification.swift */; };
@@ -149,6 +149,7 @@
 		3A54EC932320573D004BB09C /* Sala+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sala+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A54EC942320573D004BB09C /* Sala+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sala+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A5F8F77231746BC00A8B05C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
+		3A60BD3B233AF24E00DE5CF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A86469D2315C03A0091BD0C /* AlzheimerProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlzheimerProject.xcdatamodel; sourceTree = "<group>"; };
 		3A86469F2315C0490091BD0C /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3AA3BA87232D894200CC1AC4 /* SFProText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SFProText.plist; sourceTree = SOURCE_ROOT; };
@@ -178,9 +179,7 @@
 		AC68B4632326CFE6002963C0 /* CellUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUsers.swift; sourceTree = "<group>"; };
 		AC68B46723282AB6002963C0 /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
 		AC81E82C2333F4CC004A009C /* ConfigNormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNormalViewController.swift; sourceTree = "<group>"; };
-		AC96E72E2330197A00FB10BA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		AC96E72F2330197A00FB10BA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		AC96E7312330198400FB10BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		AC96E73923301BE600FB10BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feed.storyboard; sourceTree = "<group>"; };
 		AC96E73B23301C1B00FB10BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		AC96E73C23301C2200FB10BA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
@@ -192,7 +191,6 @@
 		AC9EE8FF23071D01004FA292 /* AlzheimerProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzheimerProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9EE90223071D01004FA292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9EE90423071D01004FA292 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AC9EE90723071D01004FA292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC9EE90923071D02004FA292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9EE90C23071D02004FA292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9EE90E23071D02004FA292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -454,8 +452,8 @@
 			isa = PBXGroup;
 			children = (
 				AC1954C3233582BF007BE605 /* Onboard.storyboard */,
+				3A60BD3A233AF24E00DE5CF4 /* Main.storyboard */,
 				AC96E74C23301DBD00FB10BA /* Login.storyboard */,
-				AC9EE90623071D01004FA292 /* Main.storyboard */,
 				AC96E73623301B9B00FB10BA /* Feed.storyboard */,
 				AC9EE90B23071D02004FA292 /* LaunchScreen.storyboard */,
 				110D0D4723340FEB006B3098 /* LauchScreenAnimation.storyboard */,
@@ -559,8 +557,8 @@
 				AC96E73423301B9B00FB10BA /* Feed.storyboard in Resources */,
 				AC9EE90D23071D02004FA292 /* LaunchScreen.storyboard in Resources */,
 				AC9EE90A23071D02004FA292 /* Assets.xcassets in Resources */,
-				AC9EE90823071D01004FA292 /* Main.storyboard in Resources */,
 				110D0D4823340FEB006B3098 /* LauchScreenAnimation.storyboard in Resources */,
+				3A60BD3C233AF24E00DE5CF4 /* Main.storyboard in Resources */,
 				3AFEAC1A233556430043CB6D /* SFProTextBold.plist in Resources */,
 				AC96E7582330202300FB10BA /* Localizable.strings in Resources */,
 				3AA3BA8D232D985400CC1AC4 /* SF-Pro-Text-Regular.otf in Resources */,
@@ -687,6 +685,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		3A60BD3A233AF24E00DE5CF4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A60BD3B233AF24E00DE5CF4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		AC1954C3233582BF007BE605 /* Onboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -724,16 +730,6 @@
 				AC96E75B2330202600FB10BA /* pt-BR */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		AC9EE90623071D01004FA292 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC9EE90723071D01004FA292 /* Base */,
-				AC96E72E2330197A00FB10BA /* pt-BR */,
-				AC96E7312330198400FB10BA /* en */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		AC9EE90B23071D02004FA292 /* LaunchScreen.storyboard */ = {
