@@ -36,9 +36,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) camera use</string>
+	<string>Enable camera access so that you can take a profile picture.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) camera use</string>
+	<string>Enable photo library access so that you can choose a profile picture.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Text-Regular.ttf</string>

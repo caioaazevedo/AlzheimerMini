@@ -73,7 +73,6 @@
 		ACA91FC223296215005EB127 /* Pessoas+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC023296215005EB127 /* Pessoas+CoreDataClass.swift */; };
 		ACA91FC323296215005EB127 /* Pessoas+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC123296215005EB127 /* Pessoas+CoreDataProperties.swift */; };
 		ACA91FC92329657B005EB127 /* CustomCellFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA91FC82329657B005EB127 /* CustomCellFeed.swift */; };
-		ACF39C61232A78630049D38D /* FamiliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF39C60232A78630049D38D /* FamiliaViewController.swift */; };
 		BF95BC60618A0AD0F91A87A7 /* Pods_AlzheimerProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F706B0D90EB5F893CFAF52 /* Pods_AlzheimerProject.framework */; };
 		E227F3FA232C24BB00C25C75 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227F3F9232C24BB00C25C75 /* GroupCell.swift */; };
 		E227F3FC232C280400C25C75 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227F3FB232C280400C25C75 /* GroupTableViewController.swift */; };
@@ -206,7 +205,6 @@
 		ACA91FC023296215005EB127 /* Pessoas+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACA91FC123296215005EB127 /* Pessoas+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pessoas+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACA91FC82329657B005EB127 /* CustomCellFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellFeed.swift; sourceTree = "<group>"; };
-		ACF39C60232A78630049D38D /* FamiliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamiliaViewController.swift; sourceTree = "<group>"; };
 		E227F3F9232C24BB00C25C75 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E227F3FB232C280400C25C75 /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E261616D232FC2C700F492B8 /* Usuario+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Usuario+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 				AC68B45D2326CF09002963C0 /* DetailProfileViewController.swift */,
 				AC68B45F2326CF56002963C0 /* MyProfileViewController.swift */,
 				AC68B4612326CF86002963C0 /* UsersViewController.swift */,
-				ACF39C60232A78630049D38D /* FamiliaViewController.swift */,
 				E227F3FB232C280400C25C75 /* GroupTableViewController.swift */,
 				AC81E82C2333F4CC004A009C /* ConfigNormalViewController.swift */,
 			);
@@ -641,7 +638,6 @@
 				11320D44232999EE002C7F7F /* ImagePicker.swift in Sources */,
 				3AA9CAC32332CB53003B73C5 /* Evento+CoreDataProperties.swift in Sources */,
 				115CADF323268F420057B1E0 /* CellDetail.swift in Sources */,
-				ACF39C61232A78630049D38D /* FamiliaViewController.swift in Sources */,
 				AC68B4602326CF56002963C0 /* MyProfileViewController.swift in Sources */,
 				E227F3FC232C280400C25C75 /* GroupTableViewController.swift in Sources */,
 				3AA9CAC12332CB53003B73C5 /* PerfilUsuario+CoreDataProperties.swift in Sources */,
@@ -883,7 +879,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Academy.AlzheimerProject;
+				PRODUCT_BUNDLE_IDENTIFIER = Academy.AlzheimerProject.MiniChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -903,7 +899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Academy.AlzheimerProject;
+				PRODUCT_BUNDLE_IDENTIFIER = Academy.AlzheimerProject.MiniChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

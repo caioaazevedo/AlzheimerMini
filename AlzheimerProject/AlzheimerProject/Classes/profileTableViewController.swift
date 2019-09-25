@@ -14,8 +14,6 @@ class profileTableViewController: UITableViewController {
     @IBOutlet weak var idosoLabel: UILabel!
     @IBOutlet weak var grupoLabel: UILabel!
     
-    @IBOutlet weak var nomeDaFamiliaLabel: UILabel!
-    
     @IBOutlet weak var meuPerfilLabel: UILabel!
     
     @IBOutlet weak var notificacoesLabel: UILabel!
@@ -114,8 +112,6 @@ class profileTableViewController: UITableViewController {
         idosoLabel.adjustsFontForContentSizeCategory = true
         grupoLabel.font = scaledFont.font(forTextStyle: .body)
         grupoLabel.adjustsFontForContentSizeCategory = true
-        nomeDaFamiliaLabel.font = scaledFont.font(forTextStyle: .body)
-        nomeDaFamiliaLabel.adjustsFontForContentSizeCategory = true
         meuPerfilLabel.font = scaledFont.font(forTextStyle: .body)
         meuPerfilLabel.adjustsFontForContentSizeCategory = true
         notificacoesLabel.font = scaledFont.font(forTextStyle: .body)
@@ -135,8 +131,6 @@ class profileTableViewController: UITableViewController {
                 
             case 1:
                 performSegue(withIdentifier: "grupo", sender: self)
-            case 2:
-                performSegue(withIdentifier: "familia", sender: self)
             default:
                 print()
             }

@@ -400,6 +400,18 @@ class CoreDataRebased{
         }
     }
     
+    func updateSalafamilyName(familyName: String){
+        let salaFetchRequest = NSFetchRequest<Sala>.init(entityName: "Sala")
+        do {
+            let sala = try managedObjectContext.fetch(salaFetchRequest)[0]
+            
+            sala.nomeFamilia = familyName
+        } catch {
+            print("Error")
+        }
+        saveCoreData()
+    }
+    
     
     // Update Sala
     func updateSala(idUsuarios: [String]){
