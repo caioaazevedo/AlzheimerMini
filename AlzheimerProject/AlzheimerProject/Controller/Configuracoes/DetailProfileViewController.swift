@@ -15,122 +15,66 @@ class DetailProfileViewController: UIViewController {
     var cdr = CoreDataRebased.shared
     
     
+    var nascimento = ""
+    var rg = ""
+    var tipoSanguineo = ""
+    var Alergia = ""
+    var endereco = ""
+    var telefone = ""
+    var medicamento = ""
+    var plano = ""
+    var observacoes = ""
+    var arrayAux = [String]()
+    var arrayFetch = [String]()
     
-    @IBOutlet weak var nascimentoGray: UILabel!
-    @IBOutlet weak var tgGray: UILabel!
-    @IBOutlet weak var alergiasGray: UILabel!
-    @IBOutlet weak var enderecoGray: UILabel!
-    @IBOutlet weak var medicamentoGray: UILabel!
-    @IBOutlet weak var obsGray: UILabel!
-    @IBOutlet weak var tipoSanguineoGray: UILabel!
-    @IBOutlet weak var telefoneGray: UILabel!
-    @IBOutlet weak var planoGray: UILabel!
+    @IBOutlet weak var idosoNome: UITextField!
     
     @IBOutlet weak var fotoIdoso: UIImageView!
     
-    @IBOutlet weak var idosoNome: UITextField!
-    @IBOutlet weak var dataNascimento: UITextField!
-    @IBOutlet weak var tipoSanguineo: UITextField!
-    @IBOutlet weak var rg: UITextField!
-    @IBOutlet weak var telefone: UITextField!
-    @IBOutlet weak var alergias: UITextField!
-    @IBOutlet weak var plano: UITextField!
-    
-    @IBOutlet weak var endereco: UITextField!
-    @IBOutlet weak var medicacoes: UITextField!
-    @IBOutlet weak var observacoes: UITextField!
+    @IBOutlet weak var tableVelho: UITableView!
     
     @IBOutlet weak var editOutlet: UIBarButtonItem!
     
     var imagePicker: ImagePicker!
+    var a = profileData()
+    
+    var tableController : TabElderViewController {
+        return self.children.first as! TabElderViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        arrayAux = [nascimento,rg,tipoSanguineo,Alergia,endereco,telefone,medicamento,plano,observacoes]
+        setAll()
+        tableController.tableView.delegate = self
+        tableController.tableView.dataSource = self
+  
         self.fotoIdoso.image = UIImage(named: "Borda")
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
-        self.setUpView()
+        //        self.setUpView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func setDynamicType(){
-        let fontName = "SFProText-Regular"
-        
-        let scaledFont: ScaledFont = {
-            return ScaledFont(fontName: fontName)
-        }()
-        
-        idosoNome.font = scaledFont.font(forTextStyle: .body)
-        idosoNome.adjustsFontForContentSizeCategory = true
-        
-        nascimentoGray.font = scaledFont.font(forTextStyle: .body)
-        nascimentoGray.adjustsFontForContentSizeCategory = true
-        
-        tipoSanguineoGray.font = scaledFont.font(forTextStyle: .body)
-        tipoSanguineoGray.adjustsFontForContentSizeCategory = true
-        
-        telefoneGray.font = scaledFont.font(forTextStyle: .body)
-        telefoneGray.adjustsFontForContentSizeCategory = true
-        
-        tgGray.font = scaledFont.font(forTextStyle: .body)
-        tgGray.adjustsFontForContentSizeCategory = true
-        
-        alergiasGray.font = scaledFont.font(forTextStyle: .body)
-        alergiasGray.adjustsFontForContentSizeCategory = true
-        
-        planoGray.font = scaledFont.font(forTextStyle: .body)
-        planoGray.adjustsFontForContentSizeCategory = true
-        
-        enderecoGray.font = scaledFont.font(forTextStyle: .body)
-        enderecoGray.adjustsFontForContentSizeCategory = true
-        
-        medicamentoGray.font = scaledFont.font(forTextStyle: .body)
-        medicamentoGray.adjustsFontForContentSizeCategory = true
-        
-        obsGray.font = scaledFont.font(forTextStyle: .body)
-        obsGray.adjustsFontForContentSizeCategory = true
-        
-        
-        //---------
-        
-        
-        dataNascimento.font = scaledFont.font(forTextStyle: .body)
-        dataNascimento.adjustsFontForContentSizeCategory = true
-        
-        tipoSanguineo.font = scaledFont.font(forTextStyle: .body)
-        tipoSanguineo.adjustsFontForContentSizeCategory = true
-        
-        telefone.font = scaledFont.font(forTextStyle: .body)
-        telefone.adjustsFontForContentSizeCategory = true
-        
-        rg.font = scaledFont.font(forTextStyle: .body)
-        rg.adjustsFontForContentSizeCategory = true
-        
-        alergias.font = scaledFont.font(forTextStyle: .body)
-        alergias.adjustsFontForContentSizeCategory = true
-        
-        plano.font = scaledFont.font(forTextStyle: .body)
-        plano.adjustsFontForContentSizeCategory = true
-        
-        endereco.font = scaledFont.font(forTextStyle: .body)
-        endereco.adjustsFontForContentSizeCategory = true
-        
-        medicacoes.font = scaledFont.font(forTextStyle: .body)
-        medicacoes.adjustsFontForContentSizeCategory = true
-        
-        observacoes.font = scaledFont.font(forTextStyle: .body)
-        observacoes.adjustsFontForContentSizeCategory = true
-        
-        
-        
-    }
+    //    func setDynamicType(){
+    //        let fontName = "SFProText-Regular"
+    //
+    //        let scaledFont: ScaledFont = {
+    //            return ScaledFont(fontName: fontName)
+    //        }()
+    //
+    //
+    //
+    //
+    //    }
     
     override func viewWillAppear(_ animated: Bool) {
         UserLoaded()
-        setAll()
+        //        setAll()
+        
         self.fotoIdoso.clipsToBounds = true
         self.fotoIdoso.layer.cornerRadius = self.fotoIdoso.frame.height/2
         
@@ -144,7 +88,7 @@ class DetailProfileViewController: UIViewController {
             
             
         }
-        setDynamicType()
+        //        setDynamicType()
     }
     
     func setUpView() {
@@ -182,13 +126,11 @@ class DetailProfileViewController: UIViewController {
     
     func setAll(){
         
-        let a = cdr.loadProfileData()
+        a = cdr.loadProfileData()
         let day = Calendar.current.component(.day, from: a.dataDeNascimento ?? Date(timeIntervalSinceNow: 0) )
         let month = Calendar.current.component(.month, from: a.dataDeNascimento ?? Date(timeIntervalSinceNow: 0) )
         let year = Calendar.current.component(.year, from: a.dataDeNascimento ?? Date(timeIntervalSinceNow: 0) )
-        dataNascimento.text = "\(day)/\(month)/\(year)"
-        observacoes.text = a.Descricao
-        endereco.text = a.endereco
+        
         if flag == 0{
             fotoIdoso.image = a.fotoDePerfil
         } else{
@@ -200,36 +142,17 @@ class DetailProfileViewController: UIViewController {
         else {
             idosoNome.text = a.nome
         }
-        if plano.text == nil || plano.text == ""{
-            plano.text = "Health Plan"
-        }else{
-            plano.text = a.planoDeSaude
-        }
         
-        if medicacoes.text == nil || medicacoes.text == ""{
-            medicacoes.text = "Medications"
-        }else{
-            medicacoes.text = a.remedios
-        }
-        
-        if telefone.text == nil || telefone.text == ""{
-            telefone.text = "555 1234-567"
-        }else{
-            telefone.text = a.telefone
-        }
-        
-        if rg.text == nil || rg.text == ""{
-            rg.text = "123"
-        }else{
-            rg.text = a.rg
-        }
-        
-        if alergias.text == nil || alergias.text == ""{
-            alergias.text = "Allergies"
-        }else{
-            alergias.text = a.alergias
-        }
-      
+        arrayAux = [nascimento,rg,tipoSanguineo,Alergia,endereco,telefone,medicamento,plano,observacoes]
+        arrayFetch.append("\(day)/\(month)/\(year)")
+        arrayFetch.append(a.rg ?? "")
+        arrayFetch.append(a.tipoSanguineo ?? "")
+        arrayFetch.append(a.alergias ?? "")
+        arrayFetch.append(a.endereco ?? "")
+        arrayFetch.append(a.telefone ?? "")
+        arrayFetch.append(a.remedios ?? "")
+        arrayFetch.append(a.planoDeSaude ?? "")
+        arrayFetch.append(a.Descricao ?? "")
         
         
         // fotoIdoso.image = fotoIdosoAux
@@ -237,48 +160,43 @@ class DetailProfileViewController: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        cdr.updateProfile(alergias: alergias.text! , dataDeNascimento: Date(), descricao: observacoes.text, endereco: endereco.text, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano.text, remedios: medicacoes.text!, telefone: telefone.text, tipoSanguineo: tipoSanguineo.text, rg: rg.text)
+        cdr.updateProfile(alergias: Alergia , dataDeNascimento: Date(), descricao: observacoes, endereco: endereco, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano, remedios: medicamento, telefone: telefone, tipoSanguineo: tipoSanguineo, rg: rg)
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
     
     @IBAction func editbutton(_ sender: UIBarButtonItem) {
-        editPressed = !editPressed
+        arrayAux = [nascimento,rg,tipoSanguineo,Alergia,endereco,telefone,medicamento,plano,observacoes]
         
-        if (editPressed){
-            changeAll(editPressed)
-            editOutlet.title = NSLocalizedString("Done" , comment: "")
-            
-        } else{
-            changeAll(editPressed)
-            
-            editOutlet.title = NSLocalizedString("Edit" , comment: "")
-        }
+        Alergia = arrayAux[3]
+        nascimento = arrayAux[0]
+        observacoes = arrayAux[8]
+        rg = arrayAux[1]
+        endereco = arrayAux[4]
+        plano = arrayAux[7]
+        medicamento = arrayAux[6]
+        telefone = arrayAux[5]
+        tipoSanguineo = arrayAux[2]
+        
+        
+        editOutlet.title = NSLocalizedString("Save", comment: "")
+        
+        
         
         
     }
     
-    func changeAll(_ bo: Bool){
-        idosoNome.isUserInteractionEnabled = bo
-        dataNascimento.isUserInteractionEnabled = bo
-        tipoSanguineo.isUserInteractionEnabled = bo
-        telefone.isUserInteractionEnabled = bo
-        rg.isUserInteractionEnabled = bo
-        telefone.isUserInteractionEnabled = bo
-        alergias.isUserInteractionEnabled = bo
-        plano.isUserInteractionEnabled = bo
-        endereco.isUserInteractionEnabled = bo
-        medicacoes.isUserInteractionEnabled = bo
-        observacoes.isUserInteractionEnabled = bo
-    }
     
     var fotoIdosoAux = UIImage(named: "Borda")
     var flag = 0
     
     
     
+
     
-    
+    var selecionado = Int()
 }
 
 
@@ -292,3 +210,24 @@ extension DetailProfileViewController: ImagePickerDelegate{
     }
     
 }
+
+extension DetailProfileViewController : UITableViewDelegate , UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellConfig", for: indexPath) as! CellConfig
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+

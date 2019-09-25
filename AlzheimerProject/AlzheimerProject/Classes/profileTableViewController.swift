@@ -29,6 +29,7 @@ class profileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //arredondaIcones()
         tableView.tableFooterView = UIView()
         
