@@ -10,6 +10,7 @@ import CoreData
 import UIKit
 
 class ConfigNormalViewController: UIViewController {
+    
     let cdr = CoreDataRebased.shared.fetchSala()
     
     @IBOutlet weak var nomeIdoso: UILabel!
