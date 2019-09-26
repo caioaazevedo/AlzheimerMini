@@ -580,6 +580,13 @@ extension CalendarioViewController : UITableViewDataSource , UITableViewDelegate
         cell.bgCalendarCellView.clipsToBounds = true
         cell.bgCalendarCellView.layer.cornerRadius = 10
         
+        cell.bgCalendarCellView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        cell.bgCalendarCellView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        cell.bgCalendarCellView.layer.shadowRadius = 5
+        cell.bgCalendarCellView.layer.shadowOpacity = 0.5
+        cell.bgCalendarCellView.layer.masksToBounds = false
+        
+        
         
         cell.backgroundColor = view.backgroundColor
         
