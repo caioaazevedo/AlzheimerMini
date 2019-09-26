@@ -304,6 +304,8 @@ class ViewController: UIViewController {
         
         let url = URL(string: "login://" + "\(userload.idSala!)")
         
+        print("-0--==-=-=-> ", userload.idSala!)
+        
         let text = "\(user.nome!) would like your participation in the family group. Access key: \(url!)."
         
         // set up activity view controller

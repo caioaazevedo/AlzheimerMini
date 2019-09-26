@@ -148,7 +148,7 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
 
         let url = URL(string: "login://" + "\(userload.idSala!)")
         // FIX INTERPOLATION
-        let text = "\(user.nome!) would like your participation in the family group. Access key: \(url!)."
+        let text = NSLocalizedString(String(format: "%@ would like your participation in the family group. Access key: %@.", "\(user.nome!)", "\(user.nome!)"), comment: "")
 
         // set up activity view controller
         let textToShare = [ text ]

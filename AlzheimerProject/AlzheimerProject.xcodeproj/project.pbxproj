@@ -218,6 +218,8 @@
 		E2CEB47D23183DF300C90EFD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E2CEB47F231850A200C90EFD /* Dados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dados.swift; sourceTree = SOURCE_ROOT; };
 		E2F4EE4E233BD16800EFFC00 /* TabElderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabElderViewController.swift; sourceTree = "<group>"; };
+		E2F4EE51233D506700EFFC00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		E2F4EE53233D509400EFFC00 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -709,6 +711,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				3A60BD3B233AF24E00DE5CF4 /* Base */,
+				E2F4EE51233D506700EFFC00 /* en */,
+				E2F4EE53233D509400EFFC00 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

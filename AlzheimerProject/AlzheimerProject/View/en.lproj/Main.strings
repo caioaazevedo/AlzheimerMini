@@ -1,0 +1,219 @@
+
+/* Class = "UILabel"; text = "Tipo Sanguíneo"; ObjectID = "0t0-WU-c0f"; */
+"0t0-WU-c0f.text" = "Blood Type";
+
+/* Class = "UITextField"; text = "Descricao"; ObjectID = "11o-YT-MXc"; */
+"11o-YT-MXc.text" = "Description";
+
+/* Class = "UILabel"; text = "None"; ObjectID = "1B2-1F-yAO"; */
+"1B2-1F-yAO.text" = "None";
+
+/* Class = "UILabel"; text = "RG"; ObjectID = "3EN-0J-92B"; */
+"3EN-0J-92B.text" = "ID Number";
+
+/* Class = "UILabel"; text = "Notificaçōes"; ObjectID = "3w9-x9-sTX"; */
+"3w9-x9-sTX.text" = "Notifications";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "6JP-m1-I9P"; */
+"6JP-m1-I9P.title" = "Edit";
+
+/* Class = "UILabel"; text = "Data de Nascimento"; ObjectID = "6on-rZ-8bE"; */
+"6on-rZ-8bE.text" = "Date of Birth";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "7UP-Xy-1kR"; */
+"7UP-Xy-1kR.text" = "Name";
+
+/* Class = "UILabel"; text = "Notes"; ObjectID = "7id-Jm-Bow"; */
+"7id-Jm-Bow.text" = "Notes";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "7sK-zY-rqy"; */
+"7sK-zY-rqy.text" = "Category";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "840-TZ-VZw"; */
+"840-TZ-VZw.title" = "Profile";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "9Tl-LE-CR8"; */
+"9Tl-LE-CR8.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIViewController"; title = "My Data"; ObjectID = "9lj-96-3Ns"; */
+"9lj-96-3Ns.title" = "My Data";
+
+/* Class = "UILabel"; text = "Horario"; ObjectID = "BHa-Qb-yE8"; */
+"BHa-Qb-yE8.text" = "Time";
+
+/* Class = "UILabel"; text = "Consultation"; ObjectID = "C6g-2Z-XOu"; */
+"C6g-2Z-XOu.text" = "Consultation";
+
+/* Class = "UILabel"; text = "Responsavel"; ObjectID = "C7B-KN-ntq"; */
+"C7B-KN-ntq.text" = "Responsible";
+
+/* Class = "UILabel"; text = "Share this group's code"; ObjectID = "CXL-ci-qax"; */
+"CXL-ci-qax.text" = "Share this group's code";
+
+/* Class = "UITextField"; text = "Nome do Idoso"; ObjectID = "DCJ-nZ-2Fc"; */
+"DCJ-nZ-2Fc.text" = "Elderly's Name";
+
+/* Class = "UITextField"; placeholder = "Título"; ObjectID = "ENO-3N-ixA"; */
+"ENO-3N-ixA.placeholder" = "Title";
+
+/* Class = "UITextField"; text = "Descricao"; ObjectID = "F74-IY-IjI"; */
+"F74-IY-IjI.text" = "Description";
+
+/* Class = "UILabel"; text = "Telefone"; ObjectID = "FOv-RA-SOG"; */
+"FOv-RA-SOG.text" = "Phone Number";
+
+/* Class = "UILabel"; text = "15:00"; ObjectID = "GqS-tX-FWl"; */
+"GqS-tX-FWl.text" = "15:00";
+
+/* Class = "UIBarButtonItem"; title = "Calendar"; ObjectID = "LxN-49-zCX"; */
+"LxN-49-zCX.title" = "Calendar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "P7r-eq-sR7"; */
+"P7r-eq-sR7.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PDf-ZC-WE2"; */
+"PDf-ZC-WE2.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Delete Event"; ObjectID = "PKu-he-YKV"; */
+"PKu-he-YKV.normalTitle" = "Delete Event";
+
+/* Class = "UINavigationItem"; title = "New Event"; ObjectID = "QEt-TT-OEp"; */
+"QEt-TT-OEp.title" = "New Event";
+
+/* Class = "UILabel"; text = "Elder Info"; ObjectID = "RAy-XU-1Qy"; */
+"RAy-XU-1Qy.text" = "Elder Info";
+
+/* Class = "UITableViewSection"; headerTitle = "FAMILY INFO"; ObjectID = "RbD-vS-EVt"; */
+"RbD-vS-EVt.headerTitle" = "FAMILY INFO";
+
+/* Class = "UILabel"; text = "Responsible"; ObjectID = "SAy-Bs-HeK"; */
+"SAy-Bs-HeK.text" = "Responsible";
+
+/* Class = "UILabel"; text = "Titulo"; ObjectID = "TEh-qd-Y3c"; */
+"TEh-qd-Y3c.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "TVH-nF-pt2"; */
+"TVH-nF-pt2.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "V0y-fF-R7j"; */
+"V0y-fF-R7j.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Leave the group"; ObjectID = "VsQ-JB-oQv"; */
+"VsQ-JB-oQv.normalTitle" = "Leave the group";
+
+/* Class = "UIViewController"; title = "DetailViewController"; ObjectID = "XBg-G5-9HL"; */
+"XBg-G5-9HL.title" = "DetailViewController";
+
+/* Class = "UITextField"; placeholder = "Local"; ObjectID = "XQf-uH-8hY"; */
+"XQf-uH-8hY.placeholder" = "Local";
+
+/* Class = "UITextField"; text = "Descricao"; ObjectID = "XkW-LG-gjE"; */
+"XkW-LG-gjE.text" = "Description";
+
+/* Class = "UILabel"; text = "September 23"; ObjectID = "XyW-5v-OII"; */
+"XyW-5v-OII.text" = "September 23";
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "YwC-aZ-5TQ"; */
+"YwC-aZ-5TQ.text" = "Group";
+
+/* Class = "UIViewController"; title = "Detalhes dos Dados"; ObjectID = "Zdr-Zw-8bs"; */
+"Zdr-Zw-8bs.title" = "Details of Data";
+
+/* Class = "UINavigationItem"; title = "Notes"; ObjectID = "bJV-fr-s7j"; */
+"bJV-fr-s7j.title" = "Notes";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bKX-My-O2I"; */
+"bKX-My-O2I.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "bz1-DP-ZM0"; */
+"bz1-DP-ZM0.title" = "Add";
+
+/* Class = "UINavigationItem"; title = "Dalosto Family"; ObjectID = "cR5-GN-q0H"; */
+"cR5-GN-q0H.title" = "Dalosto Family";
+
+/* Class = "UILabel"; text = "None"; ObjectID = "d3z-Gc-0Ne"; */
+"d3z-Gc-0Ne.text" = "None";
+
+/* Class = "UILabel"; text = "Localizacao"; ObjectID = "dZM-8Q-EHl"; */
+"dZM-8Q-EHl.text" = "Address";
+
+/* Class = "UINavigationItem"; title = "Event Detail"; ObjectID = "dfu-1c-yW0"; */
+"dfu-1c-yW0.title" = "Event Detail";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "fF3-pe-7JO"; */
+"fF3-pe-7JO.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Endereço"; ObjectID = "fFU-tH-Q8n"; */
+"fFU-tH-Q8n.text" = "Address";
+
+/* Class = "UILabel"; text = "Responsáveis"; ObjectID = "fmj-hB-WsV"; */
+"fmj-hB-WsV.text" = "Responsible";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "ftc-fQ-Q9Y"; */
+"ftc-fQ-Q9Y.title" = "Done";
+
+/* Class = "UILabel"; text = "Family Name"; ObjectID = "gC7-OS-SRl"; */
+"gC7-OS-SRl.text" = "Family Name";
+
+/* Class = "UILabel"; text = "Medicamento"; ObjectID = "gue-rL-IMd"; */
+"gue-rL-IMd.text" = "Medicine";
+
+/* Class = "UITableViewSection"; headerTitle = "MY INFO"; ObjectID = "huo-PI-0zG"; */
+"huo-PI-0zG.headerTitle" = "MY INFO";
+
+/* Class = "UITextField"; text = "Descricao"; ObjectID = "i4t-XA-oLq"; */
+"i4t-XA-oLq.text" = "Description";
+
+/* Class = "UITextField"; text = "Descricao"; ObjectID = "kSw-6V-UB3"; */
+"kSw-6V-UB3.text" = "Description";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "kUs-8J-LN0"; */
+"kUs-8J-LN0.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "My Profile"; ObjectID = "lWP-ta-RvH"; */
+"lWP-ta-RvH.text" = "My Profile";
+
+/* Class = "UITextField"; placeholder = "Your Name"; ObjectID = "ldJ-7W-xXE"; */
+"ldJ-7W-xXE.placeholder" = "Your Name";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "m1V-wX-uUh"; */
+"m1V-wX-uUh.text" = "Time";
+
+/* Class = "UILabel"; text = "Alergia"; ObjectID = "mBb-gX-fxX"; */
+"mBb-gX-fxX.text" = "Allergies";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "mJ8-zU-KSU"; */
+"mJ8-zU-KSU.title" = "Save";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "mqN-tN-yyF"; */
+"mqN-tN-yyF.text" = "Notification";
+
+/* Class = "UINavigationItem"; title = "Configurations"; ObjectID = "o2t-vP-Gel"; */
+"o2t-vP-Gel.title" = "Configurations";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "pXT-NW-vCg"; */
+"pXT-NW-vCg.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Edmondo Congiu"; ObjectID = "qob-kW-TjA"; */
+"qob-kW-TjA.text" = "Edmondo Congiu";
+
+/* Class = "UINavigationItem"; title = "Adicionar Evento"; ObjectID = "rGz-hn-gir"; */
+"rGz-hn-gir.title" = "Add Event";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "t40-9m-yib"; */
+"t40-9m-yib.title" = "Done";
+
+/* Class = "UILabel"; text = "Plano de saúde"; ObjectID = "teB-co-v5L"; */
+"teB-co-v5L.text" = "Health insurance";
+
+/* Class = "UILabel"; text = "15:00"; ObjectID = "vfl-J2-BY0"; */
+"vfl-J2-BY0.text" = "15:00";
+
+/* Class = "UILabel"; text = "Setember 23, Tuesday"; ObjectID = "vij-4k-5f4"; */
+"vij-4k-5f4.text" = "Setember 23, Tuesday";
+
+/* Class = "UILabel"; text = "Observações"; ObjectID = "voN-yK-mK1"; */
+"voN-yK-mK1.text" = "Observations";
+
+/* Class = "UITextField"; placeholder = "Your Family Name"; ObjectID = "xmz-WI-U87"; */
+"xmz-WI-U87.placeholder" = "Your Family Name";

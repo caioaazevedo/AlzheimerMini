@@ -62,3 +62,5 @@
 "onboard1" = "Crie um grupo com amigos ou família para compartilhar os eventos e dados do idoso.";
 "onboard2" = "Marque eventos e todos do grupo serão notificados.";
 "onboard3" = "Tenha em mãos os dados do idoso sempre que preciso.";
+
+"%@ would like your participation in the family group. Access key: %@." = "Remember Me - Caregiver: %@ gostaria de sua participação no grupo da família. Chave de acesso: %@.";
