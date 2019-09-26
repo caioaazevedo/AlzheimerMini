@@ -56,7 +56,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOCALIZACAO" translatesAutoresizingMaskIntoConstraints="NO" id="VT6-9K-qSW">
-                                                            <rect key="frame" x="8" y="55" width="16" height="22.5"/>
+                                                            <rect key="frame" x="8" y="55" width="22.5" height="22.5"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="HORA" translatesAutoresizingMaskIntoConstraints="NO" id="VNe-7e-76d">
                                                             <rect key="frame" x="265" y="8" width="24" height="24"/>
@@ -264,10 +264,10 @@
                                                     <rect key="frame" x="26" y="17.5" width="23" height="14.5"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bola vermelha" translatesAutoresizingMaskIntoConstraints="NO" id="gRu-3F-GDZ">
-                                                    <rect key="frame" x="373.5" y="15" width="21" height="19.5"/>
+                                                    <rect key="frame" x="334.5" y="15" width="21" height="19.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3z-Gc-0Ne">
-                                                    <rect key="frame" x="319.5" y="13" width="42.5" height="23.5"/>
+                                                    <rect key="frame" x="280.5" y="13" width="42.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <color key="textColor" red="0.60000419620000001" green="0.5999925733" blue="0.60000044109999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -299,7 +299,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1V-wX-uUh">
-                                                    <rect key="frame" x="63" y="57" width="250" height="21"/>
+                                                    <rect key="frame" x="63" y="57" width="211" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="nAa-zm-3si"/>
                                                     </constraints>
@@ -308,10 +308,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ADDRelogio" translatesAutoresizingMaskIntoConstraints="NO" id="9A1-P6-oix">
-                                                    <rect key="frame" x="27.5" y="57.5" width="20.5" height="20.5"/>
+                                                    <rect key="frame" x="27.5" y="57" width="20.5" height="21"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfl-J2-BY0">
-                                                    <rect key="frame" x="349" y="59.5" width="45" height="21"/>
+                                                    <rect key="frame" x="310" y="59.5" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <color key="textColor" red="0.60000419616699219" green="0.59999257326126099" blue="0.60000044107437134" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -342,16 +342,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ADDPerfil" translatesAutoresizingMaskIntoConstraints="NO" id="1gl-IT-9tr">
-                                                    <rect key="frame" x="25.5" y="58.5" width="24.5" height="16"/>
+                                                    <rect key="frame" x="25.499999999999996" y="58.5" width="24.500000000000004" height="20.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-1F-yAO">
-                                                    <rect key="frame" x="354" y="14.5" width="41" height="20.5"/>
+                                                    <rect key="frame" x="352.5" y="14.5" width="42.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <color key="textColor" red="0.60000419616699219" green="0.59999257326126099" blue="0.60000044107437134" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Responsible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAy-Bs-HeK">
-                                                    <rect key="frame" x="62" y="14.5" width="94" height="20.5"/>
+                                                    <rect key="frame" x="62" y="14.5" width="97.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -388,7 +388,7 @@
                                                     <rect key="frame" x="32" y="59" width="20.5" height="23"/>
                                                 </imageView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DAF-XU-Fq7">
-                                                    <rect key="frame" x="345" y="54" width="51" height="31"/>
+                                                    <rect key="frame" x="306" y="54" width="51" height="31"/>
                                                     <color key="tintColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="onTintColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </switch>
@@ -912,49 +912,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Borda" translatesAutoresizingMaskIntoConstraints="NO" id="tyA-Ef-nyP">
-                                <rect key="frame" x="111.99999999999999" y="91.999999999999986" width="200.00000000000003" height="187.00000000000003"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="HIB-Ju-681">
+                                <rect key="frame" x="94" y="82" width="224" height="167"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldq-PV-pGw">
-                                <rect key="frame" x="0.0" y="222" width="414" height="596"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fundo cinza completo" translatesAutoresizingMaskIntoConstraints="NO" id="NC8-iy-h2l">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDf-ZC-WE2">
+                                <rect key="frame" x="286" y="244" width="25" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDf-ZC-WE2">
-                                        <rect key="frame" x="304" y="53" width="25" height="58"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="camera"/>
-                                        <connections>
-                                            <action selector="mudarFoto:" destination="Zdr-Zw-8bs" eventType="touchUpInside" id="hC4-8K-3zJ"/>
-                                        </connections>
-                                    </button>
-                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Edmondo" translatesAutoresizingMaskIntoConstraints="NO" id="HIB-Ju-681">
-                                        <rect key="frame" x="125" y="-111" width="162" height="180"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfileElder" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-b5-Ef8">
-                                        <rect key="frame" x="126" y="-144" width="174" height="267"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nome do Idoso" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCJ-nZ-2Fc">
-                                        <rect key="frame" x="83" y="127" width="248" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zmz-oa-5so">
-                                        <rect key="frame" x="8" y="170" width="398" height="418"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <connections>
-                                            <segue destination="XSp-N4-ycW" kind="embed" id="IsF-dF-Dvd"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                                <state key="normal" title="Button" image="camera"/>
+                                <connections>
+                                    <action selector="mudarFoto:" destination="Zdr-Zw-8bs" eventType="touchUpInside" id="hC4-8K-3zJ"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zmz-oa-5so">
+                                <rect key="frame" x="8" y="436" width="398" height="418"/>
+                                <connections>
+                                    <segue destination="XSp-N4-ycW" kind="embed" id="IsF-dF-Dvd"/>
+                                </connections>
+                            </containerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nome do Idoso" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCJ-nZ-2Fc">
+                                <rect key="frame" x="83" y="314" width="248" height="25"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.94902592897415161" green="0.9490082859992981" blue="0.94902020692825317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="DCJ-nZ-2Fc" firstAttribute="leading" secondItem="MCT-Ng-Gbv" secondAttribute="leading" constant="83" id="0Dl-d4-Cfn"/>
+                            <constraint firstAttribute="bottom" secondItem="NC8-iy-h2l" secondAttribute="bottom" id="7BU-y4-VBo"/>
+                            <constraint firstItem="MCT-Ng-Gbv" firstAttribute="trailing" secondItem="Zmz-oa-5so" secondAttribute="trailing" constant="8" id="9W2-au-Ula"/>
+                            <constraint firstItem="MCT-Ng-Gbv" firstAttribute="trailing" secondItem="DCJ-nZ-2Fc" secondAttribute="trailing" constant="83" id="AmT-T8-wjx"/>
+                            <constraint firstItem="HIB-Ju-681" firstAttribute="leading" secondItem="MCT-Ng-Gbv" secondAttribute="leading" constant="94" id="Ctd-XZ-ewo"/>
+                            <constraint firstItem="NC8-iy-h2l" firstAttribute="leading" secondItem="MCT-Ng-Gbv" secondAttribute="leading" id="NSf-AX-g4L"/>
+                            <constraint firstItem="HIB-Ju-681" firstAttribute="centerX" secondItem="DCJ-nZ-2Fc" secondAttribute="centerX" constant="-1" id="P0C-zf-Yts"/>
+                            <constraint firstItem="HIB-Ju-681" firstAttribute="top" secondItem="MCT-Ng-Gbv" secondAttribute="top" constant="38" id="U4U-7d-iUp"/>
+                            <constraint firstItem="NC8-iy-h2l" firstAttribute="top" secondItem="PfV-FG-kxB" secondAttribute="top" id="YPh-5y-wV7"/>
+                            <constraint firstItem="NC8-iy-h2l" firstAttribute="bottom" secondItem="MCT-Ng-Gbv" secondAttribute="bottom" constant="34" id="c3i-OB-uyB"/>
+                            <constraint firstItem="Zmz-oa-5so" firstAttribute="top" secondItem="MCT-Ng-Gbv" secondAttribute="top" constant="392" id="pHe-WY-ar4"/>
+                            <constraint firstItem="Zmz-oa-5so" firstAttribute="leading" secondItem="MCT-Ng-Gbv" secondAttribute="leading" constant="8" id="pbb-Lg-kgF"/>
+                            <constraint firstItem="MCT-Ng-Gbv" firstAttribute="bottom" secondItem="Zmz-oa-5so" secondAttribute="bottom" constant="8" id="sjC-0n-pLb"/>
+                            <constraint firstItem="Zmz-oa-5so" firstAttribute="top" secondItem="DCJ-nZ-2Fc" secondAttribute="bottom" constant="97" id="t9W-El-bHL"/>
+                            <constraint firstItem="MCT-Ng-Gbv" firstAttribute="bottom" secondItem="HIB-Ju-681" secondAttribute="bottom" constant="613" id="wee-PZ-Qcb"/>
+                            <constraint firstItem="MCT-Ng-Gbv" firstAttribute="trailing" secondItem="HIB-Ju-681" secondAttribute="trailing" constant="96" id="y55-HJ-CXj"/>
+                            <constraint firstItem="NC8-iy-h2l" firstAttribute="trailing" secondItem="MCT-Ng-Gbv" secondAttribute="trailing" id="yFE-mQ-AbX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MCT-Ng-Gbv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="840-TZ-VZw">
@@ -967,13 +971,13 @@
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="editOutlet" destination="mJ8-zU-KSU" id="cfS-ad-j88"/>
-                        <outlet property="fotoIdoso" destination="XNb-b5-Ef8" id="ed6-No-cso"/>
+                        <outlet property="fotoIdoso" destination="HIB-Ju-681" id="AKZ-g2-NOg"/>
                         <outlet property="idosoNome" destination="DCJ-nZ-2Fc" id="q8L-ch-29L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfZ-jM-jwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7000.0000000000009" y="422.54464285714283"/>
+            <point key="canvasLocation" x="7000.0000000000009" y="421.875"/>
         </scene>
         <!--Tab Elder View Controller-->
         <scene sceneID="vmt-wU-fao">
@@ -994,17 +998,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data de Nascimento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6on-rZ-8bE">
-                                                    <rect key="frame" x="20" y="11" width="156" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="149" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="11o-YT-MXc">
                                                     <rect key="frame" x="20" y="40" width="97" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -1017,188 +1021,192 @@
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EN-0J-92B">
-                                                    <rect key="frame" x="20" y="11" width="24" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4t-XA-oLq">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
+                                                    <rect key="frame" x="20" y="40" width="358" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="lCt-C2-gHJ" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="196" width="398" height="98"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lCt-C2-gHJ" id="Cg1-3n-YsX">
-                                            <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tipo Sanguíneo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0t0-WU-c0f">
-                                                    <rect key="frame" x="20" y="11" width="119" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EN-0J-92B">
+                                                    <rect key="frame" x="20" y="11" width="81" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F74-IY-IjI">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="xrT-p1-4oi" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="294" width="398" height="98"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xrT-p1-4oi" id="ylR-Fg-agp">
-                                            <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alergia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBb-gX-fxX">
-                                                    <rect key="frame" x="20" y="11" width="53" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Sp-lJ-NFF">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="Th1-bU-bIS" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="392" width="398" height="98"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Th1-bU-bIS" id="DWg-mu-g7K">
-                                            <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-tH-Q8n">
-                                                    <rect key="frame" x="20" y="11" width="73" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nzb-ZN-UzX">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="lI1-xb-vMA" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="490" width="398" height="98"/>
+                                        <rect key="frame" x="0.0" y="196" width="398" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lI1-xb-vMA" id="NCr-2Y-1Vm">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Telefone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOv-RA-SOG">
-                                                    <rect key="frame" x="20" y="11" width="66" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="142" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-6V-UB3">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
+                                                    <rect key="frame" x="20" y="40" width="358" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="mXN-lJ-0H6" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="588" width="398" height="98"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXN-lJ-0H6" id="kHl-0z-lyG">
-                                            <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medicamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gue-rL-IMd">
-                                                    <rect key="frame" x="20" y="11" width="105" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZk-nf-laQ">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="nIW-2d-oKw" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="686" width="398" height="98"/>
+                                        <rect key="frame" x="0.0" y="294" width="398" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nIW-2d-oKw" id="V2e-oT-YX1">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plano" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teB-co-v5L">
-                                                    <rect key="frame" x="20" y="11" width="43" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plano de saúde" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teB-co-v5L">
+                                                    <rect key="frame" x="20" y="11" width="242" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XkW-LG-gjE">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
+                                                    <rect key="frame" x="20" y="40" width="358" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="JkI-AS-0dl" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="784" width="398" height="98"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="lCt-C2-gHJ" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="392" width="398" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JkI-AS-0dl" id="5Tk-Y2-SPp">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lCt-C2-gHJ" id="Cg1-3n-YsX">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Observações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voN-yK-mK1">
-                                                    <rect key="frame" x="20" y="11" width="101" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tipo Sanguíneo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0t0-WU-c0f">
+                                                    <rect key="frame" x="20" y="11" width="165" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tFd-Hp-xPw">
-                                                    <rect key="frame" x="20" y="40" width="97" height="30"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Descricao" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F74-IY-IjI">
+                                                    <rect key="frame" x="20" y="40" width="358" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="mXN-lJ-0H6" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="490" width="398" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXN-lJ-0H6" id="kHl-0z-lyG">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medicamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gue-rL-IMd">
+                                                    <rect key="frame" x="20" y="11" width="154" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kUs-8J-LN0">
+                                                    <rect key="frame" x="20" y="33" width="358" height="135"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="xrT-p1-4oi" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="588" width="398" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xrT-p1-4oi" id="ylR-Fg-agp">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alergia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBb-gX-fxX">
+                                                    <rect key="frame" x="20" y="11" width="116" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pXT-NW-vCg">
+                                                    <rect key="frame" x="20" y="40" width="358" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="98" id="Th1-bU-bIS" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="686" width="398" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Th1-bU-bIS" id="DWg-mu-g7K">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="97.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-tH-Q8n">
+                                                    <rect key="frame" x="20" y="11" width="118" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fF3-pe-7JO">
+                                                    <rect key="frame" x="20" y="40" width="358" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellConfig" rowHeight="136" id="JkI-AS-0dl" customClass="cellConfig" customModule="AlzheimerProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="784" width="398" height="136"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JkI-AS-0dl" id="5Tk-Y2-SPp">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="135.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Observações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voN-yK-mK1">
+                                                    <rect key="frame" x="20" y="11" width="142" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-LE-CR8">
+                                                    <rect key="frame" x="20" y="40" width="358" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1207,20 +1215,25 @@
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="XSp-N4-ycW" id="yyG-cZ-2sV"/>
-                            <outlet property="delegate" destination="XSp-N4-ycW" id="eG9-5O-KaJ"/>
+                            <outlet property="delegate" destination="XSp-N4-ycW" id="L8m-Xo-0Ml"/>
                         </connections>
                     </tableView>
                     <size key="freeformSize" width="398" height="1000"/>
                     <connections>
                         <outlet property="RG" destination="i4t-XA-oLq" id="JmK-z6-Rcd"/>
-                        <outlet property="alergia" destination="9Sp-lJ-NFF" id="TYw-1u-kiV"/>
+                        <outlet property="alergia" destination="pXT-NW-vCg" id="pAM-6a-1eh"/>
                         <outlet property="dataNasc" destination="11o-YT-MXc" id="fWk-by-eNl"/>
+                        <outlet property="endereco" destination="fF3-pe-7JO" id="1fE-gm-Irk"/>
+                        <outlet property="medicamento" destination="kUs-8J-LN0" id="Hsw-5m-wP2"/>
+                        <outlet property="observacoes" destination="9Tl-LE-CR8" id="CGf-td-9vj"/>
+                        <outlet property="plano" destination="XkW-LG-gjE" id="70Y-g8-IiV"/>
+                        <outlet property="telefone" destination="kSw-6V-UB3" id="xQ9-4k-uPf"/>
                         <outlet property="tipo" destination="F74-IY-IjI" id="bFs-ek-g7H"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMA-N1-gru" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7813" y="492"/>
+            <point key="canvasLocation" x="8018.8405797101459" y="423.88392857142856"/>
         </scene>
         <!--My Data-->
         <scene sceneID="LlC-qc-zgd">
@@ -1286,29 +1299,29 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-7M-Ptq">
-                                <rect key="frame" x="120" y="66" width="174" height="267"/>
+                                <rect key="frame" x="106" y="99" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="267" id="2DJ-ER-IbV"/>
-                                    <constraint firstAttribute="width" constant="174" id="rue-Au-zMe"/>
+                                    <constraint firstAttribute="height" constant="200" id="2DJ-ER-IbV"/>
+                                    <constraint firstAttribute="width" constant="200" id="rue-Au-zMe"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Borda" translatesAutoresizingMaskIntoConstraints="NO" id="eif-B1-XZ7">
-                                <rect key="frame" x="107" y="56" width="200" height="287"/>
+                                <rect key="frame" x="105.99999999999999" y="98.999999999999986" width="200.00000000000003" height="200.00000000000003"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94902592897415161" green="0.9490082859992981" blue="0.94902020692825317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="aIc-93-ijI" firstAttribute="top" secondItem="eif-B1-XZ7" secondAttribute="top" constant="32" id="2LH-ad-2aK"/>
-                            <constraint firstItem="aIc-93-ijI" firstAttribute="trailing" secondItem="eif-B1-XZ7" secondAttribute="trailing" constant="107" id="5Zy-3A-ecL"/>
+                            <constraint firstItem="aIc-93-ijI" firstAttribute="top" secondItem="eif-B1-XZ7" secondAttribute="top" constant="-11" id="2LH-ad-2aK"/>
+                            <constraint firstItem="aIc-93-ijI" firstAttribute="trailing" secondItem="eif-B1-XZ7" secondAttribute="trailing" constant="108" id="5Zy-3A-ecL"/>
                             <constraint firstItem="EDB-Ti-jvw" firstAttribute="top" secondItem="aIc-93-ijI" secondAttribute="top" constant="112" id="G7O-3A-qQb"/>
                             <constraint firstItem="aIc-93-ijI" firstAttribute="bottom" secondItem="EDB-Ti-jvw" secondAttribute="bottom" constant="49" id="PvQ-7q-GLu"/>
-                            <constraint firstItem="7UP-Xy-1kR" firstAttribute="top" secondItem="eif-B1-XZ7" secondAttribute="bottom" constant="8" id="UZ8-dV-hBu"/>
-                            <constraint firstItem="eif-B1-XZ7" firstAttribute="leading" secondItem="aIc-93-ijI" secondAttribute="leading" constant="107" id="WPb-kt-lfg"/>
+                            <constraint firstItem="7UP-Xy-1kR" firstAttribute="top" secondItem="eif-B1-XZ7" secondAttribute="bottom" constant="52" id="UZ8-dV-hBu"/>
+                            <constraint firstItem="eif-B1-XZ7" firstAttribute="leading" secondItem="aIc-93-ijI" secondAttribute="leading" constant="106" id="WPb-kt-lfg"/>
                             <constraint firstItem="EDB-Ti-jvw" firstAttribute="trailing" secondItem="aIc-93-ijI" secondAttribute="trailing" id="XyZ-zh-NFC"/>
-                            <constraint firstItem="fvV-7M-Ptq" firstAttribute="leading" secondItem="aIc-93-ijI" secondAttribute="leading" constant="120" id="ZIo-C6-Bn7"/>
-                            <constraint firstItem="aIc-93-ijI" firstAttribute="top" secondItem="fvV-7M-Ptq" secondAttribute="top" constant="22" id="ZaH-1s-dR8"/>
+                            <constraint firstItem="fvV-7M-Ptq" firstAttribute="leading" secondItem="aIc-93-ijI" secondAttribute="leading" constant="106" id="ZIo-C6-Bn7"/>
+                            <constraint firstItem="aIc-93-ijI" firstAttribute="top" secondItem="fvV-7M-Ptq" secondAttribute="top" constant="-11" id="ZaH-1s-dR8"/>
                             <constraint firstItem="EDB-Ti-jvw" firstAttribute="leading" secondItem="aIc-93-ijI" secondAttribute="leading" id="op8-NQ-B7t"/>
-                            <constraint firstItem="aIc-93-ijI" firstAttribute="trailing" secondItem="fvV-7M-Ptq" secondAttribute="trailing" constant="120" id="xVT-9g-GFD"/>
+                            <constraint firstItem="aIc-93-ijI" firstAttribute="trailing" secondItem="fvV-7M-Ptq" secondAttribute="trailing" constant="108" id="xVT-9g-GFD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aIc-93-ijI"/>
                     </view>
@@ -1566,7 +1579,7 @@
                                                     <rect key="frame" x="25" y="12" width="20.5" height="23"/>
                                                 </imageView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nd9-Vy-ZUD">
-                                                    <rect key="frame" x="345" y="6.5" width="51" height="30.5"/>
+                                                    <rect key="frame" x="431" y="6.5" width="51" height="30.5"/>
                                                     <color key="tintColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="onTintColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </switch>
@@ -1662,7 +1675,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="Borda" translatesAutoresizingMaskIntoConstraints="NO" id="G7v-vS-qGE">
-                                <rect key="frame" x="107" y="68" width="200" height="287"/>
+                                <rect key="frame" x="106.99999999999999" y="68" width="200.00000000000003" height="287"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1707,7 +1720,6 @@
         <image name="ADDRelogio" width="20.5" height="20.5"/>
         <image name="ADDTag" width="23" height="15.5"/>
         <image name="Borda" width="187" height="187"/>
-        <image name="Edmondo" width="180" height="180"/>
         <image name="HORA" width="20.5" height="20.5"/>
         <image name="Hora" width="16" height="15"/>
         <image name="LOCALIZACAO" width="22.5" height="22.5"/>
@@ -1724,6 +1736,7 @@
         <image name="configMeu" width="16" height="22.5"/>
         <image name="configuracoes" width="35.5" height="35.5"/>
         <image name="feed" width="30" height="32"/>
+        <image name="fundo cinza completo" width="414" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="neo-df-jYC"/>

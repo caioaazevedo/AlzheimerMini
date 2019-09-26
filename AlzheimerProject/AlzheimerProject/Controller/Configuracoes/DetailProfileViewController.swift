@@ -47,10 +47,9 @@ class DetailProfileViewController: UIViewController {
         
         arrayAux = [nascimento,rg,tipoSanguineo,Alergia,endereco,telefone,medicamento,plano,observacoes]
         setAll()
-        tableController.tableView.delegate = self
-        tableController.tableView.dataSource = self
+//        tableController.tableView.delegate = self
   
-        self.fotoIdoso.image = UIImage(named: "Borda")
+//        self.fotoIdoso.image = UIImage(named: "Borda")
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self as ImagePickerDelegate)
         //        self.setUpView()
@@ -74,9 +73,7 @@ class DetailProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         UserLoaded()
         //        setAll()
-        
-        self.fotoIdoso.clipsToBounds = true
-        self.fotoIdoso.layer.cornerRadius = self.fotoIdoso.frame.height/2
+
         
         
         
@@ -142,25 +139,24 @@ class DetailProfileViewController: UIViewController {
         else {
             idosoNome.text = a.nome
         }
+
         
-        arrayAux = [nascimento,rg,tipoSanguineo,Alergia,endereco,telefone,medicamento,plano,observacoes]
-        arrayFetch.append("\(day)/\(month)/\(year)")
-        arrayFetch.append(a.rg ?? "")
-        arrayFetch.append(a.tipoSanguineo ?? "")
-        arrayFetch.append(a.alergias ?? "")
-        arrayFetch.append(a.endereco ?? "")
-        arrayFetch.append(a.telefone ?? "")
-        arrayFetch.append(a.remedios ?? "")
-        arrayFetch.append(a.planoDeSaude ?? "")
-        arrayFetch.append(a.Descricao ?? "")
-        
+        tableController.alergia.text = a.alergias
+        tableController.dataNasc.text = "\(day)/\(month)/\(year)"
+        tableController.endereco.text = a.endereco
+        tableController.medicamento.text = a.remedios
+        tableController.observacoes.text = a.Descricao
+        tableController.plano.text = a.planoDeSaude
+        tableController.RG.text = a.rg
+        tableController.telefone.text = a.telefone
+        tableController.tipo.text = a.tipoSanguineo
         
         // fotoIdoso.image = fotoIdosoAux
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        cdr.updateProfile(alergias: Alergia , dataDeNascimento: Date(), descricao: observacoes, endereco: endereco, fotoDePerfil: fotoIdoso.image, nome: idosoNome.text, planoDeSaude: plano, remedios: medicamento, telefone: telefone, tipoSanguineo: tipoSanguineo, rg: rg)
+        cdr.updateProfile(alergias:  tableController.alergia.text ?? "empty", dataDeNascimento: Date(), descricao: tableController.observacoes.text ?? "empty", endereco: tableController.endereco.text ?? "empty", fotoDePerfil: fotoIdoso.image, nome: idosoNome.text ?? "empty", planoDeSaude: tableController.plano.text ?? "empty", remedios: tableController.medicamento.text ?? "empty", telefone: tableController.telefone.text ?? "empty", tipoSanguineo: tableController.plano.text ?? "empty", rg:  tableController.RG.text ?? "empty")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -193,7 +189,6 @@ class DetailProfileViewController: UIViewController {
     var flag = 0
     
     
-    
 
     
     var selecionado = Int()
@@ -210,24 +205,4 @@ extension DetailProfileViewController: ImagePickerDelegate{
     }
     
 }
-
-extension DetailProfileViewController : UITableViewDelegate , UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellConfig", for: indexPath) as! CellConfig
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
 
