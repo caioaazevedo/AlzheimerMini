@@ -47,8 +47,6 @@ class ConfigNormalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.navBar.title = self.cdr.nomeFamilia
-        fotoIdoso.clipsToBounds = true
-        self.fotoIdoso.layer.cornerRadius = self.fotoIdoso.frame.height/2
         
         if CoreDataRebased.shared.loadProfileData().nome == "" {
             nomeIdoso.text = "Nome do Idoso"

@@ -45,6 +45,8 @@ class DetailProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.idosoNome.setBottomBorder()
+        
         arrayAux = [nascimento,rg,tipoSanguineo,Alergia,endereco,telefone,medicamento,plano,observacoes]
         setAll()
 //        tableController.tableView.delegate = self

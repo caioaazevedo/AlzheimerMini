@@ -14,6 +14,10 @@ class TabElderViewController: UITableViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        setLabelNrml()
+        setLabelBold()
+        
     }
     
     
@@ -28,6 +32,105 @@ class TabElderViewController: UITableViewController {
     @IBOutlet weak var alergia: UITextView!
     @IBOutlet weak var medicamento: UITextView!
     @IBOutlet weak var observacoes: UITextView!
+    
+    
+    @IBOutlet weak var dataNascBold: UILabel!
+    
+    @IBOutlet weak var rgBold: UILabel!
+    
+    @IBOutlet weak var telefoneBold: UILabel!
+    
+    @IBOutlet weak var planoBold: UILabel!
+    
+    @IBOutlet weak var tipoBold: UILabel!
+    
+    @IBOutlet weak var medicamentoBold: UILabel!
+    
+    @IBOutlet weak var alergiaBold: UILabel!
+    
+    @IBOutlet weak var enderecoBold: UILabel!
+    
+    @IBOutlet weak var obsBold: UILabel!
+    
+    func setLabelBold(){
+        
+        let fontName = "SFProText-Bold"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        dataNascBold.font = scaledFont.font(forTextStyle: .body)
+        dataNascBold.adjustsFontForContentSizeCategory = true
+        
+        rgBold.font = scaledFont.font(forTextStyle: .body)
+        rgBold.adjustsFontForContentSizeCategory = true
+        
+        tipoBold.font = scaledFont.font(forTextStyle: .body)
+        tipoBold.adjustsFontForContentSizeCategory = true
+        
+        planoBold.font = scaledFont.font(forTextStyle: .body)
+        planoBold.adjustsFontForContentSizeCategory = true
+        
+        telefoneBold.font = scaledFont.font(forTextStyle: .body)
+        telefoneBold.adjustsFontForContentSizeCategory = true
+        
+        enderecoBold.font = scaledFont.font(forTextStyle: .body)
+        enderecoBold.adjustsFontForContentSizeCategory = true
+        
+        alergia.font = scaledFont.font(forTextStyle: .body)
+        alergia.adjustsFontForContentSizeCategory = true
+        
+        medicamentoBold.font = scaledFont.font(forTextStyle: .body)
+        medicamentoBold.adjustsFontForContentSizeCategory = true
+        
+        obsBold.font = scaledFont.font(forTextStyle: .body)
+        obsBold.adjustsFontForContentSizeCategory = true
+        
+        
+        
+    }
+    
+    func setLabelNrml(){
+        let fontName = "SFProText-Regular"
+        
+        let scaledFont: ScaledFont = {
+            return ScaledFont(fontName: fontName)
+        }()
+        
+        dataNasc.font = scaledFont.font(forTextStyle: .body)
+        dataNasc.adjustsFontForContentSizeCategory = true
+        
+        RG.font = scaledFont.font(forTextStyle: .body)
+        RG.adjustsFontForContentSizeCategory = true
+        
+        tipo.font = scaledFont.font(forTextStyle: .body)
+        tipo.adjustsFontForContentSizeCategory = true
+        
+        plano.font = scaledFont.font(forTextStyle: .body)
+        plano.adjustsFontForContentSizeCategory = true
+        
+        telefone.font = scaledFont.font(forTextStyle: .body)
+        telefone.adjustsFontForContentSizeCategory = true
+        
+        endereco.font = scaledFont.font(forTextStyle: .body)
+        endereco.adjustsFontForContentSizeCategory = true
+        
+        alergia.font = scaledFont.font(forTextStyle: .body)
+        alergia.adjustsFontForContentSizeCategory = true
+        
+        medicamento.font = scaledFont.font(forTextStyle: .body)
+        medicamento.adjustsFontForContentSizeCategory = true
+        
+        observacoes.font = scaledFont.font(forTextStyle: .body)
+        observacoes.adjustsFontForContentSizeCategory = true
+        
+        
+        
+        
+        
+        
+    }
     
     var selecionado = Int()
     var flag = 0
