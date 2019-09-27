@@ -512,9 +512,9 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 let boldTime = NSMutableAttributedString(string: formateTime.string(from: allToday[indexPath.row].horarioEvento), attributes: att)
                 
                 
-                var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                var bodyText2 = NSMutableAttributedString(string: " para o dia ")
-                var bodyText3 = NSMutableAttributedString(string: " as ")
+                var bodyText1 = NSMutableAttributedString(string: NSLocalizedString(" foi marcado por ", comment: ""))
+                var bodyText2 = NSMutableAttributedString(string: NSLocalizedString(" para o dia ", comment: ""))
+                var bodyText3 = NSMutableAttributedString(string: NSLocalizedString(" as ", comment: ""))
                 let combination = NSMutableAttributedString()
                 
                 combination.append(boldEvento)
@@ -568,9 +568,9 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 let boldTime = NSMutableAttributedString(string: formateTime.string(from: mineToday[indexPath.row].horarioEvento), attributes: att)
                 
                 
-                var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                var bodyText2 = NSMutableAttributedString(string: " para o dia ")
-                var bodyText3 = NSMutableAttributedString(string: " as ")
+                var bodyText1 = NSMutableAttributedString(string: NSLocalizedString(" foi marcado por ", comment: ""))
+                var bodyText2 = NSMutableAttributedString(string: NSLocalizedString(" para o dia ", comment: ""))
+                var bodyText3 = NSMutableAttributedString(string: NSLocalizedString(" as ", comment: ""))
                 let combination = NSMutableAttributedString()
                 
                 combination.append(boldEvento)
@@ -637,9 +637,9 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 let boldTime = NSMutableAttributedString(string: formateTime.string(from: allPreviously[indexPath.row].horarioEvento), attributes: att)
                 
                 
-                var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                var bodyText2 = NSMutableAttributedString(string: " para o dia ")
-                var bodyText3 = NSMutableAttributedString(string: " as ")
+                var bodyText1 = NSMutableAttributedString(string: NSLocalizedString(" foi marcado por ", comment: ""))
+                var bodyText2 = NSMutableAttributedString(string: NSLocalizedString(" para o dia ", comment: ""))
+                var bodyText3 = NSMutableAttributedString(string: NSLocalizedString(" as ", comment: ""))
                 let combination = NSMutableAttributedString()
                 
                 combination.append(boldEvento)
@@ -695,9 +695,9 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate {
                 let boldTime = NSMutableAttributedString(string: formateTime.string(from: minePreviously[indexPath.row].horarioEvento), attributes: att)
                 
                 
-                var bodyText1 = NSMutableAttributedString(string: " foi marcado por ")
-                var bodyText2 = NSMutableAttributedString(string: " para o dia ")
-                var bodyText3 = NSMutableAttributedString(string: " as ")
+                var bodyText1 = NSMutableAttributedString(string: NSLocalizedString(" foi marcado por ", comment: ""))
+                var bodyText2 = NSMutableAttributedString(string: NSLocalizedString(" para o dia ", comment: ""))
+                var bodyText3 = NSMutableAttributedString(string: NSLocalizedString(" as ", comment: ""))
                 let combination = NSMutableAttributedString()
                 
                 combination.append(boldEvento)
