@@ -78,8 +78,8 @@ class TabElderViewController: UITableViewController {
         enderecoBold.font = scaledFont.font(forTextStyle: .body)
         enderecoBold.adjustsFontForContentSizeCategory = true
         
-        alergia.font = scaledFont.font(forTextStyle: .body)
-        alergia.adjustsFontForContentSizeCategory = true
+        alergiaBold.font = scaledFont.font(forTextStyle: .body)
+        alergiaBold.adjustsFontForContentSizeCategory = true
         
         medicamentoBold.font = scaledFont.font(forTextStyle: .body)
         medicamentoBold.adjustsFontForContentSizeCategory = true
