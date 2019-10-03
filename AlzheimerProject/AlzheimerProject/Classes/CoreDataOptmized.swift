@@ -144,6 +144,12 @@ class CoreDataRebased{
         Cloud.saveUsuario(idUsuario: usuario.id!, nome: usuario.nome!, foto: usuario.fotoPerfil as! Data, idSala: usuario.idSala!, host: usuario.isHost)
         Cloud.saveCalendario(idCalendario: calendar.id!, idEventos: nil)
         Cloud.savePerfil(idPerfil: profile.id!, nome: nil, dataNascimento: nil, telefone: nil, descricao: nil, fotoPerfil: nil, endereco: nil, remedios: nil, alergias: nil, tipoSanguineo: nil, planoSaude: nil)
+        
+        let userDefaults = UserDefaults.standard
+        
+        userDefaults.set(true, forKey: "onbordingComplete")
+        
+        userDefaults.synchronize()
     }
     
     // ✅ - Fetch do usuario do core data 😎
@@ -262,6 +268,11 @@ class CoreDataRebased{
         perfil.rg = DadosPerfil.perfil.rg
         
         CoreDataRebased.shared.saveCoreData()
+        let userDefaults = UserDefaults.standard
+        
+        userDefaults.set(true, forKey: "onbordingComplete")
+        
+        userDefaults.synchronize()
     }
     
     func reloadUsuario(searchUsuario: String){

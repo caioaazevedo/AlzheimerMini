@@ -87,11 +87,7 @@ class Onboard: UIViewController, PaperOnboardingDataSource, PaperOnboardingDeleg
     }
     
     @IBAction func startButtonAction(_ sender: Any) {
-        let userDefaults = UserDefaults.standard
-        
-        userDefaults.set(true, forKey: "onbordingComplete")
-        
-        userDefaults.synchronize()
+
     }
     
     
