@@ -21,7 +21,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading Screen" translatesAutoresizingMaskIntoConstraints="NO" id="3Fa-fl-umx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ilustração Inicial Real" translatesAutoresizingMaskIntoConstraints="NO" id="g01-6U-AfA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ilustração Inicial Real" translatesAutoresizingMaskIntoConstraints="NO" id="g01-6U-AfA">
                                 <rect key="frame" x="37" y="346.5" width="341" height="203"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="341" id="V5P-ID-5jA"/>
@@ -51,7 +51,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Ilustração Inicial Real" width="431" height="265"/>
+        <image name="Ilustração Inicial Real" width="431" height="265"/>
         <image name="Loading Screen" width="414" height="896"/>
     </resources>
 </document>
