@@ -33,6 +33,7 @@ class GuestViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+
         
         if isHost {
             if realHost == false {
@@ -155,6 +156,8 @@ class GuestViewController: UIViewController{
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
+    
+    
 
 }
 

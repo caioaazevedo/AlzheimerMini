@@ -67,3 +67,5 @@
 " foi marcado por " = " was setted by ";
 " para o dia " = " to day ";
 " as " = " at ";
+"icloudLogin" = "Faça login no iCloud";
+"descLogin" = "Nós identificamos que você não está logado no iCloud. Por vafor faça o login para salvar seus dados";

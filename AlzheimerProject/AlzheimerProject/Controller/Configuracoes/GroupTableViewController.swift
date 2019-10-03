@@ -106,8 +106,9 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func exitGroup(_ sender: Any) {
         let alert = UIAlertController(title: NSLocalizedString("LeaveGroup" , comment: ""), message: NSLocalizedString("ConfirmLeave" , comment: ""), preferredStyle: UIAlertController.Style.alert)
         
+        
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes" , comment: ""), style: .default, handler: { action in
-            var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
+            //var usuarios = (self.sala.idUsuarios as! NSArray).mutableCopy() as! [String]
             
             /*
              1. Procurar no cloud a sala da pessoa, gravar o vetor de usuarios em um [String] ✅
@@ -121,6 +122,18 @@ class GroupTableViewController: UIViewController, UITableViewDataSource, UITable
                 
                 Cloud.deleteCloudSubs()
                 CoreDataRebased.shared.deleteAll()
+                
+                let userDefaults = UserDefaults.standard
+                
+                userDefaults.set(false, forKey: "onbordingComplete")
+                
+                userDefaults.synchronize()
+                
+                let mainStoryboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+                DispatchQueue.main.async {
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "MainApp")
+                    self.present(viewController, animated: true, completion: nil)
+                }
                 
                 
                 

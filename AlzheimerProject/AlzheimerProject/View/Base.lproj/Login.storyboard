@@ -19,25 +19,25 @@
         <!--Login View Controller-->
         <scene sceneID="Ri4-pb-I5f">
             <objects>
-                <viewController storyboardIdentifier="MainApp" id="08K-uJ-Hp9" customClass="LoginViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainApp" modalPresentationStyle="fullScreen" id="08K-uJ-Hp9" customClass="LoginViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZmB-yY-IMG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELLO!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2q-6p-z0p">
-                                <rect key="frame" x="36" y="513" width="342" height="41"/>
+                                <rect key="frame" x="36" y="567" width="342" height="41"/>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want to do?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heI-7J-xaV">
-                                <rect key="frame" x="36" y="555" width="342" height="24"/>
+                                <rect key="frame" x="36" y="609" width="342" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="nxP-Ie-RyA">
-                                <rect key="frame" x="36" y="617" width="342" height="144"/>
+                                <rect key="frame" x="36" y="671" width="342" height="144"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dar-1b-mDn" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="60.5"/>
@@ -78,7 +78,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ilustração Inicial Real" translatesAutoresizingMaskIntoConstraints="NO" id="eca-gI-jsF">
-                                <rect key="frame" x="0.0" y="57" width="414" height="530"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="530"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,13 +118,13 @@
         <!--Guest View Controller-->
         <scene sceneID="g8b-63-Cjn">
             <objects>
-                <viewController id="Fg7-5o-6fC" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Fg7-5o-6fC" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ft-7c-AZC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-uA-LvB">
-                                <rect key="frame" x="19" y="734" width="381" height="33"/>
+                                <rect key="frame" x="19" y="788" width="381" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,19 +134,19 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the Family Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-TZ-0rr">
-                                <rect key="frame" x="33" y="503" width="342" height="21"/>
+                                <rect key="frame" x="33" y="557" width="342" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="family-name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-tg-5ko">
-                                <rect key="frame" x="33" y="550" width="342" height="21"/>
+                                <rect key="frame" x="33" y="604" width="342" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-br-BBE" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                <rect key="frame" x="34" y="636" width="346" height="59"/>
+                                <rect key="frame" x="34" y="690" width="346" height="59"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="ujf-2i-Dl0"/>
@@ -160,10 +160,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Ti-HNh">
-                                <rect key="frame" x="69" y="14" width="280" height="280"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="hFk-wo-YN7"/>
-                                </constraints>
+                                <rect key="frame" x="78" y="94.5" width="260" height="266.5"/>
                                 <state key="normal" backgroundImage="ProfilePicture"/>
                                 <connections>
                                     <action selector="fotoPerfil:" destination="Fg7-5o-6fC" eventType="touchUpInside" id="RQ6-9p-0jj"/>
@@ -188,17 +185,12 @@
                             </constraint>
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="AlI-TZ-0rr" secondAttribute="trailing" constant="39" id="8UR-ys-YrR"/>
                             <constraint firstItem="Bea-tg-5ko" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="33" id="9dY-fL-p8w"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="top" secondItem="nhj-PJ-lsX" secondAttribute="top" constant="14" id="BxJ-U6-ckm"/>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="centerY" secondItem="nhj-PJ-lsX" secondAttribute="centerY" multiplier="0.5" constant="1" id="EVS-um-DDD"/>
                             <constraint firstItem="2Fm-br-BBE" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="34" id="F6p-tS-UlG"/>
-                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="80" id="HkV-1l-Mjg">
-                                <variation key="heightClass=regular-widthClass=compact" constant="69"/>
-                            </constraint>
+                            <constraint firstItem="I2R-tX-c7f" firstAttribute="top" secondItem="2x2-Ti-HNh" secondAttribute="bottom" constant="-59" id="FUD-V9-lSB"/>
                             <constraint firstItem="AlI-TZ-0rr" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="33" id="TpL-RV-I08"/>
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="284" id="VPi-Kp-KPp">
                                 <variation key="heightClass=regular-widthClass=compact" constant="237"/>
-                            </constraint>
-                            <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="2x2-Ti-HNh" secondAttribute="trailing" constant="62" id="WkY-zE-Ki0">
-                                <variation key="heightClass=regular-widthClass=compact" constant="65"/>
                             </constraint>
                             <constraint firstItem="DDd-uA-LvB" firstAttribute="top" secondItem="2Fm-br-BBE" secondAttribute="bottom" constant="39" id="ZDq-m1-KbM"/>
                             <constraint firstItem="I2R-tX-c7f" firstAttribute="leading" secondItem="nhj-PJ-lsX" secondAttribute="leading" constant="299" id="Zld-ON-JdA"/>
@@ -206,10 +198,10 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="19"/>
                             </constraint>
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="trailing" secondItem="2Fm-br-BBE" secondAttribute="trailing" constant="34" id="gz6-1N-wAP"/>
-                            <constraint firstItem="I2R-tX-c7f" firstAttribute="top" secondItem="2x2-Ti-HNh" secondAttribute="bottom" constant="8" id="iyY-iq-ZjU"/>
                             <constraint firstItem="nhj-PJ-lsX" firstAttribute="bottom" secondItem="DDd-uA-LvB" secondAttribute="bottom" constant="55" id="n2i-sn-NDa">
                                 <variation key="heightClass=regular-widthClass=compact" constant="41"/>
                             </constraint>
+                            <constraint firstItem="2x2-Ti-HNh" firstAttribute="centerX" secondItem="nhj-PJ-lsX" secondAttribute="centerX" constant="1" id="p4u-gM-tEx"/>
                             <constraint firstItem="AlI-TZ-0rr" firstAttribute="top" secondItem="Bea-tg-5ko" secondAttribute="bottom" constant="35" id="toR-SJ-4nK">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-68"/>
                             </constraint>
@@ -242,28 +234,28 @@
         <!--Guest View Controller-->
         <scene sceneID="PhC-ub-23K">
             <objects>
-                <viewController storyboardIdentifier="Login" id="6RI-kf-fto" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" modalPresentationStyle="fullScreen" id="6RI-kf-fto" customClass="GuestViewController" customModule="AlzheimerProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RVR-23-l1n">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-eI-ErX">
-                                <rect key="frame" x="36" y="567" width="342" height="21"/>
+                                <rect key="frame" x="36" y="621" width="342" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the code given by your group host" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-fX-XiC">
-                                <rect key="frame" x="36" y="505" width="257" height="41"/>
+                                <rect key="frame" x="36" y="559" width="257" height="41"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ilustração Inicial Real" translatesAutoresizingMaskIntoConstraints="NO" id="I84-9h-me0">
-                                <rect key="frame" x="0.0" y="57" width="414" height="530"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="530"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-wY-kXm" customClass="CustomButton" customModule="AlzheimerProject" customModuleProvider="target">
-                                <rect key="frame" x="36" y="638" width="342" height="59"/>
+                                <rect key="frame" x="36" y="692" width="342" height="59"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="bAD-PA-T8z"/>
@@ -278,7 +270,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfi-M6-z9L">
-                                <rect key="frame" x="36" y="733" width="342" height="33"/>
+                                <rect key="frame" x="36" y="787" width="342" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.93725490196078431" green="0.6588235294117647" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

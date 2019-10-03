@@ -67,3 +67,5 @@
 " foi marcado por " = " foi marcado por ";
 " para o dia " = " para o dia ";
 " as " = " as ";
+"icloudLogin" = "iCloud's login";
+"descLogin" = "We identify that you are not log in to icloud. Please log in to save your data";
